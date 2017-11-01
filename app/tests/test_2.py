@@ -9,18 +9,44 @@ import unittest, time, re
 
 class Test1(unittest.TestCase):
     def setUp(self):
-        path = "C:\\Users\\caiom\\Downloads\\geckodriver.exe"
-        self.driver = webdriver.Firefox(executable_path=path)
+        self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
-        self.base_url = "https://github.com/"
+        self.base_url = "http://localhost:8000"
         self.verificationErrors = []
         self.accept_next_alert = True
     
     def test_1(self):
         driver = self.driver
-        driver.get(self.base_url + "/Lukas-Stuehrk/XMLHTTPRequest")
-        try: self.assertEqual("None .", driver.find_element_by_xpath("//div[@id='js-repo-pjax-container']/div[2]/div/div/div/div/span").text)
-        except AssertionError as e: self.verificationErrors.append(str(e))
+        driver.get(self.base_url + "/admin/login/?next=/admin/")
+        for i in range(60):
+            try:
+                if self.is_element_present(By.ID, "id_username"): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        driver.find_element_by_id("id_username").clear()
+        driver.find_element_by_id("id_username").send_keys("admin")
+        for i in range(60):
+            try:
+                if self.is_element_present(By.ID, "id_password"): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        driver.find_element_by_id("id_password").clear()
+        driver.find_element_by_id("id_password").send_keys("pass")
+        for i in range(60):
+            try:
+                if self.is_element_present(By.CSS_SELECTOR, "input[type=\"submit\"]"): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        driver.find_element_by_css_selector("input[type=\"submit\"]").click()
+        for i in range(60):
+            try:
+                if self.is_element_present(By.CSS_SELECTOR, "p.errornote"): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
