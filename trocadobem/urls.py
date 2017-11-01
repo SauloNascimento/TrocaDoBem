@@ -1,3 +1,8 @@
+"""urls.py: Urls definidas."""
+
+__author__ = "Caio Marinho"
+__copyright__ = "Copyright 2017, LES-UFCG"
+
 """default URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:

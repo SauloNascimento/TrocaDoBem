@@ -1,3 +1,8 @@
+"""settings.py: Arquivo de configuracao do projeto."""
+
+__author__ = "Caio Marinho"
+__copyright__ = "Copyright 2017, LES-UFCG"
+
 """
 Django settings for trocadobem project.
 
