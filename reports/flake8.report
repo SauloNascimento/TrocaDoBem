@@ -1,0 +1,67 @@
+C:\Users\caiom\PycharmProjects\trocadobem\manage.py:14:13: F401 'django' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\admin.py:1:1: F401 'admin' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\models.py:3:1: F401 'models' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\views.py:1:1: F401 'render' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:4:1: F401 'Keys' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:5:1: F401 'Select' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:8:1: F401 're' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:8:16: E401 multiple imports on one line
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:10:1: E302 expected 2 blank lines, found 1
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:17:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:18:1: C901 'Test1.test_1' is too complex (17)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:21:101: E501 line too long (126 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:25:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:26:19: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:28:13: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:33:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:34:19: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:36:13: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:41:86: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:42:19: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:44:13: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:48:75: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:49:19: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:51:13: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:52:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:54:12: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:55:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:55:43: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:57:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:59:12: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:60:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:60:44: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:62:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:72:16: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:73:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:4:1: F401 'Keys' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:5:1: F401 'Select' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:8:1: F401 're' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:8:16: E401 multiple imports on one line
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:10:1: E302 expected 2 blank lines, found 1
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:17:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:18:1: C901 'Test1.test_1' is too complex (17)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:23:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:24:19: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:26:13: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:31:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:32:19: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:34:13: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:39:86: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:40:19: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:42:13: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:46:75: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:47:19: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:49:13: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:50:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:52:12: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:53:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:53:43: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:55:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:57:12: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:58:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:58:44: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:60:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:70:16: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:71:1: W293 blank line contains whitespace
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:67:58: E203 whitespace before ','
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:145:45: W292 no newline at end of file
