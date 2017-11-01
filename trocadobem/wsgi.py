@@ -1,3 +1,8 @@
+"""wsgi.py: Arquivo de configuracao de comunicacao com o servidor."""
+
+__author__ = "Caio Marinho"
+__copyright__ = "Copyright 2017, LES-UFCG"
+
 """
 WSGI config for default project.
 
