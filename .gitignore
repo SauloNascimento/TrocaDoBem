@@ -2,7 +2,8 @@
 tmp
 venv
 *.pyc
-staticfiles
 .env
 .idea/
 .sqlite3
+.report
+db.sqlite3
