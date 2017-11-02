@@ -1,64 +1,65 @@
-C:\Users\Alberto\PycharmProjects\trocadobem\manage.py:14:13: F401 'django' imported but unused
-C:\Users\Alberto\PycharmProjects\trocadobem\app\admin.py:1:1: F401 'admin' imported but unused
-C:\Users\Alberto\PycharmProjects\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\apps.py:6:1: F404 future import(s) ['unicode_literals'] after other statements
-C:\Users\Alberto\PycharmProjects\trocadobem\app\apps.py:8:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\models.py:3:1: F401 'models' imported but unused
-C:\Users\Alberto\PycharmProjects\trocadobem\app\views.py:1:1: F401 'render' imported but unused
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:7:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:8:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:10:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:11:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:12:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:13:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:24:1: C901 'Test1.test_1' is too complex (17)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:29:65: E701 multiple statements on one line (colon)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:39:65: E701 multiple statements on one line (colon)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:49:86: E701 multiple statements on one line (colon)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:58:75: E701 multiple statements on one line (colon)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:68:42: F841 local variable 'e' is assigned to but never used
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_1.py:75:43: F841 local variable 'e' is assigned to but never used
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:7:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:8:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:10:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:11:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:12:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:13:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:24:1: C901 'Test1.test_1' is too complex (17)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:29:65: E701 multiple statements on one line (colon)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:39:65: E701 multiple statements on one line (colon)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:49:86: E701 multiple statements on one line (colon)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:58:75: E701 multiple statements on one line (colon)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:68:42: F841 local variable 'e' is assigned to but never used
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_2.py:75:43: F841 local variable 'e' is assigned to but never used
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:7:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:9:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:10:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:11:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:12:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:23:1: C901 'TestLoginAdminVerifyListLogin.test_login_admin_verify_list_login' is too complex (15)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:27:101: E501 line too long (101 > 100 characters)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:31:101: E501 line too long (114 > 100 characters)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:48:101: E501 line too long (113 > 100 characters)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:64:42: F841 local variable 'e' is assigned to but never used
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:71:43: F841 local variable 'e' is assigned to but never used
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:7:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:9:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:10:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:11:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:12:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:23:1: C901 'TestLoginAdminVerifyListLogin.test_login_admin_verify_list_login' is too complex (15)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:27:101: E501 line too long (101 > 100 characters)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:31:101: E501 line too long (114 > 100 characters)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:48:101: E501 line too long (113 > 100 characters)
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:64:42: F841 local variable 'e' is assigned to but never used
-C:\Users\Alberto\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:71:43: F841 local variable 'e' is assigned to but never used
-C:\Users\Alberto\PycharmProjects\trocadobem\trocadobem\settings.py:18:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\trocadobem\settings.py:21:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\trocadobem\settings.py:72:58: E203 whitespace before ','
-C:\Users\Alberto\PycharmProjects\trocadobem\trocadobem\urls.py:21:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\trocadobem\urls.py:22:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\trocadobem\urls.py:23:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\trocadobem\wsgi.py:15:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\trocadobem\wsgi.py:17:1: E402 module level import not at top of file
-C:\Users\Alberto\PycharmProjects\trocadobem\trocadobem\wsgi.py:18:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\manage.py:14:13: F401 'django' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\admin.py:1:1: F401 'admin' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:6:1: F404 future import(s) ['unicode_literals'] after other statements
+C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:8:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\models.py:3:1: F401 'models' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:7:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:8:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:10:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:11:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:12:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:13:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:24:1: C901 'Test1.test_1' is too complex (17)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:29:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:39:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:49:86: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:58:75: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:68:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:75:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:7:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:8:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:10:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:11:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:12:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:13:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:24:1: C901 'Test1.test_1' is too complex (17)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:29:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:39:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:49:86: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:58:75: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:68:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:75:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:7:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:9:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:10:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:11:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:12:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:23:1: C901 'TestLoginAdminVerifyListLogin.test_login_admin_verify_list_login' is too complex (15)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:27:101: E501 line too long (101 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:31:101: E501 line too long (114 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:48:101: E501 line too long (113 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:64:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:71:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:7:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:9:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:10:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:11:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:12:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:23:1: C901 'TestLoginAdminVerifyListLogin.test_login_admin_verify_list_login' is too complex (15)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:27:101: E501 line too long (101 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:31:101: E501 line too long (114 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:48:101: E501 line too long (113 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:64:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:71:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\views\HomeView.py:6:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:18:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:21:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:72:58: E203 whitespace before ','
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:21:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:22:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:23:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:24:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\wsgi.py:15:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\wsgi.py:17:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\wsgi.py:18:1: E402 module level import not at top of file
