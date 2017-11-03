@@ -7,4 +7,4 @@ __copyright__ = "Copyright 2017, LES-UFCG"
 
 
 class HomeView(TemplateView):
-    template_name = 'index.html'
+    template_name = 'cadastros/doacaoanonima.html'
