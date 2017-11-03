@@ -21,15 +21,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from app.views.HomeView import HomeView
+
 from app.views.CadastroInstituicaoView import CadastroInstituicaoView
 from app.views.CadastroUsuarioView import CadastroUsuarioView
+from app.views.HomeView import HomeView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
     url(r'^admin/login/$', auth_views.login),
     url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^cadastrar-instituicao/$', CadastroInstituicaoView.as_view(), name='cadastro'),
-    url(r'^cadastrar-usuario/$', CadastroUsuarioView.as_view(), name='cadastro')
+    url(r'^cadastrar-instituicao/$', CadastroInstituicaoView.as_view(), name='cadastro_instituicao'),
+    url(r'^cadastrar-usuario/$', CadastroUsuarioView.as_view(), name='cadastro_usuario')
 ]
