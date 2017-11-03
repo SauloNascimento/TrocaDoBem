@@ -22,10 +22,12 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from app.views.HomeView import HomeView
+from app.views.CadastroView import CadastroView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
     url(r'^admin/login/$', auth_views.login),
-    url(r'^$', HomeView.as_view(), name='home')
+    url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^cadastrar-instituicao/$', CadastroView.as_view(), name='cadastro')
 ]
