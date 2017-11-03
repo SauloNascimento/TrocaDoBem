@@ -43,6 +43,19 @@ class Usuario(TimeStamped):
         return self.user.first_name
 
 
+class Item(TimeStamped):
+    dono = models.ForeignKey(User, on_delete=models.CASCADE)
+    descricao = models.CharField(max_length=300)
+    nome_item = models.CharField(max_length=100)
+    photo = models.URLField()
+
+    def __unicode__(self):
+        return u'%s' % (self.nome_item)
+
+    def __str__(self):
+        return self.nome_item
+
+
 tipo_objeto = (
     ('Eletronicos', 'Eletronicos'),
     ('Calcados', 'Calcados'),
@@ -51,26 +64,24 @@ tipo_objeto = (
 
 
 class Objeto(TimeStamped):
-    dono = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, unique=True)
     tipo = models.CharField(max_length=50, choices=tipo_objeto)
-    nome_objeto = models.CharField(max_length=100)
 
     def __unicode__(self):
-        return u'%s' % (self.nome_objeto)
+        return u'%s' % (self.item.nome_item)
 
     def __str__(self):
-        return self.nome_objeto
+        return self.item.nome_item
 
 
 class Servico(TimeStamped):
-    dono = models.ForeignKey(User, on_delete=models.CASCADE)
-    nome_atividade = models.CharField(max_length=100)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, unique=True)
 
     def __unicode__(self):
-        return u'%s' % (self.nome_atividade)
+        return u'%s' % (self.item.nome_item)
 
     def __str__(self):
-        return self.nome_atividade
+        return self.item.nome_item
 
 
 class Post(TimeStamped):

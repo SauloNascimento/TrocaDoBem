@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 import ckeditor.fields
-import cloudinary.models
 from django.conf import settings
+import cloudinary.models
 
 
 class Migration(migrations.Migration):
@@ -45,7 +45,22 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Message',
+            name='Item',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('published_at', models.DateTimeField(auto_now=True)),
+                ('descricao', models.CharField(max_length=300)),
+                ('nome_item', models.CharField(max_length=100)),
+                ('photo', models.URLField()),
+                ('dono', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='Mensagem',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('name', models.CharField(max_length=100, blank=True, null=True)),
@@ -53,6 +68,10 @@ class Migration(migrations.Migration):
                 ('message', models.TextField(blank=True, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
+            options={
+                'verbose_name': 'Mensagem',
+                'verbose_name_plural': 'Mensagens',
+            },
         ),
         migrations.CreateModel(
             name='Objeto',
@@ -61,8 +80,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('published_at', models.DateTimeField(auto_now=True)),
                 ('tipo', models.CharField(max_length=50, choices=[('Eletronicos', 'Eletronicos'), ('Calcados', 'Calcados'), ('Pereciveis', 'Pereciveis')])),
-                ('nome_objeto', models.CharField(max_length=100)),
-                ('dono', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('item', models.ForeignKey(unique=True, to='app.Item')),
             ],
             options={
                 'abstract': False,
@@ -90,8 +108,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('published_at', models.DateTimeField(auto_now=True)),
-                ('nome_atividade', models.CharField(max_length=100)),
-                ('dono', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('item', models.ForeignKey(unique=True, to='app.Item')),
             ],
             options={
                 'abstract': False,

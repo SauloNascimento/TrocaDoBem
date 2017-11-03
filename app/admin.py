@@ -27,6 +27,18 @@ class MensagemAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'created_at')
 
 
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('nome_item', 'dono', 'descricao', 'created_at')
+
+
+class ObjetoAdmin(admin.ModelAdmin):
+    list_display = ('item', 'tipo', 'created_at')
+
+
+class ServicoAdmin(admin.ModelAdmin):
+    list_display = ('item', 'created_at')
+
+
 class PostAdmin(admin.ModelAdmin):
     inlines = [ImagePostInline, ]
     form = PostForm
@@ -45,3 +57,6 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Mensagem, MensagemAdmin)
 admin.site.register(ImagePost, ImagePostAdmin)
 admin.site.register(Post, PostAdmin)
+admin.site.register(Item, ItemAdmin)
+admin.site.register(Objeto, ObjetoAdmin)
+admin.site.register(Servico, ServicoAdmin)
