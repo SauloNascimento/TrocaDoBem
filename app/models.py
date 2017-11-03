@@ -5,6 +5,7 @@ from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import safe
+from django.db.models import permalink
 
 
 class TimeStamped(models.Model):
@@ -85,9 +86,9 @@ class Post(TimeStamped):
     def get_description(self):
         return safe(self.text[:200])
 
-        # @permalink
-        # def get_absolute_url(self):
-        #     return ('view_post', None, {'slug': self.slug})
+    @permalink
+    def get_absolute_url(self):
+        return ('view_post', None, {'slug': self.slug})
 
 
 class ImagePost(TimeStamped):
@@ -101,7 +102,11 @@ class ImagePost(TimeStamped):
     is_visible = models.BooleanField(default=True)
 
 
-class Message(models.Model):
+class Mensagem(models.Model):
+    class Meta:
+        verbose_name = "Mensagem"
+        verbose_name_plural = "Mensagens"
+
     name = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     message = models.TextField(blank=True, null=True)
