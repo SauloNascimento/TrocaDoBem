@@ -22,12 +22,13 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from app.views.HomeView import HomeView
-from app.views.CadastroView import CadastroView
+from app.views.CadastroInstituicaoView import CadastroInstituicaoView
+from app.views.CadastroUsuarioView import CadastroUsuarioView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
     url(r'^admin/login/$', auth_views.login),
     url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^cadastrar-instituicao/$', CadastroView.as_view(), name='cadastro')
+    url(r'^cadastrar-instituicao/$', CadastroInstituicaoView.as_view(), name='cadastro'),
 ]
