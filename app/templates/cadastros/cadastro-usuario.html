@@ -1,92 +1,108 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="robots" content="noindex, nofollow">
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-    <title>Cadastro Cliente - Bootsnipp.com</title>
+{% block content %}
+
+
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="robots" content="noindex, nofollow">
+
+        <title>Cadastro Cliente</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <style type="text/css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
+              id="bootstrap-css">
+        <style type="text/css">
 
-    </style>
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        </style>
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            window.alert = function () {
+            };
+            var defaultCSS = document.getElementById('bootstrap-css');
+
+            function changeCSS(css) {
+                if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');
+                else $('head > link').filter(':first').replaceWith(defaultCSS);
+            }
+
+            $(document).ready(function () {
+                var iframe_height = parseInt($('html').height());
+                window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
+            });
+        </script>
+    </head>
+    <body style="">
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Cadastro Usuário</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cod_user">Código Usuário</label>
+                <div class="col-md-4">
+                    <input id="cod_user" name="cod_user" type="text" placeholder="codUser"
+                           class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nome">Nome</label>
+                <div class="col-md-4">
+                    <input id="nome" name="nome" type="text" placeholder="nome" class="form-control input-md"
+                           required="">
+
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="senha">Senha</label>
+                <div class="col-md-4">
+                    <input id="senha" name="senha" type="password" placeholder="senha" class="form-control input-md"
+                           required="">
+
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="perfil">Perfil</label>
+                <div class="col-md-4">
+                    <select id="perfil" name="perfil" class="form-control">
+                        <option value="1">Administrador</option>
+                        <option value="2">Advogado</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cancelar"></label>
+                <div class="col-md-4">
+                    <button id="cancelar" name="cancelar" class="btn btn-primary">Cancelar</button>
+                </div>
+
+                <label class="col-md-4 control-label" for="pesquisar"></label>
+                <div>
+                    <button id="pesquisar" name="pesquisar" class="btn btn-primary">Pesquisar</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
     <script type="text/javascript">
-        window.alert = function(){};
-        var defaultCSS = document.getElementById('bootstrap-css');
-        function changeCSS(css){
-            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
-            else $('head > link').filter(':first').replaceWith(defaultCSS);
-        }
-        $( document ).ready(function() {
-          var iframe_height = parseInt($('html').height());
-          window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
-        });
+
     </script>
-</head>
-<body style="">
-	<form class="form-horizontal">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Cadastro Usuário</legend>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="cod_user">Código Usuário</label>
-  <div class="col-md-4">
-  <input id="cod_user" name="cod_user" type="text" placeholder="codUser" class="form-control input-md">
-
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="nome">Nome</label>
-  <div class="col-md-4">
-  <input id="nome" name="nome" type="text" placeholder="nome" class="form-control input-md" required="">
-
-  </div>
-</div>
-
-<!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="senha">Senha</label>
-  <div class="col-md-4">
-    <input id="senha" name="senha" type="password" placeholder="senha" class="form-control input-md" required="">
-
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="perfil">Perfil</label>
-  <div class="col-md-4">
-    <select id="perfil" name="perfil" class="form-control">
-      <option value="1">Administrador</option>
-      <option value="2">Advogado</option>
-    </select>
-  </div>
-</div>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="cancelar"></label>
-  <div class="col-md-4">
-    <button id="cancelar" name="cancelar" class="btn btn-primary">Cancelar</button>
-  </div>
-
-  <label class="col-md-4 control-label" for="pesquisar"></label>
-  <div>
-    <button id="pesquisar" name="pesquisar" class="btn btn-primary">Pesquisar</button>
-  </div>
-</div>
-
-</fieldset>
-</form>
-
-	<script type="text/javascript">
-
-	</script>
 
 
-</body></html>
+    </body>
+    </html>
+{% endblock %}
