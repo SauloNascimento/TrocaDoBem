@@ -24,13 +24,13 @@ from django.contrib.auth import views as auth_views
 
 from app.views.CadastroInstituicaoView import CadastroInstituicaoView
 from app.views.CadastroUsuarioView import CadastroUsuarioView
-from app.views.HomeView import HomeView
-
+from app.views.HomeView import HomeView, submit_message, view_post
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
     url(r'^admin/login/$', auth_views.login),
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^cadastrar-instituicao/$', CadastroInstituicaoView.as_view(), name='cadastro_instituicao'),
-    url(r'^cadastrar-usuario/$', CadastroUsuarioView.as_view(), name='cadastro_usuario')
+    url(r'^cadastrar-usuario/$', CadastroUsuarioView.as_view(), name='cadastro_usuario'),
+    url(r'^submit-contact', submit_message, name='submit_contact'),
+    url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),
 ]
