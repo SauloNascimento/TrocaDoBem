@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^admin/login/$', auth_views.login),
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^cadastrar-instituicao/$', CadastroInstituicaoView.as_view(), name='cadastro'),
+    url(r'^cadastrar-usuario/$', CadastroUsuarioView.as_view(), name='cadastro')
 ]
