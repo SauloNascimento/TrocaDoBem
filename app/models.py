@@ -4,8 +4,8 @@ from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from django.db import models
-from django.template.defaultfilters import safe
 from django.db.models import permalink
+from django.template.defaultfilters import safe
 
 
 class TimeStamped(models.Model):
@@ -23,18 +23,18 @@ class Instituicao(TimeStamped):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
     photo = models.URLField()
-    cnpj = models.CharField(max_length=100, default = "Nao Informado")
-    name = models.CharField(max_length=100, default = "Nao Informado")
-    cep = models.CharField(max_length=8, default = "Nao Informado")
-    estado = models.CharField(max_length=20, default = "Nao Informado")
-    cidade = models.CharField(max_length=100, default = "Nao Informado")
-    bairro = models.CharField(max_length=100, default = "Nao Informado")
-    rua = models.CharField(max_length=100, default = "Nao Informado")
-    numero = models.CharField(max_length=5, default = "Nao Informado")
-    complemento = models.CharField(max_length=200, default = "Nao Informado")
-    descricao = models.CharField(max_length=100, default = "Nao Informado")
-    email = models.EmailField(blank = True)
-    telefone = models.CharField(max_length=30, default = "Nao Informado")
+    cnpj = models.CharField(max_length=100, default="Nao Informado")
+    name = models.CharField(max_length=100, default="Nao Informado")
+    cep = models.CharField(max_length=8, default="Nao Informado")
+    estado = models.CharField(max_length=20, default="Nao Informado")
+    cidade = models.CharField(max_length=100, default="Nao Informado")
+    bairro = models.CharField(max_length=100, default="Nao Informado")
+    rua = models.CharField(max_length=100, default="Nao Informado")
+    numero = models.CharField(max_length=5, default="Nao Informado")
+    complemento = models.CharField(max_length=200, default="Nao Informado")
+    descricao = models.CharField(max_length=100, default="Nao Informado")
+    email = models.EmailField(blank=True)
+    telefone = models.CharField(max_length=30, default="Nao Informado")
 
     def __str__(self):
         return self.user.first_name
