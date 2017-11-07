@@ -35,6 +35,18 @@ class Instituicao(TimeStamped):
 class Usuario(TimeStamped):
     user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
     photo = CloudinaryField()
+    nome = models.CharField(max_length=150, default="Nao Informado")
+    dataNascimento = models.DateField(null=True, blank=True)
+    cpf = models.CharField(max_length=100, default="Nao Informado")
+    email = models.EmailField(blank=True)
+    endereco = models.CharField(max_length=100, default="Nao Informado")
+    numero = models.CharField(max_length=10, default="Nao Informado")
+    bairro = models.CharField(max_length=100, default="Nao Informado")
+    cep = models.CharField(max_length=8, default="Nao informado")
+    complemento = models.CharField(max_length=100, default="Nao Informado")
+    cidade = models.CharField(max_length=100, default="Nao Informado")
+    estado = models.CharField(max_length=20, default="Nao Informado")
+    telefone = models.CharField(max_length=30, default="Nao Informado")
 
     def __unicode__(self):
         return u'%s' % (self.user.first_name)
