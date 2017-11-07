@@ -24,12 +24,12 @@
                 <div class="col-md-9" id="blog-listing-small">
 
                     <div class="row">
-                <style>
-                    .col-md-4{
-                        height:430px;
-                        width:240px;
-                    }
-                </style>
+                        <style>
+                            .col-md-4 {
+                                height: 430px;
+                                width: 240px;
+                            }
+                        </style>
                         {% for post in posts %}
                             <div class="col-md-4 col-sm-6">
                                 <div class="box-image-text blog">
@@ -121,7 +121,7 @@
                             <form role="search" action="/search" method="get">{% csrf_token %}
                                 <div class="input-group">
                                     <input type="text" name="q" class="form-control" placeholder="Search"/>
-                                        <span class="input-group-btn">
+                                    <span class="input-group-btn">
                                             <button type="submit" class="btn btn-template-main">
                                                 <i class="fa fa-search"></i>
                                             </button>
