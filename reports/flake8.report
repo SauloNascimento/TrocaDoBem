@@ -52,6 +52,8 @@ C:\Users\administrador1\Desktop\trocadobem\app\tests\test_login_admin_verify_lis
 C:\Users\administrador1\Desktop\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:48:101: E501 line too long (113 > 100 characters)
 C:\Users\administrador1\Desktop\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:64:9: F841 local variable 'e' is assigned to but never used
 C:\Users\administrador1\Desktop\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:71:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\views\CadastroUsuarioView.py:14:5: N802 function name should be lowercase
+C:\Users\administrador1\Desktop\trocadobem\app\views\CadastroUsuarioView.py:18:101: E501 line too long (108 > 100 characters)
 C:\Users\administrador1\Desktop\trocadobem\app\views\HomeView.py:5:1: F401 'TemplateView' imported but unused
 C:\Users\administrador1\Desktop\trocadobem\trocadobem\settings.py:18:1: E402 module level import not at top of file
 C:\Users\administrador1\Desktop\trocadobem\trocadobem\settings.py:21:1: E402 module level import not at top of file
