@@ -11,13 +11,19 @@ class CadastroUsuarioView(TemplateView):
     template_name = 'cadastros/cadastro-usuario.html'
 
 
-def cadastroUsuario(request):
-    usuario = Usuario(photo=request.POST['photo'], nome=request.POST['nome'],
-                      dataNascimento=request.POST['data de nascimento'], cpf=request.POST['cpf'],
-                      email=request.POST['email'], endereco=request.POST['endereco'],
-                      numero=request.POST['numero'], bairro=request.POST['bairro'], cep=request.POST['cep'],
-                      complemento=request.POST['complemento'], cidade=request.POST['cidade'],
-                      estado=request.POST['estado'], telefone=request.POST['telefone'])
-
-    usuario.save()
+def cadastro_usuario(request):
+    user = Usuario(photo=request.POST['photo'],
+                   nome=request.POST['nome'],
+                   dataNascimento=request.POST['data de nascimento'],
+                   cpf=request.POST['cpf'],
+                   email=request.POST['email'],
+                   endereco=request.POST['endereco'],
+                   numero=request.POST['numero'],
+                   bairro=request.POST['bairro'],
+                   cep=request.POST['cep'],
+                   complemento=request.POST['complemento'],
+                   cidade=request.POST['cidade'],
+                   estado=request.POST['estado'],
+                   telefone=request.POST['telefone'])
+    user.save()
     return HttpResponseRedirect(reverse('home', args=()))
