@@ -16,37 +16,9 @@
         </style>
         <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            window.alert = function () {
-            };
-            var defaultCSS = document.getElementById('bootstrap-css');
 
-            function changeCSS(css) {
-                if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');
-                else $('head > link').filter(':first').replaceWith(defaultCSS);
-            }
-
-            $(document).ready(function () {
-                var iframe_height = parseInt($('html').height());
-                window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
-            });
-        </script>
     </head>
     <body style="">
-
-
-    <title>Cadastro Instituição</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
 
     <form class="form-horizontal">
         <fieldset>
@@ -54,11 +26,10 @@
             <!-- Form Name -->
             <legend>Cadastro Instituição</legend>
 
-            <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="CNPJ">CNPJ</label>
-                <div class="col-md-6">
-                    <input id="CNPJ" name="CNPJ" type="text" placeholder="CNPJ" class="form-control input-md"
+                <label class="col-md-4 control-label" for="nome">Nome</label>
+                <div class="col-md-4">
+                    <input id="nome" name="nome" type="text" placeholder="nome" class="form-control input-md"
                            required="">
 
                 </div>
@@ -66,10 +37,10 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="insc_estadual">Insc Estadual</label>
-                <div class="col-md-6">
-                    <input id="insc_estadual" name="insc_estadual" type="text" placeholder="Insc Estadual"
-                           class="form-control input-md" required="">
+                <label class="col-md-4 control-label" for="CNPJ">CNPJ</label>
+                <div class="col-md-4">
+                    <input id="CNPJ" name="CNPJ" type="text" placeholder="CNPJ" class="form-control input-md"
+                           required="">
 
                 </div>
             </div>
@@ -83,24 +54,21 @@
                 </div>
             </div>
 
-            <!-- Select Basic -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="municipio">Município</label>
-                <div class="col-md-8">
-                    <select id="municipio" name="municipio" class="form-control">
-                        {#      <option value="1">Espera Feliz - MG</option>#}
-                        {#      <option value="2">Carangola - MG</option>#}
+                <label class="col-md-4 control-label" for="estado">Estado</label>
+                <div class="col-md-4">
+                    <select id="estado" name="estado" class="form-control">
                     </select>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Select Basic -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="logradouro">Logradouro</label>
-                <div class="col-md-8">
-                    <input id="logradouro" name="logradouro" type="text" placeholder="Logradouro ...Av...Rua....etc"
-                           class="form-control input-md">
+                <label class="col-md-4 control-label" for="municipio">Cidade</label>
+                <div class="col-md-4">
+                    <select id="cidade" name="cidade" class="form-control">
 
+                    </select>
                 </div>
             </div>
 
@@ -115,8 +83,18 @@
 
             <!-- Text input-->
             <div class="form-group">
+                <label class="col-md-4 control-label" for="logradouro">Rua</label>
+                <div class="col-md-6">
+                    <input id="rua" name="rua" type="text" placeholder="Av...Rua....etc"
+                           class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
                 <label class="col-md-4 control-label" for="numero">Numero</label>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <input id="numero" name="numero" type="text" placeholder="Numero" class="form-control input-md">
 
                 </div>
@@ -134,19 +112,9 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="telefone1">Telefone 1</label>
+                <label class="col-md-4 control-label" for="telefone1">Telefone</label>
                 <div class="col-md-4">
-                    <input id="telefone1" name="telefone1" type="text" placeholder="Telefone 1"
-                           class="form-control input-md">
-
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="telefone2">Telefone 2</label>
-                <div class="col-md-4">
-                    <input id="telefone2" name="telefone2" type="text" placeholder="Telefone 2"
+                    <input id="telefone" name="telefone" type="text" placeholder="Telefone"
                            class="form-control input-md">
 
                 </div>
@@ -157,6 +125,17 @@
                 <label class="col-md-4 control-label" for="email">Email</label>
                 <div class="col-md-6">
                     <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
+
+                </div>
+            </div>
+
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="senha">Senha</label>
+                <div class="col-md-4">
+                    <input id="senha" name="senha" type="password" placeholder="senha" class="form-control input-md"
+                           required="">
 
                 </div>
             </div>

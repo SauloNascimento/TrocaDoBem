@@ -28,10 +28,6 @@
                 else $('head > link').filter(':first').replaceWith(defaultCSS);
             }
 
-            $(document).ready(function () {
-                var iframe_height = parseInt($('html').height());
-                window.parent.postMessage(iframe_height, 'https://bootsnipp.com');
-            });
         </script>
     </head>
     <body style="">
@@ -41,15 +37,6 @@
             <!-- Form Name -->
             <legend>Cadastro Usuário</legend>
 
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="cod_user">Código Usuário</label>
-                <div class="col-md-4">
-                    <input id="cod_user" name="cod_user" type="text" placeholder="codUser"
-                           class="form-control input-md">
-
-                </div>
-            </div>
 
             <!-- Text input-->
             <div class="form-group">
@@ -57,6 +44,108 @@
                 <div class="col-md-4">
                     <input id="nome" name="nome" type="text" placeholder="nome" class="form-control input-md"
                            required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cpf">CPF</label>
+                <div class="col-md-4">
+                    <input id="cpf" name="cpf" type="text" placeholder="cpf" class="form-control input-md"
+                           required="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cep">Data de nascimento</label>
+                <div class="col-md-4">
+                    <input id="data" name="data" class="form-control input-md" type="date">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cep">CEP</label>
+                <div class="col-md-4">
+                    <input id="cep" name="cep" type="text" placeholder="CEP" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="estado">Estado</label>
+                <div class="col-md-4">
+                    <select id="estado" name="estado" class="form-control">
+                    </select>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="municipio">Cidade</label>
+                <div class="col-md-4">
+                    <select id="cidade" name="cidade" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="bairro">Bairro</label>
+                <div class="col-md-6">
+                    <input id="bairro" name="bairro" type="text" placeholder="Bairro" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="logradouro">Rua</label>
+                <div class="col-md-6">
+                    <input id="rua" name="rua" type="text" placeholder="Av...Rua....etc"
+                           class="form-control input-md">
+
+                </div>
+            </div>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="numero">Numero</label>
+                <div class="col-md-2">
+                    <input id="numero" name="numero" type="text" placeholder="Numero" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="complemento">Complemento</label>
+                <div class="col-md-6">
+                    <input id="complemento" name="complemento" type="text" placeholder="Complemento"
+                           class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="telefone1">Telefone</label>
+                <div class="col-md-4">
+                    <input id="telefone" name="telefone" type="text" placeholder="Telefone"
+                           class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-6">
+                    <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
 
                 </div>
             </div>
@@ -71,27 +160,12 @@
                 </div>
             </div>
 
-            <!-- Select Basic -->
+            <!-- Button (Double) -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="perfil">Perfil</label>
-                <div class="col-md-4">
-                    <select id="perfil" name="perfil" class="form-control">
-                        <option value="1">Administrador</option>
-                        <option value="2">Advogado</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="cancelar"></label>
-                <div class="col-md-4">
-                    <button id="cancelar" name="cancelar" class="btn btn-primary">Cancelar</button>
-                </div>
-
-                <label class="col-md-4 control-label" for="pesquisar"></label>
-                <div>
-                    <button id="pesquisar" name="pesquisar" class="btn btn-primary">Pesquisar</button>
+                <label class="col-md-4 control-label" for="button1id"></label>
+                <div class="col-md-8">
+                    <button id="button1id" name="button1id" class="btn btn-success">Salvar</button>
+                    <button id="Cancelar" name="Cancelar" class="btn btn-danger">Cancelar</button>
                 </div>
             </div>
 
