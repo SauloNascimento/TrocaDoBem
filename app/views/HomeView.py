@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.views.generic import ListView
-from django.views.generic import TemplateView
 
 from app.models import Mensagem, Post
 
