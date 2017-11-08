@@ -14,12 +14,12 @@ class CadastroInstituicaoView(TemplateView):
 
 
 def cadastro_inst(request):
-    inst = Instituicao(photo=request.POST['foto'], cnpj=request.POST['cnpj'], senha=request.POST['senha'],
+    inst = Instituicao(cnpj=request.POST['CNPJ'], senha=request.POST['senha'],
                        name=request.POST['nome'],
                        cep=request.POST['cep'], estado=request.POST['estado'], cidade=request.POST['cidade'],
                        bairro=request.POST['bairro'], rua=request.POST['rua'], numero=request.POST['numero'],
-                       complemento=request.POST['complemento'], descricao=request.POST['descricao'],
-                       email=request.POST['email'], telefone=request.POST['telefone'])
+                       complemento=request.POST['complemento'], email=request.POST['email'],
+                       telefone=request.POST['telefone'])
     try:
         inst.save()
         messages.success(request, 'Cadastro realizado com sucesso.')

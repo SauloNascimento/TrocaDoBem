@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'^admin/login/$', auth_views.login),
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^cadastrar-instituicao/$', CadastroInstituicaoView.as_view(), name='cadastro_instituicao'),
-    url(r'^cadastro/cadastrar-instituicao/processo', cadastro_inst, name='cadastro_inst_proc'),
+    url(r'^cadastrar-instituicao/cadastro_inst_proc', cadastro_inst, name='cadastro_inst_proc'),
     url(r'^cadastrar-usuario/$', CadastroUsuarioView.as_view(), name='cadastro_usuario'),
     url(r'^submit-contact', submit_message, name='submit_contact'),
     url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),

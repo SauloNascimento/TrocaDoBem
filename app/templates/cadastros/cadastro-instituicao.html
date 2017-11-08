@@ -20,8 +20,9 @@
     </head>
     <body style="">
 
-    <form class="form-horizontal">
+    <form action="{% url 'cadastro_inst_proc' %}" method="post" class="form-horizontal">
         <fieldset>
+            {% csrf_token %}
 
             <!-- Form Name -->
             <legend>Cadastro Instituição</legend>
@@ -57,8 +58,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="estado">Estado</label>
                 <div class="col-md-4">
-                    <select id="estado" name="estado" class="form-control">
-                    </select>
+                    <input id="estado" name="estado" type="text" placeholder="Estado" class="form-control input-md">
+                    </input>
                 </div>
             </div>
 
@@ -66,9 +67,9 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="municipio">Cidade</label>
                 <div class="col-md-4">
-                    <select id="cidade" name="cidade" class="form-control">
+                    <input id="cidade" name="cidade" type="text" placeholder="Cidade" class="form-control input-md">
 
-                    </select>
+                    </input>
                 </div>
             </div>
 
