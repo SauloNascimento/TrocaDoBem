@@ -51,8 +51,8 @@ C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verif
 C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:48:101: E501 line too long (113 > 100 characters)
 C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:64:9: F841 local variable 'e' is assigned to but never used
 C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:71:9: F841 local variable 'e' is assigned to but never used
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\views\CadastroInstituicaoView.py:16:101: E501 line too long (105 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\views\CadastroInstituicaoView.py:17:101: E501 line too long (111 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\views\CadastroInstituicaoView.py:18:101: E501 line too long (109 > 100 characters)
+C:\Users\João Marcos\PycharmProjects\trocadobem\app\views\CadastroInstituicaoView.py:17:101: E501 line too long (106 > 100 characters)
+C:\Users\João Marcos\PycharmProjects\trocadobem\app\views\CadastroInstituicaoView.py:19:101: E501 line too long (109 > 100 characters)
+C:\Users\João Marcos\PycharmProjects\trocadobem\app\views\CadastroInstituicaoView.py:20:101: E501 line too long (109 > 100 characters)
 C:\Users\João Marcos\PycharmProjects\trocadobem\trocadobem\settings.py:74:58: E203 whitespace before ','
 C:\Users\João Marcos\PycharmProjects\trocadobem\trocadobem\urls.py:33:101: E501 line too long (101 > 100 characters)

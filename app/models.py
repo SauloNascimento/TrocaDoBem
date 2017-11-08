@@ -22,8 +22,9 @@ class Instituicao(TimeStamped):
         verbose_name_plural = "Instituicoes"
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
-    photo = models.URLField()
+    photo = models.URLField(blank=True)
     cnpj = models.CharField(max_length=100, default="Nao Informado")
+    senha = models.CharField(max_length=20, default="12345678")
     name = models.CharField(max_length=100, default="Nao Informado")
     cep = models.CharField(max_length=8, default="Nao Informado")
     estado = models.CharField(max_length=20, default="Nao Informado")

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
@@ -13,10 +14,16 @@ class CadastroInstituicaoView(TemplateView):
 
 
 def cadastro_inst(request):
-    inst = Instituicao(photo=request.POST['photo'], cnpj=request.POST['cnpj'], name=request.POST['name'],
-                       cep=request.POST['photo'], estado=request.POST['estado'], cidade=request.POST['cidade'],
+    inst = Instituicao(photo=request.POST['foto'], cnpj=request.POST['cnpj'], senha=request.POST['senha'],
+                       name=request.POST['nome'],
+                       cep=request.POST['cep'], estado=request.POST['estado'], cidade=request.POST['cidade'],
                        bairro=request.POST['bairro'], rua=request.POST['rua'], numero=request.POST['numero'],
                        complemento=request.POST['complemento'], descricao=request.POST['descricao'],
                        email=request.POST['email'], telefone=request.POST['telefone'])
-    inst.save()
-    return HttpResponseRedirect(reverse('home', args=()))
+    try:
+        inst.save()
+        messages.success(request, 'Cadastro realizado com sucesso.')
+    except:
+        messages.error(request, 'Cadastro não realizado.')
+
+    return HttpResponseRedirect(reverse('home'))

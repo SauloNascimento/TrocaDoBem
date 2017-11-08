@@ -3,7 +3,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from app.views.CadastroInstituicaoView import CadastroInstituicaoView
+from app.views.CadastroInstituicaoView import CadastroInstituicaoView, cadastro_inst
 from app.views.CadastroUsuarioView import CadastroUsuarioView
 from app.views.HomeView import HomeView, submit_message, view_post
 
@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^admin/login/$', auth_views.login),
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^cadastrar-instituicao/$', CadastroInstituicaoView.as_view(), name='cadastro_instituicao'),
+    url(r'^cadastro/cadastrar-instituicao/processo', cadastro_inst, name='cadastro_inst_proc'),
     url(r'^cadastrar-usuario/$', CadastroUsuarioView.as_view(), name='cadastro_usuario'),
     url(r'^submit-contact', submit_message, name='submit_contact'),
     url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),
