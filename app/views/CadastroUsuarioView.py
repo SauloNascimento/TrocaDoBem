@@ -24,6 +24,8 @@ def cadastro_usuario(request):
                    complemento=request.POST['complemento'],
                    cidade=request.POST['cidade'],
                    estado=request.POST['estado'],
-                   telefone=request.POST['telefone'])
+                   telefone=request.POST['telefone'],
+                   login=request.POST['login'],
+                   senha=request.POST['senha'])
     user.save()
     return HttpResponseRedirect(reverse('home', args=()))

@@ -47,6 +47,8 @@ class Usuario(TimeStamped):
     cidade = models.CharField(max_length=100, default="Nao Informado")
     estado = models.CharField(max_length=20, default="Nao Informado")
     telefone = models.CharField(max_length=30, default="Nao Informado")
+    login = models.CharField(max_length=15 , default="Nao Informado")
+    senha = models.CharField(max_length=25, default="Nao Informado")
 
     def __unicode__(self):
         return u'%s' % (self.user.first_name)
