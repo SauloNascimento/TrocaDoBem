@@ -43,6 +43,9 @@ class Instituicao(TimeStamped):
     def __unicode__(self):
         return u'%s' % (self.user.first_name)
 
+    @staticmethod
+    def quantidade():
+        return Instituicao.objects.all().count()
 
 class Usuario(TimeStamped):
     user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
