@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from app.models import Usuario
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib import messages
 
 __author__ = "Raphaeldobu"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -12,20 +13,25 @@ class CadastroUsuarioView(TemplateView):
 
 
 def cadastro_usuario(request):
-    user = Usuario(photo=request.POST['photo'],
+    user = Usuario(
                    nome=request.POST['nome'],
-                   dataNascimento=request.POST['data de nascimento'],
                    cpf=request.POST['cpf'],
-                   email=request.POST['email'],
-                   endereco=request.POST['endereco'],
-                   numero=request.POST['numero'],
-                   bairro=request.POST['bairro'],
+                   dataNascimento=request.POST['data de nascimento'],
                    cep=request.POST['cep'],
-                   complemento=request.POST['complemento'],
-                   cidade=request.POST['cidade'],
                    estado=request.POST['estado'],
+                   cidade=request.POST['cidade'],
+                   bairro=request.POST['bairro'],
+                   rua=request.POST['rua'],
+                   numero=request.POST['numero'],
+                   complemento=request.POST['complemento'],
                    telefone=request.POST['telefone'],
+                   email=request.POST['email'],
+                   senha=request.POST['senha'],
                    login=request.POST['login'],
-                   senha=request.POST['senha'])
-    user.save()
+                   )
+    try:
+        user.save()
+        messages.success(request, 'Cadastro realizado com sucesso.')
+    except:
+        messages.error(request, 'Cadastro não realizado.')
     return HttpResponseRedirect(reverse('home', args=()))

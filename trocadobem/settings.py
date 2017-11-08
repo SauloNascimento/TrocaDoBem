@@ -2,6 +2,9 @@
 import os
 
 """settings.py: Arquivo de configuracao do projeto."""
+import os
+
+import dj_database_url
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -19,7 +22,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))

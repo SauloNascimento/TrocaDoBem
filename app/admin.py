@@ -1,7 +1,6 @@
-from cloudinary import CloudinaryImage
-from django.contrib import admin
-from django import forms
 from ckeditor.widgets import CKEditorWidget
+from django import forms
+from django.contrib import admin
 from django.utils.text import slugify
 
 from app.models import *
