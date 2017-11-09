@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 """test_login_admin_verify_list_login_2.py: Testes de Login valido na pagina de admin do Django ."""
-
-__author__ = "Caio Marinho"
-__copyright__ = "Copyright 2017, LES-UFCG"
-
 import unittest
 
 from selenium import webdriver
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+
+__author__ = "Caio Marinho"
+__copyright__ = "Copyright 2017, LES-UFCG"
 
 
 class TestLoginAdminVerifyListLogin(unittest.TestCase):

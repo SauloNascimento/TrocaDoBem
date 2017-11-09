@@ -72,6 +72,16 @@ class Usuario(TimeStamped):
         return self.user.first_name
 
 
+class Doacao(TimeStamped):
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, unique=True)
+    id_instituicao = models.ForeignKey(Instituicao, on_delete=models.CASCADE, unique=True)
+    data_doacao = models.DateField(null=True, blank=True)
+
+    @staticmethod
+    def quantidade():
+        return Doacao.objects.all().count()
+
+
 class Item(TimeStamped):
     dono = models.ForeignKey(User, on_delete=models.CASCADE)
     descricao = models.CharField(max_length=300)

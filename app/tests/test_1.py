@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 """test_1.py: Testes de Login invalido na pagina de admin do Django ."""
-
-__author__ = "Caio Marinho"
-__copyright__ = "Copyright 2017, LES-UFCG"
-
 import time
 import unittest
 
@@ -11,6 +7,9 @@ from selenium import webdriver
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+
+__author__ = "Caio Marinho"
+__copyright__ = "Copyright 2017, LES-UFCG"
 
 
 class Test1(unittest.TestCase):
