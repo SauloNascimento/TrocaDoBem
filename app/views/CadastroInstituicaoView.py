@@ -22,8 +22,8 @@ def cadastro_inst(request):
                        telefone=request.POST['telefone'])
     try:
         inst.save()
-        messages.success(request, 'Cadastro realizado com sucesso.')
+        messages.success(request, 'Nova instituição cadastrada com sucesso.')
     except:
-        messages.error(request, 'Cadastro não realizado.')
+        messages.error(request, 'Instituição não foi cadastrada.')
 
     return HttpResponseRedirect(reverse('home'))

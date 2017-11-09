@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from app.views.CadastroInstituicaoView import CadastroInstituicaoView, cadastro_inst
-from app.views.CadastroUsuarioView import CadastroUsuarioView
+from app.views.CadastroUsuarioView import CadastroUsuarioView, cadastro_usuario
 from app.views.HomeView import HomeView, submit_message, view_post
 
 __author__ = "Caio Marinho"
@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^cadastrar-instituicao/$', CadastroInstituicaoView.as_view(), name='cadastro_instituicao'),
     url(r'^cadastrar-instituicao/cadastro_inst_proc', cadastro_inst, name='cadastro_inst_proc'),
     url(r'^cadastrar-usuario/$', CadastroUsuarioView.as_view(), name='cadastro_usuario'),
+    url(r'^cadastrar-usuario/cadastro_usuario_proc', cadastro_usuario, name='cadastro_usuario_proc'),
     url(r'^submit-contact', submit_message, name='submit_contact'),
     url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),
 ]

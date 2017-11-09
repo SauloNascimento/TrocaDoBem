@@ -21,7 +21,7 @@ class Instituicao(TimeStamped):
         verbose_name = "Instituicao"
         verbose_name_plural = "Instituicoes"
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
     photo = models.URLField(blank=True)
     cnpj = models.CharField(max_length=100, default="Nao Informado")
     senha = models.CharField(max_length=20, default="12345678")
@@ -32,8 +32,8 @@ class Instituicao(TimeStamped):
     bairro = models.CharField(max_length=100, default="Nao Informado")
     rua = models.CharField(max_length=100, default="Nao Informado")
     numero = models.CharField(max_length=5, default="Nao Informado")
-    complemento = models.CharField(max_length=200, default="Nao Informado")
-    descricao = models.CharField(max_length=100, default="Nao Informado")
+    complemento = models.CharField(max_length=200, blank=True)
+    descricao = models.CharField(max_length=100, blank=True)
     email = models.EmailField(blank=True)
     telefone = models.CharField(max_length=30, default="Nao Informado")
 
@@ -48,8 +48,22 @@ class Instituicao(TimeStamped):
         return Instituicao.objects.all().count()
 
 class Usuario(TimeStamped):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
-    photo = CloudinaryField()
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    photo = CloudinaryField(blank=True)
+    nome = models.CharField(max_length=150, default="Nao Informado")
+    dataNascimento = models.DateField(null=True, blank=True)
+    cpf = models.CharField(max_length=100, default="Nao Informado")
+    email = models.EmailField(blank=True)
+    rua = models.CharField(max_length=100, default="Nao Informado")
+    numero = models.CharField(max_length=10, default="Nao Informado")
+    bairro = models.CharField(max_length=100, default="Nao Informado")
+    cep = models.CharField(max_length=8, default="Nao informado")
+    complemento = models.CharField(max_length=100, default="Nao Informado")
+    cidade = models.CharField(max_length=100, default="Nao Informado")
+    estado = models.CharField(max_length=20, default="Nao Informado")
+    telefone = models.CharField(max_length=30, default="Nao Informado")
+    login = models.CharField(max_length=15, default="Nao Informado")
+    senha = models.CharField(max_length=25, default="Nao Informado")
 
     def __unicode__(self):
         return u'%s' % (self.user.first_name)

@@ -31,8 +31,9 @@
         </script>
     </head>
     <body style="">
-    <form class="form-horizontal">
+    <form action="{% url 'cadastro_usuario_proc' %}" method="post" class="form-horizontal">
         <fieldset>
+            {% csrf_token %}
 
             <!-- Form Name -->
             <legend>Cadastro Usuário</legend>
@@ -58,9 +59,9 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label" for="cep">Data de nascimento</label>
+                <label class="col-md-4 control-label" for="dataNascimento">Data de nascimento</label>
                 <div class="col-md-4">
-                    <input id="data" name="data" class="form-control input-md" type="date">
+                    <input id="dataNascimento" name="dataNascimento" class="form-control input-md" type="date">
 
                 </div>
             </div>
@@ -103,7 +104,7 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="logradouro">Rua</label>
+                <label class="col-md-4 control-label" for="rua">Rua</label>
                 <div class="col-md-6">
                     <input id="rua" name="rua" type="text" placeholder="Av...Rua....etc"
                            class="form-control input-md">
@@ -146,6 +147,16 @@
                 <label class="col-md-4 control-label" for="email">Email</label>
                 <div class="col-md-6">
                     <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="login">Login</label>
+                <div class="col-md-4">
+                    <input id="login" name="login" type="text" placeholder="Login" class="form-control input-md"
+                           required="">
 
                 </div>
             </div>
