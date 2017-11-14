@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-from django.conf import settings
 import ckeditor.fields
+from django.conf import settings
 import cloudinary.models
 
 
@@ -60,18 +60,15 @@ class Migration(migrations.Migration):
                 ('published_at', models.DateTimeField(auto_now=True)),
                 ('photo', models.URLField(blank=True)),
                 ('cnpj', models.CharField(max_length=100, default='Nao Informado')),
-                ('senha', models.CharField(max_length=20, default='12345678')),
-                ('name', models.CharField(max_length=100, default='Nao Informado')),
                 ('cep', models.CharField(max_length=8, default='Nao Informado')),
-                ('estado', models.CharField(max_length=20, default='Nao Informado')),
-                ('cidade', models.CharField(max_length=100, default='Nao Informado')),
-                ('bairro', models.CharField(max_length=100, default='Nao Informado')),
-                ('rua', models.CharField(max_length=100, default='Nao Informado')),
-                ('numero', models.CharField(max_length=5, default='Nao Informado')),
-                ('complemento', models.CharField(max_length=200, blank=True)),
-                ('descricao', models.CharField(max_length=100, blank=True)),
-                ('email', models.EmailField(max_length=254, blank=True)),
-                ('telefone', models.CharField(max_length=30, default='Nao Informado')),
+                ('state', models.CharField(max_length=20, default='Nao Informado')),
+                ('city', models.CharField(max_length=100, default='Nao Informado')),
+                ('district', models.CharField(max_length=100, default='Nao Informado')),
+                ('street', models.CharField(max_length=100, default='Nao Informado')),
+                ('number', models.CharField(max_length=5, default='Nao Informado')),
+                ('complement', models.CharField(max_length=200, blank=True)),
+                ('description', models.CharField(max_length=100, blank=True)),
+                ('phone', models.CharField(max_length=30, default='Nao Informado')),
                 ('user', models.ForeignKey(unique=True, to=settings.AUTH_USER_MODEL)),
             ],
             options={

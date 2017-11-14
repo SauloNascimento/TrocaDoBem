@@ -30,3 +30,19 @@ class FormRegister(BaseForm):
     def __init__(self, *args, **kwargs):
         super(FormRegister, self).__init__(*args, **kwargs)
         self.fields['birth_date'].widget.attrs['class'] += ' datepicker'
+
+
+class FormRegisterInstitute(BaseForm):
+    cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                               'placeholder': _('CNPJ')}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                               'placeholder': _('First Name')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
+                                                            'placeholder': _('Email')}))
+    # username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+    #                                                          'placeholder': _('Username')}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
+                                                                 'placeholder': _('Password')}))
+
+    def __init__(self, *args, **kwargs):
+        super(FormRegisterInstitute, self).__init__(*args, **kwargs)

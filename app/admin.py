@@ -48,6 +48,10 @@ class CommonUserAdmin(admin.ModelAdmin):
     list_display = ('user', 'created_at')
 
 
+class InstituteAdmin(admin.ModelAdmin):
+    list_display = ('user', 'cnpj', 'created_at')
+
+
 class PostAdmin(admin.ModelAdmin):
     inlines = [ImagePostInline, ]
     form = PostForm
@@ -70,3 +74,4 @@ admin.site.register(Item, ItemAdmin)
 admin.site.register(Object, ObjectAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(CommonUser, CommonUserAdmin)
+admin.site.register(Institute, InstituteAdmin)
