@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import ckeditor.fields
 from django.conf import settings
+import ckeditor.fields
 import cloudinary.models
 
 
@@ -14,6 +14,29 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.CreateModel(
+            name='CommonUser',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('published_at', models.DateTimeField(auto_now=True)),
+                ('birth_date', models.DateField(blank=True, null=True)),
+                ('cpf', models.CharField(max_length=100, default='Nao Informado')),
+                ('street', models.CharField(max_length=100, default='Nao Informado')),
+                ('number', models.CharField(max_length=10, default='Nao Informado')),
+                ('district', models.CharField(max_length=100, default='Nao Informado')),
+                ('cep', models.CharField(max_length=8, default='Nao informado')),
+                ('complement', models.CharField(max_length=100, default='Nao Informado')),
+                ('city', models.CharField(max_length=100, default='Nao Informado')),
+                ('state', models.CharField(max_length=20, default='Nao Informado')),
+                ('phone', models.CharField(max_length=30, default='Nao Informado')),
+                ('user', models.ForeignKey(unique=True, to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'verbose_name': 'Usuario',
+                'verbose_name_plural': 'Usuarios',
+            },
+        ),
         migrations.CreateModel(
             name='ImagePost',
             fields=[
@@ -30,13 +53,25 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Instituicao',
+            name='Institute',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('published_at', models.DateTimeField(auto_now=True)),
-                ('photo', models.URLField()),
-                ('cnpj', models.CharField(max_length=100)),
+                ('photo', models.URLField(blank=True)),
+                ('cnpj', models.CharField(max_length=100, default='Nao Informado')),
+                ('senha', models.CharField(max_length=20, default='12345678')),
+                ('name', models.CharField(max_length=100, default='Nao Informado')),
+                ('cep', models.CharField(max_length=8, default='Nao Informado')),
+                ('estado', models.CharField(max_length=20, default='Nao Informado')),
+                ('cidade', models.CharField(max_length=100, default='Nao Informado')),
+                ('bairro', models.CharField(max_length=100, default='Nao Informado')),
+                ('rua', models.CharField(max_length=100, default='Nao Informado')),
+                ('numero', models.CharField(max_length=5, default='Nao Informado')),
+                ('complemento', models.CharField(max_length=200, blank=True)),
+                ('descricao', models.CharField(max_length=100, blank=True)),
+                ('email', models.EmailField(max_length=254, blank=True)),
+                ('telefone', models.CharField(max_length=30, default='Nao Informado')),
                 ('user', models.ForeignKey(unique=True, to=settings.AUTH_USER_MODEL)),
             ],
             options={
@@ -50,17 +85,17 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('published_at', models.DateTimeField(auto_now=True)),
-                ('descricao', models.CharField(max_length=300)),
-                ('nome_item', models.CharField(max_length=100)),
+                ('description', models.CharField(max_length=300)),
+                ('name_item', models.CharField(max_length=100)),
                 ('photo', models.URLField()),
-                ('dono', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('owner', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'abstract': False,
             },
         ),
         migrations.CreateModel(
-            name='Mensagem',
+            name='Message',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('name', models.CharField(max_length=100, blank=True, null=True)),
@@ -74,16 +109,17 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Objeto',
+            name='Object',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('published_at', models.DateTimeField(auto_now=True)),
-                ('tipo', models.CharField(max_length=50, choices=[('Eletronicos', 'Eletronicos'), ('Calcados', 'Calcados'), ('Pereciveis', 'Pereciveis')])),
+                ('type', models.CharField(max_length=50, choices=[('Eletronicos', 'Eletronicos'), ('Calcados', 'Calcados'), ('Pereciveis', 'Pereciveis')])),
                 ('item', models.ForeignKey(unique=True, to='app.Item')),
             ],
             options={
-                'abstract': False,
+                'verbose_name': 'Objeto',
+                'verbose_name_plural': 'Objetos',
             },
         ),
         migrations.CreateModel(
@@ -103,7 +139,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Servico',
+            name='Service',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
@@ -111,20 +147,8 @@ class Migration(migrations.Migration):
                 ('item', models.ForeignKey(unique=True, to='app.Item')),
             ],
             options={
-                'abstract': False,
-            },
-        ),
-        migrations.CreateModel(
-            name='Usuario',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('published_at', models.DateTimeField(auto_now=True)),
-                ('photo', cloudinary.models.CloudinaryField(max_length=255)),
-                ('user', models.ForeignKey(unique=True, to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-                'abstract': False,
+                'verbose_name': 'Servico',
+                'verbose_name_plural': 'Servicos',
             },
         ),
         migrations.AddField(

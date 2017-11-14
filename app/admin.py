@@ -5,6 +5,12 @@ from django.utils.text import slugify
 
 from app.models import *
 
+"""
+admin.py: Definicao de classes para gerenciar no painel de admin do Django.
+"""
+__author__ = "Caio Marinho"
+__copyright__ = "Copyright 2017, LES-UFCG"
+
 
 class PostForm(forms.ModelForm):
     text = forms.CharField(widget=CKEditorWidget())
@@ -22,20 +28,24 @@ class ImagePostInline(admin.TabularInline):
     model = ImagePost
 
 
-class MensagemAdmin(admin.ModelAdmin):
+class MessageAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'created_at')
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('nome_item', 'dono', 'descricao', 'created_at')
+    list_display = ('name_item', 'owner', 'description', 'created_at')
 
 
-class ObjetoAdmin(admin.ModelAdmin):
-    list_display = ('item', 'tipo', 'created_at')
+class ObjectAdmin(admin.ModelAdmin):
+    list_display = ('item', 'type', 'created_at')
 
 
-class ServicoAdmin(admin.ModelAdmin):
+class ServiceAdmin(admin.ModelAdmin):
     list_display = ('item', 'created_at')
+
+
+class CommonUserAdmin(admin.ModelAdmin):
+    list_display = ('user', 'created_at')
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -53,9 +63,10 @@ class PostAdmin(admin.ModelAdmin):
         super(PostAdmin, self).save_model(request, obj, form, change)
 
 
-admin.site.register(Mensagem, MensagemAdmin)
+admin.site.register(Message, MessageAdmin)
 admin.site.register(ImagePost, ImagePostAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Item, ItemAdmin)
-admin.site.register(Objeto, ObjetoAdmin)
-admin.site.register(Servico, ServicoAdmin)
+admin.site.register(Object, ObjectAdmin)
+admin.site.register(Service, ServiceAdmin)
+admin.site.register(CommonUser, CommonUserAdmin)

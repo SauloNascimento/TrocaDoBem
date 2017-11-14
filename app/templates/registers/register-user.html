@@ -3,48 +3,28 @@
 
 {% block content %}
 
-
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="robots" content="noindex, nofollow">
-
-        <title>Cadastro Cliente</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
-              id="bootstrap-css">
-        <style type="text/css">
-
-        </style>
-        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            window.alert = function () {
-            };
-            var defaultCSS = document.getElementById('bootstrap-css');
-
-            function changeCSS(css) {
-                if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');
-                else $('head > link').filter(':first').replaceWith(defaultCSS);
-            }
-
-        </script>
-    </head>
-    <body style="">
-    <form action="{% url 'cadastro_usuario_proc' %}" method="post" class="form-horizontal">
+    <form method="post" class="form-horizontal">{% csrf_token %}
         <fieldset>
-            {% csrf_token %}
-
             <!-- Form Name -->
-            <legend>Cadastro Usuário</legend>
-
-
+            <legend class="text-center">Cadastro Usuário</legend>
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="nome">Nome</label>
                 <div class="col-md-4">
-                    <input id="nome" name="nome" type="text" placeholder="nome" class="form-control input-md"
-                           required="">
+                    {{ form.first_name }}
+{#                    <input id="nome" name="nome" type="text" placeholder="nome" class="form-control input-md"#}
+{#                           required="">#}
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nome">Sobrenome</label>
+                <div class="col-md-4">
+                    {{ form.last_name }}
+{#                    <input id="nome" name="nome" type="text" placeholder="nome" class="form-control input-md"#}
+{#                           required="">#}
 
                 </div>
             </div>
@@ -61,7 +41,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="dataNascimento">Data de nascimento</label>
                 <div class="col-md-4">
-                    <input id="dataNascimento" name="dataNascimento" class="form-control input-md" type="date">
+                    {{ form.birth_date }}
+{#                    <input id="dataNascimento" name="dataNascimento" class="form-control input-md" type="date">#}
 
                 </div>
             </div>
@@ -146,7 +127,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="email">Email</label>
                 <div class="col-md-6">
-                    <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
+                   {{ form.email }}
 
                 </div>
             </div>
@@ -155,8 +136,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="login">Login</label>
                 <div class="col-md-4">
-                    <input id="login" name="login" type="text" placeholder="Login" class="form-control input-md"
-                           required="">
+                   {{ form.username }}
 
                 </div>
             </div>
@@ -165,9 +145,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="senha">Senha</label>
                 <div class="col-md-4">
-                    <input id="senha" name="senha" type="password" placeholder="senha" class="form-control input-md"
-                           required="">
-
+                    {{ form.password }}
                 </div>
             </div>
 
@@ -175,19 +153,23 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="button1id"></label>
                 <div class="col-md-8">
-                    <button id="button1id" name="button1id" class="btn btn-success">Salvar</button>
-                    <button id="Cancelar" name="Cancelar" class="btn btn-danger">Cancelar</button>
+                    <button id="btn_salvar" class="btn btn-success" type="submit">Salvar</button>
+                    <a href="/" id="btn_cancelar" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
 
         </fieldset>
     </form>
+{#    <script type="text/javascript">#}
+{#        window.alert = function () {#}
+{#        };#}
+{#        var defaultCSS = document.getElementById('bootstrap-css');#}
+{##}
+{#        function changeCSS(css) {#}
+{#            if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');#}
+{#            else $('head > link').filter(':first').replaceWith(defaultCSS);#}
+{#        }#}
+{##}
+{#    </script>#}
 
-    <script type="text/javascript">
-
-    </script>
-
-
-    </body>
-    </html>
 {% endblock %}

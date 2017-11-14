@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.views.generic import ListView
 
-from app.models import Mensagem, Post
+from app.models import Post, Message
 
 """HomeView.py: Especifica a pagina inicial da aplicacao."""
 
@@ -24,7 +24,7 @@ def submit_message(request):
     message = data.get('message')
     email = data.get('email')
     try:
-        objeto = Mensagem(name=name, email=email, message=message)
+        objeto = Message(name=name, email=email, message=message)
         objeto.save()
         messages.success(request, 'Mensagem enviada com sucesso!')
         return redirect('/')

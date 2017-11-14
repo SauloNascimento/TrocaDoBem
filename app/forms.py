@@ -1,9 +1,32 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
-from app.models import Instituicao
+
+class BaseForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(BaseForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
 
 
-class InstituicaoForm(forms.ModelForm):
-    class Meta:
-        model = Instituicao
-        # fields = ['photo', 'cnpj', 'email', 'username', 'first_name', 'last_name', 'password']
+class FormRegister(BaseForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                               'placeholder': _('First Name')}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                              'placeholder': _('Last Name')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
+                                                            'placeholder': _('Email')}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                             'placeholder': _('Username')}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
+                                                                 'placeholder': _('Password')}))
+    # cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
+    #                                                     'placeholder': _('CPF')}))
+    # phone = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
+    #                                                       'placeholder': _('Phone')}))
+    birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Date of Birth'),
+                                                               'maxlength': 150}))
+
+    def __init__(self, *args, **kwargs):
+        super(FormRegister, self).__init__(*args, **kwargs)
+        self.fields['birth_date'].widget.attrs['class'] += ' datepicker'
