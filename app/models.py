@@ -16,7 +16,20 @@ class TimeStamped(models.Model):
     published_at = models.DateTimeField(auto_now=True)
 
 
-class Institute(TimeStamped):
+class BaseAddress(models.Model):
+    class Meta:
+        abstract = True
+
+    cep = models.CharField(max_length=8, default="Nao Informado")
+    state = models.CharField(max_length=20, default="Nao Informado")
+    city = models.CharField(max_length=100, default="Nao Informado")
+    district = models.CharField(max_length=100, default="Nao Informado")
+    address = models.CharField(max_length=100, default="Nao Informado")
+    number = models.CharField(max_length=5, default="Nao Informado")
+    complement = models.CharField(max_length=200, blank=True)
+
+
+class Institute(TimeStamped, BaseAddress):
     class Meta:
         verbose_name = "Instituicao"
         verbose_name_plural = "Instituicoes"
@@ -24,13 +37,6 @@ class Institute(TimeStamped):
     user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
     photo = models.URLField(blank=True)
     cnpj = models.CharField(max_length=100, default="Nao Informado")
-    cep = models.CharField(max_length=8, default="Nao Informado")
-    state = models.CharField(max_length=20, default="Nao Informado")
-    city = models.CharField(max_length=100, default="Nao Informado")
-    district = models.CharField(max_length=100, default="Nao Informado")
-    street = models.CharField(max_length=100, default="Nao Informado")
-    number = models.CharField(max_length=5, default="Nao Informado")
-    complement = models.CharField(max_length=200, blank=True)
     description = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=30, default="Nao Informado")
 
@@ -41,7 +47,7 @@ class Institute(TimeStamped):
         return u'%s' % (self.user.first_name)
 
 
-class CommonUser(TimeStamped):
+class CommonUser(TimeStamped, BaseAddress):
     class Meta:
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios"
@@ -49,13 +55,6 @@ class CommonUser(TimeStamped):
     user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
     birth_date = models.DateField(null=True, blank=True)
     cpf = models.CharField(max_length=100, default="Nao Informado")
-    street = models.CharField(max_length=100, default="Nao Informado")
-    number = models.CharField(max_length=10, default="Nao Informado")
-    district = models.CharField(max_length=100, default="Nao Informado")
-    cep = models.CharField(max_length=8, default="Nao informado")
-    complement = models.CharField(max_length=100, default="Nao Informado")
-    city = models.CharField(max_length=100, default="Nao Informado")
-    state = models.CharField(max_length=20, default="Nao Informado")
     phone = models.CharField(max_length=30, default="Nao Informado")
 
     def __unicode__(self):

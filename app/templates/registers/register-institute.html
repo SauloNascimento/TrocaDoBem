@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="cep">CEP</label>
                 <div class="col-md-4">
-                    <input id="cep" name="cep" type="text" placeholder="CEP" class="form-control input-md" required="">
+                   {{ form.cep }}
 
                 </div>
             </div>
@@ -39,8 +39,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="estado">Estado</label>
                 <div class="col-md-4">
-                    <input id="estado" name="estado" type="text" placeholder="Estado" class="form-control input-md">
-                    </input>
+                   {{ form.state }}
                 </div>
             </div>
 
@@ -48,9 +47,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="municipio">Cidade</label>
                 <div class="col-md-4">
-                    <input id="cidade" name="cidade" type="text" placeholder="Cidade" class="form-control input-md">
-
-                    </input>
+                    {{ form.city }}
                 </div>
             </div>
 
@@ -58,7 +55,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="bairro">Bairro</label>
                 <div class="col-md-6">
-                    <input id="bairro" name="bairro" type="text" placeholder="Bairro" class="form-control input-md">
+                   {{ form.district }}
 
                 </div>
             </div>
@@ -67,8 +64,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="logradouro">Rua</label>
                 <div class="col-md-6">
-                    <input id="rua" name="rua" type="text" placeholder="Av...Rua....etc"
-                           class="form-control input-md">
+                    {{ form.address }}
 
                 </div>
             </div>
@@ -77,8 +73,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="numero">Numero</label>
                 <div class="col-md-2">
-                    <input id="numero" name="numero" type="text" placeholder="Numero" class="form-control input-md">
-
+                   {{ form.number }}
                 </div>
             </div>
 
@@ -86,8 +81,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="complemento">Complemento</label>
                 <div class="col-md-6">
-                    <input id="complemento" name="complemento" type="text" placeholder="Complemento"
-                           class="form-control input-md">
+                    {{ form.complement }}
 
                 </div>
             </div>
@@ -96,8 +90,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="telefone1">Telefone</label>
                 <div class="col-md-4">
-                    <input id="telefone" name="telefone" type="text" placeholder="Telefone"
-                           class="form-control input-md">
+                    {{ form.phone }}
 
                 </div>
             </div>
@@ -107,6 +100,13 @@
                 <label class="col-md-4 control-label" for="email">Email</label>
                 <div class="col-md-6">
                     {{ form.email }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Login</label>
+                <div class="col-md-6">
+                    {{ form.username }}
                 </div>
             </div>
 

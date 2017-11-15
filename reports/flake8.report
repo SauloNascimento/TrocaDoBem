@@ -31,11 +31,9 @@ C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:47:101: E501 line too long (113 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:63:9: F841 local variable 'e' is assigned to but never used
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:70:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:19:1: C901 'TestRegisterUserDefault.test_register_user_default' is too complex (29)
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:63:101: E501 line too long (105 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:117:101: E501 line too long (110 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:129:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:136:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:64:101: E501 line too long (118 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:76:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:83:9: F841 local variable 'e' is assigned to but never used
 C:\Users\caiom\PycharmProjects\trocadobem\app\views\RegisterInstituteView.py:35:101: E501 line too long (112 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\views\RegisterUserView.py:36:101: E501 line too long (109 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:4:1: F811 redefinition of unused 'os' from line 1
