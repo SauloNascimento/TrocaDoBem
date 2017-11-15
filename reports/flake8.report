@@ -3,8 +3,7 @@ C:\Users\caiom\PycharmProjects\trocadobem\app\admin.py:6:1: F403 'from app.model
 C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
 C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:6:1: F404 future import(s) ['unicode_literals'] after other statements
 C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:8:1: E402 module level import not at top of file
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:27:101: E501 line too long (115 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:37:64: E127 continuation line over-indented for visual indent
+C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:48:101: E501 line too long (120 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:23:1: C901 'Test1.test_1' is too complex (17)
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:28:65: E701 multiple statements on one line (colon)
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:38:65: E701 multiple statements on one line (colon)
@@ -31,10 +30,15 @@ C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:47:101: E501 line too long (113 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:63:9: F841 local variable 'e' is assigned to but never used
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:70:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_insituicao_default.py:70:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_insituicao_default.py:77:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_user_default.py:77:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_user_default.py:84:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_instituicao_default.py:65:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_instituicao_default.py:72:9: F841 local variable 'e' is assigned to but never used
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:64:101: E501 line too long (118 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:76:9: F841 local variable 'e' is assigned to but never used
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:83:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\views\RegisterInstituteView.py:35:101: E501 line too long (112 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\views\RegisterUserView.py:36:101: E501 line too long (109 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\views\LoginView.py:3:1: F401 'redirect' imported but unused
 C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:4:1: F811 redefinition of unused 'os' from line 1
 C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:75:58: E203 whitespace before ','
