@@ -1,51 +1,4 @@
 {% load staticfiles %}
-<head>
-    <style>
-        .dropbtn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-            text-decoration: none;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #3e8e41;
-        }
-    </style>
-</head>
-
 <header>
     <div id="top">
         <div class="container">
@@ -68,14 +21,6 @@
                                 class="fa fa-twitter"></i></a>
                         <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                     </div>
-                    <div class="dropdown" style="margin-left: 35%">
-                        <button class="dropbtn">Inscreva-se</button>
-                        <div class="dropdown-content">
-                            <a href="/cadastrar-usuario">Usuário</a>
-                            <a href="/cadastrar-instituicao">Instituição</a>
-                        </div>
-                    </div>
-
                     <div class="login">
                         <a href="/admin"><i class="fa fa-sign-in"></i>
                             <span class="hidden-xs text-uppercase">Log in</span></a>
@@ -116,23 +61,37 @@ _________________________________________________________ -->
                 <div class="navbar-collapse collapse" id="navigation">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="home" class="">
-                            <a href="/">Home</a>
+                        <li id="" class="">
+                            <a id="home_link" href="/">Home</a>
                         </li>
                         <li id="menu_instituicoes" class="">
-                            <a href="#">Instituições</a>
+                            <a id="instituicoes_link" href="#">Instituições</a>
                         </li>
                         <li id="menu_contribua" class="">
-                            <a href="#">Contribua</a>
+                            <a id="contribua_link" href="#">Contribua</a>
                         </li>
                         <li id="menu_arrecade" class="">
-                            <a href="#">Arrecade</a>
+                            <a id="arrecade_link" href="#">Arrecade</a>
                         </li>
                         <li id="menu_noticias" class="">
-                            <a href="#noticias">Notícias</a>
+                            <a id="noticias_link" href="#noticias">Notícias</a>
                         </li>
                         <li id="menu_contato" class="">
-                            <a href="#contato">Contato</a>
+                            <a id="contato_link" href="#contato">Contato</a>
+                        </li>
+                        <li class="dropdown">
+                            <a id="inscrevase_link" class="dropdown-toggle"
+                               data-toggle="dropdown">Inscreva-se<b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a id="register_user_link" href="{% url "register_user" %}">Usuário</a></a>
+                                </li>
+                                <li>
+                                    <a id="register_instituicao_link"
+                                       href="{% url "register_institute" %}">Instituição</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
 

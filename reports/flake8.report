@@ -1,38 +1,42 @@
-C:\Users\João Marcos\PycharmProjects\trocadobem\manage.py:14:13: F401 'django' imported but unused
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\apps.py:6:1: F404 future import(s) ['unicode_literals'] after other statements
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\apps.py:8:1: E402 module level import not at top of file
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\models.py:50:1: E302 expected 2 blank lines, found 1
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_1.py:23:1: C901 'Test1.test_1' is too complex (17)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_1.py:28:65: E701 multiple statements on one line (colon)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_1.py:38:65: E701 multiple statements on one line (colon)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_1.py:48:86: E701 multiple statements on one line (colon)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_1.py:57:75: E701 multiple statements on one line (colon)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_1.py:67:9: F841 local variable 'e' is assigned to but never used
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_1.py:74:9: F841 local variable 'e' is assigned to but never used
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_2.py:23:1: C901 'Test1.test_1' is too complex (17)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_2.py:28:65: E701 multiple statements on one line (colon)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_2.py:38:65: E701 multiple statements on one line (colon)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_2.py:48:86: E701 multiple statements on one line (colon)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_2.py:57:75: E701 multiple statements on one line (colon)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_2.py:67:9: F841 local variable 'e' is assigned to but never used
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_2.py:74:9: F841 local variable 'e' is assigned to but never used
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:22:1: C901 'TestLoginAdminVerifyListLogin.test_login_admin_verify_list_login' is too complex (15)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:26:101: E501 line too long (101 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:30:101: E501 line too long (114 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:47:101: E501 line too long (113 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:63:9: F841 local variable 'e' is assigned to but never used
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:70:9: F841 local variable 'e' is assigned to but never used
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:22:1: C901 'TestLoginAdminVerifyListLogin.test_login_admin_verify_list_login' is too complex (15)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:26:101: E501 line too long (101 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:30:101: E501 line too long (114 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:47:101: E501 line too long (113 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:63:9: F841 local variable 'e' is assigned to but never used
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:70:9: F841 local variable 'e' is assigned to but never used
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\views\CadastroInstituicaoView.py:19:101: E501 line too long (109 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\app\views\CadastroInstituicaoView.py:20:101: E501 line too long (109 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\trocadobem\settings.py:4:1: F811 redefinition of unused 'os' from line 1
-C:\Users\João Marcos\PycharmProjects\trocadobem\trocadobem\settings.py:75:58: E203 whitespace before ','
-C:\Users\João Marcos\PycharmProjects\trocadobem\trocadobem\urls.py:33:101: E501 line too long (101 > 100 characters)
-C:\Users\João Marcos\PycharmProjects\trocadobem\trocadobem\urls.py:36:101: E501 line too long (101 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\manage.py:14:13: F401 'django' imported but unused
+C:\Users\caiom\PycharmProjects\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
+C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:6:1: F404 future import(s) ['unicode_literals'] after other statements
+C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:8:1: E402 module level import not at top of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:27:101: E501 line too long (115 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:37:64: E127 continuation line over-indented for visual indent
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:23:1: C901 'Test1.test_1' is too complex (17)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:28:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:38:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:48:86: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:57:75: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:67:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_1.py:74:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:23:1: C901 'Test1.test_1' is too complex (17)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:28:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:38:65: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:48:86: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:57:75: E701 multiple statements on one line (colon)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:67:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_2.py:74:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:22:1: C901 'TestLoginAdminVerifyListLogin.test_login_admin_verify_list_login' is too complex (15)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:26:101: E501 line too long (101 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:30:101: E501 line too long (114 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:47:101: E501 line too long (113 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:63:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login.py:70:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:22:1: C901 'TestLoginAdminVerifyListLogin.test_login_admin_verify_list_login' is too complex (15)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:26:101: E501 line too long (101 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:30:101: E501 line too long (114 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:47:101: E501 line too long (113 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:63:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_admin_verify_list_login_2.py:70:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:19:1: C901 'TestRegisterUserDefault.test_register_user_default' is too complex (29)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:63:101: E501 line too long (105 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:117:101: E501 line too long (110 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:129:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user_default.py:136:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\views\RegisterInstituteView.py:35:101: E501 line too long (112 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\views\RegisterUserView.py:36:101: E501 line too long (109 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:4:1: F811 redefinition of unused 'os' from line 1
+C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:75:58: E203 whitespace before ','

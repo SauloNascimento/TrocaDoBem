@@ -16,26 +16,23 @@ class TimeStamped(models.Model):
     published_at = models.DateTimeField(auto_now=True)
 
 
-class Instituicao(TimeStamped):
+class Institute(TimeStamped):
     class Meta:
         verbose_name = "Instituicao"
         verbose_name_plural = "Instituicoes"
 
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
     photo = models.URLField(blank=True)
     cnpj = models.CharField(max_length=100, default="Nao Informado")
-    senha = models.CharField(max_length=20, default="12345678")
-    name = models.CharField(max_length=100, default="Nao Informado")
     cep = models.CharField(max_length=8, default="Nao Informado")
-    estado = models.CharField(max_length=20, default="Nao Informado")
-    cidade = models.CharField(max_length=100, default="Nao Informado")
-    bairro = models.CharField(max_length=100, default="Nao Informado")
-    rua = models.CharField(max_length=100, default="Nao Informado")
-    numero = models.CharField(max_length=5, default="Nao Informado")
-    complemento = models.CharField(max_length=200, blank=True)
-    descricao = models.CharField(max_length=100, blank=True)
-    email = models.EmailField(blank=True)
-    telefone = models.CharField(max_length=30, default="Nao Informado")
+    state = models.CharField(max_length=20, default="Nao Informado")
+    city = models.CharField(max_length=100, default="Nao Informado")
+    district = models.CharField(max_length=100, default="Nao Informado")
+    street = models.CharField(max_length=100, default="Nao Informado")
+    number = models.CharField(max_length=5, default="Nao Informado")
+    complement = models.CharField(max_length=200, blank=True)
+    description = models.CharField(max_length=100, blank=True)
+    phone = models.CharField(max_length=30, default="Nao Informado")
 
     def __str__(self):
         return self.user.first_name
@@ -43,84 +40,78 @@ class Instituicao(TimeStamped):
     def __unicode__(self):
         return u'%s' % (self.user.first_name)
 
-    @staticmethod
-    def quantidade():
-        return Instituicao.objects.all().count()
 
-class Usuario(TimeStamped):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
-    photo = CloudinaryField(blank=True)
-    nome = models.CharField(max_length=150, default="Nao Informado")
-    dataNascimento = models.DateField(null=True, blank=True)
+class CommonUser(TimeStamped):
+    class Meta:
+        verbose_name = "Usuario"
+        verbose_name_plural = "Usuarios"
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    birth_date = models.DateField(null=True, blank=True)
     cpf = models.CharField(max_length=100, default="Nao Informado")
-    email = models.EmailField(blank=True)
-    rua = models.CharField(max_length=100, default="Nao Informado")
-    numero = models.CharField(max_length=10, default="Nao Informado")
-    bairro = models.CharField(max_length=100, default="Nao Informado")
+    street = models.CharField(max_length=100, default="Nao Informado")
+    number = models.CharField(max_length=10, default="Nao Informado")
+    district = models.CharField(max_length=100, default="Nao Informado")
     cep = models.CharField(max_length=8, default="Nao informado")
-    complemento = models.CharField(max_length=100, default="Nao Informado")
-    cidade = models.CharField(max_length=100, default="Nao Informado")
-    estado = models.CharField(max_length=20, default="Nao Informado")
-    telefone = models.CharField(max_length=30, default="Nao Informado")
-    login = models.CharField(max_length=15, default="Nao Informado")
-    senha = models.CharField(max_length=25, default="Nao Informado")
+    complement = models.CharField(max_length=100, default="Nao Informado")
+    city = models.CharField(max_length=100, default="Nao Informado")
+    state = models.CharField(max_length=20, default="Nao Informado")
+    phone = models.CharField(max_length=30, default="Nao Informado")
 
     def __unicode__(self):
         return u'%s' % (self.user.first_name)
 
     def __str__(self):
         return self.user.first_name
-
-
-class Doacao(TimeStamped):
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, unique=True)
-    id_instituicao = models.ForeignKey(Instituicao, on_delete=models.CASCADE, unique=True)
-    data_doacao = models.DateField(null=True, blank=True)
-
-    @staticmethod
-    def quantidade():
-        return Doacao.objects.all().count()
 
 
 class Item(TimeStamped):
-    dono = models.ForeignKey(User, on_delete=models.CASCADE)
-    descricao = models.CharField(max_length=300)
-    nome_item = models.CharField(max_length=100)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.CharField(max_length=300)
+    name_item = models.CharField(max_length=100)
     photo = models.URLField()
 
     def __unicode__(self):
-        return u'%s' % (self.nome_item)
+        return u'%s' % (self.name_item)
 
     def __str__(self):
-        return self.nome_item
+        return self.name_item
 
 
-tipo_objeto = (
+object_type = (
     ('Eletronicos', 'Eletronicos'),
     ('Calcados', 'Calcados'),
     ('Pereciveis', 'Pereciveis'),
 )
 
 
-class Objeto(TimeStamped):
+class Object(TimeStamped):
+    class Meta:
+        verbose_name = "Objeto"
+        verbose_name_plural = "Objetos"
+
     item = models.ForeignKey(Item, on_delete=models.CASCADE, unique=True)
-    tipo = models.CharField(max_length=50, choices=tipo_objeto)
+    type = models.CharField(max_length=50, choices=object_type)
 
     def __unicode__(self):
-        return u'%s' % (self.item.nome_item)
+        return u'%s' % (self.item.name_item)
 
     def __str__(self):
-        return self.item.nome_item
+        return self.item.name_item
 
 
-class Servico(TimeStamped):
+class Service(TimeStamped):
+    class Meta:
+        verbose_name = "Servico"
+        verbose_name_plural = "Servicos"
+
     item = models.ForeignKey(Item, on_delete=models.CASCADE, unique=True)
 
     def __unicode__(self):
-        return u'%s' % (self.item.nome_item)
+        return u'%s' % (self.item.name_item)
 
     def __str__(self):
-        return self.item.nome_item
+        return self.item.name_item
 
 
 class Post(TimeStamped):
@@ -152,7 +143,7 @@ class ImagePost(TimeStamped):
     is_visible = models.BooleanField(default=True)
 
 
-class Mensagem(models.Model):
+class Message(models.Model):
     class Meta:
         verbose_name = "Mensagem"
         verbose_name_plural = "Mensagens"
