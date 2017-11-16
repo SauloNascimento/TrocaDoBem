@@ -19,12 +19,25 @@
                                 class="fa fa-google-plus"></i></a>
                         <a href="#" class="external twitter" data-animate-hover="pulse"><i
                                 class="fa fa-twitter"></i></a>
-                        <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                     </div>
-                    <div class="login">
-                        <a href="/admin"><i class="fa fa-sign-in"></i>
-                            <span class="hidden-xs text-uppercase">Log in</span></a>
+                    <div class="login" style="width: 75%">
+                        {% if request.user.is_authenticated %}
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <p class="" style="font-size: 14px;">Olá, {{ request.user.first_name }}</p>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="{% url "auth_logout" %}"><i class="fa fa-sign-in"></i>
+                                        <span class="hidden-xs text-uppercase">Logout</span></a>
+                                </div>
 
+
+                            </div>
+
+                        {% else %}
+                            <a href="{% url "login" %}"><i class="fa fa-sign-in"></i>
+                                <span class="hidden-xs text-uppercase">Log in</span></a>
+                        {% endif %}
                     </div>
 
                 </div>

@@ -26,16 +26,24 @@ class RegisterInstituteView(FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        cnpj = data['cnpj']
-        password = data['password']
-        first_name = data['first_name']
-        email = data['email']
-
-        if cnpj and password:
-            new_user = User(username=cnpj, password=password, first_name=first_name, email=email, is_staff=True,
-                            is_active=True)
-            new_user.save()
-            new_institute = Institute(user=new_user, cnpj=cnpj)
+        user_data = {}
+        institute_data = {}
+        user_data['first_name'] = data['first_name']
+        user_data['email'] = data['email']
+        user_data['username'] = data['username']
+        user_data['password'] = data['password']
+        institute_data['cnpj'] = data['cnpj']
+        institute_data['phone'] = data['phone']
+        institute_data['cep'] = data['cep']
+        institute_data['address'] = data['address']
+        institute_data['number'] = data['number']
+        institute_data['state'] = data['state']
+        institute_data['city'] = data['city']
+        institute_data['district'] = data['district']
+        institute_data['complement'] = data['complement']
+        if data['username'] and data['password']:
+            new_user = User.objects.create_user(**user_data)
+            new_institute = Institute(user=new_user, **institute_data)
             new_institute.save()
             messages.success(self.request, 'Nova Instituição cadastrada com sucesso.')
         else:

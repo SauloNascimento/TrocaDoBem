@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from app.views.HomeView import HomeView, submit_message, view_post
+from app.views.LoginView import LoginView, LogoutView
 from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
 
@@ -34,4 +35,6 @@ urlpatterns = [
     url(r'^register-user/$', RegisterUserView.as_view(), name='register_user'),
     url(r'^submit-contact', submit_message, name='submit_contact'),
     url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),
+    url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^account/logout/$', LogoutView.as_view(), name='auth_logout'),
 ]
