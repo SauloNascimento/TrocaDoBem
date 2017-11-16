@@ -4,6 +4,4 @@ venv
 *.pyc
 .env
 .idea/
-.sqlite3
 .report
-db.sqlite3

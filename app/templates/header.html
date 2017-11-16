@@ -20,8 +20,9 @@
                         <a href="#" class="external twitter" data-animate-hover="pulse"><i
                                 class="fa fa-twitter"></i></a>
                     </div>
-                    <div class="login" style="width: 75%">
+
                         {% if request.user.is_authenticated %}
+                             <div class="login" style="width: 75%">
                             <div class="row">
                                 <div class="col-xs-6">
                                     <p class="" style="font-size: 14px;">Olá, {{ request.user.first_name }}</p>
@@ -35,6 +36,7 @@
                             </div>
 
                         {% else %}
+                            <div class="login">
                             <a href="{% url "login" %}"><i class="fa fa-sign-in"></i>
                                 <span class="hidden-xs text-uppercase">Log in</span></a>
                         {% endif %}
