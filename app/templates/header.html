@@ -27,7 +27,11 @@
                                 <div class="col-xs-6">
                                     <p class="" style="font-size: 14px;">Olá, {{ request.user.first_name }}</p>
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-xs-3">
+                                    <a href="{% url "painel_institute" %}"><i class="fa fa-sign-in"></i>
+                                        <span class="hidden-xs text-uppercase">Painel</span></a>
+                                </div>
+                                <div class="col-xs-3">
                                     <a href="{% url "auth_logout" %}"><i class="fa fa-sign-in"></i>
                                         <span class="hidden-xs text-uppercase">Logout</span></a>
                                 </div>

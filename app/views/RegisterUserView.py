@@ -15,7 +15,7 @@ class RegisterUserView(FormView):
     """
     template_name = 'registers/register-user.html'
     form_class = FormRegisterUser
-    success_url = '/'
+    success_url = '/login'
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
