@@ -15,7 +15,7 @@ class RegisterInstituteView(FormView):
     """
     template_name = 'registers/register-institute.html'
     form_class = FormRegisterInstitute
-    success_url = '/'
+    success_url = '/login'
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()

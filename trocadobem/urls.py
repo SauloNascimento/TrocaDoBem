@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 
 from app.views.HomeView import HomeView, submit_message, view_post
 from app.views.LoginView import LoginView, LogoutView
+from app.views.PainelInstituteView import PainelInstituteView
 from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
 
@@ -37,4 +38,5 @@ urlpatterns = [
     url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^account/logout/$', LogoutView.as_view(), name='auth_logout'),
+    url(r'^home/$', PainelInstituteView.as_view(), name='painel_institute'),
 ]
