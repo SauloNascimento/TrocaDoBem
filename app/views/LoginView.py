@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import FormView

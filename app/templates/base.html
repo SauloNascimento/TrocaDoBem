@@ -30,6 +30,7 @@
 <script src="{% static 'js/waypoints.min.js' %}"></script>
 <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
 <script src="{% static 'js/jquery.parallax-1.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.inputmask.bundle.js' %}"></script>
 <script src="{% static 'js/front.js' %}"></script>
 <!-- owl carousel -->
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
@@ -73,6 +74,66 @@
         }
 
     });
+</script>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $('.datepicker').datepicker({
+            clearBtn: true,
+            format: 'dd/mm/yyyy',
+            todayHighlight: true,
+            autoclose: true
+        });
+
+        $('[name=cep]').focusout(function () {
+{#            $('#loading').show();#}
+            var cep = $('[name=cep]');
+            var cepCode = cep.val();
+            if (cepCode.length <= 0) return;
+            $.ajax({
+                type: 'GET',
+                url: 'http://apps.widenet.com.br/busca-cep/api/cep.json',
+                data: {code: cepCode},
+                success: function (result) {
+                    $('#loading').hide();
+                    if (result.status == 0) {
+                        alert(result.message || "Houve um erro desconhecido");
+                        return;
+                    } else {
+                        $('[name=cep]').val(result.code);
+                        $('[name=city]').val(result.city);
+                        var index = result.address.search('-');
+                        if (index != -1) {
+                            address = result.address.substring(0, index);
+                        } else {
+                            address = result.address;
+                        }
+                        $('[name=address]').val(address);
+                        $('[name=district]').val(result.district);
+                        $('[name=state]').val(result.state);
+                    }
+                }
+            });
+        });
+
+        $('[name=phone]').inputmask('(99) 9999[9]-9999');
+        $('[name=cep]').inputmask('99.999-999');
+        $('[name=cpf]').inputmask('999.999.999-99');
+
+        $('[name=date_of_birth]').change(function () {
+            var idade = 0;
+            var now = moment();
+            var dtNascimento = moment($(this).val(), "DD/MM/YYYY");
+            idade = now.diff(dtNascimento, 'years');
+            $('[name=age]').val(idade);
+        });
+
+    });
+
+
 </script>
 
 <!-- jQuery UI 1.11.4 -->
