@@ -36,6 +36,8 @@
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'js/sweetalert.min.js' %}"></script>
 
+<script src="{% static 'js/cpf-cnpj-validate.js' %}"></script>
+
 {% if messages %}
     {% for message in messages %}
         {% if message.tags == 'error' %}
@@ -83,7 +85,7 @@
 
         $('.datepicker').datepicker({
             clearBtn: true,
-            format: 'dd/mm/yyyy',
+            format: 'yyyy-mm-dd',
             todayHighlight: true,
             autoclose: true
         });
@@ -122,6 +124,21 @@
         $('[name=phone]').inputmask('(99) 9999[9]-9999');
         $('[name=cep]').inputmask('99.999-999');
         $('[name=cpf]').inputmask('999.999.999-99');
+        $('[name=cnpj]').inputmask('99.999.999/9999-99');
+
+        $('[name=cpf]').focusout(function () {
+           var cpf = $(this).val();
+           if(!valida_cpf(cpf)){
+               swal("CPF Inválido", "Insira um CPF válido", "error");
+           }
+        });
+
+        $('[name=cnpj]').focusout(function () {
+           var cnpj= $(this).val();
+           if(!valida_cnpj(cnpj)){
+               swal("CNPJ Inválido", "Insira um CNPJ válido", "error");
+           }
+        });
 
         $('[name=date_of_birth]').change(function () {
             var idade = 0;

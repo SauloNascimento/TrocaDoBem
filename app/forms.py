@@ -40,7 +40,7 @@ class FormRegisterUser(FormBaseAddress):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
                                                             'placeholder': _('Email')}))
     username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
-                                                             'placeholder': _('Nome de Usuário')}))
+                                                             'placeholder': 'Nome de Usuário'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
                                                                  'placeholder': _('Senha')}))
     cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
@@ -75,6 +75,6 @@ class FormRegisterInstitute(FormBaseAddress):
 
 class FormLogin(BaseForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
-                                                             'placeholder': _('Nome de Usuário')}))
+                                                             'placeholder': 'Nome de Usuário'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
                                                                  'placeholder': _('Senha')}))
