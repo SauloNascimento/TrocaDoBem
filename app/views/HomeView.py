@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from django.contrib import messages
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.template import RequestContext
