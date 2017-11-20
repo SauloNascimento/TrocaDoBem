@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -38,7 +40,7 @@ class FormRegisterUser(FormBaseAddress):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
                                                             'placeholder': _('Email')}))
     username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
-                                                             'placeholder': _('Nome de Usuário')}))
+                                                             'placeholder': 'Nome de Usuário'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
                                                                  'placeholder': _('Senha')}))
     cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
