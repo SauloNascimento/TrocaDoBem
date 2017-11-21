@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#!/usr/bin/python
-=======
 #!/usr/bin/env python
->>>>>>> master
 # -*- coding: utf-8 -*-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
