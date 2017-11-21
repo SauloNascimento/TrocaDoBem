@@ -8,6 +8,7 @@ from app.views.LoginView import LoginView, LogoutView
 from app.views.PainelInstituteView import PainelInstituteView
 from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
+from app.views.RegisterObjectView import RegisterObjectView
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -39,4 +40,5 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^account/logout/$', LogoutView.as_view(), name='auth_logout'),
     url(r'^home/$', PainelInstituteView.as_view(), name='painel_institute'),
+    url(r'^home/register-object/$', RegisterObjectView.as_view(), name='register_object'),
 ]
