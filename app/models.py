@@ -20,7 +20,7 @@ class BaseAddress(models.Model):
     class Meta:
         abstract = True
 
-    cep = models.CharField(max_length=8, default="Nao Informado")
+    cep = models.CharField(max_length=15, default="Nao Informado")
     state = models.CharField(max_length=20, default="Nao Informado")
     city = models.CharField(max_length=100, default="Nao Informado")
     district = models.CharField(max_length=100, default="Nao Informado")
