@@ -17,17 +17,17 @@ class FormBaseAddress(BaseForm):
     Base class containing common address fields.
     """
 
-    cep = forms.CharField(max_length=10, widget=forms.TextInput(attrs={
+    cep = forms.CharField(max_length=10, required=False,widget=forms.TextInput(attrs={
     }))
-    address = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={
+    address = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={
     }))
-    number = forms.CharField(max_length=5, required=True, widget=forms.TextInput(attrs={
+    number = forms.CharField(max_length=5, required=False, widget=forms.TextInput(attrs={
     }))
-    state = forms.CharField(max_length=30, widget=forms.TextInput(attrs={
+    state = forms.CharField(max_length=30,required=False, widget=forms.TextInput(attrs={
     }))
-    city = forms.CharField(max_length=30, widget=forms.TextInput(attrs={
+    city = forms.CharField(max_length=30,required=False, widget=forms.TextInput(attrs={
     }))
-    district = forms.CharField(max_length=45, required=True, widget=forms.TextInput(attrs={
+    district = forms.CharField(max_length=45, required=False, widget=forms.TextInput(attrs={
     }))
     complement = forms.CharField(max_length=30, required=False, widget=forms.TextInput(attrs={
     }))
@@ -46,7 +46,7 @@ class FormRegisterUser(FormBaseAddress):
                                                                  'placeholder': _('Senha')}))
     cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
                                                         'placeholder': _('CPF')}))
-    phone = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
+    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
     birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
