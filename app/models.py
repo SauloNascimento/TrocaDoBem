@@ -56,7 +56,6 @@ class CommonUser(TimeStamped, BaseAddress):
     birth_date = models.DateField(null=True, blank=True)
     cpf = models.CharField(max_length=100, default="Nao Informado")
     phone = models.CharField(max_length=30, default="Nao Informado")
-    anonymous = models.BooleanField(default= False)
 
     def __unicode__(self):
         return u'%s' % (self.user.first_name)

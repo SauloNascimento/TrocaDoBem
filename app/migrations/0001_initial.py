@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+from django.conf import settings
 import ckeditor.fields
 import cloudinary.models
-from django.conf import settings
 
 
 class Migration(migrations.Migration):
@@ -30,7 +30,6 @@ class Migration(migrations.Migration):
                 ('birth_date', models.DateField(blank=True, null=True)),
                 ('cpf', models.CharField(max_length=100, default='Nao Informado')),
                 ('phone', models.CharField(max_length=30, default='Nao Informado')),
-                ('anonymous', models.BooleanField(default=False)),
                 ('user', models.ForeignKey(unique=True, to=settings.AUTH_USER_MODEL)),
             ],
             options={
