@@ -1,5 +1,3 @@
-import os
-
 """settings.py: Arquivo de configuracao do projeto."""
 import os
 
