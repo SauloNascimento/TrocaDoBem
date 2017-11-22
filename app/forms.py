@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+
 from app.models import object_type
 
 
@@ -50,6 +51,7 @@ class FormRegisterUser(FormBaseAddress):
                                                           'placeholder': _('Telefone')}))
     birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
+    anonymous = forms.BooleanField(required=False)
 
     def __init__(self, *args, **kwargs):
         super(FormRegisterUser, self).__init__(*args, **kwargs)
@@ -84,6 +86,6 @@ class FormLogin(BaseForm):
 class FormObjectDonation(BaseForm):
     name_item = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 100,
                                                               'placeholder': _('Nome do Objeto')}))
-    description = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 300,
-                                                                'placeholder': _('Descricão do Objeto')}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'required': False, 'maxlength': 300,
+                                                               'placeholder': _('Descricão do Objeto')}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')

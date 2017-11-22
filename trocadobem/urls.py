@@ -7,8 +7,8 @@ from app.views.HomeView import HomeView, submit_message, view_post
 from app.views.LoginView import LoginView, LogoutView
 from app.views.PainelInstituteView import PainelInstituteView
 from app.views.RegisterInstituteView import RegisterInstituteView
-from app.views.RegisterUserView import RegisterUserView
 from app.views.RegisterObjectView import RegisterObjectView
+from app.views.RegisterUserView import RegisterUserView
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"

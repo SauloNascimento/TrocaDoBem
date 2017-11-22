@@ -6,7 +6,6 @@ from django.views.generic import FormView
 
 from app.forms import FormRegisterUser
 from app.models import CommonUser
-import ast
 
 __author__ = "Raphaeldobu"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -46,6 +45,7 @@ class RegisterUserView(FormView):
         common_data['city'] = data['city']
         common_data['district'] = data['district']
         common_data['complement'] = data['complement']
+        common_data['anonymous'] = data['anonymous']
         if data['username'] and data['password']:
             new_user = User.objects.create_user(**user_data)
             new_common_user = CommonUser(user=new_user, **common_data)
