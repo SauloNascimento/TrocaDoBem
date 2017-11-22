@@ -6,7 +6,6 @@ from django.views.generic import FormView
 
 from app.forms import FormRegisterUser
 from app.models import CommonUser
-import ast
 
 __author__ = "Raphaeldobu"
 __copyright__ = "Copyright 2017, LES-UFCG"

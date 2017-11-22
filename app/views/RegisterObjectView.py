@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.views.generic import FormView
 
 from app.forms import FormObjectDonation
@@ -32,19 +31,16 @@ class RegisterObjectView(FormView):
         object_data = {}
         item_data['name_item'] = data['name_item']
         item_data['description'] = data['description']
-        object_data['object_type'] = data['object_type']
+        object_data['type'] = data['object_type']
         if data['name_item'] and data['object_type']:
-            if self.request.user.commonuser_set.all()[0].anonymous:
-                new_item = Item(**item_data)
-            else:
-                new_item = Item(owner=self.request.user, **item_data)
+            new_item = Item(owner=self.request.user, **item_data)
+            new_item.save()
             new_object = Object(item=new_item, **object_data)
             new_object.save()
             messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
         else:
             return self.form_invalid(self, form)
         return super(RegisterObjectView, self).form_valid(form)
-
 
     def form_invalid(self, form):
         print(form.errors)
