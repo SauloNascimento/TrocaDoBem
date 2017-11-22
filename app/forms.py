@@ -87,5 +87,5 @@ class FormObjectDonation(BaseForm):
     name_item = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 100,
                                                               'placeholder': _('Nome do Objeto')}))
     description = forms.CharField(widget=forms.Textarea(attrs={'required': False, 'maxlength': 300,
-                                                               'placeholder': _('Descricão do Objeto')}))
+                                                               'placeholder': _('Descricao do Objeto')}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
