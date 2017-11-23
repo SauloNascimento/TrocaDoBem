@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="cpf">CPF</label>
                 <div class="col-md-4">
-                   {{ form.cpf }}
+                    {{ form.cpf }}
                 </div>
             </div>
 
@@ -37,67 +37,6 @@
                 <label class="col-md-4 control-label" for="dataNascimento">Data de nascimento</label>
                 <div class="col-md-4">
                     {{ form.birth_date }}
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="cep">CEP</label>
-                <div class="col-md-4">
-                    {{ form.cep }}
-
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="estado">Estado</label>
-                <div class="col-md-4">
-                    {{ form.state }}
-                </div>
-            </div>
-
-            <!-- Select Basic -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="municipio">Cidade</label>
-                <div class="col-md-4">
-                    {{ form.city }}
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="bairro">Bairro</label>
-                <div class="col-md-6">
-                   {{ form.district }}
-
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="rua">Rua</label>
-                <div class="col-md-6">
-                    {{ form.address }}
-
-                </div>
-            </div>
-
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="numero">Numero</label>
-                <div class="col-md-2">
-                    {{ form.number }}
-
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="complemento">Complemento</label>
-                <div class="col-md-6">
-                   {{ form.complement }}
-
                 </div>
             </div>
 
@@ -114,7 +53,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="email">Email</label>
                 <div class="col-md-6">
-                   {{ form.email }}
+                    {{ form.email }}
 
                 </div>
             </div>
@@ -123,7 +62,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="login">Login</label>
                 <div class="col-md-4">
-                   {{ form.username }}
+                    {{ form.username }}
                 </div>
             </div>
 
@@ -135,13 +74,13 @@
                 </div>
             </div>
 
-{#            <!-- Checkbox input -->#}
-{#            <div class="form-group">#}
-{#                <label class="col-md-4 control-label" for="anonymous">Doar Anonimamente</label>#}
-{#                <div class="col-md-1">#}
-{#                    {{ form.anonymous }}#}
-{#                </div>#}
-{#            </div>#}
+            <!-- Checkbox input -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="anonymous">Doar Anonimamente</label>
+                <div class="col-md-1">
+                    {{ form.anonymous }}
+                </div>
+            </div>
 
             <!-- Button (Double) -->
             <div class="form-group">
@@ -159,16 +98,5 @@
 
         </fieldset>
     </form>
-{#    <script type="text/javascript">#}
-{#        window.alert = function () {#}
-{#        };#}
-{#        var defaultCSS = document.getElementById('bootstrap-css');#}
-{##}
-{#        function changeCSS(css) {#}
-{#            if (css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="' + css + '" type="text/css" />');#}
-{#            else $('head > link').filter(':first').replaceWith(defaultCSS);#}
-{#        }#}
-{##}
-{#    </script>#}
 
 {% endblock %}
