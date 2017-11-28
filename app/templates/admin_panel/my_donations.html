@@ -51,7 +51,7 @@
                                             </td>
                                             <td>{{ item.created_at|date:"d/m/Y G:i" }}</td>
                                             <td>
-                                                <a class="remover" href="#">
+                                                <a class="remover" href="{% url 'delete_object' item.pk %}">
                                                     <i class="fa fa-trash-o"></i>
                                                 </a>
                                             </td>

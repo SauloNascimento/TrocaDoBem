@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseRedirect
 from django.views.generic import DetailView
 from django.views.generic import FormView
 from django.views.generic import ListView
@@ -20,7 +22,7 @@ class RegisterObjectView(FormView):
     """
     template_name = 'admin_panel/add-object.html'
     form_class = FormObject
-    success_url = '/home'
+    success_url = '/donations'
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -89,3 +91,18 @@ class ObjectUpdateView(LoginRequiredMixin, UpdateView):
     def form_invalid(self, form):
         print(form.errors)
         return super(ObjectUpdateView, self).form_invalid(form)
+
+
+def delete_object(request, pk):
+    if not request.user.is_authenticated:
+        messages.error(request, "Usuário precisa estar logado para esta operação")
+        raise PermissionDenied("Usuário precisa estar logado para esta operação")
+    else:
+        item = Item.objects.get(id=pk)
+        if item.owner.pk == request.user.id:
+            item.delete()
+            messages.success(request, "Objeto deletado com sucesso")
+            return HttpResponseRedirect('/donations')
+        else:
+            messages.error(request, "Você não pode deletar este objeto")
+            return HttpResponseRedirect('/donations')
