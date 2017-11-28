@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView
 from django.views.generic import FormView
 
-from app.forms import FormObjectDonation
+from app.forms import FormObject, FormObjectView
 from app.models import Item, Object
 
 __author__ = "Joao Marcos e Saulo Samuel"
@@ -15,7 +17,7 @@ class RegisterObjectView(FormView):
     Displays the login form.
     """
     template_name = 'register-object.html'
-    form_class = FormObjectDonation
+    form_class = FormObject
     success_url = '/home'
 
     def post(self, request, *args, **kwargs):
@@ -46,3 +48,13 @@ class RegisterObjectView(FormView):
         print(form.errors)
         messages.error(self.request, 'Não foi possível cadastrar o objeto.')
         return super(RegisterObjectView, self).form_invalid(form)
+
+
+class ObjectUpdateView(LoginRequiredMixin, DetailView):
+    login_url = '/login'
+    context_object_name = 'object'
+    model = Object
+    form_class = FormObjectView
+    template_name = 'admin_panel/view_object.html'
+    slug_field = 'pk'
+    slug_url_kwarg = 'pk'
