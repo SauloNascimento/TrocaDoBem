@@ -3,7 +3,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from app.models import object_type
+from app.models import object_type, Item
 
 
 class BaseForm(forms.Form):
@@ -18,15 +18,15 @@ class FormBaseAddress(BaseForm):
     Base class containing common address fields.
     """
 
-    cep = forms.CharField(max_length=10, required=False,widget=forms.TextInput(attrs={
+    cep = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={
     }))
     address = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={
     }))
     number = forms.CharField(max_length=5, required=False, widget=forms.TextInput(attrs={
     }))
-    state = forms.CharField(max_length=30,required=False, widget=forms.TextInput(attrs={
+    state = forms.CharField(max_length=30, required=False, widget=forms.TextInput(attrs={
     }))
-    city = forms.CharField(max_length=30,required=False, widget=forms.TextInput(attrs={
+    city = forms.CharField(max_length=30, required=False, widget=forms.TextInput(attrs={
     }))
     district = forms.CharField(max_length=45, required=False, widget=forms.TextInput(attrs={
     }))
@@ -97,3 +97,11 @@ class FormObjectView(BaseForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'readonly': True, 'maxlength': 300,
                                                                'placeholder': _('Descricao do Objeto')}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
+
+
+class FormItemUpdate(forms.ModelForm, BaseForm):
+    object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
+
+    class Meta:
+        model = Item
+        fields = ['name_item', 'description']

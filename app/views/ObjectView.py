@@ -5,8 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 from django.views.generic import FormView
 from django.views.generic import ListView
+from django.views.generic import UpdateView
 
-from app.forms import FormObject, FormObjectView
+from app.forms import FormObject, FormObjectView, FormItemUpdate
 from app.models import Item, Object
 
 __author__ = "Joao Marcos e Saulo Samuel"
@@ -51,7 +52,7 @@ class RegisterObjectView(FormView):
         return super(RegisterObjectView, self).form_invalid(form)
 
 
-class ObjectUpdateView(LoginRequiredMixin, DetailView):
+class ObjectView(LoginRequiredMixin, DetailView):
     login_url = '/login'
     context_object_name = 'object'
     model = Object
@@ -69,3 +70,22 @@ class MyDonationsListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Item.objects.filter(owner=self.request.user).order_by('-created_at')
+
+
+class ObjectUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    model = Item
+    form_class = FormItemUpdate
+    template_name = 'admin_panel/edit_object.html'
+    success_url = '/home'
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        object = self.object.object_set.first()
+        object.type = data['object_type']
+        object.save()
+        return super(ObjectUpdateView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super(ObjectUpdateView, self).form_invalid(form)

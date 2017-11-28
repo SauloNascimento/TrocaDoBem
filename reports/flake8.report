@@ -10,6 +10,9 @@ C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:52:101: E501 line too lon
 C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:90:101: E501 line too long (105 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:98:101: E501 line too long (105 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:99:87: W292 no newline at end of file
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_list_my_donations.py:53:101: E501 line too long (111 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_list_my_donations.py:61:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_list_my_donations.py:68:9: F841 local variable 'e' is assigned to but never used
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_institute.py:56:101: E501 line too long (102 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_institute.py:63:9: F841 local variable 'e' is assigned to but never used
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_institute.py:70:9: F841 local variable 'e' is assigned to but never used
