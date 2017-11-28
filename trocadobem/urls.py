@@ -7,7 +7,7 @@ from app.views.HomeView import HomeView, submit_message, view_post
 from app.views.LoginView import LoginView, LogoutView
 from app.views.PainelInstituteView import PainelInstituteView
 from app.views.RegisterInstituteView import RegisterInstituteView
-from app.views.ObjectView import RegisterObjectView, ObjectUpdateView, MyDonationsListView
+from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView
 from app.views.RegisterUserView import RegisterUserView
 
 __author__ = "Caio Marinho"
@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^account/logout/$', LogoutView.as_view(), name='auth_logout'),
     url(r'^home/$', PainelInstituteView.as_view(), name='painel'),
     url(r'^object/add/$', RegisterObjectView.as_view(), name='add_object'),
-    url(r'^object/(?P<pk>[0-9]+)/$', ObjectUpdateView.as_view(), name='view-object'),
+    url(r'^object/(?P<pk>[0-9]+)/$', ObjectView.as_view(), name='view-object'),
     url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
+    url(r'^object/(?P<pk>[0-9]+)/edit/$', ObjectUpdateView.as_view(), name='change_object')
 ]
