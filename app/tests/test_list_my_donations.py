@@ -2,12 +2,13 @@
 import unittest
 import uuid
 
+import time
 from selenium import webdriver
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import NoSuchElementException
 
 
-class TestRegisterUser(unittest.TestCase):
+class TestListMyDonations(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
@@ -15,8 +16,9 @@ class TestRegisterUser(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
 
-    def test_register_user(self):
+    def test_list_my_donations(self):
         driver = self.driver
+        username = "teste-" + str(uuid.uuid4())
         driver.get(self.base_url + "/")
         driver.find_element_by_id("inscrevase_link").click()
         driver.find_element_by_id("register_user_link").click()
@@ -29,7 +31,7 @@ class TestRegisterUser(unittest.TestCase):
         driver.find_element_by_id("id_email").clear()
         driver.find_element_by_id("id_email").send_keys("teste@gmail.com")
         driver.find_element_by_id("id_username").clear()
-        driver.find_element_by_id("id_username").send_keys("teste-" + str(uuid.uuid4()))
+        driver.find_element_by_id("id_username").send_keys(username)
         driver.find_element_by_id("id_birth_date").clear()
         driver.find_element_by_id("id_birth_date").send_keys("1995-12-12")
         driver.find_element_by_id("id_phone").clear()
@@ -39,15 +41,19 @@ class TestRegisterUser(unittest.TestCase):
         driver.find_element_by_id("subscribe").clear()
         driver.find_element_by_id("subscribe").send_keys("abcde")
         driver.find_element_by_id("btn_salvar").click()
-        try:
-            self.assertEqual(u"Novo usuário cadastrado com sucesso.", driver.find_element_by_xpath("//div[3]/p").text)
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))
-        try:
-            self.assertEqual("Sucesso", driver.find_element_by_css_selector("h2").text)
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))
         driver.find_element_by_css_selector("button.confirm").click()
+        driver.find_element_by_id("id_username").clear()
+        driver.find_element_by_id("id_username").send_keys(username)
+        driver.find_element_by_id("id_password").clear()
+        driver.find_element_by_id("id_password").send_keys("teste")
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        driver.find_element_by_css_selector("span.hidden-xs.text-uppercase").click()
+        driver.find_element_by_css_selector("#my_objects > a > span").click()
+        try:
+            self.assertEqual(u"Minhas Doações", driver.find_element_by_css_selector("div.box-header > p").text)
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
+        time.sleep(2)
 
     def is_element_present(self, how, what):
         try:

@@ -20,5 +20,16 @@ C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_institute.py:6
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user.py:43:101: E501 line too long (118 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user.py:55:9: F841 local variable 'e' is assigned to but never used
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user.py:62:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:56:101: E501 line too long (106 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:57:101: E501 line too long (104 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:58:101: E501 line too long (109 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:59:101: E501 line too long (112 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:60:101: E501 line too long (115 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:61:101: E501 line too long (113 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:62:101: E501 line too long (102 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:73:101: E501 line too long (104 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:77:101: E501 line too long (110 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:84:9: F841 local variable 'e' is assigned to but never used
+C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_view_object.py:91:9: F841 local variable 'e' is assigned to but never used
 C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\settings.py:66:58: E203 whitespace before ','
 C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\wsgi.py:22:1: E402 module level import not at top of file
