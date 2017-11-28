@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+import time
 import unittest
 import uuid
 
-import time
 from selenium import webdriver
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import NoSuchElementException
@@ -49,7 +49,7 @@ class TestViewObject(unittest.TestCase):
         driver.find_element_by_id("id_password").send_keys("teste")
         driver.find_element_by_xpath("//button[@type='submit']").click()
         driver.find_element_by_css_selector("span.hidden-xs.text-uppercase").click()
-        driver.find_element_by_link_text(u"Doações").click()
+        driver.find_element_by_link_text(u"Cadastrar Doação").click()
         driver.find_element_by_id("id_name_item").clear()
         driver.find_element_by_id("id_name_item").send_keys("Objeto Teste")
         driver.find_element_by_id("id_description").clear()

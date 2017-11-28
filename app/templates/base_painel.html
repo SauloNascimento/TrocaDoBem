@@ -122,9 +122,14 @@
                         <i class="fa fa-dashboard"></i> <span>Início</span>
                     </a>
                 </li>
-                <li id="add">
+                <li id="my_objects">
+                    <a href="{% url 'list_my_donations' %}">
+                        <i class="fa fa-cubes"></i> <span>Minhas Doações</span>
+                    </a>
+                </li>
+                <li id="donations">
                     <a href="{% url 'add_object' %}">
-                        <i class="fa fa-cubes"></i> <span>Doações</span>
+                        <i class="fa fa-cubes"></i> <span>Cadastrar Doação</span>
                     </a>
                 </li>
                 <li id="logout">

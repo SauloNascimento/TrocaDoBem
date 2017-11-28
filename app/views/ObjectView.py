@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 from django.views.generic import FormView
+from django.views.generic import ListView
 
 from app.forms import FormObject, FormObjectView
 from app.models import Item, Object
@@ -16,7 +17,7 @@ class RegisterObjectView(FormView):
     """
     Displays the login form.
     """
-    template_name = 'register-object.html'
+    template_name = 'admin_panel/add-object.html'
     form_class = FormObject
     success_url = '/home'
 
@@ -58,3 +59,13 @@ class ObjectUpdateView(LoginRequiredMixin, DetailView):
     template_name = 'admin_panel/view_object.html'
     slug_field = 'pk'
     slug_url_kwarg = 'pk'
+
+
+class MyDonationsListView(LoginRequiredMixin, ListView):
+    login_url = '/login/'
+    model = Item
+    context_object_name = 'itens'
+    template_name = 'admin_panel/my_donations.html'
+
+    def get_queryset(self):
+        return Item.objects.filter(owner=self.request.user).order_by('-created_at')
