@@ -1,0 +1,40 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Visualização Objeto</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Item: </label>
+                    {{ object.item.name_item }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Descrição: </label>
+                    {{ object.item.description }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Dono: </label>
+                    {{ object.item.owner.first_name }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Tipo de Objeto: </label>
+                    {{ object.type }}
+                </div>
+            </div>
+            <!-- /.box-body -->
+
+            <div class="box-footer">
+                <a href="/" id="btn_alterar" class="btn btn-primary pull-right">Alterar</a>
+                <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
