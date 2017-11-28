@@ -75,6 +75,7 @@ class TestEditObject(unittest.TestCase):
         except AssertionError as e:
             self.verificationErrors.append(str(e))
         driver.find_element_by_css_selector("button.confirm").click()
+        driver.find_element_by_xpath(".//*[@id='inicio']/a").click()
         driver.find_element_by_class_name("btn-success").click()
         driver.find_element_by_id("btn_alterar").click()
         driver.find_element_by_id("id_name_item").clear()
