@@ -122,6 +122,11 @@
                         <i class="fa fa-dashboard"></i> <span>Início</span>
                     </a>
                 </li>
+                <li id="edit">
+                    <a href="{% url 'update_donator' user.pk %}">
+                        <i class="fa fa-cubes"></i> <span>Editar Conta</span>
+                    </a>
+                </li>
                 <li id="my_objects">
                     <a href="{% url 'list_my_donations' %}">
                         <i class="fa fa-cubes"></i> <span>Minhas Doações</span>

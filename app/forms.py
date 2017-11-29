@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django import forms
+from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from app.models import object_type, Item
@@ -105,3 +106,21 @@ class FormItemUpdate(forms.ModelForm, BaseForm):
     class Meta:
         model = Item
         fields = ['name_item', 'description']
+
+
+class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
+    cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
+                                                        'placeholder': _('CPF')}))
+    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                          'placeholder': _('Telefone')}))
+    birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
+                                                               'maxlength': 150}))
+    anonymous = forms.BooleanField(required=False)
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'password']
+
+    def __init__(self, *args, **kwargs):
+        super(FormDonatorUpdate, self).__init__(*args, **kwargs)
+        self.fields['birth_date'].widget.attrs['class'] += ' datepicker'

@@ -3,11 +3,12 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
+from app.views.DonatorUpdateView import DonatorUpdateView
 from app.views.HomeView import HomeView, submit_message, view_post
 from app.views.LoginView import LoginView, LogoutView
+from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
 from app.views.PainelInstituteView import PainelInstituteView
 from app.views.RegisterInstituteView import RegisterInstituteView
-from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
 from app.views.RegisterUserView import RegisterUserView
 
 __author__ = "Caio Marinho"
@@ -45,4 +46,5 @@ urlpatterns = [
     url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
     url(r'^object/(?P<pk>[0-9]+)/edit/$', ObjectUpdateView.as_view(), name='change_object'),
     url(r'^object/(?P<pk>[0-9]+)/delete/$', delete_object, name='delete_object'),
+    url(r'^account/(?P<pk>[0-9]+)/edit/$', DonatorUpdateView.as_view(), name='update_donator'),
 ]
