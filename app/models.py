@@ -46,7 +46,7 @@ class Institute(TimeStamped, BaseAddress):
         return u'%s' % (self.user.first_name)
 
 
-class CommonUser(TimeStamped):
+class CommonUser(TimeStamped, BaseAddress):
     class Meta:
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios"
