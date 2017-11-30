@@ -6,4 +6,5 @@ services:
     container_name: 'trocadobem'
     ports:
       - "8002:8000"
+      - "37289:37289"
     restart: always
