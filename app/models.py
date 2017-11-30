@@ -46,12 +46,12 @@ class Institute(TimeStamped, BaseAddress):
         return u'%s' % (self.user.first_name)
 
 
-class CommonUser(TimeStamped):
+class CommonUser(TimeStamped, BaseAddress):
     class Meta:
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios"
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     birth_date = models.DateField(null=True, blank=True)
     cpf = models.CharField(max_length=100, default="Nao Informado")
     phone = models.CharField(max_length=30, default="Nao Informado")
