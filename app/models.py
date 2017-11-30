@@ -38,6 +38,8 @@ class Institute(TimeStamped, BaseAddress):
     cnpj = models.CharField(max_length=100, default="Nao Informado")
     description = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=30, default="Nao Informado")
+    site = models.CharField(max_length=30, default="Nao Informado")
+    social = models.CharField(max_length=30, default="Nao Informado")
 
     def __str__(self):
         return self.user.first_name

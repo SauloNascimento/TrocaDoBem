@@ -58,6 +58,7 @@ class FormRegisterUser(FormBaseAddress):
         self.fields['birth_date'].widget.attrs['class'] += ' datepicker'
 
 
+
 class FormRegisterInstitute(FormBaseAddress):
     cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
                                                          'placeholder': _('CNPJ')}))
@@ -71,6 +72,10 @@ class FormRegisterInstitute(FormBaseAddress):
                                                                  'placeholder': _('Password')}))
     phone = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
+    site = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                          'placeholder': _('Site')}))
+    social= forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                         'placeholder': _('Rede Social')}))
 
     def __init__(self, *args, **kwargs):
         super(FormRegisterInstitute, self).__init__(*args, **kwargs)
