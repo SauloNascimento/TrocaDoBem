@@ -119,7 +119,7 @@ class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password']
+        fields = ['first_name', 'last_name', 'email']
 
     def __init__(self, *args, **kwargs):
         super(FormDonatorUpdate, self).__init__(*args, **kwargs)

@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.views.generic import UpdateView
 
 from app.forms import FormDonatorUpdate
+from app.models import CommonUser
 
 __author__ = "João Marcos e Saulo Samuel"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -18,9 +19,29 @@ class DonatorUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'edit-donator.html'
     success_url = '/home'
 
+    def get_initial(self):
+        initial = super(DonatorUpdateView, self).get_initial()
+        try:
+            commonuser = self.object.commonuser
+        except:
+            a = 10
+        else:
+            initial['cpf'] = commonuser.cpf
+            initial['birth_date'] = commonuser.birth_date
+            initial['phone'] = commonuser.phone
+            initial['anonymous'] = commonuser.anonymous
+            initial['cep'] = commonuser.cep
+            initial['state'] = commonuser.state
+            initial['city'] = commonuser.city
+            initial['distric'] = commonuser.district
+            initial['address'] = commonuser.address
+            initial['number'] = commonuser.number
+            initial['complement'] = commonuser.complement
+        return initial
+
     def form_valid(self, form):
         data = form.cleaned_data
-        common_user = self.object.commonuser_set.first()
+        common_user = self.object.commonuser
         common_user.cpf = data['cpf']
         common_user.phone = data['phone']
         common_user.birth_date = data['birth_date']
