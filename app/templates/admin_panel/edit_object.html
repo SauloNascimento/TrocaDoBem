@@ -3,56 +3,33 @@
 
 {% block content %}
 
-    <div class="box box-primary" style="margin-top: 30px;">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    <center style="font-size: 20px;">Editar Objeto</center>
-                </h3>
-            </div>
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Editar Objeto</h3>
         </div>
-
         <!-- /.box-header -->
         <!-- form start -->
-        <form class="form-horizontal" method="post" style="margin-top: 20px; margin-left: 15%;margin-right: 10% ">
+        <form role="form" method="post">
             {% csrf_token %}
-            <div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="nome">Item</label>
-                    <div for="exampleInputEmail1" class="col-md-8">
-                        {{ form.name_item }}
-                    </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Item: </label>
+                    {{ form.name_item }}
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="nome">Descrição</label>
-                    <div class="col-md-8">
-                        {{ form.description }}
-                    </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Descrição: </label>
+                    {{ form.description }}
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="nome"
-                           style="padding-right: 0">Tipo de Objeto</label>
-                    <div for="exampleInputPassword1" class="col-md-8">
-                        {{ form.object_type }}
-                    </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Tipo de Objeto: </label>
+                    {{ form.object_type }}
                 </div>
             </div>
-
             <!-- /.box-body -->
 
-            <div class=" box-footer form-group" style="margin-top: 35px;">
-
-                <div class="col-md-8 col-md-offset-3">
-                    <div class="row">
-
-                        <div class="col-sm-4">
-                            <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default">Voltar</a>
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="submit" id="btn_salvar" class="btn btn-primary">Salvar</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="box-footer">
+                <button type="submit" id="btn_salvar" class="btn btn-primary pull-right">Salvar</button>
+                <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>
             </div>
         </form>
     </div>
