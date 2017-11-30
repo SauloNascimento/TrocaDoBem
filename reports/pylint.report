@@ -1,6 +1,2 @@
 ************* 
-<<<<<<< HEAD
-__init__.py:1: [F0010(parse-error), ] error while code parsing: Unable to load file 'C:\\Users\\Tainah\\Desktop\\trocadobem\\__init__.py' ([Errno 2] No such file or directory: 'C:\\Users\\Tainah\\Desktop\\trocadobem\\__init__.py')
-=======
-__init__.py:1: [F0010(parse-error), ] error while code parsing: Unable to load file 'C:\\Users\\W10\\Documents\\Raphael\\trocadobem\\trocadobem\\__init__.py' ([Errno 2] No such file or directory: 'C:\\Users\\W10\\Documents\\Raphael\\trocadobem\\trocadobem\\__init__.py')
->>>>>>> 9b2ebb65dac83651a4ecbd02259b1680b14d8d4c
+__init__.py:1: [F0010(parse-error), ] error while code parsing: Unable to load file 'C:\\Users\\administrador1\\Desktop\\trocadobem\\__init__.py' ([Errno 2] No such file or directory: 'C:\\Users\\administrador1\\Desktop\\trocadobem\\__init__.py')
