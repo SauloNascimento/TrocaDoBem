@@ -1,75 +1,62 @@
 {% extends 'base_painel.html' %}
+{% load staticfiles %}
 {% block content %}
-    {# Example content #}
     <div class="row">
         <div class="col-md-12">
             {% for item in itens %}
-                <form method="post" action="#" id="form-{{ item.pk }}">
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="box box-default">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">{{ item.nome_item }}</h3>
-                                <h6 class="box-comment">{{ item.descricao }}</h6>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">{{ item.name_item }}</h3>
+                            <h6 class="box-comment">{{ item.description }}</h6>
 
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <img src="{{ item.photo }}" alt="Product Image" class="img-responsive">
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </div>
-                            <!-- /.box-body -->
-                            <style>
-                                ul.nav > li:hover > a:hover {
-                                    background: #49c749;
-                                }
-
-                                .hidden {
-                                    display: none;
-                                }
-
-                                ul.nav > li:hover > a:active {
-                                    background: #49c749;
-                                }
-
-                                ul.nav > li:hover > a:visited {
-                                    background: #49c749;
-                                }
-                            </style>
-                            <div class="box-footer no-padding">
-                                {#                                <div class="row">#}
-                                {#                                    <div class="col-xs-12 text-center">#}
-                                {#                                        <div class="form-group">#}
-                                {#                                            <label>Qtd:</label>#}
-                                {#                                            <input type="text" class="hidden" name="cart" value="{{ cart.pk }}">#}
-                                {#                                            <input type="text" class="hidden" name="item" value="{{ item.pk }}">#}
-                                {#                                            <input type="number" min="1" class="form-control pull-right" name="quantity"#}
-                                {#                                                   id="quantity-{{ item.id }}" value="1"/>#}
-                                {#                                        </div>#}
-                                {#                                    </div>#}
-                                {#                                </div>#}
-                                {#                                <div class="row nav nav-pills nav-stacked">#}
-                                {#                                    <div class="col-lg-12 text-center">#}
-                                {#                                        <h2 class="product-title">R$ {{ item.price_sale }}</h2>#}
-                                {#                                    </div>#}
-                                {#                                </div>#}
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <button type="button" id="btn-comprar-{{ item.pk }}"
-                                                class="btn btn-success btn-block buy"
-                                                data-form-id="#form-{{ item.pk }}"
-                                                style="color: #ffffff; font-weight: bold;">COLETAR
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.footer -->
                         </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    {% if item.photo %}
+                                        <img src="{{ item.photo }}" alt="Product Image" class="img-responsive">
+                                    {% else %}
+                                        <img src="{% static '300x300.png' %}" alt="Product Image"
+                                             class="img-responsive">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.box-body -->
+                        <style>
+                            ul.nav > li:hover > a:hover {
+                                background: #49c749;
+                            }
+
+                            .hidden {
+                                display: none;
+                            }
+
+                            ul.nav > li:hover > a:active {
+                                background: #49c749;
+                            }
+
+                            ul.nav > li:hover > a:visited {
+                                background: #49c749;
+                            }
+                        </style>
+                        <div class="box-footer no-padding">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a href="{% url 'view-object' item.pk %}" type="button" id="btn-comprar-{{ item.pk }}"
+                                            class="btn btn-success btn-block buy"
+                                            data-form-id="#form-{{ item.pk }}"
+                                            style="color: #ffffff; font-weight: bold;"> Ver Item
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.footer -->
                     </div>
-                </form>
+                </div>
             {% endfor %}
         </div>
     </div>

@@ -27,8 +27,6 @@
 
             <div class="row">
 
-                <!-- *** LEFT COLUMN ***
-        _________________________________________________________ -->
 
                 <div class="col-md-9" id="blog-post" style="margin-bottom: 20px;">
 
@@ -39,7 +37,6 @@
                     <div id="post-content">
                         {{ post.text|safe }}
                     </div>
-                    <!-- /#post-content -->
                     {% if post.imagepost_set.all|length_is:"1" %}
                         <div class="text-center">
                             <img class="img-responsive" src="{{ post.imagepost_set.first.image.url }}"/>
@@ -55,17 +52,8 @@
                     {% endif %}
 
                 </div>
-                <!-- /#blog-post -->
-
-                <!-- *** LEFT COLUMN END *** -->
-
-                <!-- *** RIGHT COLUMN ***
-            _________________________________________________________ -->
 
                 <div class="col-md-3">
-
-                    <!-- *** MENUS AND WIDGETS ***
-    _________________________________________________________ -->
 
                     <div class="panel panel-default sidebar-menu">
                         <div class="panel-heading">

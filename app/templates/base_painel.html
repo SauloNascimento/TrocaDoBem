@@ -10,9 +10,9 @@
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href='{% static 'bootstrap/css/bootstrap.min.css' %}'>
     <!-- Font Awesome -->
-    {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     {#    <!-- Ionicons -->#}
-    {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href='{% static 'dist/css/AdminLTE.css' %}'>
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -49,7 +49,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="#" class="logo">
+        <a href="{% url "painel" %}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>T</b>D<b>B</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -118,13 +118,18 @@
             <ul class="sidebar-menu">
                 <li class="header">MENU</li>
                 <li id="inicio">
-                    <a href="/">
+                    <a href="{% url "painel" %}">
                         <i class="fa fa-dashboard"></i> <span>Início</span>
                     </a>
                 </li>
-                <li id="add">
-                    <a href="{% url "register_object" %}">
-                        <i class="fa fa-cubes"></i> <span>Doações</span>
+                <li id="my_objects">
+                    <a href="{% url 'list_my_donations' %}">
+                        <i class="fa fa-cubes"></i> <span>Minhas Doações</span>
+                    </a>
+                </li>
+                <li id="donations">
+                    <a href="{% url 'add_object' %}">
+                        <i class="fa fa-cubes"></i> <span>Cadastrar Doação</span>
                     </a>
                 </li>
                 <li id="logout">
@@ -194,10 +199,6 @@
 <script type="text/javascript" src="{% static 'js/datatables.min.js' %}"></script>
 
 <script type="text/javascript" src="{% static 'js/moment-with-locales.min.js' %}"></script>
-
-{#<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/js/bootstrap-tour.min.js"></script>#}
-
-{#<script src="{% static 'dist/js/customTour.js' %}"></script>#}
 
 <script src="{% static "dist/js/chartReport.js" %}"></script>
 

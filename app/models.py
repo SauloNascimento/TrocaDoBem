@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from ckeditor.fields import RichTextField
-from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import permalink
@@ -142,7 +141,7 @@ class ImagePost(TimeStamped):
         verbose_name = "ImagePost"
         verbose_name_plural = "ImagePosts"
 
-    image = CloudinaryField('image')
+    image = models.URLField()
     model = models.ForeignKey(Post, null=True, blank=True, on_delete=models.CASCADE)
     label = models.CharField(max_length=100, blank=True, null=True)
     is_visible = models.BooleanField(default=True)
