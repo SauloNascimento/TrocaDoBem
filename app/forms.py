@@ -3,7 +3,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from app.models import object_type, Item
+from app.models import object_type, Item, CommonUser
 
 
 class BaseForm(forms.Form):
@@ -109,4 +109,11 @@ class FormItemUpdate(forms.ModelForm, BaseForm):
 
     class Meta:
         model = Item
+        fields = ['name_item', 'description']
+
+class FormUserUpdate(FormRegisterUser, FormBaseAddress):
+    object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
+
+    class Meta:
+        model = CommonUser
         fields = ['name_item', 'description']
