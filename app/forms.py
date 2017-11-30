@@ -42,7 +42,7 @@ class FormRegisterUser(FormBaseAddress):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
                                                             'placeholder': _('Email')}))
     username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
-                                                             'placeholder': 'Nome de Usuário'}))
+                                                             'placeholder': 'Nome de Usuario'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
                                                                  'placeholder': _('Senha')}))
     cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
@@ -78,7 +78,7 @@ class FormRegisterInstitute(FormBaseAddress):
 
 class FormLogin(BaseForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
-                                                             'placeholder': 'Nome de Usuário'}))
+                                                             'placeholder': 'Nome de Usuario'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
                                                                  'placeholder': _('Senha')}))
 
@@ -94,7 +94,7 @@ class FormObject(BaseForm):
 class FormObjectView(BaseForm):
     name_item = forms.CharField(widget=forms.TextInput(attrs={'readonly': True, 'maxlength': 100,
                                                               'placeholder': _('Nome do Objeto')}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'readonly': True, 'maxlength': 300,
+    description = forms.CharField(widget=forms.Textarea(attrs={'maxlength': 300,
                                                                'placeholder': _('Descricao do Objeto')}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
 
