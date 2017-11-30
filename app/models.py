@@ -38,6 +38,8 @@ class Institute(TimeStamped, BaseAddress):
     cnpj = models.CharField(max_length=100, default="Nao Informado")
     description = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=30, default="Nao Informado")
+    site = models.CharField(max_length=30, default="Nao Informado")
+    social = models.CharField(max_length=30, default="Nao Informado")
 
     def __str__(self):
         return self.user.first_name
@@ -46,7 +48,7 @@ class Institute(TimeStamped, BaseAddress):
         return u'%s' % (self.user.first_name)
 
 
-class CommonUser(TimeStamped):
+class CommonUser(TimeStamped, BaseAddress):
     class Meta:
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios"
