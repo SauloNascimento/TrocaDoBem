@@ -7,7 +7,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <center style="font-size: 20px;">Editar Objeto</center>
+                    <center style="font-size: 20px;">Editar Necessidade</center>
                 </h3>
             </div>
         </div>
@@ -16,28 +16,7 @@
         <!-- form start -->
         <form class="form-horizontal" method="post" style="margin-top: 20px; margin-left: 15%;margin-right: 10% ">
             {% csrf_token %}
-            <div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="nome">Item</label>
-                    <div for="exampleInputEmail1" class="col-md-8">
-                        {{ form.name_item }}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="nome">Descrição</label>
-                    <div class="col-md-8">
-                        {{ form.description }}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="nome"
-                           style="padding-right: 0">Tipo de Objeto</label>
-                    <div for="exampleInputPassword1" class="col-md-8">
-                        {{ form.object_type }}
-                    </div>
-                </div>
-            </div>
-
+            {{ form.as_p }}
             <!-- /.box-body -->
 
             <div class=" box-footer form-group" style="margin-top: 35px;">
@@ -46,7 +25,8 @@
                     <div class="row">
 
                         <div class="col-sm-4">
-                            <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>
+                            <a href="{% url 'list_my_requirements' %}" id="btn_cancelar"
+                               class="btn btn-default pull-left">Voltar</a>
                         </div>
                         <div class="col-sm-4">
                             <button type="submit" id="btn_salvar" class="btn btn-primary pull-right">Salvar</button>
@@ -59,7 +39,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#donations').addClass('active');
+            $('#list_my_requirements').addClass('active');
         });
     </script>
 
