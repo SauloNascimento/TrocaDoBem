@@ -51,6 +51,7 @@ class CommonUserAdmin(admin.ModelAdmin):
 class InstituteAdmin(admin.ModelAdmin):
     list_display = ('user', 'cnpj', 'created_at')
 
+
 class RequirementAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'owner', 'created_at', 'status')
 

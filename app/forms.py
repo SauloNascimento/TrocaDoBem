@@ -49,7 +49,8 @@ class FormRegisterUser(FormBaseAddress):
                                                         'placeholder': _('CPF')}))
     phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
-    birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
+    birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                               'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
     anonymous = forms.BooleanField(required=False)
 
@@ -112,8 +113,3 @@ class FormRequirement(forms.ModelForm, BaseForm):
         model = Requirement
         fields = ['name', 'type', 'description', 'owner']
         widgets = {'owner': forms.HiddenInput()}
-
-    # def __init__(self, *args, **kwargs):
-    #     self.fields['owner'].widget.attrs['hidden'] = True
-    #     super(FormRequirement, self).__init__(*args, **kwargs)
-

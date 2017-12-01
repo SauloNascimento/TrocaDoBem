@@ -43,7 +43,7 @@ class Institute(TimeStamped, BaseAddress):
         return self.user.first_name
 
     def __unicode__(self):
-        return u'%s' % (self.user.first_name)
+        return u'%s' % self.user.first_name
 
 
 class CommonUser(TimeStamped):
@@ -58,7 +58,7 @@ class CommonUser(TimeStamped):
     anonymous = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return u'%s' % (self.user.first_name)
+        return u'%s' % self.user.first_name
 
     def __str__(self):
         return self.user.first_name
@@ -71,7 +71,7 @@ class Item(TimeStamped):
     photo = models.URLField()
 
     def __unicode__(self):
-        return u'%s' % (self.name_item)
+        return u'%s' % self.name_item
 
     def __str__(self):
         return self.name_item
@@ -98,7 +98,7 @@ class Object(TimeStamped):
     type = models.CharField(max_length=50, choices=object_type)
 
     def __unicode__(self):
-        return u'%s' % (self.item.name_item)
+        return u'%s' % self.item.name_item
 
     def __str__(self):
         return self.item.name_item
@@ -112,7 +112,7 @@ class Service(TimeStamped):
     item = models.ForeignKey(Item, on_delete=models.CASCADE, unique=True)
 
     def __unicode__(self):
-        return u'%s' % (self.item.name_item)
+        return u'%s' % self.item.name_item
 
     def __str__(self):
         return self.item.name_item
@@ -126,7 +126,7 @@ class Post(TimeStamped):
     slug = models.SlugField(unique=True)
 
     def __unicode__(self):
-        return u'%s' % (self.title)
+        return u'%s' % self.title
 
     def get_description(self):
         return safe(self.text[:200])

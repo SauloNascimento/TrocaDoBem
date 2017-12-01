@@ -5,11 +5,12 @@ from django.contrib.auth import views as auth_views
 
 from app.views.HomeView import HomeView, submit_message, view_post
 from app.views.LoginView import LoginView, LogoutView
+from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
 from app.views.PainelInstituteView import PainelInstituteView
 from app.views.RegisterInstituteView import RegisterInstituteView
-from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
 from app.views.RegisterUserView import RegisterUserView
-from app.views.RequirementView import RequirementListView, AddRequirementView, RequirementUpdateView, delete_requirement, \
+from app.views.RequirementView import RequirementListView, AddRequirementView, RequirementUpdateView, \
+    delete_requirement, \
     RequirementView
 
 __author__ = "Caio Marinho"
