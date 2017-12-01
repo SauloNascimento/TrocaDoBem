@@ -24,7 +24,7 @@ class BaseAddress(models.Model):
     city = models.CharField(max_length=100, default="Nao Informado")
     district = models.CharField(max_length=100, default="Nao Informado")
     address = models.CharField(max_length=100, default="Nao Informado")
-    number = models.CharField(max_length=5, default="Nao Informado")
+    number = models.CharField(max_length=5, blank=True, null=True)
     complement = models.CharField(max_length=200, blank=True)
 
 
