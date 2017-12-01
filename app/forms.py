@@ -3,7 +3,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from app.models import object_type, Item
+from app.models import object_type, Item, Requirement
 
 
 class BaseForm(forms.Form):
@@ -49,7 +49,8 @@ class FormRegisterUser(FormBaseAddress):
                                                         'placeholder': _('CPF')}))
     phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
-    birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
+    birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                               'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
     anonymous = forms.BooleanField(required=False)
 
@@ -120,3 +121,10 @@ class FormItemUpdate(forms.ModelForm, BaseForm):
     class Meta:
         model = Item
         fields = ['name_item', 'description']
+
+
+class FormRequirement(forms.ModelForm, BaseForm):
+    class Meta:
+        model = Requirement
+        fields = ['name', 'type', 'description', 'owner']
+        widgets = {'owner': forms.HiddenInput()}

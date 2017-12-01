@@ -5,10 +5,13 @@ from django.contrib.auth import views as auth_views
 
 from app.views.HomeView import HomeView, submit_message, view_post
 from app.views.LoginView import LoginView, LogoutView
-from app.views.PainelInstituteView import PainelInstituteView
-from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
+from app.views.PainelView import PainelView
+from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
+from app.views.RequirementView import RequirementListView, AddRequirementView, RequirementUpdateView, \
+    delete_requirement, \
+    RequirementView
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -39,10 +42,16 @@ urlpatterns = [
     url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^account/logout/$', LogoutView.as_view(), name='auth_logout'),
-    url(r'^home/$', PainelInstituteView.as_view(), name='painel'),
+    url(r'^home/$', PainelView.as_view(), name='painel'),
     url(r'^object/add/$', RegisterObjectView.as_view(), name='add_object'),
     url(r'^object/(?P<pk>[0-9]+)/$', ObjectView.as_view(), name='view-object'),
     url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
     url(r'^object/(?P<pk>[0-9]+)/edit/$', ObjectUpdateView.as_view(), name='change_object'),
     url(r'^object/(?P<pk>[0-9]+)/delete/$', delete_object, name='delete_object'),
+
+    url(r'^requirements/$', RequirementListView.as_view(), name='list_my_requirements'),
+    url(r'^requirements/add/$', AddRequirementView.as_view(), name='add_requirement'),
+    url(r'^requirements/(?P<pk>[0-9]+)/$', RequirementView.as_view(), name='view-requirement'),
+    url(r'^requirements/(?P<pk>[0-9]+)/edit/$', RequirementUpdateView.as_view(), name='change_requirement'),
+    url(r'^requirements/(?P<pk>[0-9]+)/delete/$', delete_requirement, name='delete_requirement'),
 ]
