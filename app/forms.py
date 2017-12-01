@@ -3,7 +3,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from app.models import object_type, Item
+from app.models import object_type, Item, Requirement
 
 
 class BaseForm(forms.Form):
@@ -105,3 +105,15 @@ class FormItemUpdate(forms.ModelForm, BaseForm):
     class Meta:
         model = Item
         fields = ['name_item', 'description']
+
+
+class FormRequirement(forms.ModelForm, BaseForm):
+    class Meta:
+        model = Requirement
+        fields = ['name', 'type', 'description', 'owner']
+        widgets = {'owner': forms.HiddenInput()}
+
+    # def __init__(self, *args, **kwargs):
+    #     self.fields['owner'].widget.attrs['hidden'] = True
+    #     super(FormRequirement, self).__init__(*args, **kwargs)
+

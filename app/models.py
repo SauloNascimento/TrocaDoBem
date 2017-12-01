@@ -159,3 +159,28 @@ class Message(models.Model):
 
     def __unicode__(self):
         return u'%s - %s' % (self.name, self.email)
+
+
+class Requirement(TimeStamped):
+    class Meta:
+        verbose_name = "Necessidade"
+        verbose_name_plural = "Necessidades"
+
+    name = models.CharField(max_length=100, blank=True, null=True)
+    type = models.CharField(max_length=50, choices=object_type)
+    status = models.BooleanField(default=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    description = models.TextField(max_length=300)
+
+    # photo = models.URLField()
+
+    def __unicode__(self):
+        return u'%s' % self.name
+
+
+class Match(TimeStamped):
+    requirement = models.OneToOneField(Requirement)
+    item = models.OneToOneField(Item)
+
+    def __unicode__(self):
+        return u'%s' % self.requirement.name
