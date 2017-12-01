@@ -132,11 +132,13 @@
                         <i class="fa fa-cubes"></i> <span>Cadastrar Doação</span>
                     </a>
                 </li>
+                {% if user.institute_set.first %}
                 <li id="list_my_requirements">
                     <a href="{% url 'list_my_requirements' %}">
                         <i class="fa fa-cubes"></i> <span>Meus Pedidos</span>
                     </a>
                 </li>
+                {% endif %}
                 <li id="logout">
                     <a href="{% url "auth_logout" %}">
                         <i class="fa fa-sign-out"></i> <span>Sair</span>
