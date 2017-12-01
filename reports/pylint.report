@@ -1,2 +1,2 @@
 ************* 
-__init__.py:1: [F0010(parse-error), ] error while code parsing: Unable to load file 'C:\\Users\\W10\\Documents\\Raphael\\trocadobem\\trocadobem\\__init__.py' ([Errno 2] No such file or directory: 'C:\\Users\\W10\\Documents\\Raphael\\trocadobem\\trocadobem\\__init__.py')
+__init__.py:1: [F0010(parse-error), ] error while code parsing: Unable to load file 'C:\\Users\\caiom\\PycharmProjects\\trocadobem\\__init__.py' ([Errno 2] No such file or directory: 'C:\\Users\\caiom\\PycharmProjects\\trocadobem\\__init__.py')
