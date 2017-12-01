@@ -33,7 +33,7 @@ class Institute(TimeStamped, BaseAddress):
         verbose_name = "Instituicao"
         verbose_name_plural = "Instituicoes"
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     photo = models.URLField(blank=True)
     cnpj = models.CharField(max_length=100, default="Nao Informado")
     description = models.CharField(max_length=100, blank=True)

@@ -52,7 +52,7 @@ class FormRegisterUser(FormBaseAddress):
                                                           'placeholder': _('Telefone')}))
     birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
-    anonymous = forms.BooleanField(required=False)
+    anonymous = forms.BooleanField(required=False, initial=False)
 
     def __init__(self, *args, **kwargs):
         super(FormRegisterUser, self).__init__(*args, **kwargs)
@@ -113,9 +113,8 @@ class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
                                                         'placeholder': _('CPF')}))
     phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
-    birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
-                                                               'maxlength': 150}))
-    anonymous = forms.BooleanField(required=False)
+    birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),'maxlength': 150}))
+    anonymous = forms.BooleanField(required=False, initial=False)
 
     class Meta:
         model = User
@@ -124,3 +123,19 @@ class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
     def __init__(self, *args, **kwargs):
         super(FormDonatorUpdate, self).__init__(*args, **kwargs)
         self.fields['birth_date'].widget.attrs['class'] += ' datepicker'
+
+
+class FormInstituteUpdate(forms.ModelForm, FormBaseAddress):
+    cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                         'placeholder': _('CNPJ')}))
+    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                          'placeholder': _('Telefone')}))
+    description = forms.CharField(widget=forms.Textarea(attrs={'readonly': True, 'maxlength': 300,
+                                                               'placeholder': _('Descricao da Instituicao')}))
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'email']
+
+    def __init__(self, *args, **kwargs):
+        super(FormInstituteUpdate, self).__init__(*args, **kwargs)
