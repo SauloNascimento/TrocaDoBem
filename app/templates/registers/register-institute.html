@@ -144,12 +144,14 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="button1id"></label>
                 <div class="col-md-8">
-                    <button id="btn_salvar" class="btn btn-success" type="submit">Salvar</button>
+                    <button id="btn_salvar" name="submit" class="btn btn-success" type="submit">Salvar</button>
                     <a href="/" id="btn_cancelar" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
 
         </fieldset>
     </form>
+
+    {% include 'loading.html' %}
 
 {% endblock %}
