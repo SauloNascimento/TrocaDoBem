@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\caiom\PycharmProjects\trocadobem\manage.py:14:13: F401 'django' imported but unused
 C:\Users\caiom\PycharmProjects\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
 C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
@@ -67,3 +68,71 @@ C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:8:101: E501 line to
 C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:12:101: E501 line too long (103 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:55:101: E501 line too long (108 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\wsgi.py:22:1: E402 module level import not at top of file
+=======
+C:\Users\administrador1\Desktop\trocadobem\manage.py:14:13: F401 'django' imported but unused
+C:\Users\administrador1\Desktop\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
+C:\Users\administrador1\Desktop\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
+C:\Users\administrador1\Desktop\trocadobem\app\apps.py:6:1: F404 future import(s) ['unicode_literals'] after other statements
+C:\Users\administrador1\Desktop\trocadobem\app\apps.py:8:1: E402 module level import not at top of file
+C:\Users\administrador1\Desktop\trocadobem\app\forms.py:52:101: E501 line too long (120 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\forms.py:104:101: E501 line too long (105 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\forms.py:113:101: E501 line too long (105 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_add_object.py:63:101: E501 line too long (106 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_add_object.py:64:101: E501 line too long (104 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_add_object.py:65:101: E501 line too long (109 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_add_object.py:66:101: E501 line too long (112 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_add_object.py:67:101: E501 line too long (115 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_add_object.py:68:101: E501 line too long (113 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_add_object.py:69:101: E501 line too long (102 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_add_object.py:83:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_add_object.py:90:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:20:1: C901 'TestEditObject.test_edit_object' is too complex (11)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:63:101: E501 line too long (106 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:64:101: E501 line too long (104 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:65:101: E501 line too long (109 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:66:101: E501 line too long (112 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:67:101: E501 line too long (115 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:68:101: E501 line too long (113 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:69:101: E501 line too long (102 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:86:101: E501 line too long (105 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:91:101: E501 line too long (111 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:97:101: E501 line too long (108 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:105:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_delete_object.py:112:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:63:101: E501 line too long (106 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:64:101: E501 line too long (104 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:65:101: E501 line too long (109 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:66:101: E501 line too long (112 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:67:101: E501 line too long (115 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:68:101: E501 line too long (113 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:69:101: E501 line too long (102 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:86:101: E501 line too long (105 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:93:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_edit_object.py:100:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_list_my_donations.py:53:101: E501 line too long (111 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_list_my_donations.py:61:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_list_my_donations.py:68:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_login_institute.py:56:101: E501 line too long (102 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_login_institute.py:63:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_login_institute.py:70:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_login_user.py:57:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_login_user.py:64:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_register_institute.py:53:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_register_institute.py:60:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_register_user.py:43:101: E501 line too long (118 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_register_user.py:55:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_register_user.py:62:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:56:101: E501 line too long (106 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:57:101: E501 line too long (104 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:58:101: E501 line too long (109 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:59:101: E501 line too long (112 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:60:101: E501 line too long (115 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:61:101: E501 line too long (113 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:62:101: E501 line too long (102 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:74:101: E501 line too long (104 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:78:101: E501 line too long (110 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:85:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\app\tests\test_view_object.py:92:9: F841 local variable 'e' is assigned to but never used
+C:\Users\administrador1\Desktop\trocadobem\trocadobem\urls.py:10:101: E501 line too long (117 > 100 characters)
+C:\Users\administrador1\Desktop\trocadobem\trocadobem\wsgi.py:22:1: E402 module level import not at top of file
+>>>>>>> master

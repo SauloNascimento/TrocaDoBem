@@ -43,6 +43,8 @@ class RegisterInstituteView(FormView):
         institute_data['city'] = data['city']
         institute_data['district'] = data['district']
         institute_data['complement'] = data['complement']
+        institute_data['site'] = data['site']
+        institute_data['social'] = data['social']
         if data['username'] and data['password']:
             new_user = User.objects.create_user(**user_data)
             new_institute = Institute(user=new_user, **institute_data)
