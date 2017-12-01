@@ -59,40 +59,55 @@ class FormRegisterUser(FormBaseAddress):
 
 
 class FormRegisterInstitute(FormBaseAddress):
-    cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+    cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                         'maxlength': 200,
                                                          'placeholder': _('CNPJ')}))
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                               'maxlength': 200,
                                                                'placeholder': _('First Name')}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True,
+                                                            'maxlength': 150,
                                                             'placeholder': _('Email')}))
-    username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+    username = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                             'maxlength': 200,
                                                              'placeholder': _('Username')}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
                                                                  'placeholder': _('Password')}))
-    phone = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
+    phone = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                          'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
+    site = forms.CharField(widget=forms.TextInput(attrs={'required': False,
+                                                         'maxlength': 150,
+                                                         'placeholder': _('Site')}))
+    social = forms.CharField(widget=forms.TextInput(attrs={'required': False,
+                                                           'maxlength': 150,
+                                                           'placeholder': _('Rede Social')}))
 
     def __init__(self, *args, **kwargs):
         super(FormRegisterInstitute, self).__init__(*args, **kwargs)
 
 
 class FormLogin(BaseForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+    username = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                             'maxlength': 200,
                                                              'placeholder': 'Nome de Usuario'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
                                                                  'placeholder': _('Senha')}))
 
 
 class FormObject(BaseForm):
-    name_item = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 100,
+    name_item = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                              'maxlength': 100,
                                                               'placeholder': _('Nome do Objeto')}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'required': False, 'maxlength': 300,
+    description = forms.CharField(widget=forms.Textarea(attrs={'required': False,
+                                                               'maxlength': 300,
                                                                'placeholder': _('Descricao do Objeto')}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
 
 
 class FormObjectView(BaseForm):
-    name_item = forms.CharField(widget=forms.TextInput(attrs={'readonly': True, 'maxlength': 100,
+    name_item = forms.CharField(widget=forms.TextInput(attrs={'readonly': True,
+                                                              'maxlength': 100,
                                                               'placeholder': _('Nome do Objeto')}))
     description = forms.CharField(widget=forms.Textarea(attrs={'maxlength': 300,
                                                                'placeholder': _('Descricao do Objeto')}))
