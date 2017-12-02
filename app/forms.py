@@ -3,7 +3,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from app.models import object_type, Item, Requirement
+from app.models import object_type, Item, Requirement, Audit
 
 
 class BaseForm(forms.Form):

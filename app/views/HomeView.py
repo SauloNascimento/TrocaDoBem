@@ -21,12 +21,13 @@ class HomeView(ListView):
     queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
 
 
-
 class CollectView(TemplateView):
     template_name = 'collect.html'
 
+
 class ContributeView(TemplateView):
     template_name = 'contribute.html'
+
 
 class InstitutesView(ListView):
     template_name = 'institutes.html'
