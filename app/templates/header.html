@@ -21,106 +21,106 @@
                                 class="fa fa-twitter"></i></a>
                     </div>
 
-                        {% if request.user.is_authenticated %}
-                             <div class="login" style="width: 75%">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <p class="" style="font-size: 14px;">Olá, {{ request.user.first_name }}</p>
-                                </div>
-                                <div class="col-xs-3">
-                                    <a href="{% url 'painel' %}"><i class="fa fa-sign-in"></i>
-                                        <span class="hidden-xs text-uppercase">Painel</span></a>
-                                </div>
-                                <div class="col-xs-3">
-                                    <a href="{% url "auth_logout" %}"><i class="fa fa-sign-in"></i>
-                                        <span class="hidden-xs text-uppercase">Logout</span></a>
-                                </div>
-
-
+                    {% if request.user.is_authenticated %}
+                        <div class="login" style="width: 75%">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p class="" style="font-size: 14px;">Olá, {{ request.user.first_name }}</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <a href="{% url 'painel' %}"><i class="fa fa-sign-in"></i>
+                                    <span class="hidden-xs text-uppercase">Painel</span></a>
+                            </div>
+                            <div class="col-xs-3">
+                                <a href="{% url "auth_logout" %}"><i class="fa fa-sign-in"></i>
+                                    <span class="hidden-xs text-uppercase">Logout</span></a>
                             </div>
 
-                        {% else %}
-                            <div class="login">
-                            <a href="{% url "login" %}"><i class="fa fa-sign-in"></i>
-                                <span class="hidden-xs text-uppercase">Log in</span></a>
-                        {% endif %}
+
+                        </div>
+
+                    {% else %}
+                        <div class="login">
+                        <a href="{% url "login" %}"><i class="fa fa-sign-in"></i>
+                            <span class="hidden-xs text-uppercase">Log in</span></a>
+                    {% endif %}
                     </div>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- *** TOP END *** -->
+        <!-- *** TOP END *** -->
 
-    <!-- *** NAVBAR ***
-_________________________________________________________ -->
+        <!-- *** NAVBAR ***
+    _________________________________________________________ -->
 
-    <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+        <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
-        <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+            <div class="navbar navbar-default yamm" role="navigation" id="navbar">
 
-            <div class="container">
-                <div class="navbar-header">
+                <div class="container">
+                    <div class="navbar-header">
 
-                    <a class="navbar-brand home" href="/">
-                        <h1 style="margin-top: 2px;"> Troca do Bem</h1>
-                    </a>
+                        <a class="navbar-brand home" href="/">
+                            <h1 style="margin-top: 2px;"> Troca do Bem</h1>
+                        </a>
 
-                    <div class="navbar-buttons">
-                        <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
-                                data-target="#navigation">
-                            <span class="sr-only">Toggle navigation</span>
-                            <i class="fa fa-align-justify"></i>
-                        </button>
+                        <div class="navbar-buttons">
+                            <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
+                                    data-target="#navigation">
+                                <span class="sr-only">Toggle navigation</span>
+                                <i class="fa fa-align-justify"></i>
+                            </button>
+                        </div>
                     </div>
+                    <!--/.navbar-header -->
+
+                    <div class="navbar-collapse collapse" id="navigation">
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li id="" class="">
+                                <a id="home_link" href="/">Home</a>
+                            </li>
+                            <li id="menu_instituicoes" class="">
+                                <a id="instituicoes_link" href="{% url 'menu_institutes' %}">Instituições</a>
+                            </li>
+                            <li id="menu_contribua" class="">
+                                <a id="contribua_link" href="{% url 'contribute_institutes' %}">Contribua</a>
+                            </li>
+                            <li id="menu_arrecade" class="">
+                                <a id="arrecade_link" href="{% url 'collect_institutes' %}">Arrecade</a>
+                            </li>
+                            <li id="menu_noticias" class="">
+                                <a id="noticias_link" href="#noticias">Notícias</a>
+                            </li>
+                            <li id="menu_contato" class="">
+                                <a id="contato_link" href="#contato">Contato</a>
+                            </li>
+                            <li class="dropdown">
+                                <a id="inscrevase_link" class="dropdown-toggle"
+                                   data-toggle="dropdown">Inscreva-se<b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a id="register_user_link" href="{% url "register_user" %}">Usuário</a></a>
+                                    </li>
+                                    <li>
+                                        <a id="register_instituicao_link"
+                                           href="{% url "register_institute" %}">Instituição</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--/.nav-collapse -->
+
                 </div>
-                <!--/.navbar-header -->
-
-                <div class="navbar-collapse collapse" id="navigation">
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li id="" class="">
-                            <a id="home_link" href="/">Home</a>
-                        </li>
-                        <li id="menu_instituicoes" class="">
-                            <a id="instituicoes_link" href="#">Instituições</a>
-                        </li>
-                        <li id="menu_contribua" class="">
-                            <a id="contribua_link" href="#">Contribua</a>
-                        </li>
-                        <li id="menu_arrecade" class="">
-                            <a id="arrecade_link" href="#">Arrecade</a>
-                        </li>
-                        <li id="menu_noticias" class="">
-                            <a id="noticias_link" href="#noticias">Notícias</a>
-                        </li>
-                        <li id="menu_contato" class="">
-                            <a id="contato_link" href="#contato">Contato</a>
-                        </li>
-                        <li class="dropdown">
-                            <a id="inscrevase_link" class="dropdown-toggle"
-                               data-toggle="dropdown">Inscreva-se<b
-                                    class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a id="register_user_link" href="{% url "register_user" %}">Usuário</a></a>
-                                </li>
-                                <li>
-                                    <a id="register_instituicao_link"
-                                       href="{% url "register_institute" %}">Instituição</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                </div>
-                <!--/.nav-collapse -->
 
             </div>
-
+            <!-- /#navbar -->
         </div>
-        <!-- /#navbar -->
-    </div>
-    <!-- *** NAVBAR END *** -->
+        <!-- *** NAVBAR END *** -->
 </header>
