@@ -4,9 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
-from app.models import Post, Message
+from app.models import Post, Message, Institute
 
 """HomeView.py: Especifica a pagina inicial da aplicacao."""
 
@@ -19,6 +19,20 @@ class HomeView(ListView):
     model = Post
     context_object_name = 'recent_posts'
     queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
+
+
+
+class CollectView(TemplateView):
+    template_name = 'collect.html'
+
+class ContributeView(TemplateView):
+    template_name = 'contribute.html'
+
+class InstitutesView(ListView):
+    template_name = 'institutes.html'
+    model = Institute
+    context_object_name = 'institutes'
+    queryset = Institute.objects.all().order_by('-created_at')[:6]
 
 
 def submit_message(request):
