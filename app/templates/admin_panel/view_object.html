@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <div class="box box-primary"  style="margin-top: 30px;">
+    <div class="box box-primary" style="margin-top: 30px;">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -24,24 +24,58 @@
                     <label for="exampleInputPassword1">Descrição: </label>
                     {{ object.item.description }}
                 </div>
+                {% if not item.owner.common_user_set.first.anonymous %}
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Doador: </label>
+                        <div class="row">
+                            <div class="col-md-2">
+
+                                {{ object.item.owner.first_name }}
+                            </div>
+                            <div class="col-md-3 pull-left">
+                                <a href="{% url 'view-profile' object.item.owner.pk %}" class="btn btn-default"><i class="fa fa-eye"></i> Ver Perfil</a>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endif %}
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Dono: </label>
-                    {{ object.item.owner.first_name }}
+                    <label for="exampleInputPassword1">Data de Doação: </label>
+                    {{ object.item.created_at }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Status: </label>
+                    {% if object.item.status %}
+                        <label class="label label-success"><i class=""></i>
+                            DISPONÍVEL</label>
+                    {% else %}
+                        <label class="label label-danger"><i class=""></i> DOADO</label>
+                    {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Tipo de Objeto: </label>
                     {{ object.type }}
                 </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Foto: </label>
+                    {% if object.item.photo %}
+                        <img src="{{ object.item.photo }}" class="img-responsive"/>
+                    {% else %}
+                        <img src="{% static '300x300.png' %}" class="img-responsive"/>
+                    {% endif %}
+
+                </div>
             </div>
             <!-- /.box-body -->
 
-{#            <div class="box-footer">#}
-{#                {% if object.item.owner.pk == user.pk %}#}
-{#                    <a href="{% url 'change_object' object.item.pk %}" id="btn_alterar"#}
-{#                       class="btn btn-primary pull-right">Alterar</a>#}
-{#                {% endif %}#}
-{#                <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>#}
-{#            </div>#}
+            {#            <div class="box-footer">#}
+            {#                {% if object.item.owner.pk == user.pk %}#}
+            {#                    <a href="{% url 'change_object' object.item.pk %}" id="btn_alterar"#}
+            {#                       class="btn btn-primary pull-right">Alterar</a>#}
+            {#                {% endif %}#}
+            {#                <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>#}
+            {#            </div>#}
 
             <div class=" box-footer form-group" style="margin-top: 35px;">
 
@@ -56,6 +90,10 @@
                             {% if object.item.owner.pk == user.pk %}
                                 <a href="{% url 'change_object' object.item.pk %}" id="btn_alterar"
                                    class="btn btn-primary pull-right">Alterar</a>
+
+                            {% else %}
+                                 <a href="#" id="btn_requisitar"
+                                   class="btn btn-primary pull-right">Requisitar Item</a>
                             {% endif %}
                         </div>
                     </div>
