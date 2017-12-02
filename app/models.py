@@ -71,6 +71,7 @@ class Item(TimeStamped):
     description = models.CharField(max_length=300)
     name_item = models.CharField(max_length=100)
     photo = models.URLField()
+    status = models.BooleanField(default=True)
 
     def __unicode__(self):
         return u'%s' % self.name_item
