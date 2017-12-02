@@ -8,7 +8,7 @@
             <div class="box box-primary">
                 <!-- form start -->
                 <div class="box-header">
-{#                    <p> Minhas Doações</p>#}
+                    {#                    <p> Minhas Doações</p>#}
                     <a href="{% url 'add_object' %}" class="btn btn-primary">Cadastrar Doação</a>
                 </div>
                 <div class="box-body">
@@ -18,7 +18,7 @@
                                 <table id="table" class="table table-bordered table-striped" class="display"
                                        cellspacing="0" width="100%">
                                     <thead>
-                                     <tr>
+                                    <tr>
                                         <th>ID</th>
                                         <th>ITEM</th>
                                         <th>TIPO</th>
@@ -40,13 +40,11 @@
                                                 {% endif %}
                                             </td>
                                             <td>
-                                                {% if item.status == 'DOADO' %}
-                                                    <label class="label label-danger"><i class=""></i> DOADO</label>
-                                                {% elif item.status == 'DISPONIVEL' %}
-
-                                                {% else %}
+                                                {% if item.status %}
                                                     <label class="label label-success"><i class=""></i>
                                                         DISPONÍVEL</label>
+                                                {% else %}
+                                                    <label class="label label-danger"><i class=""></i> DOADO</label>
                                                 {% endif %}
                                             </td>
                                             <td>{{ item.created_at|date:"d/m/Y G:i" }}</td>
