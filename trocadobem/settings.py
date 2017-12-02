@@ -72,6 +72,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # 'libraries': {
+            #     'divide': 'app.templatetags.filters.divide',
+            #
+            # }
         },
     },
 ]

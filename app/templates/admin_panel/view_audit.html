@@ -1,0 +1,77 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="box box-primary"  style="margin-top: 30px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <center style="font-size: 20px;">Visualização Necessidade</center>
+                </h3>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" method="post"
+              style="margin-top: 20px; margin-left: 15%;margin-right: 10% ">
+            <div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Item: </label>
+                    {{ object.name }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Status: </label>
+                    {{ object.status }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Descrição: </label>
+                    {{ object.description }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Dono: </label>
+                    {{ object.owner.first_name }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Tipo de Objeto: </label>
+                    {{ object.type }}
+                </div>
+            </div>
+            <!-- /.box-body -->
+
+{#            <div class="box-footer">#}
+{#                {% if object.item.owner.pk == user.pk %}#}
+{#                    <a href="{% url 'change_object' object.item.pk %}" id="btn_alterar"#}
+{#                       class="btn btn-primary pull-right">Alterar</a>#}
+{#                {% endif %}#}
+{#                <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>#}
+{#            </div>#}
+
+            <div class=" box-footer form-group" style="margin-top: 35px;">
+
+                <div class="col-md-8 col-md-offset-3">
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default
+                                 pull-left">Voltar</a>
+                        </div>
+                        <div class="col-sm-4">
+                            {% if object.owner.pk == user.pk %}
+                                <a href="{% url 'change_requirement' object.pk %}" id="btn_alterar"
+                                   class="btn btn-primary pull-right">Alterar</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#list_my_requirements').addClass('active');
+        });
+    </script>
+
+{% endblock %}

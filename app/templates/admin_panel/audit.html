@@ -1,0 +1,96 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+{% load filters %}
+
+{% block content %}
+    {# Example content #}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="table" class="table table-bordered table-striped" class="display"
+                                       cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>DOADOR</th>
+                                        <th>ITEM</th>
+                                        <th>TIPO</th>
+                                        <th>STATUS</th>
+                                        <th>PROGRESSO</th>
+                                        <th>CRIADO EM</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for audit in audits %}
+                                        <tr>
+                                            <td>{{ audit.id }}</td>
+                                            <td>
+                                                {% if not audit.donor.common_user_set.first.anonymous %}
+                                                    <a href="#">{{ audit.donor.first_name }}</a>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'view-object' audit.item.pk %}">{{ audit.item.name_item }}</a>
+                                            </td>
+                                            <td>
+                                                {% if audit.item.service_set.first %}
+                                                    Serviço
+                                                {% else %}
+                                                    {{ audit.item.object_set.first.type }}
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if audit.is_deferred == 'DEFERIDO' %}
+                                                    <label class="label label-success"><i class=""></i>
+                                                        DEFERIDO</label>
+
+                                                {% elif audit.is_deferred == 'INDEFERIDO' %}
+                                                    <label class="label label-danger"><i class=""></i>
+                                                        INDEFERIDO</label>
+                                                {% else %}
+                                                    <label class="label label-warning"><i class=""></i>
+                                                        EM ANÁLISE</label>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% with  audit.step_set.all|length as stepslen %}
+                                                    <div class="progress">
+                                                        <small class="pull-right">{{ stepslen|divide:4 }}%</small>
+                                                        <div class="progress-bar progress-bar-info"
+                                                             style="width: {{ stepslen|divide:4 }}%"
+                                                             role="progressbar" aria-valuenow="{{ stepslen|divide:4 }}"
+                                                             aria-valuemin="0"
+                                                             aria-valuemax="100">
+                                                            <span class="sr-only">{{ stepslen|divide:4 }} Completo</span>
+                                                        </div>
+                                                    </div>
+
+                                                {% endwith %}
+                                            </td>
+                                            <td>{{ audit.created_at|date:"d/m/Y G:i" }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#list_my_audits').addClass('active');
+        });
+    </script>
+    <!-- /.row -->
+
+{% endblock %}
