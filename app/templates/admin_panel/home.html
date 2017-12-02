@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-md-12">
             {% for item in itens %}
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="height: 400px;">
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">{{ item.name_item }}</h3>
-                            <h6 class="box-comment">{{ item.description }}</h6>
+                            <h6 class="box-comment">Doador: {{ item.owner.first_name }}</h6>
 
                         </div>
                         <!-- /.box-header -->
