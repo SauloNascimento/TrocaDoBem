@@ -12,6 +12,7 @@
     {% include 'header.html' %}
     {% block content %}
 
+
     {% endblock %}
     {% include 'footer.html' %}
 
@@ -91,7 +92,7 @@
         });
 
         $('[name=cep]').focusout(function () {
-{#            $('#loading').show();#}
+            $('#loading').show();
             var cep = $('[name=cep]');
             var cepCode = cep.val();
             if (cepCode.length <= 0) return;
@@ -127,18 +128,22 @@
         $('[name=cnpj]').inputmask('99.999.999/9999-99');
 
         $('[name=cpf]').focusout(function () {
-           var cpf = $(this).val();
-           if(!valida_cpf(cpf)){
-               swal("CPF Inválido", "Insira um CPF válido", "error");
-           }
+            var cpf = $(this).val();
+            if (!valida_cpf(cpf)) {
+                $('#loading').hide();
+                swal("CPF Inválido", "Insira um CPF válido", "error");
+            }
         });
 
-        $('[name=cnpj]').focusout(function () {
-           var cnpj= $(this).val();
-           if(!valida_cnpj(cnpj)){
-               swal("CNPJ Inválido", "Insira um CNPJ válido", "error");
-           }
+        $('[name=submit]').click(function () {
+            $('#loading').show();
+            var cnpj = $('[name=cnpj]').val() || "";
+            if (!valida_cnpj(cnpj) && cnpj != "") {
+                $('#loading').hide();
+                swal("CNPJ Inválido", "Insira um CNPJ válido", "error");
+            }
         });
+
 
         $('[name=date_of_birth]').change(function () {
             var idade = 0;
