@@ -22,10 +22,10 @@ class HomeView(ListView):
 
 
 
-class collectView(TemplateView):
+class CollectView(TemplateView):
     template_name = 'collect.html'
 
-class contributeView(TemplateView):
+class ContributeView(TemplateView):
     template_name = 'contribute.html'
 
 class InstitutesView(ListView):

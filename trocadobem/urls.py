@@ -3,7 +3,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, collectView, contributeView
+from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, CollectView, ContributeView
 from app.views.LoginView import LoginView, LogoutView
 from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
 from app.views.PainelView import PainelView, ProfileUserView
@@ -55,7 +55,7 @@ urlpatterns = [
     url(r'^requirements/(?P<pk>[0-9]+)/edit/$', RequirementUpdateView.as_view(), name='change_requirement'),
     url(r'^requirements/(?P<pk>[0-9]+)/delete/$', delete_requirement, name='delete_requirement'),
     url(r'^institutes/$', InstitutesView.as_view(), name='menu_institutes'),
-    url(r'^collect/$', collectView.as_view(), name='collect_institutes'),
-    url(r'^contribute/$', contributeView.as_view(), name='contribute_institutes'),
+    url(r'^collect/$', CollectView.as_view(), name='collect_institutes'),
+    url(r'^contribute/$', ContributeView.as_view(), name='contribute_institutes'),
     url(r'^profile/(?P<pk>[0-9]+)/$', ProfileUserView.as_view(), name='view-profile'),
 ]
