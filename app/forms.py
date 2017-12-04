@@ -3,7 +3,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from app.models import object_type, Item, Requirement
+from app.models import object_type, Item, Requirement, Audit
 
 
 class BaseForm(forms.Form):
@@ -77,12 +77,12 @@ class FormRegisterInstitute(FormBaseAddress):
     phone = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                           'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
-    site = forms.CharField(widget=forms.TextInput(attrs={'required': False,
-                                                         'maxlength': 150,
-                                                         'placeholder': _('Site')}))
-    social = forms.CharField(widget=forms.TextInput(attrs={'required': False,
-                                                           'maxlength': 150,
-                                                           'placeholder': _('Rede Social')}))
+    site = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
+                                                                         'maxlength': 150,
+                                                                         'placeholder': _('Site')}))
+    social = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
+                                                                           'maxlength': 150,
+                                                                           'placeholder': _('Rede Social')}))
 
     def __init__(self, *args, **kwargs):
         super(FormRegisterInstitute, self).__init__(*args, **kwargs)

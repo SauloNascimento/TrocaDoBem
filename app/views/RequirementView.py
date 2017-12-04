@@ -10,13 +10,14 @@ from django.views.generic import ListView
 from django.views.generic import UpdateView
 
 from app.forms import FormRequirement
+from app.mixins.CustomContextMixin import CustomContextMixin
 from app.models import Requirement
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
 
 
-class AddRequirementView(CreateView):
+class AddRequirementView(LoginRequiredMixin, CreateView, CustomContextMixin):
     """
     Displays the login form.
     """
@@ -39,7 +40,7 @@ class AddRequirementView(CreateView):
         return super(AddRequirementView, self).form_invalid(form)
 
 
-class RequirementView(LoginRequiredMixin, DetailView):
+class RequirementView(LoginRequiredMixin, DetailView, CustomContextMixin):
     login_url = '/login'
     context_object_name = 'object'
     model = Requirement
@@ -49,7 +50,7 @@ class RequirementView(LoginRequiredMixin, DetailView):
     slug_url_kwarg = 'pk'
 
 
-class RequirementListView(LoginRequiredMixin, ListView):
+class RequirementListView(LoginRequiredMixin, ListView, CustomContextMixin):
     login_url = '/login/'
     model = Requirement
     context_object_name = 'requirements'
@@ -59,7 +60,7 @@ class RequirementListView(LoginRequiredMixin, ListView):
         return Requirement.objects.filter(owner=self.request.user).order_by('-created_at')
 
 
-class RequirementUpdateView(LoginRequiredMixin, UpdateView):
+class RequirementUpdateView(LoginRequiredMixin, UpdateView, CustomContextMixin):
     login_url = '/login/'
     model = Requirement
     form_class = FormRequirement

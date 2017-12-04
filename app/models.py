@@ -1,3 +1,4 @@
+# coding=utf-8
 from __future__ import unicode_literals
 
 from ckeditor.fields import RichTextField
@@ -71,6 +72,7 @@ class Item(TimeStamped):
     description = models.CharField(max_length=300)
     name_item = models.CharField(max_length=100)
     photo = models.URLField()
+    status = models.BooleanField(default=True)
 
     def __unicode__(self):
         return u'%s' % self.name_item
@@ -179,10 +181,73 @@ class Requirement(TimeStamped):
     def __unicode__(self):
         return u'%s' % self.name
 
+    def __str__(self):
+        return u'%s' % self.name
+
 
 class Match(TimeStamped):
-    requirement = models.OneToOneField(Requirement)
-    item = models.OneToOneField(Item)
+    requirement = models.ForeignKey(Requirement, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     def __unicode__(self):
-        return u'%s' % self.requirement.name
+        return u'%s : %s - %s' % (self.requirement.name, self.requirement.type, self.requirement.owner)
+
+    def __str__(self):
+        return u'%s : %s - %s' % (self.requirement.name, self.requirement.type, self.requirement.owner)
+
+
+accepted_type = (
+    ('ACEITO', 'ACEITO'),
+    ('EM ANÁLISE', 'EM ANÁLISE'),
+    ('RECUSADO', 'RECUSADO')
+)
+
+
+class Notification(TimeStamped):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    match = models.ForeignKey(Match, on_delete=models.CASCADE)
+    status = models.CharField(choices=accepted_type, max_length=100, default='EM ANÁLISE')
+    is_accepted = models.BooleanField(default=False)
+    is_read = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return u'%s - Match: %s' % (self.user.first_name, self.match)
+
+    def __str__(self):
+        return u'%s - Match: %s' % (self.user.first_name, self.match)
+
+
+deferred_type = (
+    ('DEFERIDO', 'DEFERIDO'),
+    ('EM ANÁLISE', 'EM ANÁLISE'),
+    ('INDEFERIDO', 'INDEFERIDO')
+)
+
+
+class Audit(TimeStamped):
+    new_owner = models.ForeignKey(User, related_name='new_owner', on_delete=models.CASCADE, )
+    donor = models.ForeignKey(User, related_name='donor', on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    is_complete = models.BooleanField(default=False)
+    is_deferred = models.CharField(choices=deferred_type, max_length=100, default='EM ANÁLISE')
+
+    def __unicode__(self):
+        return u'%s - %s' % (self.new_owner.first_name, self.item)
+
+    def __str__(self):
+        return u'%s - %s' % (self.new_owner.first_name, self.item)
+
+
+class Step(TimeStamped):
+    audit = models.ForeignKey(Audit, on_delete=models.CASCADE)
+    note = models.TextField()
+
+    def __unicode__(self):
+        return u'Step to Audit: %s' % (self.audit)
+
+    def __str__(self):
+        return u'Step to Audit: %s' % (self.audit)
+
+
+class ItemCollect(TimeStamped):
+    audit = models.OneToOneField(Audit, on_delete=models.CASCADE)
