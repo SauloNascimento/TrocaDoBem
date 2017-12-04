@@ -17,8 +17,8 @@ RUN apt-get install -y --no-install-recommends \
   libgdbm-dev \
   libc6-dev \
   libbz2-dev \
-  
-RUN apt-get clean
+  && rm -rf /var/lib/apt/lists/*
+
 RUN pip install --upgrade pip
 RUN pip install --upgrade virtualenv
 
