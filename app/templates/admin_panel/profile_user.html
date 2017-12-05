@@ -1,0 +1,142 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="col-md-6">
+
+                    <!-- Profile Image -->
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            {% if user.common_user_set.first %}
+                                {% if user.common_user_set.first.photo %}
+                                    <img class="profile-user-img img-responsive img-circle"
+                                         src="{{ user.common_user_set.first.photo }}"
+                                         alt="User profile picture">
+                                {% else %}
+                                    <img class="profile-user-img img-responsive img-circle"
+                                         src="{% static '300x300.png' %}"
+                                         alt="User profile picture">
+                                {% endif %}
+                            {% else %}
+                                {% if user.institute_set.first.photo %}
+                                    <img class="profile-user-img img-responsive img-circle"
+                                         src="{{ user.institute_set.first.photo }}"
+                                         alt="User profile picture">
+                                {% else %}
+                                    <img class="profile-user-img img-responsive img-circle"
+                                         src="{% static '300x300.png' %}"
+                                         alt="User profile picture">
+                                {% endif %}
+                            {% endif %}
+
+                            <h3 class="profile-username text-center">{{ user.first_name }} {{ user.last_name }}</h3>
+
+                            {% if user.common_user_set.first %}
+                                <p class="text-muted text-center">Usuário</p>
+                            {% else %}
+                                <p class="text-muted text-center">Instituição</p>
+                            {% endif %}
+
+
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b>Doações Recebidas</b> <a class="pull-right">543</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Doações Realizadas</b> <a class="pull-right">13,287</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Informações</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <strong><i class="fa fa-book margin-r-5"></i> Telefone</strong>
+
+                            <p class="text-muted">
+                                {% if user.common_user_set.first %}
+                                    {{ user.common_user_set.first.phone }}
+                                {% else %}
+                                    {{ user.institute_set.first.phone }}
+                                {% endif %}
+
+                            </p>
+
+                            <hr>
+
+                            <strong><i class="fa fa-map-marker margin-r-5"></i> Endereço</strong>
+
+                            <p class="text-muted">
+                                {% if user.common_user_set.first %}
+                                    {{ user.common_user_set.first.address }}, {{ user.common_user_set.first.number }},
+                                    {{ user.common_user_set.first.district }}, {{ user.common_user_set.first.city }},
+                                    {{ user.common_user_set.first.state }} - {{ user.common_user_set.first.cep }}
+                                {% else %}
+                                    {{ user.institute_set.first.address }}, {{ user.institute_set.first.number }},
+                                    {{ user.institute_set.first.district }}, {{ user.institute_set.first.city }},
+                                    {{ user.institute_set.first.state }} - {{ user.institute_set.first.cep }}
+                                {% endif %}
+                            </p>
+
+                            <hr>
+
+                            {#                                <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>#}
+                            {##}
+                            {#                                <p>#}
+                            {#                                    <span class="label label-danger">UI Design</span>#}
+                            {#                                    <span class="label label-success">Coding</span>#}
+                            {#                                    <span class="label label-info">Javascript</span>#}
+                            {#                                    <span class="label label-warning">PHP</span>#}
+                            {#                                    <span class="label label-primary">Node.js</span>#}
+                            {#                                </p>#}
+
+                            {#                <hr>#}
+
+                            <strong><i class="fa fa-file-text-o margin-r-5"></i> Email</strong>
+
+                            <p>
+                                {{ user.email }}
+                            </p>
+                        </div>
+
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+            <div class=" box-footer form-group" style="margin-top: 35px;">
+
+                <div class="col-md-8 col-md-offset-3">
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <a href="#" id="btn_cancelar" class="btn btn-default btn-block
+                                 pull-left">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#btn_cancelar').click(function () {
+                return window.history.back();
+            });
+        });
+    </script>
+
+{% endblock %}

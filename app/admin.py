@@ -29,27 +29,43 @@ class ImagePostInline(admin.TabularInline):
 
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'created_at')
+    list_display = ('id', 'name', 'email', 'created_at')
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('name_item', 'owner', 'description', 'created_at')
+    list_display = ('id', 'name_item', 'owner', 'description', 'created_at')
 
 
 class ObjectAdmin(admin.ModelAdmin):
-    list_display = ('item', 'type', 'created_at')
+    list_display = ('id', 'item', 'type', 'created_at')
 
 
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('item', 'created_at')
+    list_display = ('id', 'item', 'created_at')
 
 
 class CommonUserAdmin(admin.ModelAdmin):
-    list_display = ('user', 'created_at')
+    list_display = ('id', 'user', 'created_at')
 
 
 class InstituteAdmin(admin.ModelAdmin):
-    list_display = ('user', 'cnpj', 'created_at')
+    list_display = ('id', 'user', 'cnpj', 'created_at')
+
+
+class RequirementAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'type', 'owner', 'created_at', 'status')
+
+
+class NotificationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'match', 'status', 'is_accepted', 'created_at', 'is_read')
+
+
+class AuditAdmin(admin.ModelAdmin):
+    list_display = ('id', 'new_owner', 'donor', 'item', 'is_complete', 'is_deferred')
+
+
+class StepAdmin(admin.ModelAdmin):
+    list_display = ('id', 'audit', 'note', )
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -75,3 +91,7 @@ admin.site.register(Object, ObjectAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(CommonUser, CommonUserAdmin)
 admin.site.register(Institute, InstituteAdmin)
+admin.site.register(Requirement, RequirementAdmin)
+admin.site.register(Notification, NotificationAdmin)
+admin.site.register(Audit, AuditAdmin)
+admin.site.register(Step, StepAdmin)

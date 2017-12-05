@@ -1,3 +1,4 @@
+# coding=utf-8
 from __future__ import unicode_literals
 
 from ckeditor.fields import RichTextField
@@ -24,7 +25,7 @@ class BaseAddress(models.Model):
     city = models.CharField(max_length=100, blank=True)
     district = models.CharField(max_length=100, blank=True)
     address = models.CharField(max_length=100, blank=True)
-    number = models.CharField(max_length=5, blank=True)
+    number = models.CharField(max_length=5, blank=True, null=True)
     complement = models.CharField(max_length=200, blank=True)
 
 
@@ -38,12 +39,14 @@ class Institute(TimeStamped, BaseAddress):
     cnpj = models.CharField(max_length=100, default="Nao Informado")
     description = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=30, blank=True)
+    site = models.CharField(max_length=30, default="Nao Informado")
+    social = models.CharField(max_length=30, default="Nao Informado")
 
     def __str__(self):
         return self.user.first_name
 
     def __unicode__(self):
-        return u'%s' % (self.user.first_name)
+        return u'%s' % self.user.first_name
 
 
 class CommonUser(TimeStamped, BaseAddress):
@@ -58,7 +61,7 @@ class CommonUser(TimeStamped, BaseAddress):
     anonymous = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return u'%s' % (self.user.first_name)
+        return u'%s' % self.user.first_name
 
     def __str__(self):
         return self.user.first_name
@@ -69,9 +72,10 @@ class Item(TimeStamped):
     description = models.CharField(max_length=300)
     name_item = models.CharField(max_length=100)
     photo = models.URLField()
+    status = models.BooleanField(default=True)
 
     def __unicode__(self):
-        return u'%s' % (self.name_item)
+        return u'%s' % self.name_item
 
     def __str__(self):
         return self.name_item
@@ -98,7 +102,7 @@ class Object(TimeStamped):
     type = models.CharField(max_length=50, choices=object_type)
 
     def __unicode__(self):
-        return u'%s' % (self.item.name_item)
+        return u'%s' % self.item.name_item
 
     def __str__(self):
         return self.item.name_item
@@ -112,7 +116,7 @@ class Service(TimeStamped):
     item = models.ForeignKey(Item, on_delete=models.CASCADE, unique=True)
 
     def __unicode__(self):
-        return u'%s' % (self.item.name_item)
+        return u'%s' % self.item.name_item
 
     def __str__(self):
         return self.item.name_item
@@ -126,7 +130,7 @@ class Post(TimeStamped):
     slug = models.SlugField(unique=True)
 
     def __unicode__(self):
-        return u'%s' % (self.title)
+        return u'%s' % self.title
 
     def get_description(self):
         return safe(self.text[:200])
@@ -159,3 +163,91 @@ class Message(models.Model):
 
     def __unicode__(self):
         return u'%s - %s' % (self.name, self.email)
+
+
+class Requirement(TimeStamped):
+    class Meta:
+        verbose_name = "Necessidade"
+        verbose_name_plural = "Necessidades"
+
+    name = models.CharField(max_length=100, blank=True, null=True)
+    type = models.CharField(max_length=50, choices=object_type)
+    status = models.BooleanField(default=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    description = models.TextField(max_length=300)
+
+    # photo = models.URLField()
+
+    def __unicode__(self):
+        return u'%s' % self.name
+
+    def __str__(self):
+        return u'%s' % self.name
+
+
+class Match(TimeStamped):
+    requirement = models.ForeignKey(Requirement, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+
+    def __unicode__(self):
+        return u'%s : %s - %s' % (self.requirement.name, self.requirement.type, self.requirement.owner)
+
+    def __str__(self):
+        return u'%s : %s - %s' % (self.requirement.name, self.requirement.type, self.requirement.owner)
+
+
+accepted_type = (
+    ('ACEITO', 'ACEITO'),
+    ('EM ANÁLISE', 'EM ANÁLISE'),
+    ('RECUSADO', 'RECUSADO')
+)
+
+
+class Notification(TimeStamped):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    match = models.ForeignKey(Match, on_delete=models.CASCADE)
+    status = models.CharField(choices=accepted_type, max_length=100, default='EM ANÁLISE')
+    is_accepted = models.BooleanField(default=False)
+    is_read = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return u'%s - Match: %s' % (self.user.first_name, self.match)
+
+    def __str__(self):
+        return u'%s - Match: %s' % (self.user.first_name, self.match)
+
+
+deferred_type = (
+    ('DEFERIDO', 'DEFERIDO'),
+    ('EM ANÁLISE', 'EM ANÁLISE'),
+    ('INDEFERIDO', 'INDEFERIDO')
+)
+
+
+class Audit(TimeStamped):
+    new_owner = models.ForeignKey(User, related_name='new_owner', on_delete=models.CASCADE, )
+    donor = models.ForeignKey(User, related_name='donor', on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    is_complete = models.BooleanField(default=False)
+    is_deferred = models.CharField(choices=deferred_type, max_length=100, default='EM ANÁLISE')
+
+    def __unicode__(self):
+        return u'%s - %s' % (self.new_owner.first_name, self.item)
+
+    def __str__(self):
+        return u'%s - %s' % (self.new_owner.first_name, self.item)
+
+
+class Step(TimeStamped):
+    audit = models.ForeignKey(Audit, on_delete=models.CASCADE)
+    note = models.TextField()
+
+    def __unicode__(self):
+        return u'Step to Audit: %s' % (self.audit)
+
+    def __str__(self):
+        return u'Step to Audit: %s' % (self.audit)
+
+
+class ItemCollect(TimeStamped):
+    audit = models.OneToOneField(Audit, on_delete=models.CASCADE)
