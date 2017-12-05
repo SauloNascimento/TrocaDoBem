@@ -136,11 +136,12 @@ class FormRequirement(forms.ModelForm, BaseForm):
 class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
     cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
                                                         'placeholder': _('CPF')}))
-    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+    phone = forms.CharField(required=False,
+                            widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
-    birth_date = forms.CharField(
+    birth_date = forms.CharField(required=False,
         widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'), 'maxlength': 150}))
-    anonymous = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=True, label=u'Type')
+    anonymous = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=False, label=u'Type')
 
     class Meta:
         model = User
@@ -154,9 +155,9 @@ class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
 class FormInstituteUpdate(forms.ModelForm, FormBaseAddress):
     cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
                                                          'placeholder': _('CNPJ')}))
-    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+    phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'maxlength': 300,
+    description = forms.CharField(required=False, widget=forms.Textarea(attrs={'maxlength': 300,
                                                                'placeholder': _('Descricao da Instituicao')}))
     site = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
                                                                          'maxlength': 150,

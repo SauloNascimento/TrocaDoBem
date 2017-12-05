@@ -29,5 +29,5 @@ class PainelView(LoginRequiredMixin, ListView, CustomContextMixin):
 class ProfileUserView(LoginRequiredMixin, DetailView, CustomContextMixin):
     login_url = '/login/'
     template_name = 'admin_panel/profile_user.html'
-    context_object_name = 'user'
+    context_object_name = 'user_l'
     model = User
