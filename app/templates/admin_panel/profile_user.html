@@ -9,10 +9,10 @@
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            {% if user.common_user_set.first %}
-                                {% if user.common_user_set.first.photo %}
+                            {% if user_l.commonuser %}
+                                {% if user_l.commonuser.photo %}
                                     <img class="profile-user-img img-responsive img-circle"
-                                         src="{{ user.common_user_set.first.photo }}"
+                                         src="{{ user_l.commonuser.photo }}"
                                          alt="User profile picture">
                                 {% else %}
                                     <img class="profile-user-img img-responsive img-circle"
@@ -20,9 +20,9 @@
                                          alt="User profile picture">
                                 {% endif %}
                             {% else %}
-                                {% if user.institute_set.first.photo %}
+                                {% if user_l.institute.photo %}
                                     <img class="profile-user-img img-responsive img-circle"
-                                         src="{{ user.institute_set.first.photo }}"
+                                         src="{{ user_l.institute.photo }}"
                                          alt="User profile picture">
                                 {% else %}
                                     <img class="profile-user-img img-responsive img-circle"
@@ -31,9 +31,9 @@
                                 {% endif %}
                             {% endif %}
 
-                            <h3 class="profile-username text-center">{{ user.first_name }} {{ user.last_name }}</h3>
+                            <h3 class="profile-username text-center">{{ user_l.first_name }} {{ user_l.last_name }}</h3>
 
-                            {% if user.common_user_set.first %}
+                            {% if user_l.commonuser.first %}
                                 <p class="text-muted text-center">Usuário</p>
                             {% else %}
                                 <p class="text-muted text-center">Instituição</p>
@@ -65,10 +65,10 @@
                             <strong><i class="fa fa-book margin-r-5"></i> Telefone</strong>
 
                             <p class="text-muted">
-                                {% if user.common_user_set.first %}
-                                    {{ user.common_user_set.first.phone }}
+                                {% if user_l.commonuser %}
+                                    {{ user_l.commonuser.phone }}
                                 {% else %}
-                                    {{ user.institute_set.first.phone }}
+                                    {{ user_l.institute.phone }}
                                 {% endif %}
 
                             </p>
@@ -78,14 +78,14 @@
                             <strong><i class="fa fa-map-marker margin-r-5"></i> Endereço</strong>
 
                             <p class="text-muted">
-                                {% if user.common_user_set.first %}
-                                    {{ user.common_user_set.first.address }}, {{ user.common_user_set.first.number }},
-                                    {{ user.common_user_set.first.district }}, {{ user.common_user_set.first.city }},
-                                    {{ user.common_user_set.first.state }} - {{ user.common_user_set.first.cep }}
+                                {% if user_l.commonuser %}
+                                    {{ user_l.commonuser.address }}, {{ user_l.commonuser.number }},
+                                    {{ user_l.commonuser.district }}, {{ user_l.commonuser.city }},
+                                    {{ user_l.commonuser_set.first.state }} - {{ user_l.commonuser.cep }}
                                 {% else %}
-                                    {{ user.institute_set.first.address }}, {{ user.institute_set.first.number }},
-                                    {{ user.institute_set.first.district }}, {{ user.institute_set.first.city }},
-                                    {{ user.institute_set.first.state }} - {{ user.institute_set.first.cep }}
+                                    {{ user_l.institute.address }}, {{ user_l.institute.number }},
+                                    {{ user_l.institute.district }}, {{ user_l.institute.city }},
+                                    {{ user_l.institute.state }} - {{ user_l.institute.cep }}
                                 {% endif %}
                             </p>
 
@@ -106,7 +106,7 @@
                             <strong><i class="fa fa-file-text-o margin-r-5"></i> Email</strong>
 
                             <p>
-                                {{ user.email }}
+                                {{ user_l.email }}
                             </p>
                         </div>
 
