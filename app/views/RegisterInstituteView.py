@@ -28,8 +28,8 @@ class RegisterInstituteView(FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        aux_obj = User.objects.get(username=data['username'])
-        if aux_obj:
+        aux_obj = User.objects.filter(username=data['username'])
+        if len(aux_obj) > 0:
             return self.form_invalid(form)
         user_data = {}
         institute_data = {}
