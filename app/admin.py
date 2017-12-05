@@ -65,7 +65,7 @@ class AuditAdmin(admin.ModelAdmin):
 
 
 class StepAdmin(admin.ModelAdmin):
-    list_display = ('id', 'audit', 'note', )
+    list_display = ('id', 'audit', 'note',)
 
 
 class PostAdmin(admin.ModelAdmin):

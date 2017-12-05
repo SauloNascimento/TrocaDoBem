@@ -23,7 +23,7 @@ class DonatorUpdateView(LoginRequiredMixin, UpdateView):
         try:
             commonuser = self.object.commonuser
         except:
-            a = 10
+            pass
         else:
             initial['cpf'] = commonuser.cpf
             initial['birth_date'] = commonuser.birth_date

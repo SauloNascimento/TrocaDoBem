@@ -23,7 +23,7 @@ class InstituteUpdateView(LoginRequiredMixin, UpdateView):
         try:
             institute = self.object.institute
         except:
-            a = 10
+            pass
         else:
             initial['cnpj'] = institute.cnpj
             initial['description'] = institute.description

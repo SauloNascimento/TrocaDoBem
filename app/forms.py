@@ -15,10 +15,6 @@ class BaseForm(forms.Form):
 
 
 class FormBaseAddress(BaseForm):
-    """
-    Base class containing common address fields.
-    """
-
     cep = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={
     }))
     address = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={
@@ -168,6 +164,7 @@ class FormInstituteUpdate(forms.ModelForm, FormBaseAddress):
     social = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
                                                                            'maxlength': 150,
                                                                            'placeholder': _('Rede Social')}))
+
     class Meta:
         model = User
         fields = ['first_name', 'email']

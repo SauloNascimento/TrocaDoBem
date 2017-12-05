@@ -3,19 +3,21 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from app.views.DonatorUpdateView import DonatorUpdateView
-from app.views.InstituteUpdateView import InstituteUpdateView
 from app.views.AuditView import AuditListView, order_item
-from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, CollectView, ContributeView
+from app.views.DonatorUpdateView import DonatorUpdateView
+from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, \
+    CollectView, ContributeView
+from app.views.InstituteUpdateView import InstituteUpdateView
 from app.views.LoginView import LoginView, LogoutView
-from app.views.NotificationView import NotificationListView, accept_notification, refuse_notification
-from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
+from app.views.NotificationView import NotificationListView, accept_notification,\
+    refuse_notification
+from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView,\
+    ObjectUpdateView, delete_object
 from app.views.PainelView import PainelView, ProfileUserView
 from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
-from app.views.RequirementView import RequirementListView, AddRequirementView, RequirementUpdateView, \
-    delete_requirement, \
-    RequirementView
+from app.views.RequirementView import RequirementListView, AddRequirementView, \
+    RequirementUpdateView, delete_requirement, RequirementView
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"

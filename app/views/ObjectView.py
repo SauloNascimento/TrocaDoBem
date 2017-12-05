@@ -59,7 +59,6 @@ class RegisterObjectView(FormView, CustomContextMixin):
                 notification.save()
 
 
-
 class ObjectView(LoginRequiredMixin, DetailView, CustomContextMixin):
     login_url = '/login'
     context_object_name = 'object'
