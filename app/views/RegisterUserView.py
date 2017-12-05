@@ -28,6 +28,9 @@ class RegisterUserView(FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
+        aux_obj = User.objects.get(username=data['username'])
+        if aux_obj:
+            return self.form_invalid(form)
         user_data = {}
         common_data = {}
         user_data['last_name'] = data['last_name']
@@ -38,6 +41,7 @@ class RegisterUserView(FormView):
         common_data['cpf'] = data['cpf']
         common_data['phone'] = data['phone']
         common_data['birth_date'] = data['birth_date']
+        common_data['anonymous'] = data['anonymous']
         if data['username'] and data['password']:
             new_user = User.objects.create_user(**user_data)
             new_common_user = CommonUser(user=new_user, **common_data)

@@ -8,8 +8,8 @@
             <div class="box box-primary">
                 <!-- form start -->
                 <div class="box-header">
-                    {#                    <p> Minhas Doações</p>#}
-                    <a href="{% url 'add_object' %}" class="btn btn-primary">Cadastrar Doação</a>
+                    <p> Minhas Necessidades</p>
+{#                    <a href="/submissoes/add/" class="btn btn-primary">Submeter Trabalho</a>#}
                 </div>
                 <div class="box-body">
                     <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
@@ -40,11 +40,13 @@
                                                 {% endif %}
                                             </td>
                                             <td>
-                                                {% if item.status %}
+                                                {% if item.status == 'DOADO' %}
+                                                    <label class="label label-danger"><i class=""></i> DOADO</label>
+                                                {% elif item.status == 'DISPONIVEL' %}
+
+                                                {% else %}
                                                     <label class="label label-success"><i class=""></i>
                                                         DISPONÍVEL</label>
-                                                {% else %}
-                                                    <label class="label label-danger"><i class=""></i> DOADO</label>
                                                 {% endif %}
                                             </td>
                                             <td>{{ item.created_at|date:"d/m/Y G:i" }}</td>

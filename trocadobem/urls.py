@@ -3,15 +3,21 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from app.views.HomeView import HomeView, submit_message, view_post
+from app.views.AuditView import AuditListView, order_item
+from app.views.DonatorUpdateView import DonatorUpdateView
+from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, \
+    CollectView, ContributeView
+from app.views.InstituteUpdateView import InstituteUpdateView
 from app.views.LoginView import LoginView, LogoutView
-from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
-from app.views.PainelView import PainelView
+from app.views.NotificationView import NotificationListView, accept_notification,\
+    refuse_notification
+from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView,\
+    ObjectUpdateView, delete_object
+from app.views.PainelView import PainelView, ProfileUserView
 from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
-from app.views.RequirementView import RequirementListView, AddRequirementView, RequirementUpdateView, \
-    delete_requirement, \
-    RequirementView
+from app.views.RequirementView import RequirementListView, AddRequirementView, \
+    RequirementUpdateView, delete_requirement, RequirementView
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -42,10 +48,13 @@ urlpatterns = [
     url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^account/logout/$', LogoutView.as_view(), name='auth_logout'),
+
     url(r'^home/$', PainelView.as_view(), name='painel'),
+
+    url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
+
     url(r'^object/add/$', RegisterObjectView.as_view(), name='add_object'),
     url(r'^object/(?P<pk>[0-9]+)/$', ObjectView.as_view(), name='view-object'),
-    url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
     url(r'^object/(?P<pk>[0-9]+)/edit/$', ObjectUpdateView.as_view(), name='change_object'),
     url(r'^object/(?P<pk>[0-9]+)/delete/$', delete_object, name='delete_object'),
 
@@ -54,4 +63,19 @@ urlpatterns = [
     url(r'^requirements/(?P<pk>[0-9]+)/$', RequirementView.as_view(), name='view-requirement'),
     url(r'^requirements/(?P<pk>[0-9]+)/edit/$', RequirementUpdateView.as_view(), name='change_requirement'),
     url(r'^requirements/(?P<pk>[0-9]+)/delete/$', delete_requirement, name='delete_requirement'),
+
+    url(r'^institutes/$', InstitutesView.as_view(), name='menu_institutes'),
+    url(r'^collect/$', CollectView.as_view(), name='collect_institutes'),
+    url(r'^contribute/$', ContributeView.as_view(), name='contribute_institutes'),
+
+    url(r'^profile/(?P<pk>[0-9]+)/$', ProfileUserView.as_view(), name='view-profile'),
+
+    url(r'^audits/$', AuditListView.as_view(), name='list_my_audits'),
+    url(r'^audits/add/(?P<pk>[0-9]+)/$', order_item, name='add_audit'),
+
+    url(r'^notifications/$', NotificationListView.as_view(), name='list_my_notifications'),
+    url(r'^notifications/add/(?P<pk>[0-9]+)/$', accept_notification, name='accept_notification'),
+    url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
+    url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
+    url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
 ]

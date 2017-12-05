@@ -10,26 +10,20 @@ from django.views.generic import ListView
 from django.views.generic import UpdateView
 
 from app.forms import FormObject, FormObjectView, FormItemUpdate
-from app.models import Item, Object
+from app.mixins.CustomContextMixin import CustomContextMixin
+from app.models import Item, Object, Requirement, Match, Notification
 
 __author__ = "Joao Marcos e Saulo Samuel"
 __copyright__ = "Copyright 2017, LES-UFCG"
 
 
-class RegisterObjectView(FormView):
+class RegisterObjectView(FormView, CustomContextMixin):
     """
     Displays the login form.
     """
     template_name = 'admin_panel/add-object.html'
     form_class = FormObject
     success_url = '/donations'
-
-    def post(self, request, *args, **kwargs):
-        form = self.get_form()
-        if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
 
     def form_valid(self, form):
         data = form.cleaned_data
@@ -44,6 +38,8 @@ class RegisterObjectView(FormView):
             new_object = Object(item=new_item, **object_data)
             new_object.save()
             messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
+            object_data['pk_item'] = new_item.pk
+            self.search_matches(**object_data)
         else:
             return self.form_invalid(self, form)
         return super(RegisterObjectView, self).form_valid(form)
@@ -53,8 +49,17 @@ class RegisterObjectView(FormView):
         messages.error(self.request, 'Não foi possível cadastrar o objeto.')
         return super(RegisterObjectView, self).form_invalid(form)
 
+    def search_matches(self, **kwargs):
+        reqs = Requirement.objects.filter(status=True)
+        for req in reqs:
+            if req.type == kwargs['type']:
+                match = Match(requirement=req, item=Item.objects.get(id=kwargs['pk_item']))
+                match.save()
+                notification = Notification(user=req.owner, match=match)
+                notification.save()
 
-class ObjectView(LoginRequiredMixin, DetailView):
+
+class ObjectView(LoginRequiredMixin, DetailView, CustomContextMixin):
     login_url = '/login'
     context_object_name = 'object'
     model = Object
@@ -64,7 +69,7 @@ class ObjectView(LoginRequiredMixin, DetailView):
     slug_url_kwarg = 'pk'
 
 
-class MyDonationsListView(LoginRequiredMixin, ListView):
+class MyDonationsListView(LoginRequiredMixin, ListView, CustomContextMixin):
     login_url = '/login/'
     model = Item
     context_object_name = 'itens'
@@ -74,7 +79,7 @@ class MyDonationsListView(LoginRequiredMixin, ListView):
         return Item.objects.filter(owner=self.request.user).order_by('-created_at')
 
 
-class ObjectUpdateView(LoginRequiredMixin, UpdateView):
+class ObjectUpdateView(LoginRequiredMixin, UpdateView, CustomContextMixin):
     login_url = '/login/'
     model = Item
     form_class = FormItemUpdate

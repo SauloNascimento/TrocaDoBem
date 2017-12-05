@@ -15,7 +15,7 @@ Requerimentos para executar o Troca do Bem
 
 > - Após clonar, entre na pasta do projeto , e execute:
 
-        pip install -r requirements.txt 
+        pip install -r requirements.txt
 
 
 Configurando o ambiente de testes
@@ -32,7 +32,7 @@ Configurando o ambiente de testes
 
 > - Para rodar todos os testes e verificar as violações no código (quality), faça:
 
-         ./runTests.sh 
+         ./runTests.sh
 
 Executando o projeto
 -------------
@@ -53,7 +53,7 @@ Regras para implementação (commit, push, pull)
 
 > - Crie uma nova branch com nome task_numero_da_task (sem hashtag, tudo minusculo):
 
-      git checkout -b <nome_da_branch> 
+      git checkout -b <nome_da_branch>
 
 > - Nessa sua branch faça seus commits e aletrações necessárias.
 
@@ -80,15 +80,15 @@ Verifique se foi feito o pull request.Caso não tenha sido enviado via terminal,
 Regras para revisão (Procedimentos que os revisores devem seguir)
 -------------
 > - ir para a branch que está em pull request.
-> -  executar em um terminal: 
+> -  executar em um terminal:
 
         ./manage.py migrate
-        ./manage.py runserver 
-        
+        ./manage.py runserver
+
 > - rodar em outro terminal
 
         ./runTests.sh
-        
+
 > - pylint deve ser menor ou igual que 5
 > - flake8 deve ser menor ou igual que 69
 > - Todos os testes devem passar.
@@ -105,6 +105,25 @@ Regras para revisão (Procedimentos que os revisores devem seguir)
 > - Por fim, verificar se a implementação realiza o que está sendo pedido no requisito.
 > - IMPORTANTE: AO APROVAR O CODIGO, É OBRIGATORIO ANEXAR UMA IMAGEM/PRINT/ESCRITO DO CONSOLE/TERMINAL MOSTRANDO OS VALORES DE PYLINT E FLAKE8
 
+Docker do Troca do Bem
+-------------
+> - O container do Troca do Bem funciona como o build da aplicação de forma mais rápida. Esse container pode ser usado tanto em produção (com CI) como localmente para o desenvolvedor testar suas alterações
+
+> **Executando**
+> - Para criar e executar o container localmente:
+
+        docker-compose up -d
+
+> - Esse container executa os mesmos comandos para a execução de código usada no TERMINAL
+
+> **Atualizei meu código e o container continua com as alterações anteriores. O que fazer?**
+> - Localmente, toda alteração que for feita , o docker não irá atualizar, pois para isso é necessário que a imagem docker
+do Troca do Bem seja recontruida. Para isso , faça os seguintes passos para atualizar a imagem localmente com as alterações:
+
+        docker stop trocadobem
+        docker rm trocadobem
+        docker rmi -f trocadobem
+        docker-compose up -d trocadobem
 
 Versão em produção do Troca do Bem:
 -------------

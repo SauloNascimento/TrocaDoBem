@@ -1,0 +1,92 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    {# Example content #}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="table" class="table table-bordered table-striped" class="display"
+                                       cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>CATEGORIA</th>
+                                        <th>ITEM</th>
+                                        <th>DOADOR</th>
+                                        <th>STATUS</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for n in notifications %}
+                                        <tr>
+                                            <td>{{ n.id }}</td>
+                                            <td>
+                                                {{ n.match.requirement.type }}
+                                            </td>
+                                            <td>
+                                                {{ n.match.item.name_item }}
+                                            </td>
+                                            <td>
+                                                {% if not n.match.item.owner.common_user_set.first.anonymous %}
+                                                    <a href="#">{{ n.match.item.owner.first_name }}</a>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if n.status == 'ACEITO' %}
+                                                    <label class="label label-success"><i class=""></i>
+                                                        ACEITO</label>
+
+                                                {% elif n.status == 'RECUSADO' %}
+                                                    <label class="label label-danger"><i class=""></i>
+                                                        RECUSADO</label>
+                                                {% else %}
+                                                    <label class="label label-warning"><i class=""></i>
+                                                        EM ANÁLISE</label>
+                                                {% endif %}
+                                            </td>
+                                            {% if n.status == 'EM ANÁLISE' %}
+                                                <td>
+                                                    <a href="{% url 'accept_notification' n.pk %}">
+                                                        <i class="fa fa-check"></i> Aceitar
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'refuse_notification' n.pk %}">
+                                                        <i class="fa fa-close"></i> Recusar
+                                                    </a>
+                                                </td>
+                                            {% else %}
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#list_my_notifications').addClass('active');
+        });
+    </script>
+    <!-- /.row -->
+
+{% endblock %}
