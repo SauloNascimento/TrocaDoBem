@@ -82,9 +82,9 @@
                                             <li>
                                                 <a href="#">
                                                     <i class="fa fa-warning text-yellow"></i>
-{#                                                    Um usuário adicionou um item do tipo {{ n.match.item.type }} e#}
-{#                                                    achamos#}
-                                                   Temos um Match com seu pedido #{{ n.match.requirement.pk }}
+                                                    {#                                                    Um usuário adicionou um item do tipo {{ n.match.item.type }} e#}
+                                                    {#                                                    achamos#}
+                                                    Temos um Match com seu pedido #{{ n.match.requirement.pk }}
                                                 </a>
                                             </li>
                                         {% empty %}
@@ -205,6 +205,11 @@
                         <i class="fa fa-dashboard"></i> <span>Início</span>
                     </a>
                 </li>
+                <li id="my_profile">
+                    <a href="{% url 'my_profile' %}">
+                        <i class="fa fa-cubes"></i> <span>Meu Perfil</span>
+                    </a>
+                </li>
                 <li id="my_objects">
                     <a href="{% url 'list_my_donations' %}">
                         <i class="fa fa-cubes"></i> <span>Minhas Doações</span>
@@ -316,14 +321,27 @@
         $('#table').DataTable({
             responsive: true
         });
+
+
+    });
+
+
+</script>
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
         $('.datepicker').datepicker({
             clearBtn: true,
-            format: 'dd/mm/yyyy',
+            format: 'yyyy-mm-dd',
             todayHighlight: true,
             autoclose: true
         });
 
-        $('#busca_cep').click(function () {
+        $('[name=cep]').focusout(function () {
             $('#loading').show();
             var cep = $('[name=cep]');
             var cepCode = cep.val();
@@ -354,8 +372,28 @@
             });
         });
 
-        $('.telefone').inputmask('(99) 9999[9]-9999');
+        $('[name=phone]').inputmask('(99) 9999[9]-9999');
         $('[name=cep]').inputmask('99.999-999');
+        $('[name=cpf]').inputmask('999.999.999-99');
+        $('[name=cnpj]').inputmask('99.999.999/9999-99');
+
+        $('[name=cpf]').focusout(function () {
+            var cpf = $(this).val();
+            if (!valida_cpf(cpf)) {
+                $('#loading').hide();
+                swal("CPF Inválido", "Insira um CPF válido", "error");
+            }
+        });
+
+        $('[name=submit]').click(function () {
+            $('#loading').show();
+            var cnpj = $('[name=cnpj]').val() || "";
+            if (!valida_cnpj(cnpj) && cnpj != "") {
+                $('#loading').hide();
+                swal("CNPJ Inválido", "Insira um CNPJ válido", "error");
+            }
+        });
+
 
         $('[name=date_of_birth]').change(function () {
             var idade = 0;
@@ -369,6 +407,7 @@
 
 
 </script>
+
 {% if messages %}
     {% for message in messages %}
         {% if message.tags == 'error' %}

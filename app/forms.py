@@ -128,3 +128,47 @@ class FormRequirement(forms.ModelForm, BaseForm):
         model = Requirement
         fields = ['name', 'type', 'description', 'owner']
         widgets = {'owner': forms.HiddenInput()}
+
+
+class FormUpdateUser(FormBaseAddress):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                               'placeholder': _('Nome')}))
+    last_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False, 'maxlength': 200,
+                                                              'placeholder': _('Sobrenome')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
+                                                            'placeholder': _('Email')}))
+    cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
+                                                        'placeholder': _('CPF')}))
+    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                          'placeholder': _('Telefone')}))
+    birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                               'placeholder': _('Data de Nascimento'),
+                                                               'maxlength': 150}))
+    anonymous = forms.BooleanField(required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(FormUpdateUser, self).__init__(*args, **kwargs)
+        self.fields['birth_date'].widget.attrs['class'] += ' datepicker'
+
+
+class FormUpdateInstitute(FormBaseAddress):
+    cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                         'maxlength': 200,
+                                                         'placeholder': _('CNPJ')}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                               'maxlength': 200,
+                                                               'placeholder': _('First Name')}))
+    last_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False, 'maxlength': 200,
+                                                              'placeholder': _('Sobrenome')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True,
+                                                            'maxlength': 150,
+                                                            'placeholder': _('Email')}))
+    phone = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                          'maxlength': 150,
+                                                          'placeholder': _('Telefone')}))
+    site = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
+                                                                         'maxlength': 150,
+                                                                         'placeholder': _('Site')}))
+    social = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
+                                                                           'maxlength': 150,
+                                                                           'placeholder': _('Rede Social')}))

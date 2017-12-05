@@ -10,7 +10,7 @@ from app.views.NotificationView import NotificationListView, accept_notification
 from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
 from app.views.PainelView import PainelView, ProfileUserView
 from app.views.RegisterInstituteView import RegisterInstituteView
-from app.views.RegisterUserView import RegisterUserView
+from app.views.RegisterUserView import RegisterUserView, UpdateUserView
 from app.views.RequirementView import RequirementListView, AddRequirementView, RequirementUpdateView, \
     delete_requirement, \
     RequirementView
@@ -72,4 +72,6 @@ urlpatterns = [
     url(r'^notifications/$', NotificationListView.as_view(), name='list_my_notifications'),
     url(r'^notifications/add/(?P<pk>[0-9]+)/$', accept_notification, name='accept_notification'),
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
+
+    url(r'^profile/$', UpdateUserView.as_view(), name='my_profile'),
 ]
