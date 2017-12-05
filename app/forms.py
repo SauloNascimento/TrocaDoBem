@@ -35,6 +35,12 @@ class FormBaseAddress(BaseForm):
     }))
 
 
+TRUE_FALSE_CHOICES = (
+    (True, 'Sim'),
+    (False, 'Nao')
+)
+
+
 class FormRegisterUser(FormBaseAddress):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
                                                                'placeholder': _('Nome')}))
@@ -53,7 +59,7 @@ class FormRegisterUser(FormBaseAddress):
     birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                                'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
-    anonymous = forms.BooleanField(required=False, initial=False)
+    anonymous = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=True, initial='False')
 
     def __init__(self, *args, **kwargs):
         super(FormRegisterUser, self).__init__(*args, **kwargs)
@@ -138,7 +144,7 @@ class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
                                                           'placeholder': _('Telefone')}))
     birth_date = forms.CharField(
         widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'), 'maxlength': 150}))
-    anonymous = forms.BooleanField(required=False, initial=False)
+    anonymous = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=True, label=u'Type')
 
     class Meta:
         model = User
@@ -154,9 +160,14 @@ class FormInstituteUpdate(forms.ModelForm, FormBaseAddress):
                                                          'placeholder': _('CNPJ')}))
     phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'readonly': True, 'maxlength': 300,
+    description = forms.CharField(widget=forms.Textarea(attrs={'maxlength': 300,
                                                                'placeholder': _('Descricao da Instituicao')}))
-
+    site = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
+                                                                         'maxlength': 150,
+                                                                         'placeholder': _('Site')}))
+    social = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
+                                                                           'maxlength': 150,
+                                                                           'placeholder': _('Rede Social')}))
     class Meta:
         model = User
         fields = ['first_name', 'email']

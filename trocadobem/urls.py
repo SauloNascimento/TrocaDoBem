@@ -5,13 +5,9 @@ from django.contrib.auth import views as auth_views
 
 from app.views.DonatorUpdateView import DonatorUpdateView
 from app.views.InstituteUpdateView import InstituteUpdateView
-from app.views.HomeView import HomeView, submit_message, view_post
 from app.views.AuditView import AuditListView, order_item
 from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, CollectView, ContributeView
 from app.views.LoginView import LoginView, LogoutView
-from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
-from app.views.PainelInstituteView import PainelInstituteView
-from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.NotificationView import NotificationListView, accept_notification, refuse_notification
 from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
 from app.views.PainelView import PainelView, ProfileUserView

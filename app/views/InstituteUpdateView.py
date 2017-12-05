@@ -31,10 +31,12 @@ class InstituteUpdateView(LoginRequiredMixin, UpdateView):
             initial['cep'] = institute.cep
             initial['state'] = institute.state
             initial['city'] = institute.city
-            initial['distric'] = institute.district
+            initial['district'] = institute.district
             initial['address'] = institute.address
             initial['number'] = institute.number
             initial['complement'] = institute.complement
+            initial['site'] = institute.site
+            initial['social'] = institute.social
         return initial
 
     def form_valid(self, form):
@@ -42,7 +44,7 @@ class InstituteUpdateView(LoginRequiredMixin, UpdateView):
         institute = self.object.institute
         institute.cpf = data['cnpj']
         institute.phone = data['phone']
-        institute.birth_date = data['description']
+        institute.description = data['description']
         institute.cep = data['cep']
         institute.address = data['address']
         institute.number = data['number']
@@ -50,6 +52,8 @@ class InstituteUpdateView(LoginRequiredMixin, UpdateView):
         institute.city = data['city']
         institute.district = data['district']
         institute.complement = data['complement']
+        institute.site = data['site']
+        institute.social = data['social']
         institute.save()
         return super(InstituteUpdateView, self).form_valid(form)
 

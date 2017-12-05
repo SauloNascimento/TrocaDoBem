@@ -32,7 +32,7 @@ class DonatorUpdateView(LoginRequiredMixin, UpdateView):
             initial['cep'] = commonuser.cep
             initial['state'] = commonuser.state
             initial['city'] = commonuser.city
-            initial['distric'] = commonuser.district
+            initial['district'] = commonuser.district
             initial['address'] = commonuser.address
             initial['number'] = commonuser.number
             initial['complement'] = commonuser.complement
