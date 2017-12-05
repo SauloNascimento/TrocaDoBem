@@ -4,16 +4,20 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from app.views.AuditView import AuditListView, order_item
-from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, CollectView, ContributeView
+from app.views.DonatorUpdateView import DonatorUpdateView
+from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, \
+    CollectView, ContributeView
+from app.views.InstituteUpdateView import InstituteUpdateView
 from app.views.LoginView import LoginView, LogoutView
-from app.views.NotificationView import NotificationListView, accept_notification, refuse_notification
-from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, ObjectUpdateView, delete_object
+from app.views.NotificationView import NotificationListView, accept_notification,\
+    refuse_notification
+from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView,\
+    ObjectUpdateView, delete_object
 from app.views.PainelView import PainelView, ProfileUserView
 from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
-from app.views.RequirementView import RequirementListView, AddRequirementView, RequirementUpdateView, \
-    delete_requirement, \
-    RequirementView
+from app.views.RequirementView import RequirementListView, AddRequirementView, \
+    RequirementUpdateView, delete_requirement, RequirementView
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -72,4 +76,6 @@ urlpatterns = [
     url(r'^notifications/$', NotificationListView.as_view(), name='list_my_notifications'),
     url(r'^notifications/add/(?P<pk>[0-9]+)/$', accept_notification, name='accept_notification'),
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
+    url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
+    url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
 ]

@@ -38,6 +38,7 @@ class RegisterUserView(FormView):
         common_data['cpf'] = data['cpf']
         common_data['phone'] = data['phone']
         common_data['birth_date'] = data['birth_date']
+        common_data['anonymous'] = data['anonymous']
         if data['username'] and data['password']:
             new_user = User.objects.create_user(**user_data)
             new_common_user = CommonUser(user=new_user, **common_data)

@@ -20,11 +20,11 @@ class BaseAddress(models.Model):
     class Meta:
         abstract = True
 
-    cep = models.CharField(max_length=15, default="Nao Informado")
-    state = models.CharField(max_length=20, default="Nao Informado")
-    city = models.CharField(max_length=100, default="Nao Informado")
-    district = models.CharField(max_length=100, default="Nao Informado")
-    address = models.CharField(max_length=100, default="Nao Informado")
+    cep = models.CharField(max_length=15, blank=True)
+    state = models.CharField(max_length=20, blank=True)
+    city = models.CharField(max_length=100, blank=True)
+    district = models.CharField(max_length=100, blank=True)
+    address = models.CharField(max_length=100, blank=True)
     number = models.CharField(max_length=5, blank=True, null=True)
     complement = models.CharField(max_length=200, blank=True)
 
@@ -34,11 +34,11 @@ class Institute(TimeStamped, BaseAddress):
         verbose_name = "Instituicao"
         verbose_name_plural = "Instituicoes"
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     photo = models.URLField(blank=True)
     cnpj = models.CharField(max_length=100, default="Nao Informado")
     description = models.CharField(max_length=100, blank=True)
-    phone = models.CharField(max_length=30, default="Nao Informado")
+    phone = models.CharField(max_length=30, blank=True)
     site = models.CharField(max_length=30, default="Nao Informado")
     social = models.CharField(max_length=30, default="Nao Informado")
 
@@ -54,10 +54,10 @@ class CommonUser(TimeStamped, BaseAddress):
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios"
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     birth_date = models.DateField(null=True, blank=True)
-    cpf = models.CharField(max_length=100, default="Nao Informado")
-    phone = models.CharField(max_length=30, default="Nao Informado")
+    cpf = models.CharField(max_length=100, blank=True)
+    phone = models.CharField(max_length=30, blank=True)
     anonymous = models.BooleanField(default=False)
 
     def __unicode__(self):
