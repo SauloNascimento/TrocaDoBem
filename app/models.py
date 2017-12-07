@@ -51,8 +51,8 @@ class Institute(TimeStamped, BaseAddress):
 
 class CommonUser(TimeStamped, BaseAddress):
     class Meta:
-        verbose_name = "Usuario"
-        verbose_name_plural = "Usuarios"
+        verbose_name = "Doador"
+        verbose_name_plural = "Doadores"
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     birth_date = models.DateField(null=True, blank=True)
