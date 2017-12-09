@@ -43,7 +43,10 @@ class LoginView(FormView):
         user = self.request.user
         if user:
             try:
-                if user.institute_set.first():
+                if user.is_superuser:
+                    url = '/audits-panel'
+                    self.success_url = url
+                elif user.institute_set.first():
                     url = '/home'
                     self.success_url = url
                 else:

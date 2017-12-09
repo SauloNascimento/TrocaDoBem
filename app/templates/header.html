@@ -80,12 +80,12 @@
                     <div class="navbar-collapse collapse" id="navigation">
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li id="" class="">
+                            <li id="home_base" class="">
                                 <a id="home_link" href="/">Home</a>
                             </li>
-                            <li id="menu_instituicoes" class="">
-                                <a id="instituicoes_link" href="{% url 'menu_institutes' %}">Instituições</a>
-                            </li>
+{#                            <li id="menu_instituicoes" class="">#}
+{#                                <a id="instituicoes_link" href="{% url 'menu_institutes' %}">Instituições</a>#}
+{#                            </li>#}
                             <li id="menu_contribua" class="">
                                 <a id="contribua_link" href="{% url 'contribute_institutes' %}">Contribua</a>
                             </li>
@@ -93,10 +93,10 @@
                                 <a id="arrecade_link" href="{% url 'collect_institutes' %}">Arrecade</a>
                             </li>
                             <li id="menu_noticias" class="">
-                                <a id="noticias_link" href="#noticias">Notícias</a>
+                                <a id="noticias_link" href="/#noticias">Notícias</a>
                             </li>
                             <li id="menu_contato" class="">
-                                <a id="contato_link" href="#contato">Contato</a>
+                                <a id="contato_link" href="/#contato">Contato</a>
                             </li>
                             <li class="dropdown">
                                 <a id="inscrevase_link" class="dropdown-toggle"
@@ -111,6 +111,9 @@
                                            href="{% url "register_institute" %}">Instituição</a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li id="doar_agora">
+                                <a id="donation_now" href="{% url 'choose_user' %}">Doar Agora</a>
                             </li>
                         </ul>
 

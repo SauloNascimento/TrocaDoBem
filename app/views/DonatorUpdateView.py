@@ -6,12 +6,13 @@ from django.contrib.auth.models import User
 from django.views.generic import UpdateView
 
 from app.forms import FormDonatorUpdate
+from app.mixins.CustomContextMixin import UserContextMixin
 
 __author__ = "João Marcos e Saulo Samuel"
 __copyright__ = "Copyright 2017, LES-UFCG"
 
 
-class DonatorUpdateView(LoginRequiredMixin, UpdateView):
+class DonatorUpdateView(LoginRequiredMixin, UpdateView, UserContextMixin):
     login_url = '/login/'
     model = User
     form_class = FormDonatorUpdate
