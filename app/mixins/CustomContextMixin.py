@@ -18,6 +18,6 @@ class CustomContextMixin(ContextMixin):
 class UserContextMixin(ContextMixin):
     def get_context_data(self, **kwargs):
         if 'audits_for_user' not in kwargs:
-            kwargs['audits_for_user'] = Audit.objects.filter(donor=self.request.user, is_complete=False).order_by(
-                '-created_at')
+            kwargs['audits_for_user'] = Audit.objects.filter(donor=self.request.user,
+                                                             is_deferred='EM ANÁLISE').order_by('-created_at')
         return super(UserContextMixin, self).get_context_data(**kwargs)

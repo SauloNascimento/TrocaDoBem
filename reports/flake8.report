@@ -19,7 +19,7 @@ C:\Users\caiom\PycharmProjects\trocadobem\app\models.py:196:101: E501 line too l
 C:\Users\caiom\PycharmProjects\trocadobem\app\mixins\CustomContextMixin.py:10:101: E501 line too long (101 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\mixins\CustomContextMixin.py:11:101: E501 line too long (103 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\mixins\CustomContextMixin.py:13:101: E501 line too long (116 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\mixins\CustomContextMixin.py:21:101: E501 line too long (114 > 100 characters)
+C:\Users\caiom\PycharmProjects\trocadobem\app\mixins\CustomContextMixin.py:22:101: E501 line too long (110 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\templatetags\filters.py:9:50: E225 missing whitespace around operator
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_institute.py:56:101: E501 line too long (102 > 100 characters)
 C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_institute.py:63:9: F841 local variable 'e' is assigned to but never used

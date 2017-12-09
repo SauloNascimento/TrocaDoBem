@@ -230,6 +230,7 @@ class Audit(TimeStamped):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     is_complete = models.BooleanField(default=False)
     is_deferred = models.CharField(choices=deferred_type, max_length=100, default='EM ANÁLISE')
+    match = models.OneToOneField(Match, on_delete=models.CASCADE, blank=True, null=True)
 
     def __unicode__(self):
         return u'%s - %s' % (self.new_owner.first_name, self.item)

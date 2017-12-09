@@ -130,6 +130,9 @@ def final_delivery(request, pk):
     audit = Audit.objects.get(id=pk)
     audit.is_complete = True
     audit.save()
+    req = audit.match.requirement
+    req.status = False
+    req.save()
     step = Step(audit=audit, note='Item foi entregue para a instituicao')
     step.save()
     messages.success(request, 'Obrigado!')
