@@ -2,18 +2,21 @@
 {% load staticfiles %}
 
 {% block content %}
-
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <center>Login</center>
+            </h3>
+        </div>
+    </div>
     <div class="container">
+
         <div class="row" style="margin-top: 50px;">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            <center>Login</center>
-                        </h3>
-                    </div>
+
                     <div class="panel-body">
-                        <form  method="post">{% csrf_token %}
+                        <form method="post">{% csrf_token %}
                             <fieldset>
                                 <div class="form-group">
                                     {{ form.username }}
@@ -29,6 +32,13 @@
                                 <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
                             </fieldset>
                         </form>
+                    </div>
+                    <div class="panel-footer">
+                        <h4 class="">
+                            <a href="{% url 'register_user' %}">
+                                <center>Se você não possui um login, Cadastra-se Aqui</center>
+                            </a>
+                        </h4>
                     </div>
                 </div>
             </div>

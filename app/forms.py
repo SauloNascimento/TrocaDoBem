@@ -199,3 +199,10 @@ class FormDonationView(ModelForm, BaseForm):
     class Meta:
         model = Item
         fields = ['owner', 'description', 'name_item', 'photo', 'status', ]
+
+
+class FormAnonDonation(FormObject):
+    phone = forms.CharField(required=True, widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
+                                                                         'placeholder': _('Telefone')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
+                                                            'placeholder': _('Email')}))
