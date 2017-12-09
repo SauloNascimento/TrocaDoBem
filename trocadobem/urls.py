@@ -3,16 +3,21 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from app.views.AuditView import AuditListView, order_item
+from app.views.AuditView import AuditListView, order_item, AuditAllListView, AuditDetailView, AuditUpdateView, \
+    delete_audit, HomeAuditView, AuditUserListView, accept_audit, refuse_audit, final_delivery, refuse_delivery
+from app.views.DonationView import DonationListView, DonationUpdateView, delete_donation
 from app.views.DonatorUpdateView import DonatorUpdateView
 from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, \
     CollectView, ContributeView
 from app.views.InstituteUpdateView import InstituteUpdateView
 from app.views.LoginView import LoginView, LogoutView
-from app.views.NotificationView import NotificationListView, accept_notification,\
+from app.views.MatchView import MatchListView, MatchUpdateView, delete_match
+from app.views.NotificationView import NotificationListView, accept_notification, \
     refuse_notification
-from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView,\
+from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, \
     ObjectUpdateView, delete_object
+from app.views.OrderView import OrderUpdateView
+from app.views.OrderView import delete_order, OrderListView
 from app.views.PainelView import PainelView, ProfileUserView
 from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
@@ -72,10 +77,36 @@ urlpatterns = [
 
     url(r'^audits/$', AuditListView.as_view(), name='list_my_audits'),
     url(r'^audits/add/(?P<pk>[0-9]+)/$', order_item, name='add_audit'),
+    url(r'^audits/final/(?P<pk>[0-9]+)/$', final_delivery, name='final_delivery'),
+    url(r'^audits/refuse/(?P<pk>[0-9]+)/$', refuse_delivery, name='refuse_delivery'),
+
+    url(r'^audits-user/$', AuditUserListView.as_view(), name='audits_user'),
+    url(r'^audits-user/add/(?P<pk>[0-9]+)/$', accept_audit, name='accept_audit'),
+    url(r'^audits-user/refuse/(?P<pk>[0-9]+)/$', refuse_audit, name='refuse_audit'),
+
+    url(r'^audits-panel/$', AuditAllListView.as_view(), name='audits_panel'),
+    url(r'^audits/(?P<pk>[0-9]+)/$', AuditDetailView.as_view(), name='view-audit'),
+    url(r'^audits/(?P<pk>[0-9]+)/edit/$', AuditUpdateView.as_view(), name='change_audit'),
+    url(r'^audits/(?P<pk>[0-9]+)/delete/$', delete_audit, name='delete_audit'),
+
+    url(r'^matches/$', MatchListView.as_view(), name='matches'),
+    url(r'^matches/(?P<pk>[0-9]+)/edit/$', MatchUpdateView.as_view(), name='change_match'),
+    url(r'^matches/(?P<pk>[0-9]+)/delete/$', delete_match, name='delete_match'),
+
+    url(r'^orders/$', OrderListView.as_view(), name='orders'),
+    url(r'^orders/(?P<pk>[0-9]+)/edit/$', OrderUpdateView.as_view(), name='change_order'),
+    url(r'^orders/(?P<pk>[0-9]+)/delete/$', delete_order, name='delete_order'),
+
+    url(r'^itens/$', DonationListView.as_view(), name='items'),
+    url(r'^itens/(?P<pk>[0-9]+)/edit/$', DonationUpdateView.as_view(), name='change_item'),
+    url(r'^itens/(?P<pk>[0-9]+)/delete/$', delete_donation, name='delete_item'),
+
+    url(r'^audits-panel/home/$', HomeAuditView.as_view(), name='audit-home'),
 
     url(r'^notifications/$', NotificationListView.as_view(), name='list_my_notifications'),
     url(r'^notifications/add/(?P<pk>[0-9]+)/$', accept_notification, name='accept_notification'),
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
     url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
+
 ]

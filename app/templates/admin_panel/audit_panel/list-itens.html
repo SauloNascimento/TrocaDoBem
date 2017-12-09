@@ -1,0 +1,66 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+{% load filters %}
+
+{% block content %}
+    {# Example content #}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="table" class="table table-bordered table-striped" class="display"
+                                       cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>DOADOR</th>
+                                        <th>ITEM</th>
+                                        <th>STATUS</th>
+                                        <th>CRIADO EM</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in itens %}
+                                        <tr>
+                                            <td>{{ item.id }}</td>
+                                            <td>
+                                                <a href="{% url 'view-profile' item.owner.pk %}">{{ item.owner.first_name }}</a>
+                                            </td>
+                                            <td>
+                                                {{ item.name_item }}
+                                            </td>
+                                            <td>
+                                                {{ item.status }}
+                                            </td>
+                                            <td>{{ item.created_at|date:"d/m/Y G:i" }}</td>
+                                            <td>
+                                                <a class="remover" href="{% url 'delete_item' item.pk %}">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#items').addClass('active');
+        });
+    </script>
+    <!-- /.row -->
+
+{% endblock %}
