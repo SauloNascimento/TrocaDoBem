@@ -144,5 +144,29 @@
             $('#inicio').addClass('active');
         });
     </script>
+
+    {% if audits_l %}
+        <script>
+            $(document).ready(function () {
+                swal("Alerta", "Você possui {{ audits_l|length }} Auditorias pendentes", "warning");
+            });
+        </script>
+    {% endif %}
+
+    {% if notifications_l %}
+        <script>
+            $(document).ready(function () {
+                swal("Alerta", "Você possui {{ notifications_l|length }} Notificações pendentes", "warning");
+            });
+        </script>
+    {% endif %}
+
+    {% if audits_for_user %}
+        <script>
+            $(document).ready(function () {
+                swal("Alerta", "Você possui {{ audits_for_user|length }} Auditorias pendentes", "warning");
+            });
+        </script>
+    {% endif %}
     <!-- /.row -->
 {% endblock %}
