@@ -5,7 +5,8 @@ from django.contrib.auth import views as auth_views
 
 from app.views.AuditView import AuditListView, order_item, AuditAllListView, AuditDetailView, AuditUpdateView, \
     delete_audit, HomeAuditView, AuditUserListView, accept_audit, refuse_audit, final_delivery, refuse_delivery
-from app.views.DonationView import DonationListView, DonationUpdateView, delete_donation
+from app.views.DonationView import DonationListView, DonationUpdateView, delete_donation, ChooseDonation, \
+    AnonDonationFormView
 from app.views.DonatorUpdateView import DonatorUpdateView
 from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, \
     CollectView, ContributeView
@@ -53,6 +54,9 @@ urlpatterns = [
     url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^account/logout/$', LogoutView.as_view(), name='auth_logout'),
+
+    url(r'^choose-user/$', ChooseDonation.as_view(), name='choose_user'),
+    url(r'^donation-anonymous/$', AnonDonationFormView.as_view(), name='donation_anonymous'),
 
     url(r'^home/$', PainelView.as_view(), name='painel'),
 

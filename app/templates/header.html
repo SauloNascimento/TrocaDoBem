@@ -83,9 +83,9 @@
                             <li id="" class="">
                                 <a id="home_link" href="/">Home</a>
                             </li>
-                            <li id="menu_instituicoes" class="">
-                                <a id="instituicoes_link" href="{% url 'menu_institutes' %}">Instituições</a>
-                            </li>
+{#                            <li id="menu_instituicoes" class="">#}
+{#                                <a id="instituicoes_link" href="{% url 'menu_institutes' %}">Instituições</a>#}
+{#                            </li>#}
                             <li id="menu_contribua" class="">
                                 <a id="contribua_link" href="{% url 'contribute_institutes' %}">Contribua</a>
                             </li>
@@ -111,6 +111,9 @@
                                            href="{% url "register_institute" %}">Instituição</a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li id="doar_agora">
+                                <a id="donation_now" href="{% url 'choose_user' %}">Doar Agora</a>
                             </li>
                         </ul>
 
