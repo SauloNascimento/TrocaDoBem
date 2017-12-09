@@ -1,0 +1,68 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+{% load filters %}
+
+{% block content %}
+    {# Example content #}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="table" class="table table-bordered table-striped" class="display"
+                                       cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOME</th>
+                                        <th>DONO</th>
+                                        <th>TIPO</th>
+                                        <th>CRIADO EM</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for order in orders %}
+                                        <tr>
+                                            <td>{{ order.id }}</td>
+                                            <td>{{ order.name }}</td>
+                                            <td>
+                                                <a href="{% url 'view-profile' order.owner.pk %}">{{ order.owner.first_name }}</a>
+                                            </td>
+                                            <td>
+                                                {% if order.item.service_set.first %}
+                                                    Serviço
+                                                {% else %}
+                                                    {{ order.item.object_set.first.type }}
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ order.created_at|date:"d/m/Y G:i" }}</td>
+                                            <td>
+                                                <a class="remover" href="{% url 'delete_order' order.pk %}">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#orders').addClass('active');
+        });
+    </script>
+    <!-- /.row -->
+
+{% endblock %}

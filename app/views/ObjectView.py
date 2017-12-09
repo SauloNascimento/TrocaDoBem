@@ -10,14 +10,14 @@ from django.views.generic import ListView
 from django.views.generic import UpdateView
 
 from app.forms import FormObject, FormObjectView, FormItemUpdate
-from app.mixins.CustomContextMixin import CustomContextMixin
+from app.mixins.CustomContextMixin import CustomContextMixin, UserContextMixin
 from app.models import Item, Object, Requirement, Match, Notification
 
 __author__ = "Joao Marcos e Saulo Samuel"
 __copyright__ = "Copyright 2017, LES-UFCG"
 
 
-class RegisterObjectView(FormView, CustomContextMixin):
+class RegisterObjectView(FormView, CustomContextMixin, UserContextMixin):
     """
     Displays the login form.
     """
@@ -59,7 +59,7 @@ class RegisterObjectView(FormView, CustomContextMixin):
                 notification.save()
 
 
-class ObjectView(LoginRequiredMixin, DetailView, CustomContextMixin):
+class ObjectView(LoginRequiredMixin, DetailView, CustomContextMixin, UserContextMixin):
     login_url = '/login'
     context_object_name = 'object'
     model = Object
@@ -69,7 +69,7 @@ class ObjectView(LoginRequiredMixin, DetailView, CustomContextMixin):
     slug_url_kwarg = 'pk'
 
 
-class MyDonationsListView(LoginRequiredMixin, ListView, CustomContextMixin):
+class MyDonationsListView(LoginRequiredMixin, ListView, CustomContextMixin, UserContextMixin):
     login_url = '/login/'
     model = Item
     context_object_name = 'itens'
@@ -79,7 +79,7 @@ class MyDonationsListView(LoginRequiredMixin, ListView, CustomContextMixin):
         return Item.objects.filter(owner=self.request.user).order_by('-created_at')
 
 
-class ObjectUpdateView(LoginRequiredMixin, UpdateView, CustomContextMixin):
+class ObjectUpdateView(LoginRequiredMixin, UpdateView, CustomContextMixin, UserContextMixin):
     login_url = '/login/'
     model = Item
     form_class = FormItemUpdate

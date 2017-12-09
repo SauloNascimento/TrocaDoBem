@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 
-from app.models import object_type, Item, Requirement
+from app.models import object_type, Item, Requirement, Audit, Match
 
 
 class BaseForm(forms.Form):
@@ -140,7 +141,8 @@ class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
                             widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
     birth_date = forms.CharField(required=False,
-        widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'), 'maxlength': 150}))
+                                 widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
+                                                               'maxlength': 150}))
     anonymous = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=False, label=u'Type')
 
     class Meta:
@@ -156,9 +158,10 @@ class FormInstituteUpdate(forms.ModelForm, FormBaseAddress):
     cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
                                                          'placeholder': _('CNPJ')}))
     phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
-                                                          'placeholder': _('Telefone')}))
+                                                                          'placeholder': _('Telefone')}))
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'maxlength': 300,
-                                                               'placeholder': _('Descricao da Instituicao')}))
+                                                                               'placeholder': _(
+                                                                                   'Descricao da Instituicao')}))
     site = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
                                                                          'maxlength': 150,
                                                                          'placeholder': _('Site')}))
@@ -172,3 +175,27 @@ class FormInstituteUpdate(forms.ModelForm, FormBaseAddress):
 
     def __init__(self, *args, **kwargs):
         super(FormInstituteUpdate, self).__init__(*args, **kwargs)
+
+
+class FormAuditView(ModelForm, BaseForm):
+    class Meta:
+        model = Audit
+        fields = ['new_owner', 'donor', 'item', 'is_complete', 'is_deferred']
+
+
+class FormMatchView(ModelForm, BaseForm):
+    class Meta:
+        model = Match
+        fields = ['requirement', 'item', ]
+
+
+class FormOrderView(ModelForm, BaseForm):
+    class Meta:
+        model = Requirement
+        fields = ['name', 'type', 'status', 'owner', 'description', ]
+
+
+class FormDonationView(ModelForm, BaseForm):
+    class Meta:
+        model = Item
+        fields = ['owner', 'description', 'name_item', 'photo', 'status', ]

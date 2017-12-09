@@ -91,7 +91,7 @@
                                 <a href="{% url 'change_object' object.item.pk %}" id="btn_alterar"
                                    class="btn btn-primary pull-right">Alterar</a>
 
-                            {% else %}
+                            {% elif object.item.status %}
                                  <a href="{% url 'add_audit' object.item.pk %}" id="btn_requisitar"
                                    class="btn btn-primary pull-right">Requisitar Item</a>
                             {% endif %}

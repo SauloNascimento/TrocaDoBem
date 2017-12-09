@@ -36,11 +36,11 @@ class Institute(TimeStamped, BaseAddress):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     photo = models.URLField(blank=True)
-    cnpj = models.CharField(max_length=100, default="Nao Informado")
+    cnpj = models.CharField(max_length=100)
     description = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=30, blank=True)
-    site = models.CharField(max_length=100, default="Nao Informado")
-    social = models.CharField(max_length=100, default="Nao Informado")
+    site = models.CharField(max_length=100)
+    social = models.CharField(max_length=100)
 
     def __str__(self):
         return self.user.first_name
