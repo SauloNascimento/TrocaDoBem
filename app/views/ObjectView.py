@@ -91,6 +91,16 @@ def get_itens(request):
     return HttpResponse(return_str)
 
 
+@require_http_methods(["GET"])
+def get_position(request, lat, lng):
+    print(lat)
+    print(lng)
+    itens = Item.objects.filter(owner=request.user).order_by('-created_at')
+    context = Context({'itens': itens})
+    return_str = render_block_to_string('admin_panel/list_my_donations.html', context)
+    return HttpResponse(return_str)
+
+
 class ObjectUpdateView(LoginRequiredMixin, UpdateView, CustomContextMixin, UserContextMixin):
     login_url = '/login/'
     model = Item

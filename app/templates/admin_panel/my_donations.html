@@ -2,7 +2,52 @@
 {% load staticfiles %}
 
 {% block content %}
+    {% include 'loading.html' %}
+
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.6.4/build/ol.js"></script>
+
     {# Example content #}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap"
+                         id="example1_wrapper">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="map" class="map"></div>
+                                <div id="info" style="display: none;"></div>
+                                <label for="track">
+                                    track position
+                                    <input id="track" type="checkbox"/>
+                                </label>
+                                <p>
+                                    position accuracy : <code id="accuracy"></code>&nbsp;&nbsp;
+                                    altitude : <code id="altitude"></code>&nbsp;&nbsp;
+                                    altitude accuracy : <code id="altitudeAccuracy"></code>&nbsp;&nbsp;
+                                    heading : <code id="heading"></code>&nbsp;&nbsp;
+                                    speed : <code id="speed"></code>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {% if user.is_superuser %}
+                    <div class="box-footer">
+                        <a href="{% url 'painel' %}"
+                           class="btn btn-default pull-left">Voltar</a>
+                    </div>
+                {% endif %}
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
@@ -32,6 +77,168 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+        var EPSG4326 = 'EPSG:4326';
+        var EPSG3857 = 'EPSG:3857';
+        var view = new ol.View({
+            center: [-3996978.7595446003, -805517.7167901094],
+            zoom: 14
+        });
+
+        // inicializa um Tile (estilo do mapa) OSM: Open Street Map, pode ser Bing, GoogleMaps, etc..
+        var raster = new ol.layer.Tile({
+            source: new ol.source.OSM()
+        });
+
+        // Inicializa um Vector que carrega as Features no Mapa.
+        source = new ol.source.Vector({
+            features: {}
+        });
+        /*
+         inicializa um outro Vector que carrega o source com as features, e adiciona
+         o estilo ao ponteiro do mouse no Mapa.
+         */
+        var vector = new ol.layer.Vector({
+            source: source,
+            style: new ol.style.Style({
+                fill: new ol.style.Fill({
+                    color: 'rgba(153, 204, 255, 0.125)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: '#99ccff',
+                    width: 2
+                }),
+                image: new ol.style.Circle({
+                    radius: 7,
+                    fill: new ol.style.Fill({
+                        color: '#99ccff'
+                    })
+                })
+            })
+        });
+
+        {#        var map = new ol.Map({#}
+        {#            layers: [#}
+        {#                new ol.layer.Tile({#}
+        {#                    source: new ol.source.OSM()#}
+        {#                })#}
+        {#            ],#}
+        {#            target: 'map',#}
+        {#            controls: ol.control.defaults({#}
+        {#                attributionOptions: {#}
+        {#                    collapsible: false#}
+        {#                }#}
+        {#            }),#}
+        {#            view: view#}
+        {#        });#}
+
+        map = new ol.Map({
+            layers: [raster, vector],
+            target: 'map',
+            controls: ol.control.defaults({
+                attributionOptions: {
+                    collapsible: false
+                }
+            }),
+            view: view
+        });
+
+        /**
+         * Geolocation.
+         */
+
+        var geolocation = new ol.Geolocation({
+            projection: view.getProjection()
+        });
+
+        function el(id) {
+            return document.getElementById(id);
+        }
+
+        {#        geolocation.setTracking(true);#}
+
+        // update the HTML page when the position changes.
+        geolocation.on('change', function () {
+            var coordinates = geolocation.getPosition();
+            $.ajax({
+                url: "/my-position/" + coordinates[0] + "/" + coordinates[1],
+                type: "GET", // http method
+                beforeSend: function () {
+                    $('#loading').show();
+                },
+                success: function (data) {
+                    alert('sucesso');
+                },
+                complete: function () {
+                    $('#loading').hide();
+                }
+            });
+            el('accuracy').innerText = geolocation.getAccuracy() + ' [m]';
+            el('altitude').innerText = geolocation.getAltitude() + ' [m]';
+            el('altitudeAccuracy').innerText = geolocation.getAltitudeAccuracy() + ' [m]';
+            el('heading').innerText = geolocation.getHeading() + ' [rad]';
+            el('speed').innerText = geolocation.getSpeed() + ' [m/s]';
+        });
+
+        // handle geolocation error.
+        geolocation.on('error', function (error) {
+            var info = document.getElementById('info');
+            info.innerHTML = error.message;
+            info.style.display = '';
+        });
+
+        var accuracyFeature = new ol.Feature();
+        geolocation.on('change:accuracyGeometry', function () {
+            accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
+        });
+
+        var positionFeature = new ol.Feature();
+        positionFeature.setStyle(new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 6,
+                fill: new ol.style.Fill({
+                    color: '#3399CC'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: '#fff',
+                    width: 1
+                })
+            })
+        }));
+
+        geolocation.on('change:position', function () {
+            var coordinates = geolocation.getPosition();
+            positionFeature.setGeometry(coordinates ?
+                    new ol.geom.Point(coordinates) : null);
+        });
+
+
+        /**
+         * Desenha um ponto.
+         */
+        pointFeature = new ol.Feature({
+            geometry: new ol.geom.Point([-3996978.7595446003, -805517.7167901094])
+        });
+
+        pointFeature.setStyle(new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 6,
+                fill: new ol.style.Fill({
+                    color: '#3399CC'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: '#fff',
+                    width: 1
+                })
+            })
+        }));
+        source.addFeature(pointFeature);
+        map.getView().fitExtent(source.getExtent(), map.getSize());
+
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $('#my_objects').addClass('active');
@@ -59,7 +266,7 @@
 
         window.setInterval(function () {
             getList();
-        }, 2000);
+        }, 60000);
 
 
     </script>
