@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
+from django.template import Context
+from django.views.decorators.http import require_http_methods
 from django.views.generic import DetailView
 from django.views.generic import FormView
 from django.views.generic import ListView
@@ -12,6 +14,7 @@ from django.views.generic import UpdateView
 from app.forms import FormObject, FormObjectView, FormItemUpdate
 from app.mixins.CustomContextMixin import CustomContextMixin, UserContextMixin
 from app.models import Item, Object, Requirement, Match, Notification
+from app.views.snippet_template import render_block_to_string
 
 __author__ = "Joao Marcos e Saulo Samuel"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -78,6 +81,14 @@ class MyDonationsListView(LoginRequiredMixin, ListView, CustomContextMixin, User
 
     def get_queryset(self):
         return Item.objects.filter(owner=self.request.user).order_by('-created_at')
+
+from django.http import HttpResponse
+@require_http_methods(["GET"])
+def get_itens(request):
+    itens = Item.objects.filter(owner=request.user).order_by('-created_at')
+    context = Context({'itens': itens})
+    return_str = render_block_to_string('admin_panel/list_my_donations.html', context)
+    return HttpResponse(return_str)
 
 
 class ObjectUpdateView(LoginRequiredMixin, UpdateView, CustomContextMixin, UserContextMixin):

@@ -1,0 +1,48 @@
+<table id="table" class="table table-bordered table-striped"
+       class="display"
+       cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>ITEM</th>
+        <th>TIPO</th>
+        <th>STATUS</th>
+        <th>CRIADO EM</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in itens %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>
+                <a href="{% url 'view-object' item.pk %}">{{ item.name_item }}</a>
+            </td>
+            <td>
+                {% if item.object_set.first %}
+                    {{ item.object_set.first.type }}
+                {% else %}
+                    Serviço
+                {% endif %}
+            </td>
+            <td>
+                {% if item.status %}
+                    <label class="label label-success"><i
+                            class=""></i>
+                        DISPONÍVEL</label>
+                {% else %}
+                    <label class="label label-danger"><i
+                            class=""></i> DOADO</label>
+                {% endif %}
+            </td>
+            <td>{{ item.created_at|date:"d/m/Y G:i" }}</td>
+            <td>
+                <a class="remover"
+                   href="{% url 'delete_object' item.pk %}">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

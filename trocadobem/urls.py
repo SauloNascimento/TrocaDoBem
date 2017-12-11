@@ -16,7 +16,7 @@ from app.views.MatchView import MatchListView, MatchUpdateView, delete_match
 from app.views.NotificationView import NotificationListView, accept_notification, \
     refuse_notification
 from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, \
-    ObjectUpdateView, delete_object
+    ObjectUpdateView, delete_object, get_itens
 from app.views.OrderView import OrderUpdateView
 from app.views.OrderView import delete_order, OrderListView
 from app.views.PainelView import PainelView, ProfileUserView
@@ -112,5 +112,8 @@ urlpatterns = [
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
     url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
+
+    url(r'^get-my-donations/$', get_itens,
+        name="get_my_donations"),
 
 ]

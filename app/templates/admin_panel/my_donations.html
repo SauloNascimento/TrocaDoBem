@@ -9,62 +9,23 @@
                 <!-- form start -->
                 <div class="box-header">
                     {#                    <p> Minhas Doações</p>#}
-                    <a href="{% url 'add_object' %}" class="btn btn-primary">Cadastrar Doação</a>
+                    <a href="{% url 'add_object' %}" class="btn btn-primary">Cadastrar
+                        Doação</a>
                 </div>
                 <div class="box-body">
-                    <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap"
+                         id="example1_wrapper">
                         <div class="row">
-                            <div class="col-sm-12">
-                                <table id="table" class="table table-bordered table-striped" class="display"
-                                       cellspacing="0" width="100%">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>ITEM</th>
-                                        <th>TIPO</th>
-                                        <th>STATUS</th>
-                                        <th>CRIADO EM</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in itens %}
-                                        <tr>
-                                            <td>{{ item.id }}</td>
-                                            <td><a href="{% url 'view-object' item.pk %}">{{ item.name_item }}</a></td>
-                                            <td>
-                                                {% if item.object_set.first %}
-                                                    {{ item.object_set.first.type }}
-                                                {% else %}
-                                                    Serviço
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if item.status %}
-                                                    <label class="label label-success"><i class=""></i>
-                                                        DISPONÍVEL</label>
-                                                {% else %}
-                                                    <label class="label label-danger"><i class=""></i> DOADO</label>
-                                                {% endif %}
-                                            </td>
-                                            <td>{{ item.created_at|date:"d/m/Y G:i" }}</td>
-                                            <td>
-                                                <a class="remover" href="{% url 'delete_object' item.pk %}">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
+                            <div class="col-sm-12" id="list">
+
                             </div>
                         </div>
                     </div>
-
                 </div>
                 {% if user.is_superuser %}
                     <div class="box-footer">
-                        <a href="{% url 'painel' %}" class="btn btn-default pull-left">Voltar</a>
+                        <a href="{% url 'painel' %}"
+                           class="btn btn-default pull-left">Voltar</a>
                     </div>
                 {% endif %}
                 <!-- /.box-body -->
@@ -75,6 +36,32 @@
         $(document).ready(function () {
             $('#my_objects').addClass('active');
         });
+
+        function getList(data) {
+            data = data || {};
+            $.ajax({
+                url: "/get-my-donations",
+                type: "GET", // http method
+                data: data,
+                beforeSend: function () {
+                    $('#loading').show();
+                },
+                success: function (data) {
+                    $('#list').html(data);
+                },
+                complete: function () {
+                    $('#loading').hide();
+                }
+            });
+        }
+
+        getList();
+
+        window.setInterval(function () {
+            getList();
+        }, 2000);
+
+
     </script>
     <!-- /.row -->
 
