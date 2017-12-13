@@ -287,19 +287,24 @@
                     {% if user.commonuser %}
                         <li id="edit">
                             <a href="{% url 'update_donator' user.pk %}">
-                                <i class="fa fa-user"></i> <span>Editar Perfil</span>
+                                <i class="fa fa-pencil"></i> <span>Editar Perfil</span>
                             </a>
                         </li>
                     {% elif user.institute %}
                         <li id="edit">
                             <a href="{% url 'update_institute' user.pk %}">
-                                <i class="fa fa-user"></i> <span>Editar Perfil</span>
+                                <i class="fa fa-pencil"></i> <span>Editar Perfil</span>
                             </a>
                         </li>
                     {% endif %}
                     <li id="my_objects">
+                        <a href="{% url 'list_my_itens' %}">
+                            <i class="fa fa-cubes"></i> <span>Meus Itens</span>
+                        </a>
+                    </li>
+                    <li id="my_donations">
                         <a href="{% url 'list_my_donations' %}">
-                            <i class="fa fa-cubes"></i> <span>Minhas Doações</span>
+                            <i class="fa fa-cubes"></i> <span>Minhas Doacoes</span>
                         </a>
                     </li>
                     <li id="donations">

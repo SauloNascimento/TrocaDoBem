@@ -15,7 +15,7 @@ from app.views.LoginView import LoginView, LogoutView
 from app.views.MatchView import MatchListView, MatchUpdateView, delete_match
 from app.views.NotificationView import NotificationListView, accept_notification, \
     refuse_notification
-from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, \
+from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsListView, MyItensListView, \
     ObjectUpdateView, delete_object
 from app.views.OrderView import OrderUpdateView
 from app.views.OrderView import delete_order, OrderListView
@@ -60,6 +60,7 @@ urlpatterns = [
 
     url(r'^home/$', PainelView.as_view(), name='painel'),
 
+    url(r'^itens/$', MyItensListView.as_view(), name='list_my_itens'),
     url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
 
     url(r'^object/add/$', RegisterObjectView.as_view(), name='add_object'),

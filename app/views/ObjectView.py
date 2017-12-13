@@ -11,7 +11,7 @@ from django.views.generic import UpdateView
 
 from app.forms import FormObject, FormObjectView, FormItemUpdate
 from app.mixins.CustomContextMixin import CustomContextMixin, UserContextMixin
-from app.models import Item, Object, Requirement, Match, Notification
+from app.models import Item, Object, Requirement, Match, Notification, Donation
 
 __author__ = "Joao Marcos e Saulo Samuel"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -72,12 +72,22 @@ class ObjectView(LoginRequiredMixin, DetailView, CustomContextMixin, UserContext
 
 class MyDonationsListView(LoginRequiredMixin, ListView, CustomContextMixin, UserContextMixin):
     login_url = '/login/'
-    model = Item
-    context_object_name = 'itens'
+    model = Donation
+    context_object_name = 'donations'
     template_name = 'admin_panel/my_donations.html'
 
     def get_queryset(self):
-        return Item.objects.filter(owner=self.request.user).order_by('-created_at')
+        return Donation.objects.filter(donator=self.request.user).union(Donation.objects.filter(institute=self.request.user)).order_by('-created_at')
+
+
+class MyItensListView(LoginRequiredMixin, ListView, CustomContextMixin, UserContextMixin):
+    login_url = '/login/'
+    model = Item
+    context_object_name = 'itens'
+    template_name = 'admin_panel/my_itens.html'
+
+    def get_queryset(self):
+        return Item.objects.filter(owner=self.request.user, status=True).order_by('-created_at')
 
 
 class ObjectUpdateView(LoginRequiredMixin, UpdateView, CustomContextMixin, UserContextMixin):
