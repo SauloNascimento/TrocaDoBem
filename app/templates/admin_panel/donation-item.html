@@ -1,0 +1,38 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    {% include 'loading.html' %}
+<form method="post" class="form-horizontal" style=" margin-top: 30px;
+                margin-left: 15%;margin-right: 10%">{% csrf_token %}
+
+            <fieldset>
+
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="name_item">Nome</label>
+                    <div class="col-md-8">
+                        {{ form.name_item }}
+
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="description">Descrição</label>
+                    <div class="col-md-8">
+                        {{ form.description }}
+
+                    </div>
+                </div>
+
+                <!-- Type Input -->
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label" for="object_type"
+                    style="padding-right: 0">Tipo de Objeto</label>
+                    <div class="col-md-8" >
+                        {{ form.object_type }}
+
+                    </div>
+                </div>
+{% endblock %}

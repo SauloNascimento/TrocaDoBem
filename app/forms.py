@@ -214,7 +214,7 @@ class FormDonationItem (FormBaseAddress, forms.ModelForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
                                                             'placeholder': _('Email')}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
-    
+
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
