@@ -335,6 +335,11 @@
                             </a>
                         </li>
                     {% endif %}
+                    <li id="password">
+                        <a href="{% url 'change_password' user.pk %}">
+                            <i class="fa fa-key"></i> <span>Mudar Senha</span>
+                        </a>
+                    </li>
                 {% endif %}
 
                 <li id="logout">

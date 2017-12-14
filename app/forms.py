@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
 from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 
@@ -206,3 +207,15 @@ class FormAnonDonation(FormObject):
                                                                          'placeholder': _('Telefone')}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
                                                             'placeholder': _('Email')}))
+class FormChangePassword(PasswordChangeForm, BaseForm):
+
+    def clean_new_password2(self):
+        password1 = self.cleaned_data.get('new_password1')
+        password2 = self.cleaned_data.get('new_password2')
+        if password1 and password2:
+            if password1 != password2:
+                raise forms.ValidationError(
+                    self.error_messages['password_mismatch'],
+                    code='password_mismatch',
+                )
+        return password2
