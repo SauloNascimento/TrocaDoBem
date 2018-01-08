@@ -207,17 +207,3 @@ class FormAnonDonation(FormObject):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
                                                             'placeholder': _('Email')}))
 
-class FormDonationItem (FormBaseAddress, forms.ModelForm):
-    phone = forms.CharField(required=True,
-                            widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
-                                                          'placeholder': _('Telefone')}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
-                                                            'placeholder': _('Email')}))
-    object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
-
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'email']
-
-    def __init__(self, *args, **kwargs):
-        super(FormDonationItem, self).__init__(*args, **kwargs)

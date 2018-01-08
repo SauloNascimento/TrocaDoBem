@@ -4,7 +4,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.generic import UpdateView
-from app.forms import FormDonationItem
 from app.views.ObjectView import RegisterObjectView
 from app.mixins.CustomContextMixin import UserContextMixin
 
@@ -13,7 +12,6 @@ __copyright__ = "Copyright 2017, LES-UFCG"
 
 class DonationItemView (LoginRequiredMixin, UpdateView, UserContextMixin):
     login_url = '/login/'
-    form_class = FormDonationItem
     template_name = 'admin_panel/donation-item.html'
     success_url = '/donationitem'
 
@@ -48,6 +46,5 @@ class DonationItemView (LoginRequiredMixin, UpdateView, UserContextMixin):
         common_user.state = data['state']
         common_user.city = data['city']
         common_user.save()
-        item = RegisterObjectView.form_valid(self,form)
         return super(DonationItemView,self).form_valid(form)
 
