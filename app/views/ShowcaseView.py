@@ -8,9 +8,10 @@ from django.views.generic import CreateView
 from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.views.generic import UpdateView
-
+from django.template import RequestContext
 from app.forms import FormRequirement
 from app.mixins.CustomContextMixin import CustomContextMixin
+from django.shortcuts import redirect, render_to_response, get_object_or_404
 from app.models import Requirement
 
 __author__ = "Tainah Emmanuele"
@@ -21,7 +22,8 @@ class RequirementShowCaseView(ListView, CustomContextMixin):
     model = Requirement
     form_class = FormRequirement
     template_name = 'view_showcase.html'
+    requeriments = Requirement.objects.all()
 
-
-    def get_queryset(self):
-        return Requirement.objects.all()
+    def get_queryset(request):
+        return Requirement.objects.all().filter(user=request.user)
+            
