@@ -24,7 +24,7 @@ from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
 from app.views.RequirementView import RequirementListView, AddRequirementView, \
     RequirementUpdateView, delete_requirement, RequirementView
-from app.views.ShowcaseView import RequirementShowCaseView
+from app.views.ShowcaseView import RequirementShowCaseView , RequerimentDetail
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -113,6 +113,7 @@ urlpatterns = [
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
     url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
-    url(r'^showcase/$',RequirementShowCaseView, name='list_showcase'),
+    url(r'^showcase/',RequirementShowCaseView, name='list_showcase'),
+    url(r'^([0-9]+)/$', RequerimentDetail, name = 'detail'),
 
 ]

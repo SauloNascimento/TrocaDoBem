@@ -22,9 +22,13 @@ __copyright__ = "Copyright 2018, LES-UFCG"
 def RequirementShowCaseView(request):
     context_object_name = 'requirements'
     model = Requirement
-    form_class = FormRequirement
     template_name = 'view_showcase.html'
     requeriments = Requirement.objects.all()
 
     form = FormRequirement
     return render(request, 'view_showcase.html', {'requeriments': requeriments, 'form': form})
+
+def RequerimentDetail(request, requeriment_id):
+    requeriments = Requirement.objects.get(id=requeriment_id)
+    #hashtags = HashTag.objects.filter(treasure=treasure_id)
+    return render(request, 'view_showcase_requeriment.html', {'requeriments': requeriments})
