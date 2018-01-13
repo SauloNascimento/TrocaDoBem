@@ -12,18 +12,19 @@ from django.template import RequestContext
 from app.forms import FormRequirement
 from app.mixins.CustomContextMixin import CustomContextMixin
 from django.shortcuts import redirect, render_to_response, get_object_or_404
+from django.contrib.admin import widgets
+from django.shortcuts import render
 from app.models import Requirement
 
 __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"
 
-class RequirementShowCaseView(ListView, CustomContextMixin):
+def RequirementShowCaseView(request):
     context_object_name = 'requirements'
     model = Requirement
     form_class = FormRequirement
     template_name = 'view_showcase.html'
     requeriments = Requirement.objects.all()
 
-    def get_queryset(request):
-        return Requirement.objects.all().filter(user=request.user)
-            
+    form = FormRequirement
+    return render(request, 'view_showcase.html', {'requeriments': requeriments, 'form': form})

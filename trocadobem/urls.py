@@ -113,6 +113,6 @@ urlpatterns = [
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
     url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
-    url(r'^showcase/$',RequirementShowCaseView.as_view(), name='list_showcase'),
+    url(r'^showcase/$',RequirementShowCaseView, name='list_showcase'),
 
 ]
