@@ -25,9 +25,11 @@ from app.views.RegisterUserView import RegisterUserView
 from app.views.RequirementView import RequirementListView, AddRequirementView, \
     RequirementUpdateView, delete_requirement, RequirementView
 
-from app.views.ShowcaseView import RequirementShowCaseView , RequerimentDetail
+from app.views.ShowcaseRequerimentView import RequirementShowCaseView , RequerimentDetail
 
 from app.views.ChangePasswordView import ChangePasswordView
+
+from app.views.DonatorRequerimentView import  DonatorRequerimentView
 
 
 __author__ = "Caio Marinho"
@@ -117,8 +119,10 @@ urlpatterns = [
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
     url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
-    url(r'^showcase/',RequirementShowCaseView, name='list_showcase'),
-    url(r'^([0-9]+)/$', RequerimentDetail, name = 'detail'),
+
+    url(r'^showcase/$',RequirementShowCaseView, name='list_showcase'),
+    url(r'^showcase/(?P<requeriment_id>\d+)/$', RequerimentDetail, name = 'detail'),
+    url(r'^showcase/doaritem/$', DonatorRequerimentView.as_view(), name='doar_item'),
     url(r'^account/(?P<pk>[0-9]+)/change-password/$', ChangePasswordView.as_view(), name='change_password'),
 
 ]
