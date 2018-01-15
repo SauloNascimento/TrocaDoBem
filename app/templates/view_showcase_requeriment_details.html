@@ -43,6 +43,9 @@
                 {% if user.is_authenticated %}
                   <a href="/donationrequeriment/{{user.pk}}" class="btn btn-primary btn-block btn-lg">Doar
                       Agora</a>
+                {%  else %}
+                    <a href="/donationrequeriment/{{ user.id }}" class="btn btn-primary btn-block btn-lg">Doar
+                      Agora</a>
                 {% endif %}
           </div>
 

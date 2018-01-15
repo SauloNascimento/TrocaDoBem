@@ -29,7 +29,7 @@ from app.views.ShowcaseRequerimentView import RequirementShowCaseView , Requerim
 
 from app.views.ChangePasswordView import ChangePasswordView
 
-from app.views.DonatorRequerimentView import  DonatorRequerimentView
+from app.views.DonatorRequerimentView import  DonatorRequerimentView, DonatorRequerimentViewAnonymous
 
 
 __author__ = "Caio Marinho"
@@ -122,7 +122,7 @@ urlpatterns = [
 
     url(r'^showcase/$',RequirementShowCaseView, name='list_showcase'),
     url(r'^showcase/(?P<requeriment_id>\d+)/$', RequerimentDetail, name = 'detail'),
-    url(r'^donationrequeriment/$', DonatorRequerimentView.as_view(), name='donation_requeriment_1'),
+    url(r'^donationrequeriment/None$', DonatorRequerimentViewAnonymous.as_view(), name='donation_requeriment_1'),
     url(r'^donationrequeriment/(?P<pk>[0-9]+)/$', DonatorRequerimentView.as_view(), name='donation_requeriment'),
     url(r'^account/(?P<pk>[0-9]+)/change-password/$', ChangePasswordView.as_view(), name='change_password'),
 
