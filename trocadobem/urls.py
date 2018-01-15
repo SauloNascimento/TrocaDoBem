@@ -24,7 +24,11 @@ from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
 from app.views.RequirementView import RequirementListView, AddRequirementView, \
     RequirementUpdateView, delete_requirement, RequirementView
+
 from app.views.ShowcaseView import RequirementShowCaseView , RequerimentDetail
+
+from app.views.ChangePasswordView import ChangePasswordView
+
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -115,5 +119,6 @@ urlpatterns = [
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
     url(r'^showcase/',RequirementShowCaseView, name='list_showcase'),
     url(r'^([0-9]+)/$', RequerimentDetail, name = 'detail'),
+    url(r'^account/(?P<pk>[0-9]+)/change-password/$', ChangePasswordView.as_view(), name='change_password'),
 
 ]
