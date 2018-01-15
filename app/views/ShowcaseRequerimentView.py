@@ -21,19 +21,19 @@ __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"
 
 class ShowcaseRequerimentView():
-    template_name = 'view_showcase.html'
+    template_name = 'view_showcase_requeriments.html'
 
 def RequirementShowCaseView(request):
     context_object_name = 'requirements'
     model = Requirement
-    template_name = 'view_showcase.html'
+    template_name = 'view_showcase_requeriments.html'
     requeriments = Requirement.objects.all()
 
     form = FormRequirement
-    return render(request, 'view_showcase.html', {'requeriments': requeriments, 'form': form})
+    return render(request, 'view_showcase_requeriments.html', {'requeriments': requeriments, 'form': form})
 
 def RequerimentDetail(request, requeriment_id):
     requeriments = Requirement.objects.get(id=requeriment_id)
     #hashtags = HashTag.objects.filter(treasure=treasure_id)
-    return render(request, 'view_showcase_requeriment.html', {'requeriments': requeriments})
+    return render(request, 'view_showcase_requeriment_details.html', {'requeriments': requeriments})
 

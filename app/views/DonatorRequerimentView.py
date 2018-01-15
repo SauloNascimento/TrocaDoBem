@@ -4,6 +4,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.generic import UpdateView
+from django.views.generic import FormView
+
 
 from app.forms import FormDonatorUpdate
 from app.mixins.CustomContextMixin import UserContextMixin
@@ -12,7 +14,7 @@ __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"
 
 
-class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin):
+class DonatorRequerimentView( LoginRequiredMixin, UpdateView, UserContextMixin):
     login_url = '/login/'
     model = User
     form_class = FormDonatorUpdate
