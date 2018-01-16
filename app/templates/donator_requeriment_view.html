@@ -7,7 +7,7 @@
 
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Editar Perfil</h3>
+            <h3 class="box-title">Cadastrar Doação</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -38,35 +38,32 @@
                     <label for="anonymous">Doar Anonimamente: </label>
                     {{ form.anonymous }}
                 </div>
+                {% if not user.is_authenticated %}
+                    <div class="form-group">
+                        <label for="password">Senha: </label>
+                        {{ form.password }}
+                    </div>
+                {% endif %}
             </div>
             <!-- /.box-body -->
 
             <div class="form-group">
-                    <label class="col-md-4 control-label" for="name_item">Nome</label>
-                    <div class="col-md-4">
-                        {{ form.name_item }}
+                <label  for="name_item">Nome</label>
+                    {{ form.name_item }}
+            </div>
 
-                    </div>
-                </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="description">Descrição</label>
+                    {{ form.description }}
+            </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="description">Descrição</label>
-                    <div class="col-md-4">
-                        {{ form.description }}
-
-                    </div>
-                </div>
-
-                <!-- Type Input -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="object_type"
-                           style="padding-right: 0">Tipo de Objeto</label>
-                    <div class="col-md-4">
-                        {{ form.object_type }}
-
-                    </div>
-                </div>
+            <!-- Type Input -->
+            <div class="form-group">
+                <label  for="object_type"
+                       >Tipo de Objeto</label>
+                    {{ form.object_type }}
+            </div>
 
             <div class="box-footer">
                 <button type="submit" id="btn_salvar" class="btn btn-primary pull-right">Salvar</button>
