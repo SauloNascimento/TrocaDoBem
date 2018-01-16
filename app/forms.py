@@ -219,3 +219,10 @@ class FormChangePassword(PasswordChangeForm, BaseForm):
                     code='password_mismatch',
                 )
         return password2
+
+class FormDonatorRequeriment(FormObject, FormDonatorUpdate):
+    pass
+
+class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
+                                                                 'placeholder': _('Password')}))

@@ -6,22 +6,34 @@ from django.contrib.auth.models import User
 from django.views.generic import UpdateView
 from django.views.generic import FormView
 from django.views.generic import FormView
+from app.models import Item, Object, Requirement, Match, Notification
 
-from app.forms import FormRegisterUser
+from app.forms import FormRegisterUser, FormDonationView, FormObject, FormDonatorRequeriment, FormDonatorRequerimentNewUser
 from app.models import CommonUser
-
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseRedirect
 
 from app.forms import FormDonatorUpdate
 from app.mixins.CustomContextMixin import UserContextMixin
 
+
 __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"
 
+def search_matches(**kwargs):
+    reqs = Requirement.objects.filter(status=True)
+    for req in reqs:
+        if req.type == kwargs['type']:
+            match = Match(requirement=req, item=Item.objects.get(id=kwargs['pk_item']))
+            match.save()
+            notification = Notification(user=req.owner, match=match)
+            notification.save()
 
 class DonatorRequerimentView( LoginRequiredMixin, UpdateView, UserContextMixin):
     login_url = '/login/'
     model = User
-    form_class = FormDonatorUpdate
+    form_class = FormDonatorRequeriment
     template_name = 'donator_requeriment_view.html'
     success_url = '/home'
 
@@ -44,6 +56,22 @@ class DonatorRequerimentView( LoginRequiredMixin, UpdateView, UserContextMixin):
         common_user.phone = data['phone']
         common_user.anonymous = data['anonymous']
         common_user.save()
+        data = form.cleaned_data
+        item_data = {}
+        object_data = {}
+        item_data['name_item'] = data['name_item']
+        item_data['description'] = data['description']
+        object_data['type'] = data['object_type']
+        if data['name_item'] and data['object_type']:
+            new_item = Item(owner=self.request.user, **item_data)
+            new_item.save()
+            new_object = Object(item=new_item, **object_data)
+            new_object.save()
+            messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
+            object_data['pk_item'] = new_item.pk
+            search_matches(**object_data)
+        else:
+            return self.form_invalid(self, form)
         return super(DonatorRequerimentView, self).form_valid(form)
 
     def form_invalid(self, form):
@@ -55,7 +83,7 @@ class DonatorRequerimentViewAnonymous(FormView):
     Displays the login form.
     """
     template_name = 'donator_requeriment_view.html'
-    form_class = FormRegisterUser
+    form_class = FormDonatorRequerimentNewUser
     success_url = '/login'
 
     def post(self, request, *args, **kwargs):
@@ -84,8 +112,25 @@ class DonatorRequerimentViewAnonymous(FormView):
             new_common_user.save()
         else:
             return self.form_invalid(form)
+        data = form.cleaned_data
+        item_data = {}
+        object_data = {}
+        item_data['name_item'] = data['name_item']
+        item_data['description'] = data['description']
+        object_data['type'] = data['object_type']
+        if data['name_item'] and data['object_type']:
+            new_item = Item(owner=self.request.user, **item_data)
+            new_item.save()
+            new_object = Object(item=new_item, **object_data)
+            new_object.save()
+            messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
+            object_data['pk_item'] = new_item.pk
+            search_matches(**object_data)
+        else:
+            return self.form_invalid(self, form)
         return super(DonatorRequerimentViewAnonymous, self).form_valid(form)
 
     def form_invalid(self, form):
         print(form.errors)
         return super(DonatorRequerimentViewAnonymous, self).form_invalid(form)
+
