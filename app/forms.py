@@ -221,7 +221,9 @@ class FormChangePassword(PasswordChangeForm, BaseForm):
         return password2
 
 class FormDonatorRequeriment(FormObject, FormDonatorUpdate):
-    pass
+    birth_date = forms.CharField(required=False,
+                                 widget=forms.TextInput(attrs={'required': False, 'placeholder': _('Data de Nascimento'),
+                                                               'maxlength': 150}))
 
 class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
@@ -229,3 +231,5 @@ class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': False, 'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
+    last_name = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': False, 'maxlength': 200,
+                                                              'placeholder': _('Sobrenome')}))
