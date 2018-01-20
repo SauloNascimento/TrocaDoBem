@@ -72,6 +72,7 @@ class DonatorRequerimentView( LoginRequiredMixin, UpdateView, UserContextMixin):
             search_matches(**object_data)
         else:
             return self.form_invalid(self, form)
+        messages.success(self.request, 'Muito Obrigado pela sua Doação!')
         return super(DonatorRequerimentView, self).form_valid(form)
 
     def form_invalid(self, form):
@@ -116,12 +117,17 @@ class DonatorRequerimentViewAnonymous(FormView):
         item_data['name_item'] = data['name_item']
         item_data['description'] = data['description']
         object_data['type'] = data['object_type']
-        new_item = Item(owner=new_user, **item_data)
-        new_item.save()
-        new_object = Object(item=new_item, **object_data)
-        new_object.save()
-        object_data['pk_item'] = new_item.pk
-        search_matches(**object_data)
+        if data['name_item'] and data['object_type']:
+            new_item = Item(owner=new_user, **item_data)
+            new_item.save()
+            new_object = Object(item=new_item, **object_data)
+            new_object.save()
+            messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
+            object_data['pk_item'] = new_item.pk
+            search_matches(**object_data)
+        else:
+            return self.form_invalid(self, form)
+        messages.success(self.request, 'Muito Obrigado pela sua Doação!')
         return super(DonatorRequerimentViewAnonymous, self).form_valid(form)
 
     def form_invalid(self, form):
