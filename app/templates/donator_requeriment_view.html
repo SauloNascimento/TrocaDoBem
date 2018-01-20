@@ -26,7 +26,20 @@
                     <label for="cpf">CPF: </label>
                     {{ form.cpf }}
                 </div>
+            </div>
+            {% if not user.is_authenticated %}
                 <div class="form-group">
+                    <label for="password">Senha: </label>
+                    {{ form.password }}
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="login">Login</label>
+                    <div class="col-md-4">
+                        {{ form.username }}
+                    </div>
+                </div>
+            {% endif %}
+                        <div class="form-group">
                     <label for="phone">Telefone: </label>
                     {{ form.phone }}
                 </div>
@@ -35,39 +48,33 @@
                     {{ form.email }}
                 </div>
                 <div class="form-group">
-                    <label for="anonymous">Doar Anonimamente: </label>
-                    {{ form.anonymous }}
+                <label for="anonymous">Doar Anonimamente: </label>
+                {{ form.anonymous }}
                 </div>
-                {% if not user.is_authenticated %}
-                    <div class="form-group">
-                        <label for="password">Senha: </label>
-                        {{ form.password }}
-                    </div>
-                {% endif %}
-            </div>
+
             <!-- /.box-body -->
 
             <div class="form-group">
-                <label  for="name_item">Nome</label>
-                    {{ form.name_item }}
+                <label for="name_item">Nome</label>
+                {{ form.name_item }}
             </div>
 
             <!-- Text input-->
             <div class="form-group">
                 <label for="description">Descrição</label>
-                    {{ form.description }}
+                {{ form.description }}
             </div>
 
             <!-- Type Input -->
             <div class="form-group">
-                <label  for="object_type"
-                       >Tipo de Objeto</label>
-                    {{ form.object_type }}
+                <label for="object_type"
+                >Tipo de Objeto</label>
+                {{ form.object_type }}
             </div>
 
             <div class="box-footer">
                 <button type="submit" id="btn_salvar" class="btn btn-primary pull-right">Salvar</button>
-                <a href="{% url "home" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>
+                <a href="{% url "login" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>
             </div>
         </form>
     </div>

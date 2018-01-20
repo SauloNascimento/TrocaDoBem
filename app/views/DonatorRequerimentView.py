@@ -95,39 +95,33 @@ class DonatorRequerimentViewAnonymous(FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        aux_obj = User.objects.filter(username=data['username'])
-        if len(aux_obj) > 0:
-            return self.form_invalid(form)
         user_data = {}
         common_data = {}
+        item_data = {}
+        object_data = {}
+        user_data['last_name'] = data['last_name']
         user_data['first_name'] = data['first_name']
         user_data['email'] = data['email']
         user_data['username'] = data['username']
+        user_data['password'] = data['password']
         common_data['cpf'] = data['cpf']
         common_data['phone'] = data['phone']
-        common_data['anonymous'] = data['anonymous']
         if data['username'] and data['password']:
             new_user = User.objects.create_user(**user_data)
             new_common_user = CommonUser(user=new_user, **common_data)
             new_common_user.save()
+            messages.success(self.request, 'Novo usuário cadastrado com sucesso.')
         else:
             return self.form_invalid(form)
-        data = form.cleaned_data
-        item_data = {}
-        object_data = {}
         item_data['name_item'] = data['name_item']
         item_data['description'] = data['description']
         object_data['type'] = data['object_type']
-        if data['name_item'] and data['object_type']:
-            new_item = Item(owner=self.request.user, **item_data)
-            new_item.save()
-            new_object = Object(item=new_item, **object_data)
-            new_object.save()
-            messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
-            object_data['pk_item'] = new_item.pk
-            search_matches(**object_data)
-        else:
-            return self.form_invalid(self, form)
+        new_item = Item(owner=new_user, **item_data)
+        new_item.save()
+        new_object = Object(item=new_item, **object_data)
+        new_object.save()
+        object_data['pk_item'] = new_item.pk
+        search_matches(**object_data)
         return super(DonatorRequerimentViewAnonymous, self).form_valid(form)
 
     def form_invalid(self, form):

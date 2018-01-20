@@ -226,3 +226,6 @@ class FormDonatorRequeriment(FormObject, FormDonatorUpdate):
 class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
                                                                  'placeholder': _('Password')}))
+    birth_date = forms.CharField(required=False,
+                                 widget=forms.TextInput(attrs={'required': False, 'placeholder': _('Data de Nascimento'),
+                                                               'maxlength': 150}))
