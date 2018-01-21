@@ -45,6 +45,52 @@
             </div>
         </div>
     </section>
+
+
+    <section class="bar background-white no-mb" >
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <h3 style="color: #000">Vitrine de Requisições</h3>
+                    </div>
+
+{% for requeriment in requeriments %}
+			<!-- Creating a column for each treasure panel -->
+      <div class="col-md-4">
+      <div class="treasure panel panel-default">
+				<!-- Adding treasure title by username -->
+        <div class="panel-heading">
+          <h3 class="panel-title" align="center" >{{ requeriment.name }}</h3>
+          <h6 class ="panel-default" align="center" > Instituição: {{ requeriment.owner }}</h6>
+        </div>
+				<!-- Adding treasure image -->
+        <div class="panel-body">
+          <a href="/showcase/{{requeriment.id}}">
+          <div class="treasure-photo">
+            <img src="{{ requeriment.photo }}">
+          </div>
+          </a>
+					<!-- Adding Like Button -->
+
+        </div>
+
+      </div>
+      </div>
+	  <!-- if last column in row -->
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+        </div><br><div class="row">
+      {% endif %}
+	{% endfor %}
+	</div><br>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     {% if recent_posts %}
         <section class="bar background-gray no-mb padding-big text-center-sm" id="noticias">
             <div class="container">

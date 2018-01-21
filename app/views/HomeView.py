@@ -4,8 +4,11 @@ from django.contrib import messages
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.views.generic import ListView, TemplateView
-
+from django.shortcuts import render
+from app.models import Requirement
 from app.models import Post, Message, Institute
+from app.forms import FormRequirement
+from django.template import RequestContext
 
 """HomeView.py: Especifica a pagina inicial da aplicacao."""
 
@@ -18,6 +21,11 @@ class HomeView(ListView):
     model = Post
     context_object_name = 'recent_posts'
     queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
+
+
+
+
+
 
 
 class CollectView(TemplateView):
@@ -53,3 +61,5 @@ def submit_message(request):
 def view_post(request, slug):
     return render_to_response('post.html', {'post': get_object_or_404(Post, slug=slug)},
                               context_instance=RequestContext(request))
+
+

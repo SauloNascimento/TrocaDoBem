@@ -32,6 +32,7 @@ def RequirementShowCaseView(request):
     form = FormRequirement
     return render(request, 'view_showcase_requeriments.html', {'requeriments': requeriments, 'form': form})
 
+
 def RequerimentDetail(request, requeriment_id):
     requeriments = Requirement.objects.get(id=requeriment_id)
     #hashtags = HashTag.objects.filter(treasure=treasure_id)
