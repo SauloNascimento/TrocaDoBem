@@ -23,7 +23,15 @@ class HomeView(ListView):
     queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
 
 
+    def RequirementShowCaseView(request):
+        context_object_name = 'requirements'
+        model = Requirement
+        template_name = 'index.html'
+        requeriments = Requirement.objects.all()
+        queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
 
+        form = FormRequirement
+        return render(request, 'index.html', {'requeriments': requeriments, 'form': form,'recent_posts':queryset})
 
 
 
