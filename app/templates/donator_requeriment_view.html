@@ -5,73 +5,108 @@
 
     {% include 'loading.html' %}
 
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <h3 class="box-title">Cadastrar Doação</h3>
-        </div>
+    <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <center>Cadastrar Doação</center>
+                    </h3>
+                </div>
+            </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" method="post">
+        <form role="form" method="post" class="form-horizontal">
             {% csrf_token %}
-            <div class="box-body">
+            <div>
                 <div class="form-group">
-                    <label for="first_name">Nome: </label>
-                    {{ form.first_name }}
+                    <label class="col-md-4 control-label" for="first_name">Nome: </label>
+                    <div class="col-md-4">
+                        {{ form.first_name }}
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="cpf">CPF: </label>
-                    {{ form.cpf }}
+                    <label class="col-md-4 control-label" for="cpf">CPF: </label>
+                    <div class="col-md-4">
+                        {{ form.cpf }}
+                    </div>
                 </div>
-            </div>
-            {% if not user.is_authenticated %}
-                <div class="form-group">
-                    <label for="login">Login:</label>
-                    {{ form.username }}
-                </div>
-                <div class="form-group">
-                    <label for="password">Senha: </label>
-                    {{ form.password }}
-                </div>
-            {% endif %}
-            <div class="form-group">
-                <label for="phone">Telefone: </label>
-                {{ form.phone }}
-            </div>
-            <div class="form-group">
-                <label for="email">Email: </label>
-                {{ form.email }}
-            </div>
-            <div class="form-group">
-                <label for="anonymous">Doar Anonimamente: </label>
-                {{ form.anonymous }}
-            </div>
 
-            <!-- /.box-body -->
-
-            <div class="form-group">
-                <label for="name_item">Nome</label>
-                {{ form.name_item }}
+    {% if not user.is_authenticated %}
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="login">Login:</label>
+            <div class="col-md-4">
+                {{ form.username }}
             </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label for="description">Descrição:</label>
-                {{ form.description }}
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="password">Senha: </label>
+            <div class="col-md-4">
+                {{ form.password }}
             </div>
-
-            <!-- Type Input -->
-            <div class="form-group">
-                <label for="object_type"
-                >Tipo de Objeto:</label>
-                {{ form.object_type }}
-            </div>
-
-            <div class="box-footer">
-                <button type="submit" id="btn_salvar" class="btn btn-primary pull-right">Salvar</button>
-                <a href="{% url "home" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>
-            </div>
-        </form>
+        </div>
+    {% endif %}
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="phone">Telefone: </label>
+        <div class="col-md-4">
+            {{ form.phone }}
+        </div>
     </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="email">Email: </label>
+        <div class="col-md-4">
+            {{ form.email }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="anonymous">Doar Anonimamente: </label>
+        <div class="col-md-1">
+            {{ form.anonymous }}
+        </div>
+    </div>
+
+    <!-- /.box-body -->
+
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="name_item">Nome</label>
+        <div class="col-md-4">
+            {{ form.name_item }}
+        </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="description">Descrição:</label>
+        <div class="col-md-4">
+            {{ form.description }}
+        </div>
+    </div>
+
+    <!-- Type Input -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="object_type"
+        >Tipo de Objeto:</label>
+        <div class="col-md-6">
+            {{ form.object_type }}
+        </div>
+    </div>
+
+
+            </div>
+                <div class="form-group">
+                <div class="col-md-8 col-md-offset-3">
+                    <div class="row">
+                        <div class="col-sm-4">
+        <button type="submit" id="btn_salvar" class="btn btn-success btn-block">Salvar</button>
+                            </div>
+                        <div class="col-sm-4">
+        <a href="{% url "home" %}" id="btn_cancelar" class="btn btn-danger btn-block">Voltar</a>
+           </div>
+                    </div>
+                </div>
+            </div>
+    </fieldset>
+    </form>
+
+
 
     <script type="text/javascript">
         $(document).ready(function () {

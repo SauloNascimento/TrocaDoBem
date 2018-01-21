@@ -17,12 +17,6 @@ __copyright__ = "Copyright 2017, LES-UFCG"
 
 
 class HomeView(ListView):
-    template_name = 'index.html'
-    model = Post
-    context_object_name = 'recent_posts'
-    queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
-
-
     def RequirementShowCaseView(request):
         context_object_name = 'requirements'
         model = Requirement

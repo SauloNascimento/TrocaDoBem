@@ -78,17 +78,16 @@
       </div>
       </div>
 	  <!-- if last column in row -->
-      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+      {% if forloop.counter|divisibleby:5 and not 10 %}
         </div><br><div class="row">
       {% endif %}
 	{% endfor %}
 	</div><br>
-
-
-                </div>
-            </div>
+           <div class="col-sm-12">
+        <a href="{% url "list_showcase" %} "class="btn btn-danger btn-block">Ver Mais</a>
+           </div>
         </div>
-    </section>
+
 
 
     {% if recent_posts %}
