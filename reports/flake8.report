@@ -1,22 +1,20 @@
 C:\Users\Tainah\Desktop\trocadobem\manage.py:14:13: F401 'django' imported but unused
 C:\Users\Tainah\Desktop\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
-C:\Users\Tainah\Desktop\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
-C:\Users\Tainah\Desktop\trocadobem\app\apps.py:6:1: F404 future import(s) ['unicode_literals'] after other statements
-C:\Users\Tainah\Desktop\trocadobem\app\apps.py:8:1: E402 module level import not at top of file
-C:\Users\Tainah\Desktop\trocadobem\app\forms.py:58:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\apps.py:9:1: E302 expected 2 blank lines, found 1
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:58:65: E127 continuation line over-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:58:101: E501 line too long (103 > 100 characters)
 C:\Users\Tainah\Desktop\trocadobem\app\forms.py:90:101: E501 line too long (109 > 100 characters)
 C:\Users\Tainah\Desktop\trocadobem\app\forms.py:110:101: E501 line too long (105 > 100 characters)
 C:\Users\Tainah\Desktop\trocadobem\app\forms.py:119:101: E501 line too long (105 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\app\forms.py:145:101: E501 line too long (120 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\app\forms.py:161:101: E501 line too long (110 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\app\forms.py:162:101: E501 line too long (105 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\app\forms.py:165:101: E501 line too long (113 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\app\forms.py:171:101: E501 line too long (109 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\app\forms.py:206:101: E501 line too long (108 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\app\forms.py:207:101: E501 line too long (104 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\app\forms.py:210:1: E302 expected 2 blank lines, found 0
-C:\Users\Tainah\Desktop\trocadobem\app\models.py:193:101: E501 line too long (103 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\app\models.py:196:101: E501 line too long (103 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:149:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:168:101: E501 line too long (105 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:171:101: E501 line too long (113 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:241:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:247:5: E128 continuation line under-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:248:66: E127 continuation line over-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:251:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:255:78: E127 continuation line over-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:256:95: W292 no newline at end of file
 C:\Users\Tainah\Desktop\trocadobem\app\mixins\CustomContextMixin.py:10:101: E501 line too long (101 > 100 characters)
 C:\Users\Tainah\Desktop\trocadobem\app\mixins\CustomContextMixin.py:11:101: E501 line too long (103 > 100 characters)
 C:\Users\Tainah\Desktop\trocadobem\app\mixins\CustomContextMixin.py:13:101: E501 line too long (116 > 100 characters)
@@ -32,12 +30,14 @@ C:\Users\Tainah\Desktop\trocadobem\app\tests\test_register_institute.py:60:9: F8
 C:\Users\Tainah\Desktop\trocadobem\app\tests\test_register_user.py:43:101: E501 line too long (118 > 100 characters)
 C:\Users\Tainah\Desktop\trocadobem\app\tests\test_register_user.py:55:9: F841 local variable 'e' is assigned to but never used
 C:\Users\Tainah\Desktop\trocadobem\app\tests\test_register_user.py:62:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Tainah\Desktop\trocadobem\app\views\HomeView.py:19:9: N805 first argument of a method should be named 'self'
 C:\Users\Tainah\Desktop\trocadobem\app\views\NotificationView.py:32:101: E501 line too long (108 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:6:101: E501 line too long (112 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:7:101: E501 line too long (111 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:8:101: E501 line too long (107 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:74:101: E501 line too long (108 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:114:101: E501 line too long (103 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:115:101: E501 line too long (109 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:116:101: E501 line too long (108 > 100 characters)
-C:\Users\Tainah\Desktop\trocadobem\trocadobem\wsgi.py:22:1: E402 module level import not at top of file
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:35:45: E271 multiple spaces after keyword
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:35:101: E501 line too long (101 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:83:101: E501 line too long (108 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:123:101: E501 line too long (103 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:124:101: E501 line too long (109 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:128:101: E501 line too long (112 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:129:101: E501 line too long (113 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:130:101: E501 line too long (108 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\wsgi.py:25:1: E303 too many blank lines (3)

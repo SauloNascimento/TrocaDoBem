@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import messages
 from django.shortcuts import redirect, render_to_response, get_object_or_404
-from django.template import RequestContext
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render
 from app.models import Requirement
@@ -17,17 +16,13 @@ __copyright__ = "Copyright 2017, LES-UFCG"
 
 
 class HomeView(ListView):
-    def RequirementShowCaseView(request):
-        context_object_name = 'requirements'
-        model = Requirement
-        template_name = 'index.html'
+    def requirement_showcase(request):
         requeriments = Requirement.objects.all()
         queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
 
         form = FormRequirement
-        return render(request, 'index.html', {'requeriments': requeriments, 'form': form,'recent_posts':queryset})
-
-
+        return render(request, 'index.html', {'requeriments': requeriments,
+                                              'form': form, 'recent_posts': queryset})
 
 
 class CollectView(TemplateView):
@@ -63,5 +58,3 @@ def submit_message(request):
 def view_post(request, slug):
     return render_to_response('post.html', {'post': get_object_or_404(Post, slug=slug)},
                               context_instance=RequestContext(request))
-
-

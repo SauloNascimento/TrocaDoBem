@@ -5,21 +5,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.generic import UpdateView
 from django.views.generic import FormView
-from django.views.generic import FormView
 from app.models import Item, Object, Requirement, Match, Notification
-
-from app.forms import FormRegisterUser, FormDonationView, FormObject, FormDonatorRequeriment, FormDonatorRequerimentNewUser
+from app.forms import FormDonatorRequeriment, FormDonatorRequerimentNewUser
 from app.models import CommonUser
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
-from django.http import HttpResponseRedirect
-
-from app.forms import FormDonatorUpdate
 from app.mixins.CustomContextMixin import UserContextMixin
-
 
 __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"
+
 
 def search_matches(**kwargs):
     reqs = Requirement.objects.filter(status=True)
@@ -30,7 +24,8 @@ def search_matches(**kwargs):
             notification = Notification(user=req.owner, match=match)
             notification.save()
 
-class DonatorRequerimentView( LoginRequiredMixin, UpdateView, UserContextMixin):
+
+class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin):
     login_url = '/login/'
     model = User
     form_class = FormDonatorRequeriment
@@ -78,6 +73,7 @@ class DonatorRequerimentView( LoginRequiredMixin, UpdateView, UserContextMixin):
     def form_invalid(self, form):
         print(form.errors)
         return super(DonatorRequerimentView, self).form_invalid(form)
+
 
 class DonatorRequerimentViewAnonymous(FormView):
     """
@@ -133,4 +129,3 @@ class DonatorRequerimentViewAnonymous(FormView):
     def form_invalid(self, form):
         print(form.errors)
         return super(DonatorRequerimentViewAnonymous, self).form_invalid(form)
-
