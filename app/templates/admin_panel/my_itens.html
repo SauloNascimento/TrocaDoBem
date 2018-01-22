@@ -2,9 +2,15 @@
 {% load staticfiles %}
 
 {% block content %}
+    {# Example content #}
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
+                <!-- form start -->
+                <div class="box-header">
+                    {#                    <p> Minhas Doações</p>#}
+                    <a href="{% url 'add_object' %}" class="btn btn-primary">Cadastrar Doação</a>
+                </div>
                 <div class="box-body">
                     <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
                         <div class="row">
@@ -14,29 +20,39 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>DOADOR</th>
                                         <th>ITEM</th>
-                                        <th>INSTITUICAO</th>
+                                        <th>TIPO</th>
                                         <th>STATUS</th>
-                                        <th>DATA</th>
+                                        <th>CRIADO EM</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for donation in donations %}
+                                    {% for item in itens %}
                                         <tr>
-                                            <td>{{ donation.id }}</td>
-                                            <td><a href="{% url 'view-profile' donation.donator.pk %}">{{ donation.donator.first_name }}</a></td>
-                                            <td><a href="{% url 'view-object' donation.item.pk %}">{{ donation.item.name_item }}</a></td>
-                                            <td><a href="{% url 'view-profile' donation.institute.pk %}">{{ donation.institute.first_name }}</a></td>
+                                            <td>{{ item.id }}</td>
+                                            <td><a href="{% url 'view-object' item.pk %}">{{ item.name_item }}</a></td>
                                             <td>
-                                                {% if donation.is_completed %}
-                                                    <label class="label label-success"><i class=""></i>
-                                                        FINALIZADA</label>
+                                                {% if item.object_set.first %}
+                                                    {{ item.object_set.first.type }}
                                                 {% else %}
-                                                    <label class="label label-warning"><i class=""></i>PENDENTE</label>
+                                                    Serviço
                                                 {% endif %}
                                             </td>
-                                            <td>{{ donation.data|date:"d/m/Y G:i" }}</td>
+                                            <td>
+                                                {% if item.status %}
+                                                    <label class="label label-success"><i class=""></i>
+                                                        DISPONÍVEL</label>
+                                                {% else %}
+                                                    <label class="label label-danger"><i class=""></i> DOADO</label>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ item.created_at|date:"d/m/Y G:i" }}</td>
+                                            <td>
+                                                <a class="remover" href="{% url 'delete_object' item.pk %}">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
@@ -57,7 +73,7 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#my_donations').addClass('active');
+            $('#my_objects').addClass('active');
         });
     </script>
     <!-- /.row -->
