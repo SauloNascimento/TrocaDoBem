@@ -190,10 +190,14 @@ class Match(TimeStamped):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     def __unicode__(self):
-        return u'%s : %s - %s' % (self.requirement.name, self.requirement.type, self.requirement.owner)
+        return u'%s : %s - %s' % (self.requirement.name,
+                                  self.requirement.type,
+                                  self.requirement.owner)
 
     def __str__(self):
-        return u'%s : %s - %s' % (self.requirement.name, self.requirement.type, self.requirement.owner)
+        return u'%s : %s - %s' % (self.requirement.name,
+                                  self.requirement.type,
+                                  self.requirement.owner)
 
 
 accepted_type = (
