@@ -3,9 +3,12 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from app.views.AuditView import AuditListView, order_item, AuditAllListView, AuditDetailView, AuditUpdateView, \
-    delete_audit, HomeAuditView, AuditUserListView, accept_audit, refuse_audit, final_delivery, refuse_delivery
-from app.views.DonationView import DonationListView, DonationUpdateView, delete_donation, ChooseDonation, \
+from app.views.AuditView import AuditListView, order_item, \
+    AuditAllListView, AuditDetailView, AuditUpdateView, \
+    delete_audit, HomeAuditView, AuditUserListView, \
+    accept_audit, refuse_audit, final_delivery, refuse_delivery
+from app.views.DonationView import DonationListView, DonationUpdateView, \
+    delete_donation, ChooseDonation, \
     AnonDonationFormView
 from app.views.DonatorUpdateView import DonatorUpdateView
 from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, \
@@ -24,7 +27,13 @@ from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
 from app.views.RequirementView import RequirementListView, AddRequirementView, \
     RequirementUpdateView, delete_requirement, RequirementView
+
+from app.views.ShowcaseRequerimentView import requeriment_detail, requirement_showcase_view
+
 from app.views.ChangePasswordView import ChangePasswordView
+
+from app.views.DonatorRequerimentView import  DonatorRequerimentView, DonatorRequerimentViewAnonymous
+
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -48,7 +57,7 @@ Including another URLconf
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/login/$', auth_views.login),
-    url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^$', HomeView.requirement_showcase, name='home'),
     url(r'^register-institute/$', RegisterInstituteView.as_view(), name='register_institute'),
     url(r'^register-user/$', RegisterUserView.as_view(), name='register_user'),
     url(r'^submit-contact', submit_message, name='submit_contact'),
@@ -113,6 +122,11 @@ urlpatterns = [
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
     url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
+
+    url(r'^showcase/$', requirement_showcase_view, name='list_showcase'),
+    url(r'^showcase/(?P<requeriment_id>\d+)/$', requeriment_detail, name='detail'),
+    url(r'^donationrequeriment/None', DonatorRequerimentViewAnonymous.as_view(), name='donation_requeriment_1'),
+    url(r'^donationrequeriment/(?P<pk>[0-9]+)/$', DonatorRequerimentView.as_view(), name='donation_requeriment'),
     url(r'^account/(?P<pk>[0-9]+)/change-password/$', ChangePasswordView.as_view(), name='change_password'),
 
 ]
