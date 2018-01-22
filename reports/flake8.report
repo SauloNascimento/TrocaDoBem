@@ -1,41 +1,43 @@
-C:\Users\caiom\PycharmProjects\trocadobem\manage.py:14:13: F401 'django' imported but unused
-C:\Users\caiom\PycharmProjects\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
-C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
-C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:6:1: F404 future import(s) ['unicode_literals'] after other statements
-C:\Users\caiom\PycharmProjects\trocadobem\app\apps.py:8:1: E402 module level import not at top of file
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:57:101: E501 line too long (102 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:89:101: E501 line too long (109 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:109:101: E501 line too long (105 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:118:101: E501 line too long (105 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:144:101: E501 line too long (120 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:160:101: E501 line too long (110 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:161:101: E501 line too long (105 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:164:101: E501 line too long (113 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:170:101: E501 line too long (109 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:205:101: E501 line too long (108 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\forms.py:206:101: E501 line too long (104 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\models.py:193:101: E501 line too long (103 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\models.py:196:101: E501 line too long (103 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\mixins\CustomContextMixin.py:10:101: E501 line too long (101 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\mixins\CustomContextMixin.py:11:101: E501 line too long (103 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\mixins\CustomContextMixin.py:13:101: E501 line too long (116 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\mixins\CustomContextMixin.py:22:101: E501 line too long (110 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\templatetags\filters.py:9:50: E225 missing whitespace around operator
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_institute.py:56:101: E501 line too long (102 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_institute.py:63:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_institute.py:70:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_user.py:57:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_login_user.py:64:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_institute.py:53:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_institute.py:60:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user.py:43:101: E501 line too long (118 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user.py:55:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\tests\test_register_user.py:62:9: F841 local variable 'e' is assigned to but never used
-C:\Users\caiom\PycharmProjects\trocadobem\app\views\NotificationView.py:32:101: E501 line too long (108 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:6:101: E501 line too long (112 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:7:101: E501 line too long (111 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:8:101: E501 line too long (107 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:73:101: E501 line too long (108 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:113:101: E501 line too long (103 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\urls.py:114:101: E501 line too long (109 > 100 characters)
-C:\Users\caiom\PycharmProjects\trocadobem\trocadobem\wsgi.py:22:1: E402 module level import not at top of file
+C:\Users\Windows 10\trocadobem\manage.py:14:13: F401 'django' imported but unused
+C:\Users\Windows 10\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
+C:\Users\Windows 10\trocadobem\app\apps.py:6:1: E402 module level import not at top of file
+C:\Users\Windows 10\trocadobem\app\apps.py:6:1: F404 future import(s) ['unicode_literals'] after other statements
+C:\Users\Windows 10\trocadobem\app\apps.py:8:1: E402 module level import not at top of file
+C:\Users\Windows 10\trocadobem\app\forms.py:58:101: E501 line too long (102 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:90:101: E501 line too long (109 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:110:101: E501 line too long (105 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:119:101: E501 line too long (105 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:145:101: E501 line too long (120 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:161:101: E501 line too long (110 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:162:101: E501 line too long (105 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:165:101: E501 line too long (113 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:171:101: E501 line too long (109 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:206:101: E501 line too long (108 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:207:101: E501 line too long (104 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:210:1: E302 expected 2 blank lines, found 0
+C:\Users\Windows 10\trocadobem\app\models.py:208:101: E501 line too long (103 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\models.py:211:101: E501 line too long (103 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\mixins\CustomContextMixin.py:10:101: E501 line too long (101 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\mixins\CustomContextMixin.py:11:101: E501 line too long (103 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\mixins\CustomContextMixin.py:13:101: E501 line too long (116 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\mixins\CustomContextMixin.py:22:101: E501 line too long (110 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\templatetags\filters.py:9:50: E225 missing whitespace around operator
+C:\Users\Windows 10\trocadobem\app\tests\test_login_institute.py:56:101: E501 line too long (102 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\tests\test_login_institute.py:63:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Windows 10\trocadobem\app\tests\test_login_institute.py:70:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Windows 10\trocadobem\app\tests\test_login_user.py:57:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Windows 10\trocadobem\app\tests\test_login_user.py:64:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Windows 10\trocadobem\app\tests\test_register_institute.py:53:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Windows 10\trocadobem\app\tests\test_register_institute.py:60:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Windows 10\trocadobem\app\tests\test_register_user.py:43:101: E501 line too long (118 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\tests\test_register_user.py:55:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Windows 10\trocadobem\app\tests\test_register_user.py:62:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Windows 10\trocadobem\app\views\NotificationView.py:32:101: E501 line too long (108 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:6:101: E501 line too long (112 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:7:101: E501 line too long (111 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:8:101: E501 line too long (107 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:76:101: E501 line too long (108 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:116:101: E501 line too long (103 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:117:101: E501 line too long (109 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:118:101: E501 line too long (108 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\wsgi.py:22:1: E402 module level import not at top of file

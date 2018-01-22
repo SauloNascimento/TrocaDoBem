@@ -219,3 +219,21 @@ class FormChangePassword(PasswordChangeForm, BaseForm):
                     code='password_mismatch',
                 )
         return password2
+
+
+class FormRegisterAuditor(FormBaseAddress):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                               'placeholder': _('Nome')}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                              'placeholder': _('Sobrenome')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
+                                                            'placeholder': _('Email')}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                             'placeholder': 'Nome de Usuario'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
+                                                                 'placeholder': _('Senha')}))
+    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                          'placeholder': _('Telefone')}))
+
+    def __init__(self, *args, **kwargs):
+        super(FormRegisterAuditor, self).__init__(*args, **kwargs)
