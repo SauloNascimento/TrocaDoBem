@@ -25,6 +25,7 @@ from app.views.OrderView import delete_order, OrderListView
 from app.views.PainelView import PainelView, ProfileUserView
 from app.views.RegisterInstituteView import RegisterInstituteView
 from app.views.RegisterUserView import RegisterUserView
+from app.views.RegisterAuditorView import RegisterAuditorView
 from app.views.RequirementView import RequirementListView, AddRequirementView, \
     RequirementUpdateView, delete_requirement, RequirementView
 
@@ -60,6 +61,7 @@ urlpatterns = [
     url(r'^$', HomeView.requirement_showcase, name='home'),
     url(r'^register-institute/$', RegisterInstituteView.as_view(), name='register_institute'),
     url(r'^register-user/$', RegisterUserView.as_view(), name='register_user'),
+    url(r'^register-auditor/$', RegisterAuditorView.as_view(), name='register_auditor'),
     url(r'^submit-contact', submit_message, name='submit_contact'),
     url(r'^post/(?P<slug>[^\.]+)', view_post, name='view_post'),
     url(r'^login/$', LoginView.as_view(), name='login'),

@@ -67,6 +67,21 @@ class CommonUser(TimeStamped, BaseAddress):
         return self.user.first_name
 
 
+class Auditor(TimeStamped, BaseAddress):
+    class Meta:
+        verbose_name = "Auditor"
+        verbose_name_plural = "Auditores"
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+    phone = models.CharField(max_length=30, blank=True)
+
+    def __unicode__(self):
+        return u'%s' % self.user.first_name
+
+    def __str__(self):
+        return self.user.first_name
+
+
 class Item(TimeStamped):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=300)

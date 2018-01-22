@@ -55,7 +55,7 @@ class FormRegisterUser(FormBaseAddress):
     phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
     birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True,
-                                                                'placeholder': _('Data de Nascimento'),
+                                                               'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
     anonymous = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=True, initial='False')
 
@@ -117,8 +117,7 @@ class FormObjectView(BaseForm):
                                                               'placeholder': _('Nome do Objeto')}))
     description = forms.CharField(widget=forms.Textarea(attrs={'maxlength': 300,
                                                                'placeholder': _('Descricao do Objeto')}))
-    object_type = forms.ChoiceField(choices=object_type, required=True,
-                                    label=u'Type')
+    object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
 
 
 class FormItemUpdate(forms.ModelForm, BaseForm):
@@ -137,16 +136,13 @@ class FormRequirement(forms.ModelForm, BaseForm):
 
 
 class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
-    cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True,
-                                                        'maxlength': 150,
+    cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
                                                         'placeholder': _('CPF')}))
     phone = forms.CharField(required=False,
-                            widget=forms.TextInput(attrs={'required': False,
-                                                          'maxlength': 150,
+                            widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
     birth_date = forms.CharField(required=False,
-                                 widget=forms.TextInput(attrs={'required': True,
-                                                               'placeholder': _('Data de Nascimento'),
+                                 widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
     anonymous = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=False, label=u'Type')
 
@@ -160,23 +156,19 @@ class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
 
 
 class FormInstituteUpdate(forms.ModelForm, FormBaseAddress):
-    cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True,
-                                                         'maxlength': 200,
+    cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
                                                          'placeholder': _('CNPJ')}))
-    phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
-                                                                          'maxlength': 150,
+    phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
                                                                           'placeholder': _('Telefone')}))
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'maxlength': 300,
                                                                                'placeholder': _(
                                                                                    'Descricao da Instituicao')}))
-    site = forms.CharField(required=False,
-                           widget=forms.TextInput(attrs={'required': False,
-                                                         'maxlength': 150,
-                                                         'placeholder': _('Site')}))
-    social = forms.CharField(required=False,
-                             widget=forms.TextInput(attrs={'required': False,
-                                                           'maxlength': 150,
-                                                           'placeholder': _('Rede Social')}))
+    site = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
+                                                                         'maxlength': 150,
+                                                                         'placeholder': _('Site')}))
+    social = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
+                                                                           'maxlength': 150,
+                                                                           'placeholder': _('Rede Social')}))
 
     class Meta:
         model = User
@@ -211,16 +203,10 @@ class FormDonationView(ModelForm, BaseForm):
 
 
 class FormAnonDonation(FormObject):
-
-    phone = forms.CharField(required=True,
-                            widget=forms.TextInput(attrs={'required': True,
-                                                          'maxlength': 150,
-                                                          'placeholder': _('Telefone')}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True,
-                                                            'maxlength': 150,
+    phone = forms.CharField(required=True, widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
+                                                                         'placeholder': _('Telefone')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
                                                             'placeholder': _('Email')}))
-
-
 class FormChangePassword(PasswordChangeForm, BaseForm):
 
     def clean_new_password2(self):
@@ -254,3 +240,20 @@ class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
                                 widget=forms.TextInput(attrs={'required': False,
                                                                              'maxlength': 200,
                                                               'placeholder': _('Sobrenome')}))
+
+class FormRegisterAuditor(FormBaseAddress):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                               'placeholder': _('Nome')}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                              'placeholder': _('Sobrenome')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
+                                                            'placeholder': _('Email')}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+                                                             'placeholder': 'Nome de Usuario'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
+                                                                 'placeholder': _('Senha')}))
+    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                          'placeholder': _('Telefone')}))
+
+    def __init__(self, *args, **kwargs):
+        super(FormRegisterAuditor, self).__init__(*args, **kwargs)
