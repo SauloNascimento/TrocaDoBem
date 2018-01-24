@@ -57,6 +57,7 @@
 
 {% for requeriment in requeriments %}
 			<!-- Creating a column for each treasure panel -->
+        {% if forloop.counter < 10 %}
       <div class="col-md-4">
       <div class="treasure panel panel-default">
 				<!-- Adding treasure title by username -->
@@ -77,6 +78,7 @@
 
       </div>
       </div>
+        {% endif %}
 	  <!-- if last column in row -->
       {% if forloop.counter|divisibleby:5 and not 10 %}
         </div><br><div class="row">
@@ -98,13 +100,13 @@
                     </div>
 
 {% for item in itens %}
+    {% if forloop.counter < 10 %}
 			<!-- Creating a column for each treasure panel -->
       <div class="col-md-4">
       <div class="treasure panel panel-default">
 				<!-- Adding treasure title by username -->
         <div class="panel-heading">
           <h3 class="panel-title" align="center" >{{ item.name_item }}</h3>
-          <h6 class ="panel-default" align="center" > Doador: {{ item.owner }}</h6>
         </div>
 				<!-- Adding treasure image -->
         <div class="panel-body">
@@ -119,11 +121,13 @@
 
       </div>
       </div>
+    {% endif %}
 	  <!-- if last column in row -->
       {% if forloop.counter|divisibleby:5 and not 10 %}
         </div><br><div class="row">
       {% endif %}
 	{% endfor %}
+
 	</div><br>
            <div class="col-sm-12">
         <a href="{% url "list_showcase" %} "class="btn btn-danger btn-block">Ver Mais</a>
