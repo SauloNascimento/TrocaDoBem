@@ -39,6 +39,13 @@ class RegisterAuditorView(FormView):
         user_data['username'] = data['username']
         user_data['password'] = data['password']
         auditor_data['phone'] = data['phone']
+        auditor_data['cep'] = data['cep']
+        auditor_data['address'] = data['address']
+        auditor_data['number'] = data['number']
+        auditor_data['state'] = data['state']
+        auditor_data['city'] = data['city']
+        auditor_data['district'] = data['district']
+        auditor_data['complement'] = data['complement']
         if data['username'] and data['password']:
             new_user = User.objects.create_user(**user_data)
             new_auditor = Auditor(user=new_user, **auditor_data)

@@ -1,22 +1,26 @@
 C:\Users\Windows 10\trocadobem\manage.py:14:13: F401 'django' imported but unused
 C:\Users\Windows 10\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
 C:\Users\Windows 10\trocadobem\app\apps.py:9:1: E302 expected 2 blank lines, found 1
-C:\Users\Windows 10\trocadobem\app\forms.py:58:65: E127 continuation line over-indented for visual indent
-C:\Users\Windows 10\trocadobem\app\forms.py:58:101: E501 line too long (103 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:58:101: E501 line too long (102 > 100 characters)
 C:\Users\Windows 10\trocadobem\app\forms.py:90:101: E501 line too long (109 > 100 characters)
 C:\Users\Windows 10\trocadobem\app\forms.py:110:101: E501 line too long (105 > 100 characters)
 C:\Users\Windows 10\trocadobem\app\forms.py:119:101: E501 line too long (105 > 100 characters)
-C:\Users\Windows 10\trocadobem\app\forms.py:149:101: E501 line too long (102 > 100 characters)
-C:\Users\Windows 10\trocadobem\app\forms.py:168:101: E501 line too long (105 > 100 characters)
-C:\Users\Windows 10\trocadobem\app\forms.py:171:101: E501 line too long (113 > 100 characters)
-C:\Users\Windows 10\trocadobem\app\forms.py:241:101: E501 line too long (102 > 100 characters)
-C:\Users\Windows 10\trocadobem\app\forms.py:247:5: E128 continuation line under-indented for visual indent
-C:\Users\Windows 10\trocadobem\app\forms.py:248:66: E127 continuation line over-indented for visual indent
-C:\Users\Windows 10\trocadobem\app\forms.py:251:101: E501 line too long (102 > 100 characters)
-C:\Users\Windows 10\trocadobem\app\forms.py:255:78: E127 continuation line over-indented for visual indent
-C:\Users\Windows 10\trocadobem\app\forms.py:256:95: W292 no newline at end of file
-C:\Users\Windows 10\trocadobem\app\models.py:260:1: E302 expected 2 blank lines, found 1
-C:\Users\Windows 10\trocadobem\app\models.py:265:54: W292 no newline at end of file
+C:\Users\Windows 10\trocadobem\app\forms.py:145:101: E501 line too long (120 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:161:101: E501 line too long (110 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:162:101: E501 line too long (105 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:165:101: E501 line too long (113 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:171:101: E501 line too long (109 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:206:101: E501 line too long (108 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:207:101: E501 line too long (104 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:210:1: E302 expected 2 blank lines, found 0
+C:\Users\Windows 10\trocadobem\app\forms.py:227:101: E501 line too long (102 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:233:5: E128 continuation line under-indented for visual indent
+C:\Users\Windows 10\trocadobem\app\forms.py:234:66: E127 continuation line over-indented for visual indent
+C:\Users\Windows 10\trocadobem\app\forms.py:237:101: E501 line too long (102 > 100 characters)
+C:\Users\Windows 10\trocadobem\app\forms.py:241:78: E127 continuation line over-indented for visual indent
+C:\Users\Windows 10\trocadobem\app\forms.py:244:1: E302 expected 2 blank lines, found 1
+C:\Users\Windows 10\trocadobem\app\models.py:275:1: E302 expected 2 blank lines, found 1
+C:\Users\Windows 10\trocadobem\app\models.py:280:54: W292 no newline at end of file
 C:\Users\Windows 10\trocadobem\app\mixins\CustomContextMixin.py:10:101: E501 line too long (101 > 100 characters)
 C:\Users\Windows 10\trocadobem\app\mixins\CustomContextMixin.py:11:101: E501 line too long (103 > 100 characters)
 C:\Users\Windows 10\trocadobem\app\mixins\CustomContextMixin.py:13:101: E501 line too long (116 > 100 characters)
@@ -36,12 +40,12 @@ C:\Users\Windows 10\trocadobem\app\views\HomeView.py:19:9: N805 first argument o
 C:\Users\Windows 10\trocadobem\app\views\NotificationView.py:32:101: E501 line too long (108 > 100 characters)
 C:\Users\Windows 10\trocadobem\app\views\ObjectView.py:80:101: E501 line too long (149 > 100 characters)
 C:\Users\Windows 10\trocadobem\trocadobem\urls.py:21:101: E501 line too long (104 > 100 characters)
-C:\Users\Windows 10\trocadobem\trocadobem\urls.py:35:45: E271 multiple spaces after keyword
-C:\Users\Windows 10\trocadobem\trocadobem\urls.py:35:101: E501 line too long (101 > 100 characters)
-C:\Users\Windows 10\trocadobem\trocadobem\urls.py:84:101: E501 line too long (108 > 100 characters)
-C:\Users\Windows 10\trocadobem\trocadobem\urls.py:124:101: E501 line too long (103 > 100 characters)
-C:\Users\Windows 10\trocadobem\trocadobem\urls.py:125:101: E501 line too long (109 > 100 characters)
-C:\Users\Windows 10\trocadobem\trocadobem\urls.py:129:101: E501 line too long (112 > 100 characters)
-C:\Users\Windows 10\trocadobem\trocadobem\urls.py:130:101: E501 line too long (113 > 100 characters)
-C:\Users\Windows 10\trocadobem\trocadobem\urls.py:131:101: E501 line too long (108 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:36:45: E271 multiple spaces after keyword
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:36:101: E501 line too long (101 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:86:101: E501 line too long (108 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:126:101: E501 line too long (103 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:127:101: E501 line too long (109 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:131:101: E501 line too long (112 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:132:101: E501 line too long (113 > 100 characters)
+C:\Users\Windows 10\trocadobem\trocadobem\urls.py:133:101: E501 line too long (108 > 100 characters)
 C:\Users\Windows 10\trocadobem\trocadobem\wsgi.py:25:1: E303 too many blank lines (3)
