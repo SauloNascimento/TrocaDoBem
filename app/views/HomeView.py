@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render
-from app.models import Requirement
+from app.models import Requirement, Item
 from app.models import Post, Message, Institute
 from app.forms import FormRequirement
 from django.template import RequestContext
@@ -19,10 +19,11 @@ class HomeView(ListView):
     def requirement_showcase(request):
         requeriments = Requirement.objects.all()
         queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
+        itens = Item.objects.all().filter(status=True)
 
         form = FormRequirement
         return render(request, 'index.html', {'requeriments': requeriments,
-                                              'form': form, 'recent_posts': queryset})
+                                              'form': form, 'recent_posts': queryset, 'itens':itens})
 
 
 class CollectView(TemplateView):
