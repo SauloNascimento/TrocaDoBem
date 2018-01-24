@@ -11,6 +11,7 @@ from app.views.DonationView import DonationListView, DonationUpdateView, \
     delete_donation, ChooseDonation, \
     AnonDonationFormView
 from app.views.DonatorUpdateView import DonatorUpdateView
+from app.views.AuditorUpdateView import AuditorUpdateView
 from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, \
     CollectView, ContributeView
 from app.views.InstituteUpdateView import InstituteUpdateView
@@ -125,6 +126,7 @@ urlpatterns = [
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
     url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
+    url(r'^account/(?P<pk>[0-9]+)/edit-auditor/$', AuditorUpdateView.as_view(), name='update_auditor'),
 
     url(r'^showcase/$', requirement_showcase_view, name='list_showcase'),
     url(r'^showcase/(?P<requeriment_id>\d+)/$', requeriment_detail, name='detail'),

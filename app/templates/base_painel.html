@@ -296,6 +296,12 @@
                                 <i class="fa fa-pencil"></i> <span>Editar Perfil</span>
                             </a>
                         </li>
+                    {% elif user.auditor %}
+                        <li id="edit">
+                            <a href="{% url 'update_auditor' user.pk %}">
+                                <i class="fa fa-pencil"></i> <span>Editar Perfil</span>
+                            </a>
+                        </li>
                     {% endif %}
                     <li id="my_objects">
                         <a href="{% url 'list_my_itens' %}">
