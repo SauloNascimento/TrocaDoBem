@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %} 
+  <!-- Creating a row for treasure panels -->
+<section class="bar background-white no-mb">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h3 style="color: #000">Novos Itens Disponiveis Para Doação</h3>
+                            </div>
+
+                            {% for item in itens %}
+                                {% if forloop.counter < 10 %}
+                                    <!-- Creating a column for each treasure panel -->
+                                    <div class="col-md-4">
+                                        <div class="treasure panel panel-default">
+                                            <!-- Adding treasure title by username -->
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title" align="center">{{ item.name_item }}</h3>
+                                            </div>
+                                            <!-- Adding treasure image -->
+                                            <div class="panel-body">
+                                                <a href="/new-items/{{ item.id }}">
+                                                    <div class="treasure-photo">
+                                                        <img src="{{ item.photo }}">
+                                                    </div>
+                                                </a>
+                                                <!-- Adding Like Button -->
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <!-- if last column in row -->
+                                {% if forloop.counter|divisibleby:5 and not 10 %}
+                                    </div><br>
+                                    <div class="row">
+                                {% endif %}
+                            {% endfor %}
+
+                            </div>
+                        <br>
+                        <div class="col-sm-12">
+                            <a href="{% url "list_showcase" %} " class="btn btn-danger btn-block">Ver Mais</a>
+                        </div>
+                    </div>
+
+
+
+{% endblock %}

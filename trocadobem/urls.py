@@ -30,6 +30,7 @@ from app.views.RequirementView import RequirementListView, AddRequirementView, \
     RequirementUpdateView, delete_requirement, RequirementView
 
 from app.views.ShowcaseRequerimentView import requeriment_detail, requirement_showcase_view
+from app.views.ShowcaseNewItemView import new_item_detail, new_item_showcase_view
 
 from app.views.ChangePasswordView import ChangePasswordView
 
@@ -130,6 +131,8 @@ urlpatterns = [
     url(r'^showcase/(?P<requeriment_id>\d+)/$', requeriment_detail, name='detail'),
     url(r'^donationrequeriment/None', DonatorRequerimentViewAnonymous.as_view(), name='donation_requeriment_1'),
     url(r'^donationrequeriment/(?P<pk>[0-9]+)/$', DonatorRequerimentView.as_view(), name='donation_requeriment'),
+    url(r'^new-items/$', new_item_showcase_view, name ='list_new_item' ),
+    url(r'^new-items/(?P<new_item_id>\d+)/$', new_item_detail, name='detail_item'),
     url(r'^account/(?P<pk>[0-9]+)/change-password/$', ChangePasswordView.as_view(), name='change_password'),
 
 ]
