@@ -50,7 +50,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="{% url "painel" %}" class="logo">
+        <a href="{% url "home" %}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>T</b>D<b>B</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -315,7 +315,7 @@
                     </li>
                     <li id="donations">
                         <a href="{% url 'add_object' %}">
-                            <i class="fa fa-cubes"></i> <span>Cadastrar Doação</span>
+                            <i class="fa fa-cubes"></i> <span>Cadastrar Item</span>
                         </a>
                     </li>
                     {% if user.institute %}
