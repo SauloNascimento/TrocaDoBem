@@ -3,16 +3,19 @@
 
 {% block content %} 
   <!-- Creating a row for treasure panels -->
-<section class="bar background-white no-mb">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="heading">
-                                <h3 style="color: #000">Novos Itens Disponiveis Para Doação</h3>
-                            </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <center>Novos Itens</center>
+            </h3>
+        </div>
+    </div>
+    <div class="container">
+	<div class="row">
+	<!-- Looping over each treasure in the treasures list -->
 
-                            {% for item in itens %}
-                                {% if forloop.counter < 10 %}
+{% for item in items %}
+
                                     <!-- Creating a column for each treasure panel -->
                                     <div class="col-md-4">
                                         <div class="treasure panel panel-default">
@@ -33,20 +36,14 @@
 
                                         </div>
                                     </div>
-                                {% endif %}
-                                <!-- if last column in row -->
-                                {% if forloop.counter|divisibleby:5 and not 10 %}
-                                    </div><br>
-                                    <div class="row">
-                                {% endif %}
-                            {% endfor %}
 
-                            </div>
-                        <br>
-                        <div class="col-sm-12">
-                            <a href="{% url "list_showcase" %} " class="btn btn-danger btn-block">Ver Mais</a>
-                        </div>
-                    </div>
+	  <!-- if last column in row -->
+      {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div><br><div class="row">
+      {% endif %}
+	{% endfor %}
+	</div><br>
+    </div>
 
 
 

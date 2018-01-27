@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from app.models import Item
+from app.models import Item, User
 
 __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"

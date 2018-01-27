@@ -25,7 +25,7 @@
                     <th>
                         Categoria:
                     </th>
-                    <td>{{ items.object_type }}</td>
+                    <td>{{ items.type }}</td>
                 </tr>
             </table>
 
@@ -33,14 +33,11 @@
 
         <div class="panel-footer"
             <div class="col-md-4 " >
-                {% if user.is_authenticated %}
-                    <a href="/donationrequeriment/{{ user.pk }}" class="btn btn-primary center-block btn-lg">
+                {% if user.institute %}
+                    <a href="{% url "requeriment-item" %}"class="btn btn-primary center-block btn-lg">
                         <center>Doar
                             Agora</center></a>
-                {% else %}
-                    <a href="/donationrequeriment/{{ user.id }}" class="btn btn-primary center-block btn-lg">
-                        <center>Doar
-                            Agora</center></a>
+
                 {% endif %}
             </div>
 

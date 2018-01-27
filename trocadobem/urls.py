@@ -36,6 +36,8 @@ from app.views.ChangePasswordView import ChangePasswordView
 
 from app.views.DonatorRequerimentView import  DonatorRequerimentView, DonatorRequerimentViewAnonymous
 
+from app.views.NewItemRequerimentView import NewItemRequerimentView
+
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -133,6 +135,7 @@ urlpatterns = [
     url(r'^donationrequeriment/(?P<pk>[0-9]+)/$', DonatorRequerimentView.as_view(), name='donation_requeriment'),
     url(r'^new-items/$', new_item_showcase_view, name ='list_new_item' ),
     url(r'^new-items/(?P<new_item_id>\d+)/$', new_item_detail, name='detail_item'),
+    url(r'^new-requeriment/$', NewItemRequerimentView.as_view(), name='requeriment-item'),
     url(r'^account/(?P<pk>[0-9]+)/change-password/$', ChangePasswordView.as_view(), name='change_password'),
 
 ]
