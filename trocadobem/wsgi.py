@@ -20,6 +20,4 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "trocadobem.settings")
 
 application = get_wsgi_application()
 
-
-
 application = DjangoWhiteNoise(application)

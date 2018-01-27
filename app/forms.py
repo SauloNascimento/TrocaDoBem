@@ -207,6 +207,8 @@ class FormAnonDonation(FormObject):
                                                                          'placeholder': _('Telefone')}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
                                                             'placeholder': _('Email')}))
+
+
 class FormChangePassword(PasswordChangeForm, BaseForm):
 
     def clean_new_password2(self):
@@ -231,15 +233,16 @@ class FormDonatorRequeriment(FormObject, FormDonatorUpdate):
 class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
     password = forms.CharField(widget=forms.PasswordInput
     (attrs={'required': True,
-                                                                 'placeholder': _('Password')}))
+            'placeholder': _('Password')}))
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': False,
                                                                'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
     last_name = forms.CharField(required=False,
                                 widget=forms.TextInput(attrs={'required': False,
-                                                                             'maxlength': 200,
+                                                              'maxlength': 200,
                                                               'placeholder': _('Sobrenome')}))
+
 
 class FormRegisterAuditor(FormBaseAddress):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
