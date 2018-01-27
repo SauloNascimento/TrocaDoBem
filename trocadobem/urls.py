@@ -33,8 +33,7 @@ from app.views.ShowcaseRequerimentView import requeriment_detail, requirement_sh
 
 from app.views.ChangePasswordView import ChangePasswordView
 
-from app.views.DonatorRequerimentView import  DonatorRequerimentView, DonatorRequerimentViewAnonymous
-
+from app.views.DonatorRequerimentView import DonatorRequerimentView, DonatorRequerimentViewAnonymous
 
 __author__ = "Caio Marinho"
 __copyright__ = "Copyright 2017, LES-UFCG"
