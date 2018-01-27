@@ -34,7 +34,7 @@ from app.views.ShowcaseNewItemView import new_item_detail, new_item_showcase_vie
 
 from app.views.ChangePasswordView import ChangePasswordView
 
-from app.views.DonatorRequerimentView import  DonatorRequerimentView, DonatorRequerimentViewAnonymous
+from app.views.DonatorRequerimentView import DonatorRequerimentView, DonatorRequerimentViewAnonymous
 
 from app.views.NewItemRequerimentView import NewItemRequerimentView
 

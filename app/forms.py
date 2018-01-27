@@ -241,6 +241,9 @@ class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
                                                                              'maxlength': 200,
                                                               'placeholder': _('Sobrenome')}))
 
+class FormNewItemRequeriment(FormObject,FormRequirement):
+    object_type = forms.ChoiceField(choices=object_type, required=False, label=u'Type')
+
 class FormRegisterAuditor(FormBaseAddress):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
                                                                'placeholder': _('Nome')}))
