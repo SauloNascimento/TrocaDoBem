@@ -77,7 +77,8 @@ class MyDonationsListView(LoginRequiredMixin, ListView, CustomContextMixin, User
     template_name = 'admin_panel/my_donations.html'
 
     def get_queryset(self):
-        return Donation.objects.filter(donator=self.request.user).union(Donation.objects.filter(institute=self.request.user)).order_by('-created_at')
+        return Donation.objects.filter(donator=self.request.user).union(
+            Donation.objects.filter(institute=self.request.user)).order_by('-created_at')
 
 
 class MyItensListView(LoginRequiredMixin, ListView, CustomContextMixin, UserContextMixin):
