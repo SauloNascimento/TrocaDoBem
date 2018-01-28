@@ -260,3 +260,15 @@ class FormRegisterAuditor(FormBaseAddress):
 
     def __init__(self, *args, **kwargs):
         super(FormRegisterAuditor, self).__init__(*args, **kwargs)
+
+class FormAuditorUpdate(forms.ModelForm, FormBaseAddress):
+    phone = forms.CharField(required=False,
+                            widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                          'placeholder': _('Telefone')}))
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+    def __init__(self, *args, **kwargs):
+        super(FormAuditorUpdate, self).__init__(*args, **kwargs)
