@@ -33,7 +33,7 @@ class RegisterObjectView(FormView, CustomContextMixin, UserContextMixin):
     """
     template_name = 'admin_panel/add-object.html'
     form_class = FormObject
-    success_url = '/donations'
+    success_url = '/itens'
 
     def form_valid(self, form):
         data = form.cleaned_data

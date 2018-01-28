@@ -73,8 +73,8 @@ urlpatterns = [
 
     url(r'^home/$', PainelView.as_view(), name='painel'),
 
-    url(r'^itens/$', MyItensListView.as_view(), name='list_my_itens'),
-    url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
+    url(r'^myitens/$', MyItensListView.as_view(), name='list_my_itens'),
+    url(r'^mydonations/$', MyDonationsListView.as_view(), name='list_my_donations'),
 
     url(r'^object/add/$', RegisterObjectView.as_view(), name='add_object'),
     url(r'^object/(?P<pk>[0-9]+)/$', ObjectView.as_view(), name='view-object'),
