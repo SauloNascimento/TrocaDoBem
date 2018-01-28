@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.generic import UpdateView
 from django.views.generic import FormView
-from app.models import Item, Object, Requirement, Match, Notification
+from app.models import Item, Object, Requirement, Match, Notification, Donation
 from app.forms import FormDonatorRequeriment, FormDonatorRequerimentNewUser
 from app.models import CommonUser
 from django.contrib import messages
@@ -23,7 +23,6 @@ def search_matches(**kwargs):
             match.save()
             notification = Notification(user=req.owner, match=match)
             notification.save()
-
 
 class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin):
     login_url = '/login/'

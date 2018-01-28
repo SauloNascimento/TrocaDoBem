@@ -242,7 +242,10 @@ class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
                                                               'placeholder': _('Sobrenome')}))
 
 class FormNewItemRequeriment(FormObject,FormRequirement):
-    object_type = forms.ChoiceField(choices=object_type, required=False, label=u'Type')
+    class Meta:
+        model = Requirement
+        fields = ['name', 'type', 'owner']
+        widgets = {'owner': forms.HiddenInput()}
 
 class FormRegisterAuditor(FormBaseAddress):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
