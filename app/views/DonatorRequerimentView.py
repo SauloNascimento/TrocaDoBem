@@ -10,6 +10,7 @@ from app.forms import FormDonatorRequeriment, FormDonatorRequerimentNewUser
 from app.models import CommonUser
 from django.contrib import messages
 from app.mixins.CustomContextMixin import UserContextMixin
+from django.shortcuts import render
 
 __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"
@@ -82,6 +83,7 @@ class DonatorRequerimentViewAnonymous(FormView):
     form_class = FormDonatorRequerimentNewUser
     success_url = '/login'
 
+
     def post(self, request, *args, **kwargs):
         form = self.get_form()
         if form.is_valid():
@@ -93,7 +95,6 @@ class DonatorRequerimentViewAnonymous(FormView):
         data = form.cleaned_data
         user_data = {}
         common_data = {}
-        item_data = {}
         object_data = {}
         user_data['last_name'] = data['last_name']
         user_data['first_name'] = data['first_name']
@@ -109,21 +110,17 @@ class DonatorRequerimentViewAnonymous(FormView):
             messages.success(self.request, 'Novo usuário cadastrado com sucesso.')
         else:
             return self.form_invalid(form)
-        item_data['name_item'] = data['name_item']
-        item_data['description'] = data['description']
-        object_data['type'] = data['object_type']
-        if data['name_item'] and data['object_type']:
-            new_item = Item(owner=new_user, **item_data)
-            new_item.save()
-            new_object = Object(item=new_item, **object_data)
-            new_object.save()
-            messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
-            object_data['pk_item'] = new_item.pk
-            search_matches(**object_data)
-        else:
-            return self.form_invalid(self, form)
+
+        requeriments = Requirement.objects.get(id=self.kwargs['requeriment_id'])
+        new_item = Item(owner=new_user, description=requeriments.description, name_item=requeriments.name)
+        new_item.save()
+        new_object = Object(item=new_item, type=requeriments.type)
+        new_object.save()
+        messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
+        object_data['pk_item'] = new_item.pk
+        search_matches(**object_data)
         messages.success(self.request, 'Muito Obrigado pela sua Doação!')
-        return super(DonatorRequerimentViewAnonymous, self).form_valid(form)
+
 
     def form_invalid(self, form):
         print(form.errors)

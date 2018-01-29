@@ -6,7 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 
-from app.models import object_type, Item, Requirement, Audit, Match
+from app.models import object_type, Item, Requirement, Audit, Match,Requirement
 
 
 class BaseForm(forms.Form):
@@ -221,17 +221,17 @@ class FormChangePassword(PasswordChangeForm, BaseForm):
         return password2
 
 
-class FormDonatorRequeriment(FormObject, FormDonatorUpdate):
+class FormDonatorRequeriment(FormItemUpdate, FormDonatorUpdate):
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': False,
                                                                'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
 
 
-class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
+class FormDonatorRequerimentNewUser(FormRegisterUser):
     password = forms.CharField(widget=forms.PasswordInput
     (attrs={'required': True,
-                                                                 'placeholder': _('Password')}))
+                                                                 'placeholder': _('Password')})),
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': False,
                                                                'placeholder': _('Data de Nascimento'),
@@ -240,6 +240,9 @@ class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
                                 widget=forms.TextInput(attrs={'required': False,
                                                                              'maxlength': 200,
                                                               'placeholder': _('Sobrenome')}))
+
+
+
 
 class FormRegisterAuditor(FormBaseAddress):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
@@ -257,3 +260,22 @@ class FormRegisterAuditor(FormBaseAddress):
 
     def __init__(self, *args, **kwargs):
         super(FormRegisterAuditor, self).__init__(*args, **kwargs)
+
+class FormAuditorUpdate(forms.ModelForm, FormBaseAddress):
+    phone = forms.CharField(required=False,
+                            widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                          'placeholder': _('Telefone')}))
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+    def __init__(self, *args, **kwargs):
+        super(FormAuditorUpdate, self).__init__(*args, **kwargs)
+
+
+class FormNewItemRequeriment(FormObject,FormItemUpdate):
+    class Meta:
+        model = Requirement
+        fields = ['name', 'type', 'owner']
+        widgets = {'owner': forms.HiddenInput()}
