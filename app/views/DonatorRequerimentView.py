@@ -44,6 +44,11 @@ class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin):
             initial['anonymous'] = commonuser.anonymous
         return initial
 
+    def get_context_data(self, **kwargs):
+       context = super(DonatorRequerimentViewAnonymous, self).get_context_data(**kwargs)
+       context['requeriment'] = Requirement.objects.get(id=self.kwargs['requeriment_id'])
+       return context
+    
     def form_valid(self, form):
         data = form.cleaned_data
         common_user = self.object.commonuser
@@ -84,12 +89,17 @@ class DonatorRequerimentViewAnonymous(FormView):
     success_url = '/login'
 
 
+
+
     def post(self, request, *args, **kwargs):
         form = self.get_form()
         if form.is_valid():
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
+
+    def get_queryset(self):
+        return Requirement.objects.get(id=self.kwargs['requeriment_id'])
 
     def form_valid(self, form):
         data = form.cleaned_data
@@ -125,3 +135,15 @@ class DonatorRequerimentViewAnonymous(FormView):
     def form_invalid(self, form):
         print(form.errors)
         return super(DonatorRequerimentViewAnonymous, self).form_invalid(form)
+
+
+    def requeriment(request, requeriment_id):
+        requeriment = Requirement.objects.get(id=requeriment_id)
+        id = requeriment_id
+        return render(request, 'donator_requeriment_view.html',
+                  {'requeriment': requeriment, 'id':id})
+
+    def get_context_data(self, **kwargs):
+       context = super(DonatorRequerimentViewAnonymous, self).get_context_data(**kwargs)
+       context['requeriment'] = Requirement.objects.get(id=self.kwargs['requeriment_id'])
+       return context

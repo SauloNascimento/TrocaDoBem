@@ -135,6 +135,7 @@ urlpatterns = [
     url(r'^new-items/$', new_item_showcase_view, name='list_new_item'),
     url(r'^new-items/(?P<new_item_id>\d+)/$', new_item_detail, name='detail_item'),
     url(r'^new-items/(?P<item_id>\d+)/new-requeriment', NewItemRequerimentView.as_view(), name='requerimentnewitem'),
+    url(r'^new-items/(?P<item_id>\d+)/new-requeriment', NewItemRequerimentView.as_view(), name='requerimentnewitem'),
     url(r'^account/(?P<pk>[0-9]+)/change-password/$', ChangePasswordView.as_view(), name='change_password'),
 
 ]
