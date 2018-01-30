@@ -221,7 +221,7 @@ class FormChangePassword(PasswordChangeForm, BaseForm):
         return password2
 
 
-class FormDonatorRequeriment(FormItemUpdate, FormDonatorUpdate):
+class FormDonatorRequeriment(FormDonatorUpdate):
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': False,
                                                                'placeholder': _('Data de Nascimento'),

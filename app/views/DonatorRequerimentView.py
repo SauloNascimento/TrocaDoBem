@@ -11,19 +11,12 @@ from app.models import CommonUser
 from django.contrib import messages
 from app.mixins.CustomContextMixin import UserContextMixin
 from django.shortcuts import render
+import datetime
+from datetime import *
 
 __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"
 
-
-def search_matches(**kwargs):
-    reqs = Requirement.objects.filter(status=True)
-    for req in reqs:
-        if req.type == kwargs['type']:
-            match = Match(requirement=req, item=Item.objects.get(id=kwargs['pk_item']))
-            match.save()
-            notification = Notification(user=req.owner, match=match)
-            notification.save()
 
 class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin):
     login_url = '/login/'
@@ -45,10 +38,10 @@ class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin):
         return initial
 
     def get_context_data(self, **kwargs):
-       context = super(DonatorRequerimentViewAnonymous, self).get_context_data(**kwargs)
+       context = super(DonatorRequerimentView, self).get_context_data(**kwargs)
        context['requeriment'] = Requirement.objects.get(id=self.kwargs['requeriment_id'])
        return context
-    
+
     def form_valid(self, form):
         data = form.cleaned_data
         common_user = self.object.commonuser
@@ -56,22 +49,18 @@ class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin):
         common_user.phone = data['phone']
         common_user.anonymous = data['anonymous']
         common_user.save()
-        data = form.cleaned_data
-        item_data = {}
-        object_data = {}
-        item_data['name_item'] = data['name_item']
-        item_data['description'] = data['description']
-        object_data['type'] = data['object_type']
-        if data['name_item'] and data['object_type']:
-            new_item = Item(owner=self.request.user, **item_data)
-            new_item.save()
-            new_object = Object(item=new_item, **object_data)
-            new_object.save()
-            messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
-            object_data['pk_item'] = new_item.pk
-            search_matches(**object_data)
-        else:
-            return self.form_invalid(self, form)
+        requeriments = Requirement.objects.get(id=self.kwargs['requeriment_id'])
+        new_item = Item(owner=self.request.user, description=requeriments.description, name_item=requeriments.name)
+        new_item.save()
+        new_object = Object(item=new_item, type=requeriments.type)
+        new_object.save()
+        messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
+        match = Match(requirement=requeriments, item=new_item)
+        match.save()
+        notification = Notification(user=requeriments.owner, match=match)
+        notification.save()
+        donation = Donation(donator=self.request.user,institute=requeriments.owner,item=new_item,data=new_item.created_at, is_completed=False)
+        donation.save()
         messages.success(self.request, 'Muito Obrigado pela sua Doação!')
         return super(DonatorRequerimentView, self).form_valid(form)
 
@@ -105,7 +94,6 @@ class DonatorRequerimentViewAnonymous(FormView):
         data = form.cleaned_data
         user_data = {}
         common_data = {}
-        object_data = {}
         user_data['last_name'] = data['last_name']
         user_data['first_name'] = data['first_name']
         user_data['email'] = data['email']
@@ -127,21 +115,19 @@ class DonatorRequerimentViewAnonymous(FormView):
         new_object = Object(item=new_item, type=requeriments.type)
         new_object.save()
         messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
-        object_data['pk_item'] = new_item.pk
-        search_matches(**object_data)
+        match = Match(requirement=requeriments, item=new_item)
+        match.save()
+        notification = Notification(user=requeriments.owner, match=match)
+        notification.save()
+        donation = Donation(donator=new_user,institute=requeriments.owner,item=new_item,data=new_item.created_at, is_completed=False)
+        donation.save()
         messages.success(self.request, 'Muito Obrigado pela sua Doação!')
+        return super(DonatorRequerimentViewAnonymous, self).form_valid(form)
 
 
     def form_invalid(self, form):
         print(form.errors)
         return super(DonatorRequerimentViewAnonymous, self).form_invalid(form)
-
-
-    def requeriment(request, requeriment_id):
-        requeriment = Requirement.objects.get(id=requeriment_id)
-        id = requeriment_id
-        return render(request, 'donator_requeriment_view.html',
-                  {'requeriment': requeriment, 'id':id})
 
     def get_context_data(self, **kwargs):
        context = super(DonatorRequerimentViewAnonymous, self).get_context_data(**kwargs)
