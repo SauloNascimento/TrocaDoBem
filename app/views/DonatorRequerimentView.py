@@ -11,9 +11,6 @@ from app.mixins.CustomContextMixin import CustomContextMixin
 from app.models import CommonUser
 from django.contrib import messages
 from app.mixins.CustomContextMixin import UserContextMixin
-from django.shortcuts import render
-import datetime
-from datetime import *
 
 __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"

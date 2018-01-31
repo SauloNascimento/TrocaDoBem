@@ -7,11 +7,8 @@ from django.views.generic import CreateView
 from app.models import Requirement,Match, Donation,Notification
 from django.contrib import messages
 import datetime
+from app.mixins.CustomContextMixin import CustomContextMixin
 
-
-
-from app.mixins.CustomContextMixin import CustomContextMixin, UserContextMixin
-from django.views.generic import UpdateView
 __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"
 
