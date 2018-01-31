@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from app.forms import FormNewItemRequeriment
-from django.shortcuts import render
 from app.models import User, Item, Object
 from django.contrib.auth.mixins import LoginRequiredMixin
-from app.mixins.CustomContextMixin import CustomContextMixin
 from django.views.generic import CreateView
 from app.models import Requirement,Match, Donation,Notification
 from django.contrib import messages
-from django.views.generic import DetailView
-from django.views.generic.base import TemplateView
+import datetime
+
+
 
 from app.mixins.CustomContextMixin import CustomContextMixin, UserContextMixin
 from django.views.generic import UpdateView
@@ -31,6 +30,7 @@ def search_matches(**kwargs):
 class NewItemRequerimentView( LoginRequiredMixin, CreateView, CustomContextMixin):
     template_name = 'new_item_requeriment_view.html'
     form_class = FormNewItemRequeriment
+    success_url = '/home'
 
     def get_initial(self):
         initial = super(NewItemRequerimentView, self).get_initial()
@@ -53,13 +53,13 @@ class NewItemRequerimentView( LoginRequiredMixin, CreateView, CustomContextMixin
         item = Item.objects.get(id=self.kwargs['item_id'])
         item.name_item = data['name']
         item.description = data['description']
-        object = Object.objects.get(id=self.kwargs['item_id'])
-        object.type = data['object_type']
+        object = Object.objects.get(item=item)
+        object.type = data['type']
         requeriment = Requirement(name=item.name_item,type=object.type,status=True,owner=self.request.user,description=item.description)
         requeriment.save()
         match = Match(requirement=requeriment, item=item)
         match.save()
-        donation = Donation(donator=item.owner,institute=requeriment.owner,item=item,data='%d-%m-%Y', is_completed=False)
+        donation = Donation(donator=item.owner,institute=requeriment.owner,item=item,data=datetime.datetime.today().strftime('%Y-%m-%d'), is_completed=False)
         donation.save()
         messages.success(self.request, "Nova Necessidade cadastrada com sucesso!")
         return super(NewItemRequerimentView, self).form_valid(form)

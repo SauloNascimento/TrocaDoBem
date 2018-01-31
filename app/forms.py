@@ -277,13 +277,13 @@ class FormAuditorUpdate(forms.ModelForm, FormBaseAddress):
 
 
 class FormNewItemRequeriment(FormItemUpdate,FormRequirement):
-    name_item = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': True,
+    name = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': True,
                                                               'maxlength': 100,
                                                               'placeholder': _('Nome do Objeto')}))
     description = forms.CharField(required=False,widget=forms.Textarea(attrs={'required': False,
                                                                'maxlength': 300,
                                                                'placeholder': _('Descricao do Objeto')}))
-    object_type = forms.ChoiceField(required=False,choices=object_type,  label=u'Type')
+    type = forms.ChoiceField(required=False,choices=object_type,  label=u'Type')
 
     class Meta:
         model = Requirement
