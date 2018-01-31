@@ -128,14 +128,15 @@ urlpatterns = [
     url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
 
-    url(r'^showcase/$', requirement_showcase_view, name='list_showcase'),
-    url(r'^showcase/(?P<requeriment_id>\d+)/$', requeriment_detail, name='detail'),
-    url(r'^showcase/(?P<requeriment_id>\d+)/donationrequeriment/None', DonatorRequerimentViewAnonymous.as_view(), name='donation_requeriment_1'),
-    url(r'^showcase/(?P<requeriment_id>\d+)/donationrequeriment/(?P<pk>[0-9]+)/$', DonatorRequerimentView.as_view(), name='donation_requeriment'),
+    url(r'^requeriments/$', requirement_showcase_view, name='list_showcase'),
+    url(r'^requeriments/(?P<requeriment_id>\d+)/$', requeriment_detail, name='detail'),
+    url(r'^requeriments/(?P<requeriment_id>\d+)/donationrequeriment/None',
+        DonatorRequerimentViewAnonymous.as_view(), name='donation_requeriment_1'),
+    url(r'^requeriments/(?P<requeriment_id>\d+)/donationrequeriment/(?P<pk>[0-9]+)/$',
+        DonatorRequerimentView.as_view(), name='donation_requeriment'),
     url(r'^new-items/$', new_item_showcase_view, name='list_new_item'),
     url(r'^new-items/(?P<new_item_id>\d+)/$', new_item_detail, name='detail_item'),
     url(r'^new-items/(?P<item_id>\d+)/new-requeriment/$', NewItemRequerimentView.as_view(), name='requerimentnewitem'),
     url(r'^account/(?P<pk>[0-9]+)/change-password/$', ChangePasswordView.as_view(), name='change_password'),
 
 ]
-

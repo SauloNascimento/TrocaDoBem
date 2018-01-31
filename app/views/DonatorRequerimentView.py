@@ -11,12 +11,14 @@ from app.mixins.CustomContextMixin import CustomContextMixin
 from app.models import CommonUser
 from django.contrib import messages
 from app.mixins.CustomContextMixin import UserContextMixin
+import datetime
 
 __author__ = "Tainah Emmanuele"
 __copyright__ = "Copyright 2018, LES-UFCG"
 
 
-class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin,FormView, CustomContextMixin):
+class DonatorRequerimentView(LoginRequiredMixin, UpdateView,
+                             UserContextMixin, FormView, CustomContextMixin):
     login_url = '/login/'
     model = User
     form_class = FormDonatorRequeriment
@@ -34,13 +36,10 @@ class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin,Fo
             initial['cpf'] = commonuser.cpf
             initial['phone'] = commonuser.phone
             initial['anonymous'] = commonuser.anonymous
-
             initial['name_item'] = requeriment.name
             initial['description'] = requeriment.description
             initial['object_type'] = requeriment.type
         return initial
-
-
 
     def form_valid(self, form):
         data = form.cleaned_data
@@ -52,7 +51,8 @@ class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin,Fo
         common_user.phone = data['phone']
         common_user.anonymous = data['anonymous']
         common_user.save()
-        new_item = Item(owner=self.request.user, description=requeriment.description, name_item=requeriment.name)
+        new_item = Item(owner=self.request.user, description=requeriment.description,
+                        name_item=requeriment.name)
         new_item.save()
         new_object = Object(item=new_item, type=requeriment.type)
         new_object.save()
@@ -61,7 +61,9 @@ class DonatorRequerimentView(LoginRequiredMixin, UpdateView, UserContextMixin,Fo
         match.save()
         notification = Notification(user=requeriment.owner, match=match)
         notification.save()
-        donation = Donation(donator=self.request.user,institute=requeriment.owner,item=new_item,data=new_item.created_at, is_completed=False)
+        donation = Donation(donator=self.request.user, institute=requeriment.owner,
+                            item=new_item, data=datetime.datetime.today().strftime('%Y-%m-%d'),
+                            is_completed=False)
         donation.save()
         messages.success(self.request, 'Muito Obrigado pela sua Doação!')
 
@@ -80,9 +82,8 @@ class DonatorRequerimentViewAnonymous(FormView):
     form_class = FormDonatorRequerimentNewUser
     success_url = '/login'
 
-
     def get_initial(self):
-        initial = super(DonatorRequerimentView, self).get_initial()
+        initial = super(DonatorRequerimentViewAnonymous, self).get_initial()
         try:
             requeriment = Requirement.objects.get(id=self.kwargs['requeriment_id'])
         except:
@@ -92,8 +93,6 @@ class DonatorRequerimentViewAnonymous(FormView):
             initial['description'] = requeriment.description
             initial['object_type'] = requeriment.type
         return initial
-
-
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -136,17 +135,13 @@ class DonatorRequerimentViewAnonymous(FormView):
         match.save()
         notification = Notification(user=requeriment.owner, match=match)
         notification.save()
-        donation = Donation(donator=new_user,institute=requeriment.owner,item=new_item,data=new_item.created_at, is_completed=False)
+        donation = Donation(donator=new_user, institute=requeriment.owner,
+                            item=new_item, data=datetime.datetime.today().strftime('%Y-%m-%d'),
+                            is_completed=False)
         donation.save()
         messages.success(self.request, 'Muito Obrigado pela sua Doação!')
         return super(DonatorRequerimentViewAnonymous, self).form_valid(form)
 
-
     def form_invalid(self, form):
         print(form.errors)
         return super(DonatorRequerimentViewAnonymous, self).form_invalid(form)
-
-    def get_context_data(self, **kwargs):
-       context = super(DonatorRequerimentViewAnonymous, self).get_context_data(**kwargs)
-       context['requeriment'] = Requirement.objects.get(id=self.kwargs['requeriment_id'])
-       return context

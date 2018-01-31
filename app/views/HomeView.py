@@ -20,10 +20,9 @@ class HomeView(ListView):
         requeriments = Requirement.objects.all()
         queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
         itens = Item.objects.all().filter(status=True)
-
         form = FormRequirement
         return render(request, 'index.html', {'requeriments': requeriments,
-                                              'form': form, 'recent_posts': queryset, 'itens':itens})
+                                              'form': form, 'recent_posts': queryset, 'itens': itens})
 
 
 class CollectView(TemplateView):
