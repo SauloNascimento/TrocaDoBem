@@ -16,7 +16,7 @@ __copyright__ = "Copyright 2017, LES-UFCG"
 
 
 class HomeView(ListView):
-    def requirement_showcase(request):
+    def get(self, request, *args, **kwargs):
         requeriments = Requirement.objects.all()
         queryset = Post.objects.filter(is_visible=True).order_by('-created_at')[:6]
         itens = Item.objects.all().filter(status=True)

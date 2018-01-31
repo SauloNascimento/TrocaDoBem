@@ -60,7 +60,7 @@ Including another URLconf
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/login/$', auth_views.login),
-    url(r'^$', HomeView.requirement_showcase, name='home'),
+    url(r'^$', HomeView.as_view(), name='home'),
     url(r'^register-institute/$', RegisterInstituteView.as_view(), name='register_institute'),
     url(r'^register-user/$', RegisterUserView.as_view(), name='register_user'),
     url(r'^register-auditor/$', RegisterAuditorView.as_view(), name='register_auditor'),
