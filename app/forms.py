@@ -6,7 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 
-from app.models import object_type, Item, Requirement, Audit, Match
+from app.models import object_type, Item, Audit, Match, Requirement
 
 
 class BaseForm(forms.Form):
@@ -156,9 +156,11 @@ class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
 
 
 class FormInstituteUpdate(forms.ModelForm, FormBaseAddress):
-    cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+    cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                         'maxlength': 200,
                                                          'placeholder': _('CNPJ')}))
-    phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+    phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
+                                                                          'maxlength': 150,
                                                                           'placeholder': _('Telefone')}))
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'maxlength': 300,
                                                                                'placeholder': _(
@@ -223,43 +225,50 @@ class FormChangePassword(PasswordChangeForm, BaseForm):
         return password2
 
 
-class FormDonatorRequeriment(FormObject, FormDonatorUpdate):
+class FormDonatorRequeriment(FormDonatorUpdate, FormObject):
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': False,
                                                                'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
+    cpf = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                        'placeholder': _('CPF')}))
 
 
 class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
     password = forms.CharField(widget=forms.PasswordInput
     (attrs={'required': True,
-            'placeholder': _('Password')}))
+                                                                 'placeholder': _('Password')})),
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': False,
                                                                'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
     last_name = forms.CharField(required=False,
                                 widget=forms.TextInput(attrs={'required': False,
-                                                              'maxlength': 200,
+                                                                             'maxlength': 200,
                                                               'placeholder': _('Sobrenome')}))
 
 
 class FormRegisterAuditor(FormBaseAddress):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
                                                                'placeholder': _('Nome')}))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                              'maxlength': 200,
                                                               'placeholder': _('Sobrenome')}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True,
+                                                            'maxlength': 150,
                                                             'placeholder': _('Email')}))
-    username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
+    username = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                             'maxlength': 200,
                                                              'placeholder': 'Nome de Usuario'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
                                                                  'placeholder': _('Senha')}))
-    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+    phone = forms.CharField(widget=forms.TextInput(attrs={'required': False,
+                                                          'maxlength': 150,
                                                           'placeholder': _('Telefone')}))
 
     def __init__(self, *args, **kwargs):
         super(FormRegisterAuditor, self).__init__(*args, **kwargs)
+
 
 class FormAuditorUpdate(forms.ModelForm, FormBaseAddress):
     phone = forms.CharField(required=False,
@@ -272,3 +281,18 @@ class FormAuditorUpdate(forms.ModelForm, FormBaseAddress):
 
     def __init__(self, *args, **kwargs):
         super(FormAuditorUpdate, self).__init__(*args, **kwargs)
+
+
+class FormNewItemRequeriment(FormItemUpdate, FormRequirement):
+    name = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': True,
+                                                            'maxlength': 100,
+                                                            'placeholder': _('Nome do Objeto')}))
+    description = forms.CharField(required=False,widget=forms.Textarea(attrs={'required': False,
+                                                            'maxlength': 300,
+                                                            'placeholder': _('Descricao do Objeto')}))
+    type = forms.ChoiceField(required=False,choices=object_type,  label=u'Type')
+
+    class Meta:
+        model = Requirement
+        fields = ['name', 'description', 'type']
+        widgets = {'owner': forms.HiddenInput()}
