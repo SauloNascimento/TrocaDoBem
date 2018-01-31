@@ -274,8 +274,8 @@ class FormAuditorUpdate(forms.ModelForm, FormBaseAddress):
         super(FormAuditorUpdate, self).__init__(*args, **kwargs)
 
 
-class FormNewItemRequeriment(FormObject,FormItemUpdate):
+class FormNewItemRequeriment(FormItemUpdate,FormRequirement):
     class Meta:
         model = Requirement
-        fields = ['name', 'type', 'owner']
+        fields = ['name','description', 'type', 'owner']
         widgets = {'owner': forms.HiddenInput()}
