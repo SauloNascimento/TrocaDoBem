@@ -221,14 +221,16 @@ class FormChangePassword(PasswordChangeForm, BaseForm):
         return password2
 
 
-class FormDonatorRequeriment(FormDonatorUpdate):
+class FormDonatorRequeriment(FormDonatorUpdate,FormObject):
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': False,
                                                                'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
+    cpf = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                        'placeholder': _('CPF')}))
 
 
-class FormDonatorRequerimentNewUser(FormRegisterUser):
+class FormDonatorRequerimentNewUser(FormRegisterUser,FormObject):
     password = forms.CharField(widget=forms.PasswordInput
     (attrs={'required': True,
                                                                  'placeholder': _('Password')})),
@@ -275,7 +277,15 @@ class FormAuditorUpdate(forms.ModelForm, FormBaseAddress):
 
 
 class FormNewItemRequeriment(FormItemUpdate,FormRequirement):
+    name_item = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': True,
+                                                              'maxlength': 100,
+                                                              'placeholder': _('Nome do Objeto')}))
+    description = forms.CharField(required=False,widget=forms.Textarea(attrs={'required': False,
+                                                               'maxlength': 300,
+                                                               'placeholder': _('Descricao do Objeto')}))
+    object_type = forms.ChoiceField(required=False,choices=object_type,  label=u'Type')
+
     class Meta:
         model = Requirement
-        fields = ['name','description', 'type', 'owner']
+        fields = ['name','description', 'type']
         widgets = {'owner': forms.HiddenInput()}

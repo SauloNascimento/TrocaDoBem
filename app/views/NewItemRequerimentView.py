@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from app.forms import FormNewItemRequeriment
 from django.shortcuts import render
-from app.models import User, Item
+from app.models import User, Item, Object
 from django.contrib.auth.mixins import LoginRequiredMixin
 from app.mixins.CustomContextMixin import CustomContextMixin
 from django.views.generic import CreateView
@@ -51,11 +51,16 @@ class NewItemRequerimentView( LoginRequiredMixin, CreateView, CustomContextMixin
     def form_valid(self, form):
         data = form.cleaned_data
         item = Item.objects.get(id=self.kwargs['item_id'])
-        item.name = data['name']
+        item.name_item = data['name']
         item.description = data['description']
-        item.type = data['object_type']
-        requeriment = Requirement(name=item.name,type=item.type,status=True,owner=self.request.user,description=item.description)
+        object = Object.objects.get(id=self.kwargs['item_id'])
+        object.type = data['object_type']
+        requeriment = Requirement(name=item.name_item,type=object.type,status=True,owner=self.request.user,description=item.description)
         requeriment.save()
+        match = Match(requirement=requeriment, item=item)
+        match.save()
+        donation = Donation(donator=item.owner,institute=requeriment.owner,item=item,data='%d-%m-%Y', is_completed=False)
+        donation.save()
         messages.success(self.request, "Nova Necessidade cadastrada com sucesso!")
         return super(NewItemRequerimentView, self).form_valid(form)
 
