@@ -24,7 +24,7 @@
                     <label for="exampleInputPassword1">Descrição: </label>
                     {{ object.item.description }}
                 </div>
-                {% if not item.owner.common_user_set.first.anonymous %}
+                {% if not item.owner.common.anonymous %}
                     <div class="form-group">
                         <label for="exampleInputPassword1">Doador: </label>
                         <div class="row">

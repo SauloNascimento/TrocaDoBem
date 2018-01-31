@@ -45,116 +45,215 @@
             </div>
         </div>
     </section>
-    {% if recent_posts %}
-        <section class="bar background-gray no-mb padding-big text-center-sm" id="noticias">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="heading">
-                            <h3 style="color: #000">Notícias Recentes</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    {% for post in recent_posts %}
-                        <div class="col-md-4 col-sm-6 ">
-                            <div class="box-image-text blog">
-                                <div class="top">
-                                    <div class="image text-center">
-                                        {% if post.imagepost_set.first %}
-                                            <img src="{{ post.imagepost_set.first.image.url }}" alt=""
-                                                 class="img-responsive"
-                                                 style="max-height: 200px; min-height: 100px; display: inline;">
-                                        {% else %}
-                                            <img src="{% static '300x300.png' %}" alt=""
-                                                 class="img-responsive"
-                                                 style="max-height: 200px; min-height: 100px; display: inline;">
-                                        {% endif %}
-                                    </div>
-                                    <div class="bg"></div>
-                                    <div class="text">
-                                        <p class="buttons">
-                                            <a href="{{ post.get_absolute_url }}"
-                                               class="btn btn-template-transparent-primary"><i
-                                                    class="fa fa-link"></i> Leia Mais</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-
-                                    <p class="author-category">By <a
-                                            href="{{ post.get_absolute_url }}">{{ post.author }}</a>
-                                    </p>
-
-                                    <p class="intro">{{ post.get_description }}</p>
-
-                                    <p class="read-more"><a href="{{ post.get_absolute_url }}"
-                                                            class="btn btn-template-main">Continue
-                                        Lendo</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- /.box-image-text -->
-
-                        </div>
-                    {% endfor %}
 
 
-                </div>
-            </div>
-        </section>
-    {% endif %}
-
-
-    <section class="bar background-white no-mb" id="contato">
-        <div class="container" data-animate="fadeInUp">
+    <section class="bar background-white no-mb">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading">
-                        <h3 style="color: #000">Contate-nos</h3>
+                        <h3 style="color: #000">Vitrine de Requisições</h3>
                     </div>
 
-                    <form method="post" action="/submit-contact">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="firstname">Nome</label>
-                                    <input name="name" type="text" class="form-control" id="name" required>
+                    {% for requeriment in requeriments %}
+                        <!-- Creating a column for each treasure panel -->
+                        {% if forloop.counter < 10 %}
+                            <div class="col-md-4">
+                                <div class="treasure panel panel-default">
+                                    <!-- Adding treasure title by username -->
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title" align="center">{{ requeriment.name }}</h3>
+                                        <h6 class="panel-default" align="center">
+                                            Instituição: {{ requeriment.owner }}</h6>
+                                    </div>
+                                    <!-- Adding treasure image -->
+                                    <div class="panel-body">
+                                        <a href="/requeriments/{{ requeriment.id }}">
+                                            <div class="treasure-photo">
+                                                <img src="{{ requeriment.photo }}">
+                                            </div>
+                                        </a>
+                                        <!-- Adding Like Button -->
+
+                                    </div>
+
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email" required>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="message">Mensagem</label>
-                                    <textarea id="message" name="message" class="form-control" required></textarea>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12 text-center">
-                                <button type="submit" class="btn btn-template-main"><i class="fa fa-envelope-o"></i>
-                                    Enviar Mensagem
-                                </button>
-
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </form>
-
+                        {% endif %}
+                        <!-- if last column in row -->
+                        {% if forloop.counter|divisibleby:5 and not 10 %}
+                            </div><br>
+                            <div class="row">
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                <br>
+                <div class="col-sm-12">
+                    <a href="{% url "list_showcase" %} " class="btn btn-danger btn-block">Ver Mais</a>
                 </div>
             </div>
-        </div>
-    </section>
 
-     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#home_base').addClass('active');
-        });
-    </script>
+
+            <section class="bar background-white no-mb">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h3 style="color: #000">Novos Itens Disponiveis Para Doação</h3>
+                            </div>
+
+                            {% for item in itens %}
+                                {% if forloop.counter < 10 %}
+                                    <!-- Creating a column for each treasure panel -->
+                                    <div class="col-md-4">
+                                        <div class="treasure panel panel-default">
+                                            <!-- Adding treasure title by username -->
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title" align="center">{{ item.name_item }}</h3>
+                                            </div>
+                                            <!-- Adding treasure image -->
+                                            <div class="panel-body">
+                                                <a href="/new-items/{{ item.id }}">
+                                                    <div class="treasure-photo">
+                                                        <img src="{{ item.photo }}">
+                                                    </div>
+                                                </a>
+                                                <!-- Adding Like Button -->
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <!-- if last column in row -->
+                                {% if forloop.counter|divisibleby:5 and not 10 %}
+                                    </div><br>
+                                    <div class="row">
+                                {% endif %}
+                            {% endfor %}
+
+                            </div>
+                        <br>
+                        <div class="col-sm-12">
+                            <a href="{% url "list_new_item" %} " class="btn btn-danger btn-block">Ver Mais</a>
+                        </div>
+                    </div>
+
+
+                    {% if recent_posts %}
+                        <section class="bar background-gray no-mb padding-big text-center-sm" id="noticias">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="heading">
+                                            <h3 style="color: #000">Notícias Recentes</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    {% for post in recent_posts %}
+                                        <div class="col-md-4 col-sm-6 ">
+                                            <div class="box-image-text blog">
+                                                <div class="top">
+                                                    <div class="image text-center">
+                                                        {% if post.imagepost_set.first %}
+                                                            <img src="{{ post.imagepost_set.first.image.url }}" alt=""
+                                                                 class="img-responsive"
+                                                                 style="max-height: 200px; min-height: 100px; display: inline;">
+                                                        {% else %}
+                                                            <img src="{% static '300x300.png' %}" alt=""
+                                                                 class="img-responsive"
+                                                                 style="max-height: 200px; min-height: 100px; display: inline;">
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="bg"></div>
+                                                    <div class="text">
+                                                        <p class="buttons">
+                                                            <a href="{{ post.get_absolute_url }}"
+                                                               class="btn btn-template-transparent-primary"><i
+                                                                    class="fa fa-link"></i> Leia Mais</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+
+                                                    <p class="author-category">By <a
+                                                            href="{{ post.get_absolute_url }}">{{ post.author }}</a>
+                                                    </p>
+
+                                                    <p class="intro">{{ post.get_description }}</p>
+
+                                                    <p class="read-more"><a href="{{ post.get_absolute_url }}"
+                                                                            class="btn btn-template-main">Continue
+                                                        Lendo</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-image-text -->
+
+                                        </div>
+                                    {% endfor %}
+
+
+                                </div>
+                            </div>
+                        </section>
+                    {% endif %}
+
+
+                    <section class="bar background-white no-mb" id="contato">
+                        <div class="container" data-animate="fadeInUp">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="heading">
+                                        <h3 style="color: #000">Contate-nos</h3>
+                                    </div>
+
+                                    <form method="post" action="/submit-contact">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="firstname">Nome</label>
+                                                    <input name="name" type="text" class="form-control" id="name"
+                                                           required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" name="email" class="form-control" id="email"
+                                                           required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="message">Mensagem</label>
+                                                    <textarea id="message" name="message" class="form-control"
+                                                              required></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 text-center">
+                                                <button type="submit" class="btn btn-template-main"><i
+                                                        class="fa fa-envelope-o"></i>
+                                                    Enviar Mensagem
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                        <!-- /.row -->
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#home_base').addClass('active');
+                        });
+                    </script>
 {% endblock %}

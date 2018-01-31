@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    {% include 'loading.html' %}
+
+    <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <center>Solicitar Item</center>
+                    </h3>
+                </div>
+            </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form" method="post" class="form-horizontal">
+            {% csrf_token %}
+
+    <!-- /.box-body -->
+
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="name_item">Nome</label>
+        <div class="col-md-4">
+            {{ form.name  }}
+        </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="description">Descrição:</label>
+        <div class="col-md-4">
+            {{ form.description }}
+        </div>
+    </div>
+
+    <!-- Type Input -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="object_type"
+        >Tipo de Objeto:</label>
+        <div class="col-md-6">
+            {{ form.type }}
+        </div>
+    </div>
+
+
+            </div>
+                <div class="form-group">
+                <div class="col-md-8 col-md-offset-3">
+                    <div class="row">
+                        <div class="col-sm-4">
+        <button type="submit" id="btn_salvar" class="btn btn-success btn-block">Salvar</button>
+                            </div>
+                        <div class="col-sm-4">
+        <a href="{% url "home" %}" id="btn_cancelar" class="btn btn-danger btn-block">Voltar</a>
+           </div>
+                    </div>
+                </div>
+            </div>
+    </fieldset>
+    </form>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#list_my_requirements').addClass('active');
+        });
+    </script>
+{% endblock %}

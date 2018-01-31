@@ -29,7 +29,8 @@ def accept_notification(request, pk):
     notification.status = 'ACEITO'
     notification.is_read = True
     notification.save()
-    audit = Audit(new_owner=request.user, donor=notification.match.item.owner, item=notification.match.item,
+    audit = Audit(new_owner=request.user, donor=notification.match.item.owner,
+                  item=notification.match.item,
                   match=notification.match)
     audit.save()
     messages.success(request, 'Uma nova auditoria foi criada')
