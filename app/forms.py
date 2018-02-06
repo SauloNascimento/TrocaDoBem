@@ -287,7 +287,7 @@ class FormNewItemRequeriment(FormItemUpdate, FormRequirement):
     name = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': True,
                                                             'maxlength': 100,
                                                             'placeholder': _('Nome do Objeto')}))
-    description = forms.CharField(required=False,widget=forms.Textarea(attrs={'required': False,
+    description = forms.CharField(required=True,widget=forms.Textarea(attrs={'required': False,
                                                             'maxlength': 300,
                                                             'placeholder': _('Descricao do Objeto')}))
     type = forms.ChoiceField(required=False,choices=object_type,  label=u'Type')

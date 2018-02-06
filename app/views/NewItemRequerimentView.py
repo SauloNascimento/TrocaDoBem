@@ -47,6 +47,8 @@ class NewItemRequerimentView(LoginRequiredMixin, CreateView, CustomContextMixin)
         donation.save()
         notification = Notification(user=requeriment.owner, match=match)
         notification.save()
+        notification = Notification(user=item.owner, match=match)
+        notification.save()
         messages.success(self.request, "Nova Necessidade cadastrada com sucesso!")
         return super(NewItemRequerimentView, self).form_valid(form)
 
