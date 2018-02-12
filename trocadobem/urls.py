@@ -78,6 +78,7 @@ urlpatterns = [
     url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
 
     url(r'^object/add/$', RegisterObjectView.as_view(), name='add_object'),
+    url(r'^donate-item/$', RegisterObjectView.as_view(template_name='registers/register-item-home.html'), name='add_object_home'),
     url(r'^object/(?P<pk>[0-9]+)/$', ObjectView.as_view(), name='view-object'),
     url(r'^object/(?P<pk>[0-9]+)/edit/$', ObjectUpdateView.as_view(), name='change_object'),
     url(r'^object/(?P<pk>[0-9]+)/delete/$', delete_object, name='delete_object'),
