@@ -15,7 +15,33 @@
         <!-- form start -->
         <form method="post" class="form-horizontal" style=" margin-top: 30px;
                 margin-left: 15%;margin-right: 10%">{% csrf_token %}
-            {{ form.as_p }}
+            <div class="form-group">
+                <label class="col-sm-2 col-form-label" for="name_item">Nome</label>
+                <div class="col-md-8">
+                    {{ form.name }}
+
+                </div>
+            </div>
+
+            <!-- Type Input -->
+            <div class="form-group">
+                <label class="col-sm-2 col-form-label" for="object_type"
+                       style="padding-right: 0">Tipo </label>
+                <div class="col-md-8">
+                    {{ form.type }}
+
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-2 col-form-label" for="description">Descrição</label>
+                <div class="col-md-8">
+                    {{ form.description }}
+
+                </div>
+            </div>
+            <p>{{ form.owner }}</p>
+
             <div class="form-group" style="margin-left: 10px; margin-top: 35px;">
 
                 <!-- Button -->
