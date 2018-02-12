@@ -17,7 +17,32 @@
                 </div>
             </div>
 
-            {{ form.as_p }}
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Nome</label>
+                <div class="col-md-4">
+                    {{ form.name }}
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="description">Descricao</label>
+                <div class="col-md-4">
+                    {{ form.description }}
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="type" style="padding-right: 0">Tipo de Item</label>
+                <div class="col-md-4">
+                    {{ form.type }}
+                </div>
+            </div>
+
+            <p>{{ form.owner }}</p>
 
             <!-- Button (Double) -->
             <div class="form-group">

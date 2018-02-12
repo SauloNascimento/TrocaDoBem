@@ -85,6 +85,7 @@ urlpatterns = [
 
     url(r'^requirements/$', RequirementListView.as_view(), name='list_my_requirements'),
     url(r'^requirements/add/$', AddRequirementView.as_view(), name='add_requirement'),
+    url(r'^request-item/$', AddRequirementView.as_view(template_name='registers/register-requirement-home.html'), name='add_requirement_home'),
     url(r'^requirements/(?P<pk>[0-9]+)/$', RequirementView.as_view(), name='view-requirement'),
     url(r'^requirements/(?P<pk>[0-9]+)/edit/$', RequirementUpdateView.as_view(), name='change_requirement'),
     url(r'^requirements/(?P<pk>[0-9]+)/delete/$', delete_requirement, name='delete_requirement'),
