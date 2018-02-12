@@ -14,6 +14,7 @@ from app.views.DonatorUpdateView import DonatorUpdateView
 from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, \
     CollectView, ContributeView
 from app.views.InstituteUpdateView import InstituteUpdateView
+from app.views.AuditorUpdateView import AuditorUpdateView
 from app.views.LoginView import LoginView, LogoutView
 from app.views.MatchView import MatchListView, MatchUpdateView, delete_match
 from app.views.NotificationView import NotificationListView, accept_notification, \
@@ -74,7 +75,7 @@ urlpatterns = [
 
     url(r'^home/$', PainelView.as_view(), name='painel'),
 
-    url(r'^itens/$', MyItensListView.as_view(), name='list_my_itens'),
+    url(r'^my-itens/$', MyItensListView.as_view(), name='list_my_itens'),
     url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
 
     url(r'^object/add/$', RegisterObjectView.as_view(), name='add_object'),
@@ -129,6 +130,7 @@ urlpatterns = [
     url(r'^notifications/refuse/(?P<pk>[0-9]+)/$', refuse_notification, name='refuse_notification'),
     url(r'^account/(?P<pk>[0-9]+)/edit-donator/$', DonatorUpdateView.as_view(), name='update_donator'),
     url(r'^account/(?P<pk>[0-9]+)/edit-institute/$', InstituteUpdateView.as_view(), name='update_institute'),
+    url(r'^account/(?P<pk>[0-9]+)/edit-auditor/$', AuditorUpdateView.as_view(), name='update_auditor'),
 
     url(r'^requeriments/$', requirement_showcase_view, name='list_showcase'),
     url(r'^requeriments/(?P<requeriment_id>\d+)/$', requeriment_detail, name='detail'),
