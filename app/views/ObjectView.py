@@ -27,10 +27,11 @@ def search_matches(**kwargs):
             notification.save()
 
 
-class RegisterObjectView(FormView, CustomContextMixin, UserContextMixin):
+class RegisterObjectView(LoginRequiredMixin, FormView, CustomContextMixin, UserContextMixin):
     """
     Displays the login form.
     """
+    login_url = '/login/'
     template_name = 'admin_panel/add-object.html'
     form_class = FormObject
     success_url = '/itens'
@@ -47,7 +48,7 @@ class RegisterObjectView(FormView, CustomContextMixin, UserContextMixin):
             new_item.save()
             new_object = Object(item=new_item, **object_data)
             new_object.save()
-            messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
+            messages.success(self.request, "Novo Item cadastrado com sucesso!")
             object_data['pk_item'] = new_item.pk
             search_matches(**object_data)
         else:
@@ -56,7 +57,7 @@ class RegisterObjectView(FormView, CustomContextMixin, UserContextMixin):
 
     def form_invalid(self, form):
         print(form.errors)
-        messages.error(self.request, 'Não foi possível cadastrar o objeto.')
+        messages.error(self.request, 'Não foi possível cadastrar o Item.')
         return super(RegisterObjectView, self).form_invalid(form)
 
 
