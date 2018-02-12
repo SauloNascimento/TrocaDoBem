@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Troca do Bem | Dashboard</title>
-    <!-- Tell the browser to be responsive to screen width -->
+
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href='{% static 'bootstrap/css/bootstrap.min.css' %}'>
@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href='{% static 'dist/css/AdminLTE.css' %}'>
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-    folder instead of downloading all of them to reduce the load. -->
+    <!-- AdminLTE Skins -->
     <link rel="stylesheet" href='{% static 'dist/css/skins/_all-skins.min.css' %}'>
     <!-- iCheck -->
     <link rel="stylesheet" href='{% static 'plugins/iCheck/flat/blue.css' %}'>
@@ -32,8 +31,7 @@
 
     <link rel="stylesheet" type="text/css"
           href="{% static 'css/datatables.min.css' %}"/>
-    {#        <link rel="stylesheet" type="text/css"#}
-    {#              href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/css/bootstrap-tour.min.css"/>#}
+
     <style>
         #ajuda {
             cursor: pointer;
@@ -82,8 +80,6 @@
                                             <li>
                                                 <a href="#">
                                                     <i class="fa fa-warning text-yellow"></i>
-                                                    {#                                                    Um usuário adicionou um item do tipo {{ n.match.item.type }} e#}
-                                                    {#                                                    achamos#}
                                                     Temos um Match com seu pedido #{{ n.match.requirement.pk }}
                                                 </a>
                                             </li>
@@ -114,7 +110,8 @@
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
                                         {% for audit in audits_l %}
-                                            <li><!-- Task item -->
+                                            <!-- Task item -->
+                                            <li>
                                                 <a href="#">
                                                     <h3>
                                                         Item: {{ audit.item.name_item }}
@@ -135,7 +132,8 @@
                                                 </a>
                                             </li>
                                         {% empty %}
-                                            <li><!-- Task item -->
+                                            <!-- Task item -->
+                                            <li>
                                                 <a href="#">
                                                     <h3>
                                                         Nenhum processo em andamento
@@ -186,7 +184,8 @@
                                                 </a>
                                             </li>
                                         {% empty %}
-                                            <li><!-- Task item -->
+                                            <!-- Task item -->
+                                            <li>
                                                 <a href="#">
                                                     <h3>
                                                         Nenhum processo em andamento
@@ -203,7 +202,7 @@
                         </li>
                     {% endif %}
 
-                    <!-- User Account: style can be found in dropdown.less -->
+                    <!-- User Account -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{% static '300x300.png' %}" class="user-image" alt="User Image">
@@ -519,5 +518,6 @@
         {% endif %}
     {% endfor %}
 {% endif %}
+
 </body>
 </html>

@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
-
+    <!-- /.box-header -->
     <div class="box box-primary" style="margin-top: 30px;">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -11,7 +11,7 @@
                 </h3>
             </div>
         </div>
-        <!-- /.box-header -->
+
         <!-- form start -->
         <form class="form-horizontal" method="post"
               style="margin-top: 20px; margin-left: 15%;margin-right: 10% ">
@@ -67,21 +67,11 @@
 
                 </div>
             </div>
-            <!-- /.box-body -->
 
-            {#            <div class="box-footer">#}
-            {#                {% if object.item.owner.pk == user.pk %}#}
-            {#                    <a href="{% url 'change_object' object.item.pk %}" id="btn_alterar"#}
-            {#                       class="btn btn-primary pull-right">Alterar</a>#}
-            {#                {% endif %}#}
-            {#                <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default pull-left">Voltar</a>#}
-            {#            </div>#}
-
+            <!-- Button -->
             <div class=" box-footer form-group" style="margin-top: 35px;">
-
                 <div class="col-md-8 col-md-offset-3">
                     <div class="row">
-
                         <div class="col-sm-4">
                             <a href="{% url "painel" %}" id="btn_cancelar" class="btn btn-default
                                  pull-left">Voltar</a>
@@ -90,7 +80,6 @@
                             {% if object.item.owner.pk == user.pk %}
                                 <a href="{% url 'change_object' object.item.pk %}" id="btn_alterar"
                                    class="btn btn-primary pull-right">Alterar</a>
-
                             {% elif object.item.status %}
                                  <a href="{% url 'add_audit' object.item.pk %}" id="btn_requisitar"
                                    class="btn btn-primary pull-right">Requisitar Item</a>

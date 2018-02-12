@@ -2,15 +2,15 @@
 {% load staticfiles %}
 
 {% block content %}
-    {# Example content #}
+
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
-                <!-- form start -->
+                <!-- /.box-header -->
                 <div class="box-header">
-                    {#                    <p> Minhas Doações</p>#}
                     <a href="{% url 'add_object' %}" class="btn btn-primary">Cadastrar Doação</a>
                 </div>
+                <!-- /.box-body -->
                 <div class="box-body">
                     <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
                         <div class="row">
@@ -67,15 +67,14 @@
                         <a href="{% url 'painel' %}" class="btn btn-default pull-left">Voltar</a>
                     </div>
                 {% endif %}
-                <!-- /.box-body -->
             </div>
         </div>
     </div>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $('#my_objects').addClass('active');
         });
     </script>
-    <!-- /.row -->
 
 {% endblock %}
