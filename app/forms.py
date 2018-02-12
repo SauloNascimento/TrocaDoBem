@@ -105,9 +105,10 @@ class FormObject(BaseForm):
     name_item = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                               'maxlength': 100,
                                                               'placeholder': _('Nome do Objeto')}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'required': False,
-                                                               'maxlength': 300,
-                                                               'placeholder': _('Descricao do Objeto')}))
+    description = forms.CharField(required=False, widget=forms.Textarea(attrs={'required': False,
+                                                                               'maxlength': 300,
+                                                                               'placeholder': _(
+                                                                                   'Descricao do Objeto')}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
 
 
@@ -115,13 +116,19 @@ class FormObjectView(BaseForm):
     name_item = forms.CharField(widget=forms.TextInput(attrs={'readonly': True,
                                                               'maxlength': 100,
                                                               'placeholder': _('Nome do Objeto')}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'maxlength': 300,
-                                                               'placeholder': _('Descricao do Objeto')}))
+    description = forms.CharField(required=False, widget=forms.Textarea(attrs={'required': False,
+                                                                               'maxlength': 300,
+                                                                               'placeholder': _(
+                                                                                   'Descricao do Objeto')}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
 
 
 class FormItemUpdate(forms.ModelForm, BaseForm):
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
+    description = forms.CharField(required=False, widget=forms.Textarea(attrs={'required': False,
+                                                                               'maxlength': 300,
+                                                                               'placeholder': _(
+                                                                                   'Descricao do Objeto')}))
 
     class Meta:
         model = Item
@@ -129,6 +136,10 @@ class FormItemUpdate(forms.ModelForm, BaseForm):
 
 
 class FormRequirement(forms.ModelForm, BaseForm):
+    description = forms.CharField(required=False, widget=forms.Textarea(attrs={'required': False,
+                                                                               'maxlength': 300,
+                                                                               'placeholder': _(
+                                                                                   'Descricao do Objeto')}))
     class Meta:
         model = Requirement
         fields = ['name', 'type', 'description', 'owner']
@@ -287,7 +298,7 @@ class FormNewItemRequeriment(FormItemUpdate, FormRequirement):
     name = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': True,
                                                             'maxlength': 100,
                                                             'placeholder': _('Nome do Objeto')}))
-    description = forms.CharField(required=True,widget=forms.Textarea(attrs={'required': False,
+    description = forms.CharField(required=False,widget=forms.Textarea(attrs={'required': False,
                                                             'maxlength': 300,
                                                             'placeholder': _('Descricao do Objeto')}))
     type = forms.ChoiceField(required=False,choices=object_type,  label=u'Type')
