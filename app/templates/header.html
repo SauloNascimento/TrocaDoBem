@@ -67,6 +67,7 @@
                             <h1 style="margin-top: 2px;"> Troca do Bem</h1>
                         </a>
 
+                        <!--/.navbar-header -->
                         <div class="navbar-buttons">
                             <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
                                     data-target="#navigation">
@@ -75,7 +76,6 @@
                             </button>
                         </div>
                     </div>
-                    <!--/.navbar-header -->
 
                     <div class="navbar-collapse collapse" id="navigation">
 
@@ -83,9 +83,6 @@
                             <li id="home_base" class="">
                                 <a id="home_link" href="/">Home</a>
                             </li>
-{#                            <li id="menu_instituicoes" class="">#}
-{#                                <a id="instituicoes_link" href="{% url 'menu_institutes' %}">Instituições</a>#}
-{#                            </li>#}
 
                             {% if not user.institute %}
                                 <li id="menu_noticias" class="">

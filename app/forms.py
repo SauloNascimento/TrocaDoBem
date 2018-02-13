@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django import forms
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 
@@ -215,13 +215,6 @@ class FormDonationView(ModelForm, BaseForm):
         fields = ['owner', 'description', 'name_item', 'photo', 'status', ]
 
 
-class FormAnonDonation(FormObject):
-    phone = forms.CharField(required=True, widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
-                                                                         'placeholder': _('Telefone')}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
-                                                            'placeholder': _('Email')}))
-
-
 class FormChangePassword(PasswordChangeForm, BaseForm):
 
     def clean_new_password2(self):
@@ -241,21 +234,21 @@ class FormDonatorRequeriment(FormDonatorUpdate, FormObject):
                                  widget=forms.TextInput(attrs={'required': False,
                                                                'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
-    cpf = forms.CharField(required=False,widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
-                                                        'placeholder': _('CPF')}))
+    cpf = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
+                                                                        'placeholder': _('CPF')}))
 
 
 class FormDonatorRequerimentNewUser(FormRegisterUser, FormObject):
     password = forms.CharField(widget=forms.PasswordInput
     (attrs={'required': True,
-                                                                 'placeholder': _('Password')})),
+            'placeholder': _('Password')})),
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': False,
                                                                'placeholder': _('Data de Nascimento'),
                                                                'maxlength': 150}))
     last_name = forms.CharField(required=False,
                                 widget=forms.TextInput(attrs={'required': False,
-                                                                             'maxlength': 200,
+                                                              'maxlength': 200,
                                                               'placeholder': _('Sobrenome')}))
 
 
