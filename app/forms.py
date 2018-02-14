@@ -41,22 +41,38 @@ TRUE_FALSE_CHOICES = (
 
 class FormRegisterUser(FormBaseAddress):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
-                                                               'placeholder': _('Nome')}))
+                                                               'placeholder': _('Nome'),
+                                                               'data-parsley-required-message': "Nome nao foi preenchido"
+                                                               }))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
-                                                              'placeholder': _('Sobrenome')}))
+                                                              'placeholder': _('Sobrenome'),
+                                                              'data-parsley-required-message': "Sobrenome nao foi preenchido"
+                                                              }))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True, 'maxlength': 150,
-                                                            'placeholder': _('Email')}))
+                                                            'placeholder': _('Email'),
+                                                            'data-parsley-required-message': "Email nao foi preenchido",
+                                                            'data-parsley-error-message': "Formato de email nao eh valido"
+                                                            }))
     username = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 200,
-                                                             'placeholder': 'Nome de Usuario'}))
+                                                             'placeholder': 'Nome de Usuario',
+                                                             'data-parsley-required-message': "Nome de usuario nao foi preenchido"
+                                                             }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
-                                                                 'placeholder': _('Senha')}))
+                                                                 'placeholder': _('Senha'),
+                                                                 'data-parsley-required-message': "Senha nao foi preenchido"
+                                                                 }))
     cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
-                                                        'placeholder': _('CPF')}))
+                                                        'placeholder': _('CPF'),
+                                                        'data-parsley-required-message': "CPF nao foi preenchido"
+                                                        }))
     phone = forms.CharField(widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
-                                                          'placeholder': _('Telefone')}))
+                                                          'placeholder': _('Telefone'),
+                                                          }))
     birth_date = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                                'placeholder': _('Data de Nascimento'),
-                                                               'maxlength': 150}))
+                                                               'maxlength': 150,
+                                                               'data-parsley-required-message': "Data de nascimento nao foi preenchido"
+                                                               }))
     anonymous = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=True, initial='False')
 
     def __init__(self, *args, **kwargs):
