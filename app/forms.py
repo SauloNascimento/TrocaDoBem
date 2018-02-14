@@ -178,13 +178,15 @@ class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
 class FormInstituteUpdate(forms.ModelForm, FormBaseAddress):
     cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                          'maxlength': 200,
-                                                         'placeholder': _('CNPJ')}))
+                                                         'placeholder': _('CNPJ'),
+                                                         'data-parsley-required-message': "CPF nao foi preenchido"}))
     phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
                                                                           'maxlength': 150,
                                                                           'placeholder': _('Telefone')}))
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'maxlength': 300,
                                                                                'placeholder': _(
-                                                                                   'Descricao da Instituicao')}))
+                                                                                   'Descricao da Instituicao'),
+                                                                               'data-parsley-required-message': "Descricao nao foi preenchido"}))
     site = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
                                                                          'maxlength': 150,
                                                                          'placeholder': _('Site')}))
