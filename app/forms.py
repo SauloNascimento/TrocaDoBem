@@ -67,21 +67,30 @@ class FormRegisterUser(FormBaseAddress):
 class FormRegisterInstitute(FormBaseAddress):
     cnpj = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                          'maxlength': 200,
-                                                         'placeholder': _('CNPJ')}))
+                                                         'placeholder': _('CNPJ'),
+                                                         'data-parsley-required-message': "CNPJ nao foi preenchido"}))
     first_name = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                                'maxlength': 200,
-                                                               'placeholder': _('First Name')}))
+                                                               'placeholder': _('First Name'),
+                                                               'data-parsley-required-message': "Nome nao foi preenchido"
+                                                               }))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True,
                                                             'maxlength': 150,
-                                                            'placeholder': _('Email')}))
+                                                            'placeholder': _('Email'),
+                                                            'data-parsley-required-message': "Email nao foi preenchido",
+                                                            'data-parsley-error-message': "Formato de email nao eh valido"}))
     username = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                              'maxlength': 200,
-                                                             'placeholder': _('Username')}))
+                                                             'placeholder': _('Username'),
+                                                             'data-parsley-required-message': "Nome de usuario nao foi preenchido"
+                                                             }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
-                                                                 'placeholder': _('Password')}))
+                                                                 'placeholder': _('Password'),
+                                                                 'data-parsley-required-message': "Senha nao foi preenchida"}))
     phone = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                           'maxlength': 150,
-                                                          'placeholder': _('Telefone')}))
+                                                          'placeholder': _('Telefone'),
+                                                          'data-parsley-required-message': "Telefone nao foi preenchido"}))
     site = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': False,
                                                                          'maxlength': 150,
                                                                          'placeholder': _('Site')}))
