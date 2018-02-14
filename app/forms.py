@@ -129,7 +129,8 @@ class FormLogin(BaseForm):
 class FormObject(BaseForm):
     name_item = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                               'maxlength': 100,
-                                                              'placeholder': _('Nome do Objeto')}))
+                                                              'placeholder': _('Nome do Objeto'),
+                                                              'data-parsley-required-message': "Nome do item nao foi preenchido"}))
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'required': False,
                                                                                'maxlength': 300,
                                                                                'placeholder': _(
@@ -140,7 +141,8 @@ class FormObject(BaseForm):
 class FormObjectView(BaseForm):
     name_item = forms.CharField(widget=forms.TextInput(attrs={'readonly': True,
                                                               'maxlength': 100,
-                                                              'placeholder': _('Nome do Objeto')}))
+                                                              'placeholder': _('Nome do Objeto'),
+                                                              'data-parsley-required-message': "Nome do item nao foi preenchido"}))
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'required': False,
                                                                                'maxlength': 300,
                                                                                'placeholder': _(
@@ -149,6 +151,10 @@ class FormObjectView(BaseForm):
 
 
 class FormItemUpdate(forms.ModelForm, BaseForm):
+    name_item = forms.CharField(widget=forms.TextInput(attrs={'required': True,
+                                                              'maxlength': 100,
+                                                              'placeholder': _('Nome do Objeto'),
+                                                              'data-parsley-required-message': "Nome do item nao foi preenchido"}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'required': False,
                                                                                'maxlength': 300,

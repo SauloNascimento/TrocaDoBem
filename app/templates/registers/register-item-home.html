@@ -4,7 +4,7 @@
 {% block content %}
     {% include 'loading.html' %}
 
-    <form method="post" class="form-horizontal">{% csrf_token %}
+    <form method="post" class="form-horizontal"  data-parsley-validate="">{% csrf_token %}
         <fieldset>
 
             <!-- Form Name -->
