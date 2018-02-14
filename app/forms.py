@@ -121,9 +121,11 @@ class FormRegisterInstitute(FormBaseAddress):
 class FormLogin(BaseForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                              'maxlength': 200,
-                                                             'placeholder': 'Nome de Usuario'}))
+                                                             'placeholder': 'Nome de Usuario',
+                                                             'data-parsley-required-message': "Nome de usuario nao foi preenchido"}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'required': True,
-                                                                 'placeholder': _('Senha')}))
+                                                                 'placeholder': _('Senha'),
+                                                                 'data-parsley-required-message': "Senha nao foi preenchido"}))
 
 
 class FormObject(BaseForm):
