@@ -173,13 +173,16 @@ class FormRequirement(forms.ModelForm, BaseForm):
 
 class FormDonatorUpdate(forms.ModelForm, FormBaseAddress):
     cpf = forms.CharField(widget=forms.TextInput(attrs={'required': True, 'maxlength': 150,
-                                                        'placeholder': _('CPF')}))
+                                                        'placeholder': _('CPF'),
+                                                        'data-parsley-required-message': "CPF nao foi preenchido"}))
     phone = forms.CharField(required=False,
                             widget=forms.TextInput(attrs={'required': False, 'maxlength': 150,
-                                                          'placeholder': _('Telefone')}))
+                                                          'placeholder': _('Telefone'),
+                                                          }))
     birth_date = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'required': True, 'placeholder': _('Data de Nascimento'),
-                                                               'maxlength': 150}))
+                                                               'maxlength': 150,
+                                                               'data-parsley-required-message': "Data de nascimento nao foi preenchido"}))
     anonymous = forms.ChoiceField(choices=TRUE_FALSE_CHOICES, required=False, label=u'Type')
 
     class Meta:
