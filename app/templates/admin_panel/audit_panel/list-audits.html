@@ -18,12 +18,12 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>DOADOR</th>
+                                        <th>RECEPTOR</th>
                                         <th>ITEM</th>
                                         <th>TIPO</th>
                                         <th>STATUS</th>
                                         <th>PROGRESSO</th>
                                         <th>CRIADO EM</th>
-                                        <th></th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -32,10 +32,13 @@
                                         <tr>
                                             <td>{{ audit.id }}</td>
                                             <td>
-                                                {{ audit.donor.first_name }}
+                                                <a href="{% url 'view-profile' audit.donor.pk %}">{{ audit.donor.first_name }}</a>
                                             </td>
                                             <td>
-                                                <a href="{% url 'view-object' audit.item.pk %}">{{ audit.item.name_item }}</a>
+                                                <a href="{% url 'view-profile' audit.new_owner.pk %}">{{ audit.new_owner.first_name }}</a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'view-audit' audit.pk %}">{{ audit.item.name_item }}</a>
                                             </td>
                                             <td>
                                                 {% if audit.item.service_set.first %}
@@ -73,23 +76,11 @@
                                                 {% endwith %}
                                             </td>
                                             <td>{{ audit.created_at|date:"d/m/Y G:i" }}</td>
-                                            {% if audit.step_set.all|length == 1 %}
-                                                <td>
-                                                    <a href="{% url 'final_delivery' audit.pk %}">
-                                                        <i class="fa fa-check"></i> Confirmar Entrega
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="{% url 'refuse_delivery' audit.pk %}">
-                                                        <i class="fa fa-close"></i> Recusar Entrega
-                                                    </a>
-                                                </td>
-                                            {% else %}
-                                                <td>
-                                                </td>
-                                                <td>
-                                                </td>
-                                            {% endif %}
+                                            <td>
+                                                <a class="remover" href="{% url 'delete_audit' audit.pk %}">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
@@ -105,7 +96,7 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#list_my_audits').addClass('active');
+            $('#audits').addClass('active');
         });
     </script>
     <!-- /.row -->

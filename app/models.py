@@ -36,11 +36,11 @@ class Institute(TimeStamped, BaseAddress):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     photo = models.URLField(blank=True)
-    cnpj = models.CharField(max_length=100, default="Nao Informado")
+    cnpj = models.CharField(max_length=100)
     description = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=30, blank=True)
-    site = models.CharField(max_length=100, default="Nao Informado")
-    social = models.CharField(max_length=100, default="Nao Informado")
+    site = models.CharField(max_length=100)
+    social = models.CharField(max_length=100)
 
     def __str__(self):
         return self.user.first_name
@@ -230,6 +230,7 @@ class Audit(TimeStamped):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     is_complete = models.BooleanField(default=False)
     is_deferred = models.CharField(choices=deferred_type, max_length=100, default='EM ANÁLISE')
+    match = models.OneToOneField(Match, on_delete=models.CASCADE, blank=True, null=True)
 
     def __unicode__(self):
         return u'%s - %s' % (self.new_owner.first_name, self.item)
