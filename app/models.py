@@ -191,7 +191,7 @@ class Requirement(TimeStamped):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(max_length=300)
 
-    # photo = models.URLField()
+    photo = models.URLField(blank=True, null=True)
 
     def __unicode__(self):
         return u'%s' % self.name
