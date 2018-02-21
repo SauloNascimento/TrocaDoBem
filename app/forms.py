@@ -333,9 +333,6 @@ class FormAuditorUpdate(forms.ModelForm, FormBaseAddress):
 
 
 class FormNewItemRequeriment(FormItemUpdate, FormRequirement):
-    name = forms.CharField(required=False, widget=forms.TextInput(attrs={'required': True,
-                                                            'maxlength': 100,
-                                                            'placeholder': _('Nome do Objeto')}))
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'required': False,
                                                             'maxlength': 300,
                                                             'placeholder': _('Descricao do Objeto')}))
