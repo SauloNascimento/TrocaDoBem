@@ -36,7 +36,9 @@
                 {% if user.institute %}
                     <a href="/new-items/{{ items.id }}/new-requeriment" class="btn btn-primary center-block btn-lg">
                         <center>Fazer Solicitação</center></a>
-
+                 {% else %}
+                    <a href="/" class="btn btn-primary center-block btn-lg">
+                        <center>Voltar</center></a>
                 {% endif %}
             </div>
 
