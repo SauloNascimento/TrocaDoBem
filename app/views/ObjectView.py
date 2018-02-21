@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from base64 import b64encode
+
+import pyimgur as pyimgur
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
@@ -42,8 +45,18 @@ class RegisterObjectView(LoginRequiredMixin, FormView, CustomContextMixin, UserC
         object_data = {}
         item_data['name_item'] = data['name_item']
         item_data['description'] = data['description']
+
         object_data['type'] = data['object_type']
         if data['name_item'] and data['object_type']:
+            try:
+                CLIENT_ID = "cdadf801dc167ab"
+                data = b64encode(self.request.FILES['file'].read())
+                client = pyimgur.Imgur(CLIENT_ID)
+                r = client._send_request('https://api.imgur.com/3/image', method='POST', params={'image': data})
+                file = r['link']
+            except (Exception,):
+                file = 'http://placehold.it/160x160'
+            item_data['photo'] = file
             new_item = Item(owner=self.request.user, **item_data)
             new_item.save()
             new_object = Object(item=new_item, **object_data)

@@ -132,6 +132,7 @@ class FormLogin(BaseForm):
 
 class FormObject(BaseForm):
     msgReq = 'data-parsley-required-message'
+
     name_item = forms.CharField(widget=forms.TextInput(attrs={'required': True,
                                                               'maxlength': 100,
                                                               'placeholder': _('Nome do Objeto'),
@@ -141,6 +142,10 @@ class FormObject(BaseForm):
                                                                                'placeholder': _(
                                                                                    'Descricao do Objeto')}))
     object_type = forms.ChoiceField(choices=object_type, required=True, label=u'Type')
+
+    file = forms.FileField(required=False,
+                           widget=forms.FileInput(attrs={'required': False, 'placeholder': 'Foto'
+                                                         }))
 
 
 class FormObjectView(BaseForm):
