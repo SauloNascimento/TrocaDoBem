@@ -4,7 +4,7 @@
 {% block content %}
     {% include 'loading.html' %}
 
-    <form method="post" class="form-horizontal">{% csrf_token %}
+    <form method="post" class="form-horizontal" data-parsley-validate="">{% csrf_token %}
         <fieldset>
 
             <!-- Form Name -->
@@ -52,7 +52,7 @@
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="telefone1">Telefone</label>
-                <div class="col-md-4">
+                <div class="col-md-4" data-parsley-required="False">
                     {{ form.phone }}
 
                 </div>
