@@ -332,11 +332,15 @@ class FormAuditorUpdate(forms.ModelForm, FormBaseAddress):
         super(FormAuditorUpdate, self).__init__(*args, **kwargs)
 
 
-class FormNewItemRequeriment(FormItemUpdate, FormRequirement):
-    description = forms.CharField(required=False, widget=forms.Textarea(attrs={'required': False,
+class FormNewItemRequeriment(FormRequirement):
+    name = forms.CharField(required=True,widget=forms.TextInput(attrs={'required': True,
+                                                            'maxlength': 100,
+                                                            'placeholder': _('Nome do Objeto')}))
+    description = forms.CharField(required=False,widget=forms.Textarea(attrs={'required': False,
                                                             'maxlength': 300,
                                                             'placeholder': _('Descricao do Objeto')}))
-    type = forms.ChoiceField(required=False, choices=object_type,  label=u'Type')
+    type = forms.ChoiceField(required=False, choices=object_type, label=u'Type')
+
 
     class Meta:
         model = Requirement
