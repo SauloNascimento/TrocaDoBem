@@ -49,6 +49,19 @@ class Institute(TimeStamped, BaseAddress):
         return u'%s' % self.user.first_name
 
 
+class InstituteSingUp(TimeStamped, BaseAddress):
+    first_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=200)
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+    photo = models.URLField(blank=True)
+    cnpj = models.CharField(max_length=100)
+    description = models.CharField(max_length=100, blank=True)
+    phone = models.CharField(max_length=30, blank=True)
+    site = models.CharField(max_length=100)
+    social = models.CharField(max_length=100)
+
+
 class CommonUser(TimeStamped, BaseAddress):
     class Meta:
         verbose_name = "Doador"

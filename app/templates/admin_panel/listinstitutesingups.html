@@ -1,0 +1,68 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- /.box-header -->
+                <div class="box-header">
+                </div>
+                <!-- /.box-body -->
+                <div class="box-body">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="table" class="table table-bordered table-striped" class="display"
+                                       cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>USERNAME</th>
+                                        <th>NOME</th>
+                                        <th>EMAIL</th>
+                                        <th>CNPJ</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for singup in singups %}
+                                        <tr>
+                                            <td>{{ singup.username }}</td>
+                                            <td><a href="{% url 'view-singup' singup.pk %}">{{ singup.first_name }}</a></td>
+                                            <td>{{ singup.email }}</td>
+                                            <td>{{ singup.cnpj }}</td>
+                                            <td>
+                                                <a class="remover" href="{% url 'approve_singup' singup.pk %}">
+                                                    <i style="color: green" class="fa fa-check"></i> Aprovar
+                                                </a>
+                                                <p></p>
+                                                <a class="remover" href="{% url 'reprove_singup' singup.pk %}">
+                                                    <i style="color: #ff0000" class="fa fa-ban"></i> Reprovar
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {% if user.is_superuser %}
+                    <div class="box-footer">
+                        <a href="{% url 'painel' %}" class="btn btn-default pull-left">Voltar</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#singups').addClass('active');
+        });
+    </script>
+
+{% endblock %}

@@ -255,7 +255,7 @@
             <ul class="sidebar-menu">
                 <li class="header">MENU</li>
                 {% if user.is_superuser or user.auditor %}
-                    <li id="home">S
+                    <li id="home">
                         <a href="{% url 'audit-home' %}">
                             <i class="fa fa-dashboard"></i> <span>Início</span>
                         </a>
@@ -278,6 +278,11 @@
                     <li id="audits">
                         <a href="{% url 'audits_panel' %}">
                             <i class="fa fa-cubes"></i> <span>Auditorias</span>
+                        </a>
+                    </li>
+                    <li id="singups">
+                        <a href="{% url 'list_singups' %}">
+                            <i class="fa fa-cubes"></i> <span>Cadastro de Instituicoes</span>
                         </a>
                     </li>
                 {% else %}
