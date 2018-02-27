@@ -62,7 +62,8 @@
                                 <div class="treasure panel panel-default">
                                     <!-- Adding treasure title by username -->
                                     <div class="panel-heading">
-                                        <h3 class="panel-title" align="center">{{ requeriment.name }}</h3>
+                                        <h3 class="panel-title" align="center">{{ item.name_item }}</h3>
+
                                         <h6 class="panel-default" align="center">
                                             Instituição: {{ requeriment.owner }}</h6>
                                     </div>
@@ -70,8 +71,7 @@
                                     <div class="panel-body">
                                         <a href="/requeriments/{{ requeriment.id }}">
                                             <div class="treasure-photo">
-                                                <img src="{{ requeriment.photo }}">
-                                            </div>
+                                            <center><img src="http://placehold.it/160x160" style="max-height: 100px 100px"></center>                                            </div>
                                         </a>
 
                                     </div>
