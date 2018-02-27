@@ -23,7 +23,7 @@ from app.views.ObjectView import RegisterObjectView, ObjectView, MyDonationsList
 from app.views.OrderView import OrderUpdateView
 from app.views.OrderView import delete_order, OrderListView
 from app.views.PainelView import PainelView, ProfileUserView
-from app.views.RegisterInstituteView import RegisterInstituteView
+from app.views.RegisterInstituteView import RegisterInstituteView, ListInstituteSingUps, SingUpView, reprove_singUp, approve_singUp
 from app.views.RegisterUserView import RegisterUserView
 from app.views.RegisterAuditorView import RegisterAuditorView
 from app.views.RequirementView import RequirementListView, AddRequirementView, \
@@ -138,5 +138,10 @@ urlpatterns = [
     url(r'^new-items/(?P<new_item_id>\d+)/$', new_item_detail, name='detail_item'),
     url(r'^new-items/(?P<item_id>\d+)/new-requeriment/$', NewItemRequerimentView.as_view(), name='requerimentnewitem'),
     url(r'^account/(?P<pk>[0-9]+)/change-password/$', ChangePasswordView.as_view(), name='change_password'),
+    url(r'^list-singups/$', ListInstituteSingUps.as_view(), name='list_singups'),
+    url(r'^list-singups/(?P<pk>[0-9]+)/$', SingUpView.as_view(), name='view-singup'),
+    url(r'^list-singups/(?P<pk>[0-9]+)/approve/$', approve_singUp, name='approve_singup'),
+    url(r'^list-singups/(?P<pk>[0-9]+)/reprove/$', reprove_singUp, name='reprove_singup'),
+
 
 ]

@@ -1,0 +1,114 @@
+{% extends 'base_painel.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <!-- /.box-header -->
+    <div class="box box-primary" style="margin-top: 30px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <center style="font-size: 20px;">Dados de Cadastro</center>
+                </h3>
+            </div>
+        </div>
+
+        <!-- form start -->
+        <form class="form-horizontal" method="post"
+              style="margin-top: 20px; margin-left: 15%;margin-right: 10% ">
+            <div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nome: </label>
+                    {{ singup.first_name }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">CNPJ: </label>
+                    {{ singup.cnpj }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Descricao: </label>
+                    {{ singup.description }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">CEP: </label>
+                    {{ singup.cep }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Estado: </label>
+                    {{ singup.state }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Cidade: </label>
+                    {{ singup.city }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Bairro: </label>
+                    {{ singup.district }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Rua: </label>
+                    {{ singup.address }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Numero: </label>
+                    {{ singup.number }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Complemento: </label>
+                    {{ singup.complement }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Email: </label>
+                    {{ singup.email }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Telefone: </label>
+                    {{ singup.phone }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Site: </label>
+                    {{ singup.site }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Rede Social: </label>
+                    {{ singup.social }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Username: </label>
+                    {{ singup.username }}
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class=" box-footer form-group" style="margin-top: 35px;">
+                <div class="col-md-8 col-md-offset-3">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="{% url "list_singups" %}" id="btn_cancelar" class="btn btn-default
+                            pull-left">Voltar
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="{% url 'approve_singup' singup.pk %}" id="btn_aprovar"
+                                class="btn btn-primary pull-right">
+                                <i style="color: green" class="fa fa-check"></i> Aprovar
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="{% url 'reprove_singup' singup.pk %}" id="btn_requisitar"
+                                class="btn btn-primary pull-right">
+                                <i style="color: #ff0000" class="fa fa-ban"></i> Reprovar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#donations').addClass('active');
+        });
+    </script>
+
+{% endblock %}
