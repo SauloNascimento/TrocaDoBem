@@ -1,61 +1,66 @@
-C:\Users\W10\Documents\Raphael\trocadobem\manage.py:14:13: F401 'django' imported but unused
-C:\Users\W10\Documents\Raphael\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
-C:\Users\W10\Documents\Raphael\trocadobem\app\apps.py:9:1: E302 expected 2 blank lines, found 1
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:73:101: E501 line too long (102 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:75:101: E501 line too long (106 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:102:101: E501 line too long (101 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:116:46: E128 continuation line under-indented for visual indent
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:127:101: E501 line too long (104 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:138:101: E501 line too long (106 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:142:101: E501 line too long (108 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:151:101: E501 line too long (102 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:155:101: E501 line too long (108 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:164:101: E501 line too long (106 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:169:101: E501 line too long (108 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:180:101: E501 line too long (108 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:181:5: E301 expected 1 blank line, found 0
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:197:101: E501 line too long (120 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:199:65: E127 continuation line over-indented for visual indent
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:199:101: E501 line too long (110 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:219:101: E501 line too long (105 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:222:101: E501 line too long (111 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:223:101: E501 line too long (116 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:229:101: E501 line too long (109 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:280:101: E501 line too long (102 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:282:101: E501 line too long (108 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:288:5: E128 continuation line under-indented for visual indent
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:292:101: E501 line too long (102 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:337:61: E128 continuation line under-indented for visual indent
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:338:61: E128 continuation line under-indented for visual indent
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:340:61: E128 continuation line under-indented for visual indent
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:341:61: E128 continuation line under-indented for visual indent
-C:\Users\W10\Documents\Raphael\trocadobem\app\forms.py:341:101: E501 line too long (102 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\mixins\CustomContextMixin.py:10:101: E501 line too long (101 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\mixins\CustomContextMixin.py:11:101: E501 line too long (103 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\mixins\CustomContextMixin.py:13:101: E501 line too long (116 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\mixins\CustomContextMixin.py:22:101: E501 line too long (110 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\templatetags\filters.py:9:50: E225 missing whitespace around operator
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_login_institute.py:56:101: E501 line too long (102 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_login_institute.py:63:42: F841 local variable 'e' is assigned to but never used
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_login_institute.py:70:43: F841 local variable 'e' is assigned to but never used
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_login_user.py:57:42: F841 local variable 'e' is assigned to but never used
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_login_user.py:64:43: F841 local variable 'e' is assigned to but never used
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_register_institute.py:53:42: F841 local variable 'e' is assigned to but never used
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_register_institute.py:60:43: F841 local variable 'e' is assigned to but never used
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_register_user.py:43:101: E501 line too long (118 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_register_user.py:55:42: F841 local variable 'e' is assigned to but never used
-C:\Users\W10\Documents\Raphael\trocadobem\app\tests\test_register_user.py:62:43: F841 local variable 'e' is assigned to but never used
-C:\Users\W10\Documents\Raphael\trocadobem\app\views\DonatorRequerimentView.py:129:101: E501 line too long (104 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\app\views\HomeView.py:25:101: E501 line too long (102 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:21:101: E501 line too long (104 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:36:45: E271 multiple spaces after keyword
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:36:101: E501 line too long (101 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:78:101: E501 line too long (130 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:85:101: E501 line too long (143 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:87:101: E501 line too long (108 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:127:101: E501 line too long (103 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:128:101: E501 line too long (109 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:129:101: E501 line too long (103 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:139:101: E501 line too long (119 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:140:101: E501 line too long (108 > 100 characters)
-C:\Users\W10\Documents\Raphael\trocadobem\trocadobem\urls.py:142:2: W292 no newline at end of file
+C:\Users\Tainah\Desktop\trocadobem\manage.py:14:13: F401 'django' imported but unused
+C:\Users\Tainah\Desktop\trocadobem\app\admin.py:6:1: F403 'from app.models import *' used; unable to detect undefined names
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:73:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:75:101: E501 line too long (106 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:102:101: E501 line too long (101 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:116:46: E128 continuation line under-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:127:101: E501 line too long (104 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:139:101: E501 line too long (106 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:143:101: E501 line too long (108 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:156:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:160:101: E501 line too long (108 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:169:101: E501 line too long (106 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:174:101: E501 line too long (108 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:185:101: E501 line too long (108 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:186:5: E301 expected 1 blank line, found 0
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:202:101: E501 line too long (120 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:204:65: E127 continuation line over-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:204:101: E501 line too long (110 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:224:101: E501 line too long (105 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:227:101: E501 line too long (111 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:228:101: E501 line too long (116 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:234:101: E501 line too long (109 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:285:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:287:101: E501 line too long (108 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:293:5: E128 continuation line under-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:297:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:341:41: E231 missing whitespace after ','
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:342:61: E128 continuation line under-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:343:61: E128 continuation line under-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:344:49: E231 missing whitespace after ','
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:345:61: E128 continuation line under-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:346:61: E128 continuation line under-indented for visual indent
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:346:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:350:5: E303 too many blank lines (2)
+C:\Users\Tainah\Desktop\trocadobem\app\forms.py:353:49: W292 no newline at end of file
+C:\Users\Tainah\Desktop\trocadobem\app\mixins\CustomContextMixin.py:10:101: E501 line too long (101 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\mixins\CustomContextMixin.py:11:101: E501 line too long (103 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\mixins\CustomContextMixin.py:13:101: E501 line too long (116 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\mixins\CustomContextMixin.py:22:101: E501 line too long (110 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\templatetags\filters.py:9:50: E225 missing whitespace around operator
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_login_institute.py:56:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_login_institute.py:63:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_login_institute.py:70:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_login_user.py:57:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_login_user.py:64:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_register_institute.py:53:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_register_institute.py:60:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_register_user.py:43:101: E501 line too long (118 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_register_user.py:55:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Tainah\Desktop\trocadobem\app\tests\test_register_user.py:62:9: F841 local variable 'e' is assigned to but never used
+C:\Users\Tainah\Desktop\trocadobem\app\views\DonatorRequerimentView.py:129:101: E501 line too long (104 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\views\HomeView.py:25:101: E501 line too long (102 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\app\views\ObjectView.py:52:17: N806 variable in function should be lowercase
+C:\Users\Tainah\Desktop\trocadobem\app\views\ObjectView.py:55:101: E501 line too long (112 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:21:101: E501 line too long (104 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:36:45: E271 multiple spaces after keyword
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:36:101: E501 line too long (101 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:78:101: E501 line too long (130 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:85:101: E501 line too long (143 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:87:101: E501 line too long (108 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:127:101: E501 line too long (103 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:128:101: E501 line too long (109 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:129:101: E501 line too long (103 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:139:101: E501 line too long (119 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:140:101: E501 line too long (108 > 100 characters)
+C:\Users\Tainah\Desktop\trocadobem\trocadobem\urls.py:142:2: W292 no newline at end of file
