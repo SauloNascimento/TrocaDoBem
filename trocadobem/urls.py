@@ -8,7 +8,7 @@ from app.views.AuditView import AuditListView, order_item, \
     delete_audit, HomeAuditView, AuditUserListView, \
     accept_audit, refuse_audit, final_delivery, refuse_delivery
 from app.views.DonationView import DonationListView, DonationUpdateView, \
-    delete_donation
+    delete_donation, ListDonations, reprove_donation, approve_donation
 from app.views.DonatorUpdateView import DonatorUpdateView
 from app.views.HomeView import HomeView, submit_message, view_post, InstitutesView, \
     CollectView, ContributeView
@@ -72,7 +72,7 @@ urlpatterns = [
     url(r'^home/$', PainelView.as_view(), name='painel'),
 
     url(r'^my-itens/$', MyItensListView.as_view(), name='list_my_itens'),
-    url(r'^donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
+    url(r'^my_donations/$', MyDonationsListView.as_view(), name='list_my_donations'),
 
     url(r'^object/add/$', RegisterObjectView.as_view(), name='add_object'),
     url(r'^donate-item/$', RegisterObjectView.as_view(template_name='registers/register-item-home.html'), name='add_object_home'),
@@ -142,6 +142,9 @@ urlpatterns = [
     url(r'^list-singups/(?P<pk>[0-9]+)/$', SingUpView.as_view(), name='view-singup'),
     url(r'^list-singups/(?P<pk>[0-9]+)/approve/$', approve_singUp, name='approve_singup'),
     url(r'^list-singups/(?P<pk>[0-9]+)/reprove/$', reprove_singUp, name='reprove_singup'),
+    url(r'^donations/$', ListDonations.as_view(), name='list_dotations'),
+    url(r'^donations/(?P<pk>[0-9]+)/approve/$', approve_donation, name='approve_dotation'),
+    url(r'^donations/(?P<pk>[0-9]+)/reprove/$', reprove_donation, name='reprove_dotation'),
 
 
 ]

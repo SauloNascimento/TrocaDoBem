@@ -32,7 +32,7 @@
                                                 <a href="{% url 'view-profile' item.owner.pk %}">{{ item.owner.first_name }}</a>
                                             </td>
                                             <td>
-                                                {{ item.name_item }}
+                                                <a href="{% url 'view-object' item.pk %}">{{ item.name_item }}</a>
                                             </td>
                                             <td>
                                                 {{ item.status }}
