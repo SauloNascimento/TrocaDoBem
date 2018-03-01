@@ -16,7 +16,7 @@
                 <div class="panel panel-default">
 
                     <div class="panel-body">
-                        <form method="post">{% csrf_token %}
+                        <form method="post" data-parsley-validate="">{% csrf_token %}
                             <fieldset>
                                 <div class="form-group">
                                     {{ form.username }}
@@ -36,7 +36,7 @@
                     <div class="panel-footer">
                         <h4 class="">
                             <a href="{% url 'register_user' %}">
-                                <center>Se você não possui um login, Cadastra-se Aqui</center>
+                                <center>Se você não possui um login, cadastre-se aqui</center>
                             </a>
                         </h4>
                     </div>

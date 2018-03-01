@@ -3,17 +3,18 @@
 {% load filters %}
 
 {% block content %}
-    {# Example content #}
+
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
-                <!-- form start -->
+                <!-- /.box-body -->
                 <div class="box-body">
                     <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper">
                         <div class="row">
                             <div class="col-sm-12">
                                 <table id="table" class="table table-bordered table-striped" class="display"
                                        cellspacing="0" width="100%">
+
                                     <thead>
                                     <tr>
                                         <th>ID</th>
@@ -27,19 +28,24 @@
                                         <th></th>
                                     </tr>
                                     </thead>
+
                                     <tbody>
                                     {% for audit in audits %}
                                         <tr>
                                             <td>{{ audit.id }}</td>
+
                                             <td>
                                                 <a href="{% url 'view-profile' audit.donor.pk %}">{{ audit.donor.first_name }}</a>
                                             </td>
+
                                             <td>
                                                 <a href="{% url 'view-profile' audit.new_owner.pk %}">{{ audit.new_owner.first_name }}</a>
                                             </td>
+
                                             <td>
                                                 <a href="{% url 'view-audit' audit.pk %}">{{ audit.item.name_item }}</a>
                                             </td>
+
                                             <td>
                                                 {% if audit.item.service_set.first %}
                                                     Serviço
@@ -47,6 +53,7 @@
                                                     {{ audit.item.object_set.first.type }}
                                                 {% endif %}
                                             </td>
+
                                             <td>
                                                 {% if audit.is_deferred == 'DEFERIDO' %}
                                                     <label class="label label-success"><i class=""></i>
@@ -60,6 +67,7 @@
                                                         EM ANÁLISE</label>
                                                 {% endif %}
                                             </td>
+
                                             <td>
                                                 {% with  audit.step_set.all|length as stepslen %}
                                                     <div class="progress">
@@ -72,10 +80,11 @@
                                                             <span class="sr-only">{{ stepslen|divide:2 }} Completo</span>
                                                         </div>
                                                     </div>
-
                                                 {% endwith %}
                                             </td>
+
                                             <td>{{ audit.created_at|date:"d/m/Y G:i" }}</td>
+
                                             <td>
                                                 <a class="remover" href="{% url 'delete_audit' audit.pk %}">
                                                     <i class="fa fa-trash-o"></i>
@@ -84,13 +93,12 @@
                                         </tr>
                                     {% endfor %}
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.box-body -->
             </div>
         </div>
     </div>
@@ -99,6 +107,5 @@
             $('#audits').addClass('active');
         });
     </script>
-    <!-- /.row -->
 
 {% endblock %}

@@ -51,14 +51,29 @@ class Institute(TimeStamped, BaseAddress):
 
 class CommonUser(TimeStamped, BaseAddress):
     class Meta:
-        verbose_name = "Usuario"
-        verbose_name_plural = "Usuarios"
+        verbose_name = "Doador"
+        verbose_name_plural = "Doadores"
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
     birth_date = models.DateField(null=True, blank=True)
     cpf = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=30, blank=True)
     anonymous = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return u'%s' % self.user.first_name
+
+    def __str__(self):
+        return self.user.first_name
+
+
+class Auditor(TimeStamped, BaseAddress):
+    class Meta:
+        verbose_name = "Auditor"
+        verbose_name_plural = "Auditores"
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+    phone = models.CharField(max_length=30, blank=True)
 
     def __unicode__(self):
         return u'%s' % self.user.first_name
@@ -176,7 +191,7 @@ class Requirement(TimeStamped):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(max_length=300)
 
-    # photo = models.URLField()
+    photo = models.URLField(blank=True, null=True)
 
     def __unicode__(self):
         return u'%s' % self.name
@@ -190,10 +205,14 @@ class Match(TimeStamped):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     def __unicode__(self):
-        return u'%s : %s - %s' % (self.requirement.name, self.requirement.type, self.requirement.owner)
+        return u'%s : %s - %s' % (self.requirement.name,
+                                  self.requirement.type,
+                                  self.requirement.owner)
 
     def __str__(self):
-        return u'%s : %s - %s' % (self.requirement.name, self.requirement.type, self.requirement.owner)
+        return u'%s : %s - %s' % (self.requirement.name,
+                                  self.requirement.type,
+                                  self.requirement.owner)
 
 
 accepted_type = (
@@ -252,3 +271,11 @@ class Step(TimeStamped):
 
 class ItemCollect(TimeStamped):
     audit = models.OneToOneField(Audit, on_delete=models.CASCADE)
+
+
+class Donation(TimeStamped):
+    donator = models.ForeignKey(User, related_name='donator', on_delete=models.CASCADE)
+    institute = models.ForeignKey(User, related_name='reciver', on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    data = models.DateField()
+    is_completed = models.BooleanField(default=False)

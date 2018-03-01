@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+    <div class="treasure panel panel-default">
+
+        <div class="panel-heading">
+            <h3 class="panel-title" align="center">{{ items.name_item}}</h3>
+        </div>
+
+        <div class="panel-body">
+            <div class="treasure-photo-detail" align="center">
+                <img src="{{ items.photo }}" height="200">
+            </div>
+            <table class="treasure-table" align="center">
+                <tr>
+                    <th>
+                        Descrição do item:
+                    </th>
+                    <td>${{ items.description }}</td>
+                </tr>
+                <tr>
+                    <th>
+                        Categoria:
+                    </th>
+                    <td>{{ items.type }}</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="panel-footer"
+            <div class="col-md-4 " >
+                {% if user.institute %}
+                    <a href="/new-items/{{ items.id }}/new-requeriment" class="btn btn-primary center-block btn-lg">
+                        <center>Fazer Solicitação</center></a>
+                 {% else %}
+                    <a href="/" class="btn btn-primary center-block btn-lg">
+                        <center>Voltar</center></a>
+                {% endif %}
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    {% include 'loading.html' %}
+
+    <form method="post" class="form-horizontal">{% csrf_token %}
+        <fieldset>
+
+            <!-- Form Name -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <center>Cadastrar Solicitacao</center>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Nome</label>
+                <div class="col-md-4">
+                    {{ form.name }}
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="description">Descricao</label>
+                <div class="col-md-4">
+                    {{ form.description }}
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="type" style="padding-right: 0">Tipo de Item</label>
+                <div class="col-md-4">
+                    {{ form.type }}
+                </div>
+            </div>
+
+            <p>{{ form.owner }}</p>
+
+            <!-- Button -->
+            <div class="form-group">
+                <div class="col-md-8 col-md-offset-3">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button id="btn_salvar" name="submit" class="btn btn-success btn-block" type="submit">
+                                Salvar
+                            </button>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="/" id="btn_cancelar" class="btn btn-danger btn-block">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+{% endblock %}

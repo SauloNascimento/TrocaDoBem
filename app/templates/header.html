@@ -67,6 +67,7 @@
                             <h1 style="margin-top: 2px;"> Troca do Bem</h1>
                         </a>
 
+                        <!--/.navbar-header -->
                         <div class="navbar-buttons">
                             <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
                                     data-target="#navigation">
@@ -75,7 +76,6 @@
                             </button>
                         </div>
                     </div>
-                    <!--/.navbar-header -->
 
                     <div class="navbar-collapse collapse" id="navigation">
 
@@ -83,28 +83,26 @@
                             <li id="home_base" class="">
                                 <a id="home_link" href="/">Home</a>
                             </li>
-{#                            <li id="menu_instituicoes" class="">#}
-{#                                <a id="instituicoes_link" href="{% url 'menu_institutes' %}">Instituições</a>#}
-{#                            </li>#}
-                            <li id="menu_contribua" class="">
-                                <a id="contribua_link" href="{% url 'contribute_institutes' %}">Contribua</a>
-                            </li>
-                            <li id="menu_arrecade" class="">
-                                <a id="arrecade_link" href="{% url 'collect_institutes' %}">Arrecade</a>
-                            </li>
-                            <li id="menu_noticias" class="">
-                                <a id="noticias_link" href="/#noticias">Notícias</a>
-                            </li>
-                            <li id="menu_contato" class="">
-                                <a id="contato_link" href="/#contato">Contato</a>
-                            </li>
+
+                            {% if not user.institute %}
+                                <li id="menu_noticias" class="">
+                                    <a id="noticias_link" href="{% url "add_object_home" %}">Doar</a>
+                                </li>
+                            {% endif %}
+
+                            {% if not user.commonuser %}
+                                <li id="menu_noticias" class="">
+                                    <a id="noticias_link" href="{% url "add_requirement_home" %}">Solicitar</a>
+                                </li>
+                            {% endif %}
+
                             <li class="dropdown">
                                 <a id="inscrevase_link" class="dropdown-toggle"
                                    data-toggle="dropdown">Inscreva-se<b
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a id="register_user_link" href="{% url "register_user" %}">Usuário</a></a>
+                                        <a id="register_user_link" href="{% url "register_user" %}">Doador</a></a>
                                     </li>
                                     <li>
                                         <a id="register_instituicao_link"
@@ -112,8 +110,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li id="doar_agora">
-                                <a id="donation_now" href="{% url 'choose_user' %}">Doar Agora</a>
+                            <li id="menu_contato" class="">
+                                <a id="contato_link" href="/#contato">Contato</a>
                             </li>
                         </ul>
 
@@ -126,4 +124,5 @@
             <!-- /#navbar -->
         </div>
         <!-- *** NAVBAR END *** -->
+    </div>
 </header>

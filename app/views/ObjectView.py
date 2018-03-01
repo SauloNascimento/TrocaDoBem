@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from base64 import b64encode
+
+import pyimgur as pyimgur
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
@@ -11,7 +14,7 @@ from django.views.generic import UpdateView
 
 from app.forms import FormObject, FormObjectView, FormItemUpdate
 from app.mixins.CustomContextMixin import CustomContextMixin, UserContextMixin
-from app.models import Item, Object, Requirement, Match, Notification
+from app.models import Item, Object, Requirement, Match, Notification, Donation
 
 __author__ = "Joao Marcos e Saulo Samuel"
 __copyright__ = "Copyright 2017, LES-UFCG"
@@ -27,13 +30,14 @@ def search_matches(**kwargs):
             notification.save()
 
 
-class RegisterObjectView(FormView, CustomContextMixin, UserContextMixin):
+class RegisterObjectView(LoginRequiredMixin, FormView, CustomContextMixin, UserContextMixin):
     """
     Displays the login form.
     """
+    login_url = '/login/'
     template_name = 'admin_panel/add-object.html'
     form_class = FormObject
-    success_url = '/donations'
+    success_url = '/itens'
 
     def form_valid(self, form):
         data = form.cleaned_data
@@ -41,13 +45,23 @@ class RegisterObjectView(FormView, CustomContextMixin, UserContextMixin):
         object_data = {}
         item_data['name_item'] = data['name_item']
         item_data['description'] = data['description']
+
         object_data['type'] = data['object_type']
         if data['name_item'] and data['object_type']:
+            try:
+                CLIENT_ID = "cdadf801dc167ab"
+                data = b64encode(self.request.FILES['file'].read())
+                client = pyimgur.Imgur(CLIENT_ID)
+                r = client._send_request('https://api.imgur.com/3/image', method='POST', params={'image': data})
+                file = r['link']
+            except (Exception,):
+                file = 'http://placehold.it/160x160'
+            item_data['photo'] = file
             new_item = Item(owner=self.request.user, **item_data)
             new_item.save()
             new_object = Object(item=new_item, **object_data)
             new_object.save()
-            messages.success(self.request, "Novo Objeto cadastrado com sucesso!")
+            messages.success(self.request, "Novo Item cadastrado com sucesso!")
             object_data['pk_item'] = new_item.pk
             search_matches(**object_data)
         else:
@@ -56,7 +70,7 @@ class RegisterObjectView(FormView, CustomContextMixin, UserContextMixin):
 
     def form_invalid(self, form):
         print(form.errors)
-        messages.error(self.request, 'Não foi possível cadastrar o objeto.')
+        messages.error(self.request, 'Não foi possível cadastrar o Item.')
         return super(RegisterObjectView, self).form_invalid(form)
 
 
@@ -72,12 +86,23 @@ class ObjectView(LoginRequiredMixin, DetailView, CustomContextMixin, UserContext
 
 class MyDonationsListView(LoginRequiredMixin, ListView, CustomContextMixin, UserContextMixin):
     login_url = '/login/'
-    model = Item
-    context_object_name = 'itens'
+    model = Donation
+    context_object_name = 'donations'
     template_name = 'admin_panel/my_donations.html'
 
     def get_queryset(self):
-        return Item.objects.filter(owner=self.request.user).order_by('-created_at')
+        return Donation.objects.filter(donator=self.request.user).union(
+            Donation.objects.filter(institute=self.request.user)).order_by('-created_at')
+
+
+class MyItensListView(LoginRequiredMixin, ListView, CustomContextMixin, UserContextMixin):
+    login_url = '/login/'
+    model = Item
+    context_object_name = 'itens'
+    template_name = 'admin_panel/my_itens.html'
+
+    def get_queryset(self):
+        return Item.objects.filter(owner=self.request.user, status=True).order_by('-created_at')
 
 
 class ObjectUpdateView(LoginRequiredMixin, UpdateView, CustomContextMixin, UserContextMixin):

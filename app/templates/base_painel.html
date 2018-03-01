@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Troca do Bem | Dashboard</title>
-    <!-- Tell the browser to be responsive to screen width -->
+
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href='{% static 'bootstrap/css/bootstrap.min.css' %}'>
@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href='{% static 'dist/css/AdminLTE.css' %}'>
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-    folder instead of downloading all of them to reduce the load. -->
+    <!-- AdminLTE Skins -->
     <link rel="stylesheet" href='{% static 'dist/css/skins/_all-skins.min.css' %}'>
     <!-- iCheck -->
     <link rel="stylesheet" href='{% static 'plugins/iCheck/flat/blue.css' %}'>
@@ -32,8 +31,9 @@
 
     <link rel="stylesheet" type="text/css"
           href="{% static 'css/datatables.min.css' %}"/>
-    {#        <link rel="stylesheet" type="text/css"#}
-    {#              href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/css/bootstrap-tour.min.css"/>#}
+
+    <script src="{% static 'js/parsley.min.js' %}"></script>
+    <link href="{% static 'css/parsley.css' %}" rel="stylesheet">
     <style>
         #ajuda {
             cursor: pointer;
@@ -46,11 +46,13 @@
 <!-- jQuery 2.2.0 -->
 <script
         src="{% static 'plugins/jQuery/jQuery-2.2.0.min.js' %}"></script>
+<script src="{% static 'js/parsley.min.js' %}"></script>
+<link href="{% static 'css/parsley.css' %}" rel="stylesheet">
 <div class="wrapper">
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="{% url "painel" %}" class="logo">
+        <a href="{% url "home" %}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>T</b>D<b>B</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -82,8 +84,6 @@
                                             <li>
                                                 <a href="#">
                                                     <i class="fa fa-warning text-yellow"></i>
-                                                    {#                                                    Um usuário adicionou um item do tipo {{ n.match.item.type }} e#}
-                                                    {#                                                    achamos#}
                                                     Temos um Match com seu pedido #{{ n.match.requirement.pk }}
                                                 </a>
                                             </li>
@@ -114,7 +114,8 @@
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
                                         {% for audit in audits_l %}
-                                            <li><!-- Task item -->
+                                            <!-- Task item -->
+                                            <li>
                                                 <a href="#">
                                                     <h3>
                                                         Item: {{ audit.item.name_item }}
@@ -135,7 +136,8 @@
                                                 </a>
                                             </li>
                                         {% empty %}
-                                            <li><!-- Task item -->
+                                            <!-- Task item -->
+                                            <li>
                                                 <a href="#">
                                                     <h3>
                                                         Nenhum processo em andamento
@@ -186,7 +188,8 @@
                                                 </a>
                                             </li>
                                         {% empty %}
-                                            <li><!-- Task item -->
+                                            <!-- Task item -->
+                                            <li>
                                                 <a href="#">
                                                     <h3>
                                                         Nenhum processo em andamento
@@ -203,7 +206,7 @@
                         </li>
                     {% endif %}
 
-                    <!-- User Account: style can be found in dropdown.less -->
+                    <!-- User Account -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{% static '300x300.png' %}" class="user-image" alt="User Image">
@@ -251,15 +254,15 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">MENU</li>
-                {% if user.is_superuser %}
-                    <li id="home">
+                {% if user.is_superuser or user.auditor %}
+                    <li id="home">S
                         <a href="{% url 'audit-home' %}">
                             <i class="fa fa-dashboard"></i> <span>Início</span>
                         </a>
                     </li>
                     <li id="items">
                         <a href="{% url 'items' %}">
-                            <i class="fa fa-cubes"></i> <span>Doações</span>
+                            <i class="fa fa-cubes"></i> <span>Itens</span>
                         </a>
                     </li>
                     <li id="orders">
@@ -283,59 +286,73 @@
                             <i class="fa fa-dashboard"></i> <span>Início</span>
                         </a>
                     </li>
+                {% endif %}
 
-                    {% if user.commonuser %}
-                        <li id="edit">
-                            <a href="{% url 'update_donator' user.pk %}">
-                                <i class="fa fa-user"></i> <span>Editar Perfil</span>
-                            </a>
-                        </li>
-                    {% elif user.institute %}
-                        <li id="edit">
-                            <a href="{% url 'update_institute' user.pk %}">
-                                <i class="fa fa-user"></i> <span>Editar Perfil</span>
-                            </a>
-                        </li>
-                    {% endif %}
+                {% if user.commonuser %}
                     <li id="my_objects">
-                        <a href="{% url 'list_my_donations' %}">
-                            <i class="fa fa-cubes"></i> <span>Minhas Doações</span>
+                        <a href="{% url 'list_my_itens' %}">
+                            <i class="fa fa-cubes"></i> <span>Meus Itens</span>
                         </a>
                     </li>
                     <li id="donations">
                         <a href="{% url 'add_object' %}">
-                            <i class="fa fa-cubes"></i> <span>Cadastrar Doação</span>
+                            <i class="fa fa-cubes"></i> <span>Cadastrar Item</span>
                         </a>
                     </li>
-                    {% if user.institute %}
-                        <li id="list_my_requirements">
-                            <a href="{% url 'list_my_requirements' %}">
-                                <i class="fa fa-cubes"></i> <span>Meus Pedidos</span>
-                            </a>
-                        </li>
-                    {% endif %}
-                    {% if user.institute %}
-                        <li id="list_my_notifications">
-                            <a href="{% url 'list_my_notifications' %}">
-                                <i class="fa fa-cubes"></i> <span>Notificações</span>
-                            </a>
-                        </li>
-                    {% endif %}
-
-                    {% if user.institute %}
-                        <li id="list_my_audits">
-                            <a href="{% url 'list_my_audits' %}">
-                                <i class="fa fa-cubes"></i> <span>Auditorias</span>
-                            </a>
-                        </li>
-                    {% else %}
-                        <li id="audits">
-                            <a href="{% url 'audits_user' %}">
-                                <i class="fa fa-cubes"></i> <span>Auditorias</span>
-                            </a>
-                        </li>
-                    {% endif %}
+                    <li id="my_donations">
+                        <a href="{% url 'list_my_donations' %}">
+                            <i class="fa fa-cubes"></i> <span>Minhas Doacoes</span>
+                        </a>
+                    </li>
+                    <li id="audits">
+                        <a href="{% url 'audits_user' %}">
+                            <i class="fa fa-cubes"></i> <span>Auditorias</span>
+                        </a>
+                    </li>
+                    <li id="edit">
+                        <a href="{% url 'update_donator' user.pk %}">
+                            <i class="fa fa-pencil"></i> <span>Editar Perfil</span>
+                        </a>
+                    </li>
+                {% elif user.institute %}
+                    <li id="list_my_requirements">
+                        <a href="{% url 'list_my_requirements' %}">
+                            <i class="fa fa-cubes"></i> <span>Meus Pedidos</span>
+                        </a>
+                    </li>
+                    <li id="my_donations">
+                        <a href="{% url 'list_my_donations' %}">
+                            <i class="fa fa-cubes"></i> <span>Minhas Doacoes</span>
+                        </a>
+                    </li>
+                    <li id="list_my_notifications">
+                        <a href="{% url 'list_my_notifications' %}">
+                            <i class="fa fa-cubes"></i> <span>Notificações</span>
+                        </a>
+                    </li>
+                    <li id="list_my_audits">
+                        <a href="{% url 'list_my_audits' %}">
+                            <i class="fa fa-cubes"></i> <span>Auditorias</span>
+                        </a>
+                    </li>
+                    <li id="edit">
+                        <a href="{% url 'update_institute' user.pk %}">
+                            <i class="fa fa-pencil"></i> <span>Editar Perfil</span>
+                        </a>
+                    </li>
+                {% elif user.auditor %}
+                    <li id="edit">
+                        <a href="{% url 'update_auditor' user.pk %}">
+                            <i class="fa fa-pencil"></i> <span>Editar Perfil</span>
+                        </a>
+                    </li>
                 {% endif %}
+
+                <li id="password">
+                    <a href="{% url 'change_password' user.pk %}">
+                        <i class="fa fa-key"></i> <span>Mudar Senha</span>
+                    </a>
+                </li>
 
                 <li id="logout">
                     <a href="{% url "auth_logout" %}">
@@ -505,5 +522,6 @@
         {% endif %}
     {% endfor %}
 {% endif %}
+
 </body>
 </html>

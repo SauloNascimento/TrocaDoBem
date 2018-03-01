@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+    <div class="treasure panel panel-default">
+
+        <div class="panel-heading">
+            <h3 class="panel-title" align="center">{{ requeriments.name }}</h3>
+        </div>
+
+        <div class="panel-body">
+            <div class="treasure-photo-detail" align="center">
+                <img src="{{ requeriments.photo }}" height="200">
+            </div>
+            <table class="treasure-table" align="center">
+                <tr>
+                    <th>
+                        Instituição:
+                    </th>
+                    <td>{{ requeriments.owner }}</td>
+                </tr>
+                <tr>
+                    <th>
+                        Descrição do item:
+                    </th>
+                    <td>${{ requeriments.description }}</td>
+                </tr>
+                <tr>
+                    <th>
+                        Categoria:
+                    </th>
+                    <td>{{ requeriments.type }}</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="panel-footer"
+            <div class="col-md-4 " >
+                {% if user.is_authenticated %}
+                    <a href="/requeriments/{{requeriments.id}}/donationrequeriment/{{ user.pk }}" class="btn btn-primary center-block btn-lg">
+                        <center>Doar
+                            Agora</center></a>
+                {% else %}
+                    <a href="/requeriments/{{requeriments.id}}/donationrequeriment/{{ user.pk }}" class="btn btn-primary center-block btn-lg">
+                        <center>Doar
+                            Agora</center></a>
+                {% endif %}
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+{% endblock %}

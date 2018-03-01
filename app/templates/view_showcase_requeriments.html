@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %} 
+  <!-- Creating a row for treasure panels -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <center>Vitrine de Requisições</center>
+            </h3>
+        </div>
+    </div>
+    <div class="container">
+	<div class="row">
+	<!-- Looping over each treasure in the treasures list -->
+
+	{% for requeriment in requeriments %}
+			<!-- Creating a column for each treasure panel -->
+      <div class="col-md-3">
+      <div class="treasure panel panel-default">
+				<!-- Adding treasure title by username -->
+        <div class="panel-heading">
+          <h3 class="panel-title" align="center" >{{ requeriment.name }}</h3>
+          <h6 class ="panel-default" align="center" > Instituição: {{ requeriment.owner }}</h6>
+        </div>
+				<!-- Adding treasure image -->
+        <div class="panel-body">
+          <a href="/requeriments/{{requeriment.id}}">
+          <div class="treasure-photo">
+            <img src="{{ requeriment.photo }}">
+          </div>
+          </a>
+					<!-- Adding Like Button -->
+
+        </div>
+
+      </div>
+      </div>
+	  <!-- if last column in row -->
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+        </div><br><div class="row">
+      {% endif %}
+	{% endfor %}
+	</div><br>
+    </div>
+
+
+
+{% endblock %}
